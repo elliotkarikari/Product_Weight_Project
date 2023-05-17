@@ -8,6 +8,7 @@ Store product data is found in multiple location and/or often contains missing w
 # Aim
 **Goal 1**: Produce a product list and meta-data documentation of info sources and decisions made.
 
+
 # Think about
 * What methods of imputation could be used? 
 * How can we match retail data to our generic product list? E.g. fuzzy matching? What rules should we use to find the best match? 
@@ -15,6 +16,7 @@ Store product data is found in multiple location and/or often contains missing w
 * Which products should be included? E.g. based on McCance & Widdowson’s composition of food integrated dataset [https://www.gov.uk/government/publications/composition-of-foods-integrated-dataset-cofid](https://www.gov.uk/government/publications/composition-of-foods-integrated-dataset-cofid)
 * What is the best to measure quantity of products
 * Ask for access -Note: competition law reading (how we manage working with different retailers at once) 
+
 
 # Decisions Made
 1. Working with data in Alphabetic Order. Building a workflow. Once this is clear, hopefully automate this if possible. 
