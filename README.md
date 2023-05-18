@@ -15,7 +15,6 @@ Store product data is found in multiple location and/or often contains missing w
 * What level of granularity should we go to? E.g. ‘crisps’ individual or share bag. How to incorporate options for standard large/small portion sizes. 
 * Which products should be included? E.g. based on McCance & Widdowson’s composition of food integrated dataset [https://www.gov.uk/government/publications/composition-of-foods-integrated-dataset-cofid](https://www.gov.uk/government/publications/composition-of-foods-integrated-dataset-cofid)
 * What is the best to measure quantity of products
-* Ask for access -Note: competition law reading (how we manage working with different retailers at once) 
 
 
 # Decisions Made
