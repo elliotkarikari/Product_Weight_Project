@@ -18,10 +18,10 @@ Store product data is found in multiple location and/or often contains missing w
 
 
 # Decisions Made
-1. Working with data in Alphabetic Order. Building a workflow. Once this is clear, hopefully automate this if possible. 
-2. I grouped data by McCance, Widdowson Group (2 or 3 letter code is assigned to every food) and counted the Foods associated with each group. Some grouping had one food so I didn't have to do much. Others have several foods. 
-3. I started reducing product list looking for it most basic form. I did this by googling some of the products and looking them up on the Tesco website. Also If the product was derived from a raw product (looking at its description) it was removed. 
-4. Once removed I added an extra column (Super Group) which is the larger group the product falls in from the McCance and Widdowson table. I'm doing this to create an extra layer (larger) for which searches can be made. The plan is to ideally have these food fall within the eat well guide groupings. With the McCance, Widdowson reduced table under it. 
-5. Joined all tables together. 
+* Working with data in Alphabetic Order. Building a workflow. Once this is clear, hopefully automate this if possible. 
+* I grouped data by McCance, Widdowson Group (2 or 3 letter code is assigned to every food) and counted the Foods associated with each group. Some grouping had one food so I didn't have to do much. Others have several foods. 
+* I started reducing product list looking for it most basic form. I did this by googling some of the products and looking them up on the Tesco website. Also If the product was derived from a raw product (looking at its description) it was removed. 
+* Once removed I added an extra column (Super Group) which is the larger group the product falls in from the McCance and Widdowson table. I'm doing this to create an extra layer (larger) for which searches can be made. The plan is to ideally have these food fall within the eat well guide groupings. With the McCance, Widdowson reduced table under it. 
+* Join all tables together. 
 
 
