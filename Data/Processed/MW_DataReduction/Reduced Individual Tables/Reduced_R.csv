@@ -1,0 +1,18 @@
+,Food Code,Food Name,Description,Group,Previous,Main data references,Footnote,Energy (kJ),Energy (kcal),Fat (g),Saturates (g),Carbohydrate (g),Sugars (g),Starch (g),Fibre (g),Protein (g),Salt (g),Super Group
+2333,11-866,"Rice, brown, basmati, raw","6 samples, 5 products",AC,,"LGC, Nutrient survey of flours and grains, 2005",,1499,354,3.1,0.58,70.6,0.8,69.8,3.3,9.3,0,Cereals and cereal products
+2335,11-870,"Rice, brown, easy cook, raw","6 samples, 5 products, including Italian and American",AC,,"LGC, Nutrient survey of flours and grains, 2005",,1547,365,3.1,0.54,74.8,0.7,69.7,3.5,7.9,0.01,Cereals and cereal products
+2346,11-874,"Rice, Thai fragrant, raw","8 samples, 7 products",AC,,"LGC, Nutrient survey of flours and grains, 2005",,1466,345,1.1,0.27,76.7,0,76.7,0.8,6.8,0,Cereals and cereal products
+2355,11-863,"Rice, white, long grain, easy cook, raw","10 samples, 9 products",AC,11-445 ,"LGC, Nutrient survey of flours and grains, 2005",,1452,342,1.1,0.23,74.8,0,74.8,1.7,7.4,0.01,Cereals and cereal products
+2391,11-940,Rusks,"8 samples, 8 products",AK,11-161 11-162 11-163 11-164 ,Nutrient analysis of a range of processed foods with particular reference to trans fatty acids 2011,,1685,400,10.7,4.59,67.6,22.5,45.1,2.4,7.1,0.22,Cereals and cereal products
+2361,11-999,"Risotto, plain, homemade",Recipe,AT,11-605 ,Recalculated 2013,,791,188,4.7,0.67,32.4,1,31.2,0.9,3.4,1.12,Cereals and cereal products
+2300,12-595,"Raita, yogurt and gram flour, homemade",Recipe,BV,12-457 ,Updated 2014,,410,99,6.6,3.83,5.8,4.2,1.6,1.4,3.3,0.07,Milk and milk products
+2295,13-332,"Radish leaves, raw",Literature sources,DG,,"Vegetables, Herbs and Spices Supplement, 1991",,171,41,0.5,0.05,3.5,3.5,0,4,3.6,0.28,Vegetables
+2382,13-522,"Rocket, raw","19 samples, autumn and winter, UK grown and imported",DG,,"DH, Nutrient analysis of fruit and vegetables, 2013",,89,21,0.4,0.07,0,0,0,1.7,3.6,0.08,Vegetables
+2389,15-869,"Roulade, spinach",Recipe from dietary survey records,DR,15-587 ,Updated 2014,,746,180,13.3,7.33,4.4,1.9,2.5,1.1,10.1,0.67,Vegetables
+2298,14-393,"Raisins, dried","10 samples, 10 products, not including soft, ready-to-eat, or partially hydrated",FA,14-242,"PHE, Nutrient analysis of fresh and processed fruit and vegetables with respect to fibre, 2017",,1176,277,1.0,0.15,62.6,62.6,0,2.7,3.0,0.04,Fruit
+2303,14-375,"Raspberries, raw","11 samples, mixture of UK and imported",FA,14-244,"PHE, Nutrient analysis of fresh and processed fruit and vegetables with respect to fibre, 2017",,167,40,0.3,0.1,5.1,5.1,0,3.7,0.8,0,Fruit
+2314,14-249,"Redcurrants, raw","Whole fruit, stalks removed",FA,,"MW4, 1978. Values revised for Fruit and Nuts Supplement, 1992",,166,39,0.0,0,4.4,4.4,0,5.1,1.1,0.01,Fruit
+2321,14-252,"Rhubarb, stems only, raw",Stems only,FA,50-961 ,"LGC, Nutritional composition of fresh fruit, 1985-1986. Vitamin K1 from Bolton-Smith et al, Br.J. Nutr 83, 2000.",,76,18,0.1,0,0.9,0.9,0,1.4,0.9,0.01,Fruit
+2388,13-892,"Rosemary, fresh",7 samples and calculation from dried,H,13-850 ,"LGC, Fruit and vegetables, 1989-1990; and data calculated from USDA SR26, 2013",,515,124,4.4,2.15,13.5,13.4,0.1,12.4,1.4,0.04,Herbs and spices
+2291,18-387,"Rabbit, raw, meat only",10 samples from leg and loin,MEC,50-468 ,"Reviewed 2013. LGC, Poultry and game surveys, 1983-1984",,575,137,5.5,2.1,0,0,0,0,21.9,0.17,Meat and meat products
+2320,17-354,"Relish, tomato based","9 samples, 4 brands, including chilli and burger relish",WCN,,"Reviewed 2013. LFRA, Nutrient analysis of miscellaneous foods, 1992",,496,117,0.1,0,26.8,24.5,2.3,2,1.2,1.2,"Soups, sauces and miscellaneous foods"

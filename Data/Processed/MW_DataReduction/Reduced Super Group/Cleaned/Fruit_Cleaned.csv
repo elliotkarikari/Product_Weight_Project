@@ -1,0 +1,69 @@
+,Food Code,Food Name,Group,Super Group,Sale format(s)
+1,14-363,"Apples, cooking, raw, flesh only, weighed with skin and core",F,Fruit,
+2,14-319,"Apples, eating, raw, flesh and skin",F,Fruit,
+3,14-001,Amla,FA,Fruit,
+4,14-025,"Apricots, raw, flesh and skin",FA,Fruit,punnet
+5,14-392,"Apricots, ready-to-eat, semi-dried",FA,Fruit,packet
+6,14-040,"Avocado, Fuerte, flesh only, weighed with skin and stone",FA,Fruit,"loose, individual"
+7,14-387,"Avocado, Hass, flesh only, weighed with skin and stone",FA,Fruit,"loose, individual"
+8,14-331,"Apple juice, clear, ambient and chilled",FC,Fruit,"carton, tetrapak, bottle"
+9,14-043,"Babaco, flesh only",FA,Fruit,"loose, individual"
+10,14-318,"Bananas, flesh and skin",FA,Fruit,"loose, individual/bunch"
+11,14-388,"Blackberries, raw",FA,Fruit,punnet
+12,14-053,"Blackcurrants, raw",FA,Fruit,punnet
+13,14-325,Blueberries,FA,Fruit,punnet
+14,14-382,"Cherries, flesh and skin, raw",FA,Fruit,punnet
+15,14-326,"Citrus fruit, soft/easy peelers, flesh with skin",FA,Fruit,net
+16,14-073,Cranberries,FA,Fruit,punnet
+17,14-074,Currants,FA,Fruit,packet
+18,14-077,"Damsons, flesh and skin, raw",FA,Fruit,punnet
+19,14-083,"Dates, raw, flesh and skin",FA,Fruit,packet
+20,14-087,Dried mixed fruit,FA,Fruit,packet
+21,14-089,"Elderberries, whole fruit",FA,Fruit,punnet
+22,14-100,"Gooseberries, cooking, raw",FA,Fruit,punnet
+23,14-384,"Grapefruit, flesh only, raw",FA,Fruit,"loose, individual"
+24,14-322,"Grapes, green",FA,Fruit,punnet
+25,14-118,"Guava, flesh only, raw",FA,Fruit,"loose, individual"
+26,14-371,"Kiwi fruit, flesh only, raw",FA,Fruit,"loose, individual, punnet"
+27,14-373,"Kiwi fruit, flesh only, raw, weighed with skin",FA,Fruit,
+28,14-125,"Kumquats, whole fruit, raw",FA,Fruit,punnet
+29,14-128,"Lemons, whole, without pips",FA,Fruit,"loose, individual, net"
+30,14-131,"Limes, flesh only",FA,Fruit,"loose, individual, net"
+31,14-132,"Limes, flesh and skin",FA,Fruit,
+32,14-133,"Loganberries, raw",FA,Fruit,punnet
+33,14-277,"Lemon juice, fresh",FC,Fruit,
+34,14-378,"Mangoes, ripe, flesh only, raw",FA,Fruit,"loose, individual"
+35,14-379,"Mangoes, raw, weighed with skin and stone",FA,Fruit,"loose, individual"
+36,14-339,"Melon, Canteloupe-type, flesh only",FA,Fruit,"loose, individual"
+37,14-353,"Melon, Canteloupe-type, flesh and skin",FA,Fruit,"loose, individual"
+38,14-356,"Melon, flesh and skin",FA,Fruit,"loose, individual"
+39,14-168,"Mulberries, whole fruit, raw",FA,Fruit,punnet
+40,14-380,"Nectarines, flesh and skin, raw",FA,Fruit,punnet
+41,,"Olives, ",FA,Fruit,"tin, jar"
+42,14-327,"Oranges, flesh only",FA,Fruit,"loose, individual, net"
+43,14-360,"Oranges, flesh with peel and pips",FA,Fruit,"loose, individual, net"
+44,14-369,"Orange juice, freshly squeezed",FC,Fruit,"carton, tetrapak, bottle"
+45,14-361,"Pears, average, flesh and skin, raw, weighed with core and stalk",F,Fruit,"loose, individual, bag"
+46,14-188,"Peaches, canned in juice, whole contents",FA,Fruit,tin  
+47,14-321,"Pears, raw, flesh and skin",FA,Fruit,packet
+48,14-376,"Pineapple, flesh only, raw",FA,Fruit,"loose, individual"
+49,14-377,"Pineapple, flesh with skin and top",FA,Fruit,"loose, individual"
+50,14-211,"Pineapple, canned in juice, whole contents",FA,Fruit,"loose, individual"
+51,14-396,"Pineapple, dried",FA,Fruit,"loose, individual"
+52,14-220,"Plums, Victoria, flesh and skin, raw",FA,Fruit,
+53,14-227,"Pomegranate, flesh and pips, weighed with skin",FA,Fruit,"loose, individual"
+54,14-285,Passion fruit juice,FC,Fruit,"carton, tetrapak, bottle"
+55,14-179,"Passion fruit, flesh and pips, weighed with skin",FA,Fruit,
+56,14-341,Pomegranate juice drink,FC,Fruit,"carton, tetrapak, bottle"
+57,14-227,"Pomegranate, flesh and pips, weighed with skin",FA,Fruit,
+58,14-289,Prune juice,FC,Fruit,"carton, tetrapak, bottle"
+59,14-237,"Prunes, canned in juice, whole contents",FA,Fruit,tin
+60,14-231,"Prunes, flesh and skin",FA,Fruit,
+61,14-391,"Prunes, ready-to-eat, semi-dried",FA,Fruit,
+62,14-393,"Raisins, dried",FA,Fruit,packet
+63,14-375,"Raspberries, raw",FA,Fruit,punnet
+64,14-249,"Redcurrants, raw",FA,Fruit,punnet
+65,14-252,"Rhubarb, stems only, raw",FA,Fruit,bunch
+66,14-059,Star fruit,FA,Fruit,"loose, individual"
+67,14-324,"Strawberries, raw",FA,Fruit,punnet
+68,14-268,"Whitecurrants, raw",FA,Fruit,punnet

@@ -1,0 +1,533 @@
+,Food Code,Food Name,Food sub-group codes,Food Group,Sale format(s),Similarity Score,Product Weight,Source,Purchase Date,Pack Size
+0,17-208,"beer, bitter, best, premium",QA,Alcoholic beverages,"can, can multipack, bottle, bottle multipack",0.7071067811865476,574g,FPS,,1 pint
+1,17-224,"cider, sweet",QC,Alcoholic beverages,"can, can multipack, bottle, bottle multipack",0.6098644521912389,25g,FPS,,
+2,17-234,port,QF,Alcoholic beverages,bottle,0.0,,,,
+3,17-236,"sherry, medium",QF,Alcoholic beverages,bottle,0.0,,,,
+4,17-247,"spirits, 40% volume",QK,Alcoholic beverages,"bottle, miniature",1.0,29g,FPS,,1 miniature
+5,17-239,"vermouth, dry",QG,Alcoholic beverages,bottle,0.6402642031530209,50g/100g,FPS,,per bag
+6,17-752,"wine, red",QE,Alcoholic beverages,"bottle, small bottle, box",1.0,200g,FPS,,I small bottle
+7,17-756,"wine, white, medium",QE,Alcoholic beverages,"bottle, small bottle, box",0.7204988586676786,200g,FPS,,I small bottle
+8,14-272,"apple juice concentrate, unsweetened, commerical",PE,Beverages,"carton, tetrapak, bottle",0.4138743438995205,,,,
+9,17-632,"coffee, cappuccino, latte",P,Beverages,,1.0,170g,FPS,,1 average vending machine cup
+10,17-175,cola,PCA,Beverages,"can, ready to drink bottle, sharing bottle",0.0,,,,
+11,17-744,cranberry fruit juice drink,PE,Beverages,"carton, tetrapak, bottle",0.756560852301581,200g,FPS,,individual carton
+12,17-498,"drinking chocolate, powder",PAA,Beverages,,0.4564971166234979,,,,
+13,17-672,"energy drink, carbonated",PCA,Beverages,"can, ready to drink bottle, sharing bottle",0.8762322260281621,250ml,FPS,,slim can
+14,17-745,"grape juice, unsweetened",PE,Beverages,"carton, tetrapak, bottle",0.5802435801003337,12g,FPS,,1 sachet
+15,17-731,"horlicks, powder",PAA,Beverages,,0.5948046737362449,32g,FPS,,1 sachet
+16,17-179,lemonade,PCA,Beverages,"can, ready to drink bottle, sharing bottle",0.0,,,,
+17,17-761,lucozade,PCA,Beverages,"ready to drink bottle, sharing bottle",0.0,,,,
+18,17-751,"lager, premium",QA,Beverages,"can, multipack can, bottle, multipack bottle",0.7071067811865476,574g,FPS,,1 pint
+19,17-244,"liqueurs, high strength",QI,Beverages,"bottle, miniature",0.9022530331020884,150g,FPS,,pots
+20,17-733,"milk shake, powder",PAA,Beverages,,1.0,585g,FPS,,1 pint
+21,17-734,"ovaltine, powder",PAA,Beverages,,0.0,,,,
+22,11-001,arrowroot,AA,Cereals and cereal products,,0.0,,,,
+23,11-002,"barley, pearl, raw",AA,Cereals and cereal products,packet,0.5937818449203375,180g,FPS,,I bottle
+24,11-906,"bran, wheat",AA,Cereals and cereal products,cereal box,0.0,,,,
+25,11-006,"buckwheat, groats",AA,Cereals and cereal products,packet,0.0,,,,
+26,11-1144,"bread rolls, brown, crusty",AF,Cereals and cereal products,"loose, individual
+multiple pack",0.576727063128621,20g,FPS,,1 portion pack
+27,11-1006,"bread rolls, white, soft",AF,Cereals and cereal products,"loose, individual
+multiple pack",0.4528892783796397,,,,
+28,11-971,"bread, brown, average",AF,Cereals and cereal products,loaf,0.5015932469883077,360g,FPS,,"6 in pack, 60g"
+29,11-969,"bread, ciabatta",AF,Cereals and cereal products,"loose, individual
+multiple pack",0.6880126944052741,20g,FPS,,1 slice
+30,11-937,"bread, garlic and herb, retail",AF,Cereals and cereal products,"loose, individual
+multiple pack",0.7414124137951081,20g,FPS,,1 slice
+31,11-910,"bread, naan, peshwari naan, takeaway and retail",AF,Cereals and cereal products,"loose, individual
+multiple pack",0.6927610070124688,160g,FPS,,
+32,11-973,"bread, naan, retail",AF,Cereals and cereal products,"loose, individual
+multiple pack",0.74505177427139,160g,FPS,,
+33,11-974,"bread, pitta, white",AF,Cereals and cereal products,"loose, individual
+multiple pack",0.4652360282498347,,,,
+34,11-947,"bread, seeded",AF,Cereals and cereal products,loaf,0.6880126944052741,20g,FPS,,1 slice
+35,11-1145,"bread, white, average",AF,Cereals and cereal products,loaf,0.4896494427550495,360g,FPS,,"6 in pack, 60g"
+36,11-977,"bread, white, farmhouse or split tin",AF,Cereals and cereal products,loaf,0.3822768421070135,,,,
+37,11-978,"bread, white, french stick",AF,Cereals and cereal products,baguette,0.3184775937522744,,,,
+38,11-980,"bread, white, sliced",AF,Cereals and cereal products,loaf,0.3827437558770012,,,,
+39,11-981,"bread, wholemeal, average",AF,Cereals and cereal products,loaf,0.455510684322797,,,,
+40,11-983,"bread rolls, brown, soft",AG,Cereals and cereal products,"loose, individual
+multiple pack",0.4534921843546891,,,,
+41,11-984,"bread rolls, malted wheat",AG,Cereals and cereal products,"loose, individual
+multiple pack",0.6880126944052741,20g,FPS,,1 slice
+42,11-985,"bread rolls, white, crusty",AG,Cereals and cereal products,"loose, individual
+multiple pack",0.4652360282498347,,,,
+43,11-986,"bread rolls, wholemeal",AG,Cereals and cereal products,"loose, individual
+multiple pack",0.6880126944052741,20g,FPS,,1 slice
+44,11-763,"breakfast cereal, bran flakes, fortified",AI,Cereals and cereal products,cereal box,0.0,,,,
+45,11-742,"breakfast cereal, cornflakes, fortified",AI,Cereals and cereal products,cereal box,0.0,,,,
+46,11-779,"breakfast cereal, fruit and fibre type, fortified",AI,Cereals and cereal products,cereal box,0.486772860346225,50g,FPS,,bar
+47,11-755,"breakfast cereal, honey loops and hoops, including honey and nut cheerios, fortified",AI,Cereals and cereal products,cereal box,0.3901439990108702,,,,
+48,11-792,"breakfast cereal, instant hot oat, plain, raw, fortified",AI,Cereals and cereal products,cereal box,0.4401974516128666,,,,
+49,11-753,"breakfast cereal, rice, chocolate flavoured, fortified",AI,Cereals and cereal products,cereal box,0.6321651629223713,300g,FPS,,1 packet made up
+50,11-778,"breakfast cereal, shredded wheat, honey nut, nestle",AI,Cereals and cereal products,cereal box,0.4138892193910055,,,,
+51,11-773,"breakfast cereal, wheat biscuits, weetabix type, fortified",AI,Cereals and cereal products,cereal box,0.0,,,,
+52,11-821,"biscuits, cheese flavoured",AM,Cereals and cereal products,wrapper or box,0.6865099205215273,214g,FPS,,"Crazy Milk, individual carton"
+53,11-815,"biscuits, cookies, chocolate chip, standard",AM,Cereals and cereal products,wrapper or box,0.6497133270592733,40g,FPS,,bag
+54,11-799,"biscuits, digestive, plain",AM,Cereals and cereal products,wrapper or box,0.7226945835012721,266g,FPS,,
+55,11-809,"biscuits, fully coated with chocolate",AM,Cereals and cereal products,wrapper or box,0.4648627780938982,,,,
+56,11-801,"biscuits, plain, reduced fat",AM,Cereals and cereal products,wrapper or box,0.4044293149199501,,,,
+57,11-826,"breadsticks, plain",AM,Cereals and cereal products,box,0.7027630100176375,45g,FPS,,
+58,,"banana bread, retail",AN,Cereals and cereal products,loaf,0.4428925214565823,,,,
+59,,"brownies, chocolate, retail",AN,Cereals and cereal products,,0.4404870925079751,,,,
+60,,"brownies, chocolate, baking mix",AN,Cereals and cereal products,packet,0.5994064200867445,100g,FPS,,per bag
+61,11-970,"bagels, plain",AP,Cereals and cereal products,"loose, individual
+multiple pack",0.7027630100176375,45g,FPS,,
+62,,bread and butter pudding,AS,Cereals and cereal products,,0.3976404045863924,,,,
+63,11-011,"cornmeal, sifted",AA,Cereals and cereal products,packet,0.0,,,,
+64,11-988,croissants,AG,Cereals and cereal products,,0.0,,,,
+65,11-820,cream crackers,AM,Cereals and cereal products,wrapper or box,0.6536038210478662,150g,FPS,,1 small carton (5 fi. oz)
+66,11-839,"cakes, fancy iced, individual, retail",AN,Cereals and cereal products,,0.5593337979318262,30g,FPS,,per bag
+67,11-1020,"crumble, fruit, retail",AS,Cereals and cereal products,,0.4627620861553933,,,,
+68,11-850,"doughnuts, ring, iced",AP,Cereals and cereal products,,0.7071067811865476,30g,FPS,,per bag
+69,11-849,"doughnuts, with jam",AP,Cereals and cereal products,,0.427640119104488,,,,
+70,,"dumplings,",AT,Cereals and cereal products,,0.0,,,,
+71,,"biscuit, gingerbread",AN,Cereals and cereal products,,0.545005621080401,61g,FPS,,
+72,,"hot cross buns, ",AP,Cereals and cereal products,packet,0.4417049644939082,,,,
+73,11-739,jaffa cakes,AM,Cereals and cereal products,wrapper or box,0.0,,,,
+74,11-846,"jam tarts, retail",AS,Cereals and cereal products,,0.3859253296400772,,,,
+75,,"macaroni cheese, retail",AD,Cereals and cereal products,,0.7126821453277129,430g,FPS,,large can
+76,11-780,"muesli, swiss style, unfortified",AI,Cereals and cereal products,cereal box,0.6750706767476486,150g,FPS,,
+77,11-737,"muffins, american, chocolate, retail",AN,Cereals and cereal products,,0.4404870925079751,,,,
+78,11-848,"mince pies, retail",AS,Cereals and cereal products,,0.5419943295068606,140g,FPS,,individual pie
+79,11-719,"noodles, egg, dried, raw",AD,Cereals and cereal products,,0.4715007054935516,280g,FPS,,"1 packet, made up"
+80,11-823,"oatcakes, plain, retail",AM,Cereals and cereal products,wrapper or box,0.4565269399720201,,,,
+81,11-936,"pizza, cheese and tomato, retail",A,Cereals and cereal products,,0.4962424280719124,116g,FPS,,average
+82,11-788,"porridge oats, unfortified",A,Cereals and cereal products,,0.0,,,,
+83,11-726,"pasta, egg, fresh, raw",AD,Cereals and cereal products,,0.4262226505526912,,,,
+84,11-718,"pasta, wholewheat, spaghetti, dried, raw",AD,Cereals and cereal products,,0.5132298057201279,425g,FPS,,large can
+85,11-735,"pasta, spaghetti, canned, in tomato sauce",AD,Cereals and cereal products,tin,0.5930929092910918,425g,FPS,,large can
+86,,"papadums, retail",AF,Cereals and cereal products,,0.5439839155777908,190g,FPS,,
+87,11-853,"pastry, shortcrust, retail, cooked",AO,Cereals and cereal products,,0.3328058762668199,,,,
+88,11-844,"pastries, chocolate eclairs, cream filled, retail",AP,Cereals and cereal products,,0.6118341203053437,46g,FPS,,tube
+89,,pancakes,AS,Cereals and cereal products,,0.0,,,,
+90,11-544,"scotch pancakes, retail",AS,Cereals and cereal products,,0.5439839155777908,190g,FPS,,
+91,11-921,"pie, apple, pastry, double crust, retail",AS,Cereals and cereal products,,0.3385752204786134,,,,
+92,11-847,"pie, fruit, individual, retail",AS,Cereals and cereal products,,0.5369543932784537,480g,FPS,,large
+93,,"pudding, sponge, retail",AS,Cereals and cereal products,,0.7927944247351262,300g,FPS,,whole
+94,11-1021,"pudding, sponge, canned",AS,Cereals and cereal products,,1.0,300g,FPS,,whole
+95,,prawn crackers,AT,Cereals and cereal products,packet,1.0000000000000002,30g/40g,FPS,,per bag
+96,11-866,"rice, brown, basmati, raw",AC,Cereals and cereal products,packet,0.5921497608588739,300g,FPS,,1 packet made up
+97,11-870,"rice, brown, easy cook, raw",AC,Cereals and cereal products,packet,0.5921497608588739,300g,FPS,,1 packet made up
+98,11-874,"rice, thai fragrant, raw",AC,Cereals and cereal products,packet,0.7511364968034292,300g,FPS,,1 packet made up
+99,11-863,"rice, white, long grain, easy cook, raw",AC,Cereals and cereal products,packet,0.6005814104112043,300g,FPS,,1 packet made up
+100,11-940,rusks,AK,Cereals and cereal products,,0.0,,,,
+101,,"risotto, plain",AT,Cereals and cereal products,,0.7027630100176375,45g,FPS,,
+102,11-903,"semolina, raw",AA,Cereals and cereal products,,0.3749892289879656,,,,
+103,,"sandwich, white bread,",AB,Cereals and cereal products,,0.4011213995076771,,,,
+104,,"sandwich, brown bread",AB,Cereals and cereal products,,0.4677419239104149,,,,
+105,11-802,shortbread,AM,Cereals and cereal products,wrapper or box,0.4563370023988496,,,,
+106,11-544,"scotch pancakes, retail",AP,Cereals and cereal products,,0.5439839155777908,190g,FPS,,
+107,11-919,"strudel, fruit filled, retail, frozen",AS,Cereals and cereal products,,0.5764954213870053,600g,FPS,,6 servings
+108,17-371,"stuffing mix, dried",AT,Cereals and cereal products,,0.7071067811865476,100g,FPS,,per bag
+109,11-800,"wafers, plain ice cream wafers, not filled",AM,Cereals and cereal products,,0.6146762011980232,60g,FPS,,tub
+110,,yorkshire pudding,AT,Cereals and cereal products,,0.6104136327598235,300g,FPS,,whole
+111,12-937,"eggs, chicken, whole, raw",CA,Eggs,"egg box, 6, 10, 12, 30",0.4212680849058329,,,,
+112,12-949,"quiche, vegetable, retail",CD,Eggs,"small individual, large sharing",0.5356753423042451,210g/440g,FPS,,can
+113,17-487,"dripping, beef",OF,Fats and oils,jar,0.6300236984151741,198g,FPS,,1 small can
+114,17-010,lard,OF,Fats and oils,block,0.0,,,,
+115,17-031,"oil, coconut",OC,Fats and oils,jar,0.4485173668317038,,,,
+116,17-039,"oil, palm",OC,Fats and oils,bottle,0.6552556056428058,200g,FPS,,1 small can
+117,17-044,"oil, soya",OC,Fats and oils,bottle,0.4742554136987429,120g,FPS,,
+118,17-045,"oil, sunflower",OC,Fats and oils,bottle,0.6552556056428058,200g,FPS,,1 small can
+119,17-686,"oil, vegetable, average",OC,Fats and oils,bottle,0.4068509764450056,,,,
+120,16-001,"ayr, raw",JA,Fish and fish products,,0.5217706540839595,75g,FPS,,1 raw small eating (6 to lb) 
+121,,"anchovies, canned in oil,",JC,Fish and fish products,tin,0.6899271409532682,200g,FPS,,1 small can
+122,16-385,"bass, sea, flesh only, raw",JA,Fish and fish products,fillet,0.3888212427210015,,,,
+123,16-003,"bele, raw",JA,Fish and fish products,fillet,0.5217706540839595,75g,FPS,,1 raw small eating (6 to lb) 
+124,16-004,"boal, raw",JA,Fish and fish products,fillet,0.5217706540839595,75g,FPS,,1 raw small eating (6 to lb) 
+125,16-005,bombay duck,JA,Fish and fish products,,0.5416681533364661,125g,FPS,,
+126,16-006,"bream, sea, raw",JA,Fish and fish products,fillet,0.5217706540839595,75g,FPS,,1 raw small eating (6 to lb) 
+127,16-169,"bacha, raw",JC,Fish and fish products,fillet,0.5217706540839595,75g,FPS,,1 raw small eating (6 to lb) 
+128,16-372,"cod, flesh only, raw",JA,Fish and fish products,fillet,0.638165670961456,170g,FPS,,"in sauce, purchased, frozen"
+129,16-172,"carp, raw",JA,Fish and fish products,fillet,0.5217706540839595,75g,FPS,,1 raw small eating (6 to lb) 
+130,16-007,"catfish, raw",JA,Fish and fish products,fillet,0.5217706540839595,75g,FPS,,1 raw small eating (6 to lb) 
+131,16-011,"chital, raw",JA,Fish and fish products,fillet,0.5217706540839595,75g,FPS,,1 raw small eating (6 to lb) 
+132,16-383,"coley, flesh only, raw",JA,Fish and fish products,fillet,0.3888212427210015,,,,
+133,,"crab, canned in brine",JK,Fish and fish products,tin,0.7418908223079532,85g,FPS,,1 small can
+134,,crab,JK,Fish and fish products,,1.0,85g,FPS,,1 small can
+135,,"crab, white meat",JK,Fish and fish products,,0.6332428259944975,85g,FPS,,1 small can
+136,16-235,"crayfish, raw",JK,Fish and fish products,,0.5217706540839595,75g,FPS,,1 raw small eating (6 to lb) 
+137,,calamari,JM,Fish and fish products,,0.0,,,,
+138,,cockles,JM,Fish and fish products,,0.0,,,,
+139,16-254,"cuttlefish, raw",JM,Fish and fish products,,0.5217706540839595,75g,FPS,,1 raw small eating (6 to lb) 
+140,,caviare,JR,Fish and fish products,"tin, jar",0.0,,,,
+141,16-173,"eel, yellow, raw",JC,Fish and fish products,,0.5217706540839595,75g,FPS,,1 raw small eating (6 to lb) 
+142,16-375,"haddock, flesh only, raw",JA,Fish and fish products,,0.3888212427210015,,,,
+143,16-070,"hake, flesh only, raw",JA,Fish and fish products,,0.3888212427210015,,,,
+144,16-081,"kalabasu, raw",JA,Fish and fish products,,0.5217706540839595,75g,FPS,,1 raw small eating (6 to lb) 
+145,16-186,"katla, raw",JA,Fish and fish products,,0.5217706540839595,75g,FPS,,1 raw small eating (6 to lb) 
+146,,"kippers, flesh only",JC,Fish and fish products,,0.4995987696019161,150g,FPS,,
+147,16-393,"mackerel, flesh only, raw",JC,Fish and fish products,,0.3725442247572698,,,,
+148,16-497,"mussels, raw",JM,Fish and fish products,,0.5217706540839595,75g,FPS,,1 raw small eating (6 to lb) 
+149,16-259,"octopus, raw",JM,Fish and fish products,,0.5217706540839595,75g,FPS,,1 raw small eating (6 to lb) 
+150,16-260,"oysters, raw",JM,Fish and fish products,,0.79710022854597,105g,FPS,,1 can smoked oysters
+151,16-378,"pollock, alaskan, flesh only, raw",JA,Fish and fish products,,0.3888212427210015,,,,
+152,16-387,"prawns, king, raw",JK,Fish and fish products,,0.6857956998853336,100g,FPS,,1 small jar prawns
+221,13-801,"allspice, ground",H,Herbs and spices,spice jar,0.0,,,,
+222,13-802,anise seeds,H,Herbs and spices,spice jar,0.0,,,,
+223,13-803,asafoetida,H,Herbs and spices,,0.0,,,,
+224,13-805,"basil, dried, ground",H,Herbs and spices,spice jar,0.0,,,,
+225,13-804,"basil, fresh",H,Herbs and spices,bunch,0.4379536451697761,,,,
+226,13-808,caraway seeds,H,Herbs and spices,spice jar,0.0,,,,
+227,13-809,"cardamom, ground",H,Herbs and spices,spice jar,0.0,,,,
+228,13-810,celery seeds,H,Herbs and spices,spice jar,0.0,,,,
+229,13-811,"chervil, dried",H,Herbs and spices,spice jar,0.0,,,,
+230,13-873,chilli powder,H,Herbs and spices,spice jar,0.4721944627262765,290g,FPS,,meal for one
+231,13-813,chinese 5 spice,H,Herbs and spices,spice jar,0.388480009945057,,,,
+232,13-887,"chives, fresh",H,Herbs and spices,bunch,0.4379536451697761,,,,
+233,13-874,"cinnamon, ground",H,Herbs and spices,spice jar,0.0,,,,
+234,13-816,"cloves, dried",H,Herbs and spices,spice jar,0.0,,,,
+235,13-818,"coriander leaves, dried",H,Herbs and spices,spice jar,0.0,,,,
+236,13-889,cumin seeds,H,Herbs and spices,spice jar,0.0,,,,
+237,13-876,curry powder,H,Herbs and spices,spice jar,0.4726432066559673,125g,FPS,,1 can 
+238,13-824,"dill, fresh",H,Herbs and spices,bunch,0.4379536451697761,,,,
+239,13-829,garam masala,H,Herbs and spices,spice jar,0.0,,,,
+240,13-830,garlic powder,H,Herbs and spices,spice jar,0.7256986511887664,20g,FPS,,1 slice
+241,13-890,"ginger, fresh",H,Herbs and spices,"loose, individual",0.4379536451697761,,,,
+242,13-832,"ginger, ground",H,Herbs and spices,spice jar,0.0,,,,
+243,13-835,"marjoram, dried",H,Herbs and spices,spice jar,0.0,,,,
+244,13-836,"mint, fresh",H,Herbs and spices,bunch,0.3814269886081355,,,,
+245,13-886,mixed curry spices,H,Herbs and spices,spice jar,0.3726995889467787,,,,
+246,13-884,"mixed herbs, dried",H,Herbs and spices,spice jar,0.5399797505619117,210g,FPS,,small can
+247,13-839,mustard seeds,H,Herbs and spices,spice jar,1.0,5g,FPS,,I sachet
+248,13-877,"nutmeg, ground",H,Herbs and spices,spice jar,0.0,,,,
+249,13-878,"oregano, dried, ground",H,Herbs and spices,spice jar,0.0,,,,
+250,13-879,paprika,H,Herbs and spices,spice jar,0.0,,,,
+251,13-844,"parsley, fresh",H,Herbs and spices,bunch,0.4379536451697761,,,,
+252,13-880,"pepper, black",H,Herbs and spices,,0.5773502691896257,630g,FPS,,
+253,13-892,"rosemary, fresh",H,Herbs and spices,bunch,0.4379536451697761,,,,
+254,13-852,saffron,H,Herbs and spices,spice jar,0.0,,,,
+255,13-854,"sage, dried, ground",H,Herbs and spices,spice jar,0.0,,,,
+256,19-646,"bacon rashers, back, fat trimmed, raw",MAA,Meat and meat products,,0.5570604721512142,25g/50g,FPS,,per bag
+257,18-006,"beef, braising steak, raw, lean",MAC,Meat and meat products,,0.5985515577650203,213g,FPS,,small
+258,18-003,"beef, fat, average, raw",MAC,Meat and meat products,,0.3615819986838902,,,,
+259,18-016,"beef, fillet steak, raw, lean",MAC,Meat and meat products,,0.5985515577650203,213g,FPS,,small
+260,18-024,"beef, flank, raw, lean",MAC,Meat and meat products,,0.4604812858877775,,,,
+261,18-468,"beef, lean, average, raw",MAC,Meat and meat products,,0.3583761996105854,,,,
+262,18-469,"beef, mince, raw",MAC,Meat and meat products,,0.4604812858877775,,,,
+263,18-054,"beef, silverside, raw, lean",MAC,Meat and meat products,,0.4604812858877775,,,,
+264,18-064,"beef, sirloin steak, raw, lean",MAC,Meat and meat products,,0.5985515577650203,213g,FPS,,small
+265,18-084,"beef, topside, raw, lean",MAC,Meat and meat products,,0.4604812858877775,,,,
+266,18-504,"chicken breast/steak, coated, baked",MCA,Meat and meat products,,0.649268362615639,100g,FPS,,
+267,18-501,"chicken pieces, coated, takeaway",MCA,Meat and meat products,,0.3278400135553574,,,,
+268,18-293,"chicken, leg quarter, raw, meat and skin",MCA,Meat and meat products,,0.462416481826905,,,,
+269,18-488,"chicken, meat, average, raw",MCA,Meat and meat products,,0.3043128645826736,,,,
+270,18-297,"chicken, whole, raw, meat and skin",MCA,Meat and meat products,,0.4507749539321398,,,,
+271,18-295,"chicken, wing quarter, raw, meat and skin",MCA,Meat and meat products,,0.462416481826905,,,,
+272,18-503,"chicken/turkey pieces, coated, baked",MCA,Meat and meat products,,0.3822557089085814,,,,
+273,19-538,chicken slices,MI,Meat and meat products,,0.7315260508587585,70g,FPS,,
+274,19-516,chorizo,MI,Meat and meat products,,0.0,,,,
+275,19-128,"corned beef, canned",MI,Meat and meat products,tin,0.908566479902307,198g,FPS,,1 small can
+276,19-449,"curry, chicken balti, retail",MR,Meat and meat products,,0.5150936811769361,190g,FPS,,
+277,,"casserole, sausage,retail",MR,Meat and meat products,,0.6191496269055246,55g,FPS,,small can
+278,,"chow mein, chicken, retail",MR,Meat and meat products,,0.694708467167592,350g,FPS,,
+279,19-466,"cornish pasty, retail",MR,Meat and meat products,,0.5439839155777908,190g,FPS,,
+280,,"coronation chicken, retail",MR,Meat and meat products,,0.7055305814177105,190g,FPS,,
+281,18-489,"duck, meat only, raw",MCC,Meat and meat products,,0.4177770250202694,,,,
+282,19-539,"doner kebabs, meat only",MR,Meat and meat products,,0.3888212427210015,,,,
+283,,"enchiladas, meal kit, retail",MR,Meat and meat products,,0.4219773952553781,,,,
+284,17-640,"ghee, butter",OF,Meat and meat products,,0.7316147147441441,25g,FPS,,1 portion pack
+285,19-496,ham,MAA,Meat and meat products,,0.570304809062063,180g,FPS,,
+286,,"haggis,",MI,Meat and meat products,,0.0,,,,
+287,,"hot pot, lamb/beef with potatoes, retail,",MR,Meat and meat products,,0.4280971950057725,,,,
+288,18-402,"kidney, lamb, raw",MG,Meat and meat products,,0.3276372622849897,,,,
+289,18-478,"lamb, average, raw, lean and fat",MAE,Meat and meat products,,0.3751207245488478,,,,
+290,18-111,"lamb, breast, raw, lean",MAE,Meat and meat products,,0.3854688935867116,,,,
+291,18-115,"lamb, chump chops, raw, lean and fat",MAE,Meat and meat products,,0.326345181812868,,,,
+292,18-481,"lamb, mince, raw",MAE,Meat and meat products,,0.5217706540839595,75g,FPS,,1 raw small eating (6 to lb) 
+293,18-413,"liver, lamb, raw",MG,Meat and meat products,,0.5217706540839595,75g,FPS,,1 raw small eating (6 to lb) 
+294,,"luncheon meat,",MI,Meat and meat products,,0.479761737845759,200g,FPS,,main course
+295,19-326,"meat samosas, takeaway",MR,Meat and meat products,,0.3026572242427301,,,,
+296,,"meatballs, beef, retail",MR,Meat and meat products,,0.6312258539799718,165g,FPS,,
+297,,"meatballs, in tomatoe sauce, retail",MR,Meat and meat products,,0.6236688410088802,170g,FPS,,"frozen, purchased"
+298,18-419,"oxtail, raw",MG,Meat and meat products,,0.5217706540839595,75g,FPS,,1 raw small eating (6 to lb) 
+299,18-609,"pork, spare ribs, raw, lean and fat",MAG,Meat and meat products,,0.3814176759494967,,,,
+300,18-387,"rabbit, raw, meat only",MEC,Meat and meat products,,0.3292848876869824,,,,
+301,18-390,"venison, meat only, raw",MEE,Meat and meat products,,0.3292848876869824,,,,
+302,12-500,"baking fat and margarine (75-90% fat), hard block",BTM,Milk and milk products,block,0.5323593660371249,10g,FPS,,"1 portion, packed"
+303,12-333,"cream, fresh, whipping",BJC,Milk and milk products,tub,0.6117935967156881,150g,FPS,,1 small carton (5 fi. oz)
+304,12-537,"cheese spread, plain, reduced fat",BL,Milk and milk products,tub,0.3696937251369251,,,,
+305,12-346,"cheese, cheddar, english",BL,Milk and milk products,block,0.5160399476055892,20g,FPS,,per bag
+306,12-354,"cheese, danish blue",BL,Milk and milk products,tub,0.5565227960731726,400g,FPS,,loaf
+307,12-357,"cheese, goats milk, full fat, soft, white rind",BL,Milk and milk products,,0.4085775223812573,,,,
+308,12-360,"cheese, mozzarella, fresh",BL,Milk and milk products,,0.3751355527200883,,,,
+309,12-549,"cheese, processed, slices, reduced fat",BL,Milk and milk products,,0.4127692548423102,,,,
+310,12-486,"cheese, white cheshire",BL,Milk and milk products,,0.3923447359260321,,,,
+311,12-507,cornetto type ice cream cone,BP,Milk and milk products,box,0.9999999999999998,60g,FPS,,tub
+312,12-542,"cheesecake, fruit, individual",BR,Milk and milk products,,0.9022530331020884,90g,FPS,,individual
+313,12-461,"tarts, custard, individual",BR,Milk and milk products,,0.651160489299685,150g,FPS,,
+314,12-543,"custard, ready to eat, canned and tetra-pak",BR,Milk and milk products,can,0.6284467141784099,125g,FPS,,per pot
+315,12-398,"desserts, dairy, chocolate",BR,Milk and milk products,,0.6194454898323712,128g,FPS,,Can
+316,12-508,"ice cream, dairy, vanilla, soft scoop",BP,Milk and milk products,,0.6017230004246014,48g,FPS,,bar
+317,12-509,"ice cream, non dairy, vanilla, soft scoop",BP,Milk and milk products,,0.6017230004246014,48g,FPS,,bar
+318,,"jelly, retail",BR,Milk and milk products,,0.4495812272375209,,,,
+319,12-373,"lassi, sweetened",BN,Milk and milk products,bottle,0.0,,,,
+320,12-390,"lollies, containing ice-cream",BP,Milk and milk products,,0.9999999999999998,60g,FPS,,tub
+321,12-389,"lollies, with real fruit juice",BP,Milk and milk products,,0.6415578727052117,200g,FPS,,individual carton
+322,12-512,"milk, 1% fat, pasteurised",BA,Milk and milk products,"bottle 1 pint, 2 pint, 4 pint, 6 pint, carton 1 litre",0.4929977785729185,585g,FPS,,1 pint
+323,12-322,"milk, channel islands, whole, summer",BAB,Milk and milk products,"bottle 1 pint, 2 pint, 4 pint, 6 pint, carton 1 litre",0.5736496827870826,51g,FPS,,standard
+324,12-307,"milk, skimmed, pasteurised, average",BAE,Milk and milk products,"bottle 1 pint, 2 pint, 4 pint, 6 pint, carton 1 litre",0.4393498989293828,,,,
+325,12-313,"milk, semi-skimmed, pasteurised, average",BAH,Milk and milk products,"bottle 1 pint, 2 pint, 4 pint, 6 pint, carton 1 litre",0.4393498989293828,,,,
+326,12-596,"milk, whole, pasteurised, average",BAK,Milk and milk products,"bottle 1 pint, 2 pint, 4 pint, 6 pint, carton 1 litre",0.3837218439331208,,,,
+327,12-520,"milk, condensed, whole, sweetened",BAR,Milk and milk products,tin,0.5736496827870826,51g,FPS,,standard
+328,12-522,"milk, evaporated, whole",BAR,Milk and milk products,tin,0.7799940752349114,170g,FPS,,1 small can
+329,12-524,"milk, soya, non-dairy alternative to milk, unsweetened, fortified",BC,Milk and milk products,"carton, 1L",0.5522507557686027,585g,FPS,,1 pint
+330,12-401,"mousse, chocolate, low fat",BR,Milk and milk products,,0.4506325262864485,,,,
+331,12-553,"pudding, rice, canned, low fat",BR,Milk and milk products,tin,0.5185810259268044,300g,FPS,,1 packet made up
+332,,"raita, retail",BV,Milk and milk products,,0.5439839155777908,190g,FPS,,
+333,12-555,"yogurt, greek style, plain",BN,Milk and milk products,,0.6071018075322043,125g,FPS,,
+334,12-375,"yogurt, whole milk, fruit",BN,Milk and milk products,,0.5747101949421778,150g,FPS,,pots
+335,14-870,"almonds, flaked and ground",GA,Nuts and seeds,packet,0.4128321927436697,,,,
+336,14-897,"almonds, toasted",GA,Nuts and seeds,packet,0.0,,,,
+337,14-896,"almonds, whole kernels",GA,Nuts and seeds,packet,0.6833968945106905,51g,FPS,,standard
+338,14-895,"breadnut seeds, dried",G,Nuts and seeds,packet,0.0,,,,
+339,14-806,betel nuts,GA,Nuts and seeds,packet,0.7026975536924479,47g,FPS,,packet
+340,14-813,"chestnuts, kernel only, raw",GA,Nuts and seeds,packet,0.3888212427210015,,,,
+341,14-889,"coconut milk, retail",GA,Nuts and seeds,carton/tetrapak,0.4333787599246385,,,,
+342,14-874,"hazelnuts, kernel only",GA,Nuts and seeds,packet,0.4995987696019161,150g,FPS,,
+343,14-891,"macadamia nuts, salted",G,Nuts and seeds,packet,0.487289921292222,47g,FPS,,packet
+344,14-875,"marzipan, white and yellow, retail",GA,Nuts and seeds,packet,0.3462661244055344,,,,
+345,14-880,"nuts, mixed",GA,Nuts and seeds,packet,0.58658499743791,40g,FPS,,per bag
+346,14-892,"peanut butter, smooth",GA,Nuts and seeds,jar,1.0000000000000002,25g,FPS,,1 portion pack
+347,14-882,peanuts and raisins,GA,Nuts and seeds,packet,0.4672130210462251,,,,
+348,14-840,"pistachio nuts, kernel only, roasted and salted",GA,Nuts and seeds,packet,0.5398267564096042,25g,FPS,,"small, per bag"
+349,14-843,"quinoa, raw",GA,Nuts and seeds,packet,0.5217706540839595,75g,FPS,,1 raw small eating (6 to lb) 
+350,14-845,sunflower seeds,GA,Nuts and seeds,packet,0.0,,,,
+351,14-879,"walnuts, kernel only",GA,Nuts and seeds,packet,0.4995987696019161,150g,FPS,,
+352,,"apple sauce, retail",WC,"Soups, sauces and miscellaneous foods",jar,0.3636984383651361,,,,
+353,17-705,barbecue sauce,WC,"Soups, sauces and miscellaneous foods",,0.6385992453731303,20g,FPS,,1 portion pack
+354,17-678,"brown sauce, reduced salt/sugar",WCN,"Soups, sauces and miscellaneous foods",,0.5708375592092538,20g,FPS,,1 portion pack
+355,17-697,"chicken soup, cream of, canned, condensed, as served",WAC,"Soups, sauces and miscellaneous foods",can,0.4895853039103836,405g,FPS,,large can
+356,17-719,chilli sauce,WC,"Soups, sauces and miscellaneous foods",,0.3809243625543377,,,,
+357,,cheese sauce,WCD,"Soups, sauces and miscellaneous foods",,0.4960810936382995,20g,FPS,,1 portion pack
+358,17-345,"chutney, tomato",WCG,"Soups, sauces and miscellaneous foods",jar,0.5609625599759139,12g,FPS,,I sachet
+359,17-358,cream of tartar,WY,"Soups, sauces and miscellaneous foods",sachet,0.6117935967156881,150g,FPS,,1 small carton (5 fi. oz)
+360,17-715,"dressing, blue cheese",WCG,"Soups, sauces and miscellaneous foods",,0.5160399476055892,20g,FPS,,per bag
+361,17-701,"dressing, french",WCG,"Soups, sauces and miscellaneous foods",,0.5649391010131841,130g,FPS,,regular
+362,17-717,"dressing, thousand island",WCG,"Soups, sauces and miscellaneous foods",,0.0,,,,
+363,,"guacamole, retail",WC,"Soups, sauces and miscellaneous foods",,0.5439839155777908,190g,FPS,,
+364,17-360,gelatine,WY,"Soups, sauces and miscellaneous foods",,0.0,,,,
+365,17-724,gravy instant granules,WY,"Soups, sauces and miscellaneous foods",,0.6762755873735299,280g,FPS,,"1 packet, made up"
+367,,"hollandaise sauce, vegan, retail",WC,"Soups, sauces and miscellaneous foods",jar,0.41022811430352,,,,
+368,17-654,"mayonnaise, standard, retail",WCG,"Soups, sauces and miscellaneous foods",,0.7049973032090611,165g,FPS,,
+369,17-364,"mustard, smooth",WY,"Soups, sauces and miscellaneous foods",jar,1.0,5g,FPS,,I sachet
+370,17-623,"pesto, red",WC,"Soups, sauces and miscellaneous foods",jar,0.0,,,,
+371,17-718,"pickle, sweet",WCG,"Soups, sauces and miscellaneous foods",jar,0.6817183503250039,20g,FPS,,1 portion pack
+372,17-702,piccalilli,WCN,"Soups, sauces and miscellaneous foods",jar,0.0,,,,
+373,17-354,"relish, tomato based",WCN,"Soups, sauces and miscellaneous foods",jar,0.5609625599759139,12g,FPS,,I sachet
+374,17-711,"soup, minestrone, canned",WA,"Soups, sauces and miscellaneous foods",can,0.8242849247779618,405g,FPS,,large can
+375,17-695,"soup, chicken, cream of, canned",WAC,"Soups, sauces and miscellaneous foods",can,0.4895853039103836,405g,FPS,,large can
+376,17-652,"soup, cream of tomato, canned",WAC,"Soups, sauces and miscellaneous foods",can,0.485596905414717,405g,FPS,,large can
+377,17-698,"soup, lentil, canned",WAC,"Soups, sauces and miscellaneous foods",can,0.8242849247779618,405g,FPS,,large can
+378,17-700,"soup, oxtail, canned",WAC,"Soups, sauces and miscellaneous foods",can,0.8242849247779618,405g,FPS,,large can
+379,17-712,"soup, vegetable, canned",WAC,"Soups, sauces and miscellaneous foods",can,0.6480274773621819,210g/440g,FPS,,can
+380,17-653,"soup, instant, dried, as purchased",WAE,"Soups, sauces and miscellaneous foods",can,0.6248409999481306,405g,FPS,,large can
+381,17-628,"sauce, chinese cook in, sweet & sour",WC,"Soups, sauces and miscellaneous foods",,0.8396080862321795,25g,FPS,,
+382,17-629,"sauce, chinese stir fry",WC,"Soups, sauces and miscellaneous foods",,0.4458840888499765,,,,
+383,17-703,salad cream,WCG,"Soups, sauces and miscellaneous foods",,1.0000000000000002,12g,FPS,,1 sachet
+384,,"sauce, sweet and sour, retail",WCN,"Soups, sauces and miscellaneous foods",jar,0.8158632989392838,25g,FPS,,
+385,17-721,"soy sauce, light and dark varieties",WCN,"Soups, sauces and miscellaneous foods",,0.3615850600002837,,,,
+386,17-367,salt,WY,"Soups, sauces and miscellaneous foods",,0.4939178495572992,10g,FPS,,per bag
+387,17-515,"stock cubes, beef",WY,"Soups, sauces and miscellaneous foods",,0.6300236984151741,198g,FPS,,1 small can
+388,17-680,stock gel,WY,"Soups, sauces and miscellaneous foods",,0.0,,,,
+389,17-681,"stock, chicken, ready made, retail",WY,"Soups, sauces and miscellaneous foods",,0.5668929239393119,190g,FPS,,
+390,17-339,vinegar,WY,"Soups, sauces and miscellaneous foods",,0.4939178495572992,10g,FPS,,per bag
+391,,"white sauce, retial",WCD,"Soups, sauces and miscellaneous foods",jar,0.4170051921513854,,,,
+392,,"white sauce, vegan, retial",WCD,"Soups, sauces and miscellaneous foods",jar,0.3970774041314801,,,,
+393,17-723,worcestershire sauce,WCN,"Soups, sauces and miscellaneous foods",,0.6385992453731303,20g,FPS,,1 portion pack
+394,17-377,"water, distilled",WY,"Soups, sauces and miscellaneous foods",,0.6981756688904391,500g,FPS,,large
+395,17-517,yeast extract,WY,"Soups, sauces and miscellaneous foods",jar,0.0,,,,
+396,17-659,chocolate spread,SC,"Sugars, preserves and snacks",jar,0.5405195886759304,50g,FPS,,average
+397,17-658,chocolate covered bar with caramel and cereal,SEA,"Sugars, preserves and snacks","indiviudal bar, multipack",0.4998254409765698,50g,FPS,,bar
+398,17-763,creme egg,SEA,"Sugars, preserves and snacks",individual,0.9195908258882448,39g,FPS,,
+399,17-645,corn snacks,SN,"Sugars, preserves and snacks",bag,0.4401768702265234,,,,
+400,,"chevda/chevra/chewra, retial",SNC,"Sugars, preserves and snacks",,0.0,,,,
+401,17-049,"glucose liquid, bp",SC,"Sugars, preserves and snacks",tube,0.0,,,,
+402,17-050,honey,SC,"Sugars, preserves and snacks",jar,0.5390736920579159,135g,FPS,,
+403,17-689,"ice cream sauce, topping, strawberry and chocolate flavours",SC,"Sugars, preserves and snacks",,0.7229402232147197,60g,FPS,,tub
+404,17-075,"jam, reduced sugar",SC,"Sugars, preserves and snacks",jar,0.5890948634186755,6g,FPS,,1 'packet' sugar
+405,17-777,liquorice allsorts,SEC,"Sugars, preserves and snacks",bag,0.8121268773519039,115g,FPS,,box
+406,17-078,marmalade,SC,"Sugars, preserves and snacks",jar,0.5,20g,FPS,,1 individual carton
+407,17-651,maltesers and similar products,SEA,"Sugars, preserves and snacks","individual bag, share bag",0.6540976878903091,80g,FPS,,family bag
+408,17-668,mars bar and own brand equivalents,SEA,"Sugars, preserves and snacks","indiviudal bar, multipack",0.5707130199207513,100g,FPS,,kingsize
+409,17-669,milky way and own brand equivalents,SEA,"Sugars, preserves and snacks","indiviudal bar, multipack",0.6613051075772095,26g,FPS,,standard
+410,17-114,marshmallows,SEC,"Sugars, preserves and snacks",,1.0,40g,FPS,,bag
+411,,nougat,SEC,"Sugars, preserves and snacks",,1.0,114g,FPS,,large bar
+412,17-117,peppermints,SEC,"Sugars, preserves and snacks",,0.0,,,,
+413,17-692,"popcorn, salted, retail",SN,"Sugars, preserves and snacks",,0.4527339066816828,,,,
+414,17-132,pork scratchings,SN,"Sugars, preserves and snacks",bag,1.0,22g,FPS,,per bag
+415,17-693,"potato crisps, low fat",SN,"Sugars, preserves and snacks",bag,0.5105148575263924,25/27/28/30g,FPS,,small
+416,17-060,"sugar, brown",SC,"Sugars, preserves and snacks",bag,0.7449274553634044,6g,FPS,,1 'packet' sugar
+417,17-062,"sugar, icing",SC,"Sugars, preserves and snacks",bag,1.0,6g,FPS,,1 'packet' sugar
+418,17-063,"sugar, white",SC,"Sugars, preserves and snacks",bag,0.7574469549657481,6g,FPS,,1 'packet' sugar
+419,17-065,"syrup, golden",SC,"Sugars, preserves and snacks",tin,0.4318010940984081,,,,
+420,17-096,smartie-type sweets,SEA,"Sugars, preserves and snacks",tube,0.0,,,,
+0,13-145,ackee,DG,Vegetables,Can,,,,,
+1,13-146,agar,DG,Vegetables,Bag,,,,,
+2,13-148,alfalfa sprouts,DG,Vegetables,Loose  ,0.7071067811865476,29.4,PH15,19.10.15  ,Purchase Date:  
+4,13-149,amaranth leaves,DG,Vegetables,Bagged produce,,,,,
+6,14-016,apples eating,FA,Fruit,Plastic ,1.0,128.4,DoH11,14.11.2011 ,
+7,14-031,apricots,FA,Fruit,Plastic  ,1.0,8.9,PH15,28.01.16  ,500g  
+9,13-153,artichoke globe,DG,Vegetables,Loose produce,,,,,
+10,13-157,asparagus,DG,Vegetables,Plastic  ,1.0,16.6g,PH15,26.08.15  ,250g  
+11,13-161,aubergine,DG,Vegetables,Loose  ,1.0,265.0,PH15,28.09.15  ,Purchase Date:  
+20,13-070,beans butter,DB,Vegetables,"Plastic,1 portion pack",0.859017757864948,25g,FPS,,
+21,13-514,beans green,DB,Vegetables,Bagged produce,1.0,210g/440g,FPS,,
+26,13-164,beetroot,DG,Vegetables,Plastic  ,1.0,84.3g,PH15,28.09.15  ,300g  
+34,14-388,blackberries,FA,Fruit,Plastic  ,1.0,7.0g,PH15,26.08.15  ,350g  
+35,14-053,blackcurrants,FA,Fruit,Punnet,,,,,
+42,13-502,broccoli green,DG,Vegetables,Plastic ,0.6455735193104358,890.8,DoH11,17.10.2011 ,
+43,13-177,brussels sprouts,DG,Vegetables,Loose  ,1.0000000000000002,29.4,PH15,19.10.15  ,Purchase Date:  
+46,13-190,cabbage red,DG,Vegetables,Mixed material  ,0.6284590868598239,100.0,PH15,26.10.15  ,500g  
+51,13-496,carrots old,DG,Vegetables,Plastic ,1.0,67.2,DoH11,10.10.2011 ,
+52,13-512,cauliflower,DG,Vegetables,Plastic ,1.0,1123.0,DoH11,17.10.2011 ,
+53,13-636,celery,DG,Vegetables,Loose produce,,,,,
+79,13-627,courgette,DG,Vegetables,Loose produce,,224.8g,,,
+86,14-087,mixed fruit,FA,Fruit,Loose  ,0.7071067811865476,95.8,PH15,19.10.15  ,Purchase Date:  
+88,14-395,figs ready-to-eat semi-,FA,Fruit,Mixed material  ,1.0,14.3,PH15,27.01.16  ,250g  
+97,13-245,gherkins,DG,Vegetables,Jar,,,,,
+99,14-323,grapes red,FA,Fruit,Mixed material  ,0.6284590868598239,100.0,PH15,26.10.15  ,500g  
+108,13-624,leeks,DG,Vegetables,Loose  ,1.0,271.7,PH15,19.10.15  ,Purchase Date:  
+110,13-657,lentils red split,DB,Vegetables,Mixed material  ,0.8199321156499115,500g  ,PH15,26.10.15  ,500g  
+111,13-520,lettuce,DG,Vegetables,Plastic ,0.7071067811865476,290.9,DoH11,26.09.2011 ,
+116,13-279,matoki,DG,Vegetables,Bagged produce,,,,,
+125,17-416,mushroom,DI,Vegetables,Bag,,,,,
+126,13-288,mushrooms chinese,DG,Vegetables,Plastic ,1.0,23.7,DoH11,03.10.2011 ,
+127,13-294,mushrooms shiitake,DG,Vegetables,Plastic ,1.0,23.7,DoH11,03.10.2011 ,
+128,13-505,mushrooms white,DG,Vegetables,Plastic ,1.0,23.7,DoH11,03.10.2011 ,
+140,13-499,onions,DG,Vegetables,Netting ,1.0,200.5,DoH11,10.10.2011 ,
+143,14-285,passion fruit juice,FC,Fruit,Individual carton,1.0,200g,FPS,,Purchase Date:  
+149,14-196,pears,FA,Fruit,Plastic ,1.0,201.8,DoH11,18.11.2011 ,
+150,13-527,peas frozen,DF,Vegetables,Plastic  ,0.7071067811865476,462.9,PH15,30.11.15  ,500g  
+151,13-438,peas,DF,Vegetables,Plastic ,0.7467549140718786,900.0,DoH11,27.01.2012 ,
+155,14-396,pineapple,FA,Fruit,Can,,1198.4g,,,
+159,13-489,potatoes old,DAM,Vegetables,Plastic ,1.0,200.5,DoH11,03.10.2011 ,
+161,14-391,prunes ready-to-eat semi-,FA,Fruit,Plastic  ,1.0,7.5,PH15,26.10.15  ,500g  
+164,14-393,raisins,FA,Fruit,Mixed material  ,1.0,0.6g,PH15,26.10.15  ,500g  
+169,13-522,rocket,DG,Vegetables,Bagged produce,,,,,
+170,15-648,salad green,DR,Vegetables,Can,1.0,210g/440g,FPS,,
+171,15-875,salad rice brown,DR,Vegetables,Bag,1.0,300g,FPS,,
+176,15-658,sausages vegetarian baked/grilled,DR,Vegetables,Pack - McDonald's Sausage and Egg McMuffin,1.0,171g,FPS,,
+182,13-521,spinach baby,DG,Vegetables,Plastic  ,0.7071067811865476,401.7,PH15,09.11.15  ,190g  
+183,17-417,spinach,DI,Vegetables,Plastic ,0.7071067811865476,200.0,DoH11,28.09.2011 ,
+184,13-348,spring greens,DG,Vegetables,Loose produce,,,,,
+185,13-355,squash butternut,DG,Vegetables,Loose  ,1.0000000000000002,1026.4g,PH15,05.10.15  ,Purchase Date:  
+186,14-059,star fruit,FA,Fruit,Loose  ,0.7071067811865476,95.8,PH15,19.10.15  ,Purchase Date:  
+187,14-324,strawberries,FA,Fruit,Plastic ,1.0,16.7,DoH11,23.08.2011 ,
+193,15-617,sushi,DR,Vegetables,Bottle,,,,,
+194,13-672,sweet potato baked,DG,Vegetables,Plastic  ,1.0000000000000002,249.3g,PH15,07.12.15  ,1kg 
+195,13-609,sweetcorn,DI,Vegetables,Plastic  ,0.7071067811865476,401.7,PH15,09.11.15  ,190g  
+198,13-531,tomato puree,DG,Vegetables,Metal ,1.0,142.0,DoH11,30.01.2012 ,
+199,13-519,tomatoes cherry,DG,Vegetables,Packaged produce,,,,,
+324,14-363,apples,F,Fruit,Plastic ,0.6650993146211334,128.4,DoH11,14.11.2011 ,
+325,14-319,apples eating,F,Fruit,Plastic ,1.0,128.4,DoH11,14.11.2011 ,
+326,14-025,apricots,FA,Fruit,Plastic  ,1.0,8.9,PH15,28.01.16  ,500g  
+327,14-040,avocado fuerte,FA,Fruit,"loose, individual",0.7071067811865476,209.0,PH15,07.12.15  ,Purchase Date:  
+328,14-387,avocado hass,FA,Fruit,"loose, individual",0.7071067811865476,214.6g,PH15,07.12.15  ,Purchase Date:  
+329,14-331,apple juice,FC,Fruit,"carton, tetrapak, bottle",,,,,
+330,14-043,babaco,FA,Fruit,"loose, individual",,,,,
+331,14-318,bananas,FA,Fruit,Plastic ,1.0,174.8,DoH11,21.11.2011 ,
+333,14-382,cherries,FA,Fruit,Plastic  ,1.0,9.8g,PH15,11.08.15  ,Purchase Date:  
+334,14-326,citrus fruit soft/easy peelers,FA,Fruit,Loose  ,0.7071067811865476,95.8,PH15,19.10.15  ,Purchase Date:  
+337,14-077,damsons,FA,Fruit,punnet,,,,,
+338,14-083,dates,FA,Fruit,packet,,,,,
+339,14-089,elderberries,FA,Fruit,punnet,,,,,
+340,14-100,gooseberries,FA,Fruit,punnet,,,,,
+341,14-384,grapefruit,FA,Fruit,Loose  ,1.0,331.7g,PH15,05.10.15  ,Purchase Date:  
+342,14-322,grapes green,FA,Fruit,Plastic ,1.0,500.0,DoH11,14.11.2011 ,
+343,14-118,guava,FA,Fruit,"loose, individual",,,,,
+344,14-371,kiwi fruit,FA,Fruit,Loose  ,1.0000000000000002,83.8g,PH15,19.10.15  ,Purchase Date:  
+345,14-373,kiwi fruit  weighed with skin,FA,Fruit,Loose  ,0.8218024408117858,95.8,PH15,19.10.15  ,Purchase Date:  
+346,14-125,kumquats,FA,Fruit,punnet,,,,,
+347,14-128,lemons,FA,Fruit,"loose, individual, net",,,,,
+348,14-131,limes,FA,Fruit,"loose, individual, net",,,,,
+351,14-277,lemon juice,FC,Fruit,,,,,,
+352,14-378,mangoes ripe,FA,Fruit,Plastic  ,1.0,321.7,PH15,07.12.15  ,3 fruits  
+353,14-379,mangoes,FA,Fruit,Plastic  ,0.7639387535946407,375.2g,PH15,07.12.15  ,3 fruits  
+354,14-339,melon canteloupe-type,FA,Fruit,"loose, individual",0.7071067811865476,1333.8,DoH11,30.08.2011 ,
+355,14-353,melon canteloupe-type,FA,Fruit,"loose, individual",0.7071067811865476,1333.8,DoH11,30.08.2011 ,
+356,14-356,melon,FA,Fruit,"loose, individual",0.7071067811865476,1333.8,DoH11,30.08.2011 ,
+357,14-168,mulberries,FA,Fruit,punnet,,,,,
+358,14-380,nectarines,FA,Fruit,punnet,,131.6g,,,
+360,14-327,oranges,FA,Fruit,Netting ,1.0,271.3,DoH11,21.11.201 1 ,
+361,14-360,oranges  with peel and pips,FA,Fruit,Netting ,0.7071067811865476,271.3,DoH11,21.11.201 1 ,
+362,14-369,orange juice freshly squeezed,FC,Fruit,Tetra pak ,0.6398754068029437,1.0,DoH11,27.01.2012 ,
+363,14-361,pears,F,Fruit,Plastic ,1.0,201.8,DoH11,18.11.2011 ,
+364,14-188,peaches in juice whole contents,FA,Fruit,tin  ,,,,,
+365,14-321,pears,FA,Fruit,Plastic ,1.0,201.8,DoH11,18.11.2011 ,
+367,14-211,pineapple in juice whole contents,FA,Fruit,"loose, individual",,,,,
+368,14-220,plums victoria,FA,Fruit,,,76.8g,PH15,,
+369,14-227,pomegranate,FA,Fruit,"loose, individual",,,,,
+370,14-179,passion fruit,FA,Fruit,Loose  ,0.7071067811865476,95.8,PH15,19.10.15  ,Purchase Date:  
+371,14-341,pomegranate juice,FC,Fruit,"carton, tetrapak, bottle",,,,,
+372,14-227,pomegranate,FA,Fruit,,,,,,
+373,14-289,prune juice,FC,Fruit,"carton, tetrapak, bottle",,,,,
+374,14-237,prunes in juice whole contents,FA,Fruit,Plastic  ,1.0,7.5,PH15,26.10.15  ,500g  
+375,14-231,prunes,FA,Fruit,Plastic  ,1.0,7.5,PH15,26.10.15  ,500g  
+376,14-391,prunes ready-to-eat semi-,FA,Fruit,Plastic  ,1.0,7.5,PH15,26.10.15  ,500g  
+379,14-252,rhubarb stems,FA,Fruit,Plastic  ,1.0,109.0g,PH15,17.08.15  ,400g  
+513,,artichoke jar,DG,Vegetables,jar,,,,,
+514,13-532,baked beans in tomato sauce,DB,Vegetables,Can,1.0,150g/205g,FPS,,
+515,13-041,beans aduki whole,DB,Vegetables,packet,,14.5g,,,
+516,,beans aduki,DB,Vegetables,Plastic ,0.763698128297522,6.0,DoH11,19.09.2011 ,
+517,13-062,beans blackeye whole,DB,Vegetables,packet,,,,,
+518,,beans blackeye,DB,Vegetables,Plastic ,0.763698128297522,6.0,DoH11,19.09.2011 ,
+519,,beans butter,DB,Vegetables,Plastic ,0.763698128297522,23.8g,DoH11,19.09.2011 ,
+520,13-074,beans chick peas kabuli whole,DB,Vegetables,packet,,,,,
+521,,beans chick peas,DB,Vegetables,tin,,,,,
+522,13-080,beans cluster,DB,Vegetables,Plastic ,0.763698128297522,6.0,DoH11,19.09.2011 ,
+523,,beans edamame frozen,DB,Vegetables,Plastic  ,0.924728131149382,462.9,PH15,30.11.15  ,500g  
+524,,beans edamame,DB,Vegetables,Plastic ,0.763698128297522,6.0,DoH11,19.09.2011 ,
+525,13-086,beans haricot whole,DB,Vegetables,jar,,,,,
+526,,beans haricot,DB,Vegetables,Plastic ,0.763698128297522,6.0,DoH11,19.09.2011 ,
+527,13-098,beans mung dahl,DB,Vegetables,Plastic ,0.763698128297522,6.0,DoH11,19.09.2011 ,
+528,13-102,beans pigeon peas whole,DB,Vegetables,packet,,,,,
+529,,beans pinto,DB,Vegetables,Plastic ,0.763698128297522,6.0,DoH11,19.09.2011 ,
+530,13-109,beans red kidney,DB,Vegetables,Mixed material  ,1.0,100.0,PH15,26.10.15  ,500g  
+531,,beans red kidney,DB,Vegetables,Mixed material  ,1.0,100.0,PH15,26.10.15  ,500g  
+532,13-112,beans runner,DB,Vegetables,Plastic  ,1.0,23.8g,PH15,11.08.15  ,255g  
+533,13-115,beans soya,DB,Vegetables,Plastic ,0.763698128297522,42.3g,DoH11,19.09.2011 ,
+534,13-117,beans sword,DB,Vegetables,Plastic ,0.763698128297522,6.0,DoH11,19.09.2011 ,
+535,13-426,beansprouts mung,DB,Vegetables,packet,,,,,
+536,13-056,black gram urad gram whole,DB,Vegetables,packet,,,,,
+538,13-174,broccoli purple sprouting,DG,Vegetables,packet,,,,,
+540,13-067,beans broad,DB,Vegetables,Plastic  ,1.0,42.3g,PH15,11.08.15  ,500g  
+541,13-064,beans broad whole without pod,DB,Vegetables,Plastic  ,1.0,39.2,PH15,11.08.15  ,500g  
+542,,beans cannellini,DB,Vegetables,Metal  ,0.8277751531630342,508.7,PH15,26.10.15  ,Net weight: 400g; drained weight: 246g  
+543,13-582,cabbage,DG,Vegetables,Plastic ,0.763698128297522,890.8,DoH11,17.10.2011 ,
+544,13-187,cabbage chinese,DG,Vegetables,Plastic ,0.763698128297522,890.8,DoH11,17.10.2011 ,
+545,13-510,cabbage green,DG,Vegetables,Plastic ,1.0,890.8,DoH11,17.10.2011 ,
+547,13-223,chard swiss,DG,Vegetables,"loose, individual",,,,,
+548,13-225,chicory pale variety,DG,Vegetables,"loose, individual",,,,,
+549,13-234,curly kale,DG,Vegetables,Plastic  ,1.0000000000000002,42.3g,PH15,26.10.15  ,206g  
+551,15-637,cauliflower cheese,DR,Vegetables,Plastic ,1.0,1123.0,DoH11,17.10.2011 ,
+552,15-635,coleslaw not low calorie,DR,Vegetables,packet,,,,,
+553,,curry mixed,DR,Vegetables,tin,0.5250807136598507,35g,FPS,,
+555,13-608,green beans,DI,Vegetables,Plastic ,1.0,6.0,DoH11,19.09.2011 ,
+556,,green beans in water,DI,Vegetables,Plastic ,0.6567486715248725,6.0,DoH11,19.09.2011 ,
+557,13-261,kohl rabi,DG,Vegetables,"loose, individual",,,,,
+559,13-089,lentils green and brown whole,DB,Vegetables,packet,,,,,
+561,13-520,lettuce,DG,Vegetables,Plastic ,0.7071067811865476,290.9,DoH11,26.09.2011 ,
+562,13-271,lotus tubers,DG,Vegetables,,,,,,
+564,13-298,mustard leaves,DG,Vegetables,,1.0,5g,FPS,,
+568,,potato chips,DAP,Vegetables,Plastic  ,0.7071067811865476,142.0,PH15,07.12.15  ,1kg 
+569,,potato wedges,DAR,Vegetables,Plastic  ,0.7071067811865476,249.3g,PH15,07.12.15  ,1kg 
+570,,peas in water,DF,Vegetables,tin,,,,,
+571,,pak choi,DG,Vegetables,,,,,,
+572,13-311,papaya unripe green,DG,Vegetables,Loose  ,0.7576296477010735,463.0,PH15,05.10.15  ,Purchase Date:  
+574,13-524,pepper capsicum red,DG,Vegetables,Mixed material  ,0.6284590868598239,100.0,PH15,26.10.15  ,500g  
+575,13-323,plantain green,DG,Vegetables,Plastic ,0.6455735193104358,890.8,DoH11,17.10.2011 ,
+576,13-326,pumpkin,DG,Vegetables,"loose, individual",,,,,
+577,15-262,quorn korma,DR,Vegetables,,,,,,
+578,13-332,radish leaves,DG,Vegetables,Plastic  ,1.0,16.0,PH15,19.10.15  ,240g  
+579,13-359,swede,DG,Vegetables,Plastic  ,1.0,789.4g,PH15,26.10.15  ,Min. 400g  
+580,,swede,DG,Vegetables,Plastic  ,1.0,789.4g,PH15,26.10.15  ,Min. 400g  
+581,13-622,sweetcorn kernels,DG,Vegetables,Plastic  ,0.7071067811865476,401.7,PH15,09.11.15  ,190g  
+582,,sweetcorn on a cob,DG,Vegetables,Plastic  ,0.7071067811865476,12.7g,PH15,09.11.15  ,190g  
+583,15-872,salad pasta vegetables and mayonnaise,DR,Vegetables,,1.0,12g,FPS,,
+584,15-883,shepherd's pie,DR,Vegetables,,,,,,
+586,,vegetables mixed frozen,DG,Vegetables,Plastic  ,0.7071067811865476,462.9,PH15,30.11.15  ,500g  
+587,15-656,vegeburger grilled,DR,Vegetables,,,,,,
+589,13-397,yam,DG,Vegetables,Loose  ,1.0,1635.1g,PH15,30.10.15  ,Purchase Date:  
+590,13-530,tomatoes whole contents,DG,Vegetables,Metal ,0.8893120751035134,428.9,DoH11,27.01.2012 ,

@@ -1,0 +1,7 @@
+,Food Code,Food Name,Description,Group,Previous,Main data references,Footnote,Energy (kJ),Energy (kcal),Fat (g),Saturates (g),Carbohydrate (g),Sugars (g),Starch (g),Fibre (g),Protein (g),Salt (g),Super Group
+2808,13-543,"Vegetables, mixed, frozen, boiled in unsalted water","10 samples. Assorted varieties. Simmered 3-7 minutes, based on boiled in salted water",DG,13-281 ,"Reviewed 2013. LGC, Fruit and vegetables, 1989-1990",,N,N,0.5,N,6.2,3.5,2.7,N,3.3,0.04,Vegetables
+2801,15-656,"Vegeburger, retail, grilled","6 samples, 3 brands; soya protein based. Grilled 6-10 minutes",DR,15-331 ,"LGC, Fruit and vegetables, 1989-1990; and industry data, 2013. Vitamin K1 from Bolton-Smith et al, Br.J. Nutr 83, 2000",,739,176,7.2,N,7.5,3.5,4,4.5,18.2,1.23,Vegetables
+2806,15-345,"Vegetable stir fry mix, fried in sunflower oil",8 assorted frozen samples; stir fried 4-7 minutes,DR,,"Vegetable Dishes Supplement, 1992",,N,N,3.6,0.4,6.1,3.8,2.3,N,2.0,0.03,Vegetables
+2812,18-390,"Venison, meat only, raw",Haunch,MEE,18-467 ,"LGC, Poultry and game surveys, 1983-1984",,436,103,1.6,0.8,0,0,0,0,22.2,0.14,Meat and meat products
+2814,17-239,"Vermouth, dry","15-19% ABV, 5 samples of different brands",QG,50-1117 ,"Reviewed 2013. Calculated from analytical data, 1984 and MW4, 1978. Additional data from 50-1117",,455,109,0.0,0,3,3,0,0,0.1,0.03,Alcoholic beverages
+2816,17-339,Vinegar,"4 samples including malt, cider and wine vinegar",WY,50-1185 ,"Reviewed 2013. LGC, Analysis of assorted foods, 1994",,83,19,0.0,0,0.6,0.6,0,0,0.4,0.01,"Soups, sauces and miscellaneous foods"

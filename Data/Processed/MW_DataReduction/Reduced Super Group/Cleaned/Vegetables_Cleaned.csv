@@ -1,0 +1,115 @@
+,Food Code,Food Name,Group,Super Group,Sale format(s)
+1,,"Ackee, canned",DG,Vegetables,tin
+2,13-146,"Agar, dried",DG,Vegetables,
+3,13-148,"Alfalfa sprouts, raw",DG,Vegetables,
+4,13-149,"Amaranth leaves, raw",DG,Vegetables,
+5,13-151,"Arrowhead, raw",DG,Vegetables,
+6,13-153,"Artichoke, globe, raw",DG,Vegetables,"loose, individual"
+7,,"Artichoke, canned",DG,Vegetables,tin
+8,,"Artichoke, jar",DG,Vegetables,jar
+9,13-157,"Asparagus, raw",DG,Vegetables,"bunch, packet"
+10,13-161,"Aubergine, raw",DG,Vegetables,"loose, individual"
+11,13-532,"Baked beans, canned in tomato sauce",DB,Vegetables,tin
+12,13-041,"Beans, aduki, whole, dried, raw",DB,Vegetables,packet
+13,,"Beans, aduki, canned",DB,Vegetables,tin
+14,13-062,"Beans, blackeye, whole, dried, raw",DB,Vegetables,packet
+15,,"Beans, blackeye, canned",DB,Vegetables,tin
+16,13-070,"Beans, butter, dried, raw",DB,Vegetables,packet
+17,,"Beans, butter, canned",DB,Vegetables,tin
+18,13-074,"Beans, chick peas, Kabuli, whole, dried, raw",DB,Vegetables,packet
+19,,"Beans, chick peas, canned",DB,Vegetables,tin
+20,13-080,"Beans, cluster, raw",DB,Vegetables,packet
+21,,"Beans, edamame, frozen",DB,Vegetables,packet
+22,,"Beans, edamame, canned",DB,Vegetables,tin
+23,13-514,"Beans, green, raw",DB,Vegetables,packet
+24,13-086,"Beans, haricot, whole, dried, raw",DB,Vegetables,jar
+25,,"Beans, haricot, canned",DB,Vegetables,tin
+26,13-098,"Beans, mung, dahl, dried, raw",DB,Vegetables,packet
+27,13-102,"Beans, pigeon peas, whole, dried, raw",DB,Vegetables,packet
+28,13-106,"Beans, pinto, dried, raw",DB,Vegetables,packet
+29,,"Beans, pinto, canned, ",DB,Vegetables,tin
+30,13-109,"Beans, red kidney, dried, raw",DB,Vegetables,packet
+31,,"Beans, red kidney, canned",DB,Vegetables,tin
+32,13-112,"Beans, runner, raw",DB,Vegetables,packet
+33,13-115,"Beans, soya, dried, raw",DB,Vegetables,packet
+34,13-117,"Beans, sword, raw",DB,Vegetables,packet
+35,13-426,"Beansprouts, mung, raw",DB,Vegetables,packet
+36,13-056,"Black gram, urad gram, whole, dried, raw",DB,Vegetables,packet
+37,13-164,"Beetroot, raw",DG,Vegetables,"loose, individual"
+38,13-167,"Breadfruit, raw",DG,Vegetables,"loose, individual"
+39,13-502,"Broccoli, green, raw",DG,Vegetables,"loose, individual"
+40,13-174,"Broccoli, purple sprouting, raw",DG,Vegetables,packet
+41,13-177,"Brussels sprouts, raw",DG,Vegetables,packet
+42,,"Beanburger, retail",DR,Vegetables,packet
+43,,"Beanburger, vegetarian",DR,Vegetables,packet
+44,13-067,"Beans, broad, dried, raw",DB,Vegetables,"loose, individual"
+45,,"Beans, broad, canned",DB,Vegetables,tin
+46,13-064,"Beans, broad, whole, raw, without pod",DB,Vegetables,packet
+47,,"Beans, cannellini, canned",DB,Vegetables,can
+48,13-582,"Cabbage, average, raw",DG,Vegetables,"loose, individual"
+49,13-187,"Cabbage, Chinese, raw",DG,Vegetables,"loose, individual"
+50,13-510,"Cabbage, green, raw",DG,Vegetables,"loose, individual"
+51,13-190,"Cabbage, red, raw",DG,Vegetables,"loose, individual"
+52,13-509,"Cabbage, white, raw",DG,Vegetables,"loose, individual"
+53,13-448,"Carrots, young, raw",DG,Vegetables,"loose, individual, bag"
+54,13-512,"Cauliflower, raw",DG,Vegetables,"loose, individual"
+55,13-219,"Celeriac, raw",DG,Vegetables,"loose, individual"
+56,13-636,"Celery, raw",DG,Vegetables,"loose, individual"
+57,13-223,"Chard, Swiss, raw",DG,Vegetables,"loose, individual"
+58,13-225,"Chicory, pale variety, raw",DG,Vegetables,"loose, individual"
+59,13-627,"Courgette, raw",DG,Vegetables,"loose, individual"
+60,13-234,"Curly kale, raw",DG,Vegetables,bag
+61,,"Casserole, vegetable, retail",DR,Vegetables,packet
+62,15-637,"Cauliflower cheese, retail",DR,Vegetables,packet
+63,15-635,"Coleslaw, not low calorie, retail",DR,Vegetables,packet
+64,,"Curry, Vegetable, Mixed, canned",DR,Vegetables,tin
+65,13-244,"Garlic, raw",DG,Vegetables,"individual, pack"
+66,13-245,"Gherkins, raw",DG,Vegetables,jar
+67,13-608,"Green beans, dried",DI,Vegetables,packet
+68,,"Green beans, in water, canned ",DI,Vegetables,tin
+69,13-556,Houmous,DB,Vegetables,packet
+70,13-258,"Horseradish, raw",DG,Vegetables,
+71,13-261,"Kohl rabi, raw",DG,Vegetables,"loose, individual"
+72,15-809,Khadhi,DR,Vegetables,
+73,13-089,"Lentils, green and brown, whole, dried, raw",DB,Vegetables,packet
+74,,"Lentils, canned",DB,Vegetables,can
+75,13-624,"Leeks, raw",DG,Vegetables,"loose, individual"
+76,13-520,"Lettuce, average, raw",DG,Vegetables,"loose, individual"
+77,13-271,"Lotus tubers, raw",DG,Vegetables,
+78,15-651,"Lasagne, vegetable, retail",DR,Vegetables,packet
+79,13-505,"Mushrooms, white, raw",DG,Vegetables,packet
+80,13-298,"Mustard leaves, raw",DG,Vegetables,
+81,15-652,"Moussaka, vegetable, retail",DR,Vegetables,packet
+82,13-300,"Okra, raw",DG,Vegetables,packet
+83,13-499,"Onions, raw",DG,Vegetables,"loose, individual"
+84,,"Potatoes,",DA,Vegetables,
+85,,"Potato chips,",DAP,Vegetables,
+86,,"Potato wedges, retail, ",DAR,Vegetables,
+87,,"Peas, canned in water",DF,Vegetables,tin
+88,13-527,"Peas, frozen, raw",DF,Vegetables,
+89,,"Pak choi, raw",DG,Vegetables,
+90,13-311,"Papaya, unripe, green flesh, raw",DG,Vegetables,"loose, individual"
+91,13-312,"Parsnip, raw",DG,Vegetables,"loose, individual, packet"
+92,13-524,"Pepper, capsicum, red, raw",DG,Vegetables,"loose, individual"
+93,13-323,"Plantain, green flesh, raw",DG,Vegetables,"loose, individual"
+94,13-326,"Pumpkin, flesh only, raw",DG,Vegetables,"loose, individual"
+95,15-262,Quorn korma,DR,Vegetables,
+96,13-332,"Radish leaves, raw",DG,Vegetables,
+97,13-522,"Rocket, raw",DG,Vegetables,packet
+98,15-869,"Roulade, spinach",DR,Vegetables,
+99,13-521,"Spinach, baby, raw",DG,Vegetables,packet
+100,13-359,"Swede, flesh only, raw",DG,Vegetables,
+101,,"Swede, raw,flesh and skin",DG,Vegetables,
+102,13-463,"Sweet potato, raw, flesh only",DG,Vegetables,packet
+103,,"Sweet potato, raw, flesh and skin",DG,Vegetables,packet
+104,,"Sweetcorn kernels, canned",DG,Vegetables,tin
+105,13-622,"Sweetcorn, kernels, raw",DG,Vegetables,packet
+106,,Sweetcorn on a cob,DG,Vegetables,packet
+107,15-872,"Salad, pasta, vegetables and mayonnaise",DR,Vegetables,
+108,15-883,"Shepherd's pie, vegetable",DR,Vegetables,
+109,15-617,"Sushi, vegetable",DR,Vegetables,
+110,,"Vegetables, mixed, frozen",DG,Vegetables,
+111,15-656,"Vegeburger, retail, grilled",DR,Vegetables,
+112,,"Vegetable stir fry mix,",DR,Vegetables,packet
+113,13-673,"Watercress, raw",DG,Vegetables,packet
+114,13-397,"Yam, flesh only, raw",DG,Vegetables,

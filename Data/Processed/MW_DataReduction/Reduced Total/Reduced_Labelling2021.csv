@@ -1,0 +1,1792 @@
+,Food Code,Food Name,Group,Super Group
+0,11-001,Arrowroot,AA,Cereals and cereal products
+1,13-145,"Ackee, canned, drained",DG,Vegetables
+2,13-146,"Agar, dried",DG,Vegetables
+3,13-148,"Alfalfa sprouts, raw",DG,Vegetables
+4,13-149,"Amaranth leaves, raw",DG,Vegetables
+5,13-151,"Arrowhead, raw",DG,Vegetables
+6,13-153,"Artichoke, globe, raw",DG,Vegetables
+7,13-157,"Asparagus, raw",DG,Vegetables
+8,13-161,"Aubergine, raw",DG,Vegetables
+9,15-001,"Aubergine, stuffed with lentils and vegetables",DR,Vegetables
+10,15-662,"Aubergine, stuffed with rice",DR,Vegetables
+11,15-663,"Aubergine, stuffed with vegetables, cheese topping",DR,Vegetables
+12,14-363,"Apples, cooking, raw, flesh only, weighed with skin and core",F,Fruit
+13,14-001,Amla,FA,Fruit
+14,14-025,"Apricots, raw, flesh and skin",FA,Fruit
+15,14-392,"Apricots, ready-to-eat, semi-dried",FA,Fruit
+16,14-040,"Avocado, Fuerte, flesh only, weighed with skin and stone",FA,Fruit
+17,14-387,"Avocado, Hass, flesh only, weighed with skin and stone",FA,Fruit
+18,14-331,"Apple juice, clear, ambient and chilled",FC,Fruit
+19,14-870,"Almonds, flaked and ground",GA,Nuts and Seeds
+20,14-897,"Almonds, toasted",GA,Nuts and Seeds
+21,14-896,"Almonds, whole kernels",GA,Nuts and Seeds
+22,13-801,"Allspice, ground",H,Herbs and Spices
+23,13-802,Anise seeds,H,Herbs and Spices
+24,13-803,Asafoetida,H,Herbs and Spices
+25,16-001,"Ayr, raw",JA,Fish and Fish Products
+26,16-448,"Anchovies, canned in oil, drained",JC,Fish and Fish Products
+27,14-272,"Apple juice concentrate, unsweetened, commerical",PE,Beverages
+28,17-851,"Apple sauce, homemade",WC,"Soups, sauces and miscellaneous foods"
+0,11-002,"Barley, pearl, raw",AA,Cereals and cereal products
+1,11-906,"Bran, wheat",AA,Cereals and cereal products
+2,11-006,"Buckwheat, groats",AA,Cereals and cereal products
+3,11-1144,"Bread rolls, brown, crusty",AF,Cereals and cereal products
+4,11-1006,"Bread rolls, white, soft",AF,Cereals and cereal products
+5,11-971,"Bread, brown, average",AF,Cereals and cereal products
+6,11-969,"Bread, ciabatta",AF,Cereals and cereal products
+7,11-937,"Bread, garlic and herb, retail",AF,Cereals and cereal products
+8,11-910,"Bread, naan, peshwari naan, takeaway and retail",AF,Cereals and cereal products
+9,11-973,"Bread, naan, retail",AF,Cereals and cereal products
+10,11-974,"Bread, pitta, white",AF,Cereals and cereal products
+11,11-947,"Bread, seeded",AF,Cereals and cereal products
+12,11-1145,"Bread, white, average",AF,Cereals and cereal products
+13,11-977,"Bread, white, farmhouse or split tin",AF,Cereals and cereal products
+14,11-978,"Bread, white, French stick",AF,Cereals and cereal products
+15,11-980,"Bread, white, sliced",AF,Cereals and cereal products
+16,11-1001,"Bread, white, toasted",AF,Cereals and cereal products
+17,11-981,"Bread, wholemeal, average",AF,Cereals and cereal products
+18,11-983,"Bread rolls, brown, soft",AG,Cereals and cereal products
+19,11-984,"Bread rolls, malted wheat",AG,Cereals and cereal products
+20,11-985,"Bread rolls, white, crusty",AG,Cereals and cereal products
+21,11-986,"Bread rolls, wholemeal",AG,Cereals and cereal products
+22,11-763,"Breakfast cereal, bran flakes, fortified",AI,Cereals and cereal products
+23,11-742,"Breakfast cereal, cornflakes, fortified",AI,Cereals and cereal products
+24,11-779,"Breakfast cereal, fruit and fibre type, fortified",AI,Cereals and cereal products
+25,11-755,"Breakfast cereal, honey loops and hoops, including Honey and Nut Cheerios, fortified",AI,Cereals and cereal products
+26,11-792,"Breakfast cereal, instant hot oat, plain, raw, fortified",AI,Cereals and cereal products
+27,11-753,"Breakfast cereal, rice, chocolate flavoured, fortified",AI,Cereals and cereal products
+28,11-778,"Breakfast cereal, Shredded Wheat, honey nut, Nestle",AI,Cereals and cereal products
+29,11-773,"Breakfast cereal, wheat biscuits, Weetabix type, fortified",AI,Cereals and cereal products
+30,11-821,"Biscuits, cheese flavoured",AM,Cereals and cereal products
+31,11-815,"Biscuits, cookies, chocolate chip, standard",AM,Cereals and cereal products
+32,11-799,"Biscuits, digestive, plain",AM,Cereals and cereal products
+33,11-809,"Biscuits, fully coated with chocolate",AM,Cereals and cereal products
+34,11-801,"Biscuits, plain, reduced fat",AM,Cereals and cereal products
+35,11-826,"Breadsticks, plain",AM,Cereals and cereal products
+36,11-1029,"Banana bread, homemade",AN,Cereals and cereal products
+37,11-1127,"Brownies, chocolate, homemade",AN,Cereals and cereal products
+38,11-970,"Bagels, plain",AP,Cereals and cereal products
+39,11-1038,"Bread pudding, homemade",AS,Cereals and cereal products
+40,12-500,"Baking fat and margarine (75-90% fat), hard block",BTM,Milk and milk products
+41,13-532,"Baked beans, canned in tomato sauce",DB,Vegetables
+42,13-041,"Beans, aduki, whole, dried, raw",DB,Vegetables
+43,13-062,"Beans, blackeye, whole, dried, raw",DB,Vegetables
+44,13-070,"Beans, butter, dried, raw",DB,Vegetables
+45,13-074,"Beans, chick peas, Kabuli, whole, dried, raw",DB,Vegetables
+46,13-080,"Beans, cluster, raw",DB,Vegetables
+47,13-667,"Beans, edamame, frozen, boiled in unsalted water",DB,Vegetables
+48,13-514,"Beans, green, raw",DB,Vegetables
+49,13-086,"Beans, haricot, whole, dried, raw",DB,Vegetables
+50,13-098,"Beans, mung, dahl, dried, raw",DB,Vegetables
+51,13-102,"Beans, pigeon peas, whole, dried, raw",DB,Vegetables
+52,13-106,"Beans, pinto, dried, raw",DB,Vegetables
+53,13-109,"Beans, red kidney, dried, raw",DB,Vegetables
+54,13-112,"Beans, runner, raw",DB,Vegetables
+55,13-115,"Beans, soya, dried, raw",DB,Vegetables
+56,13-117,"Beans, sword, raw",DB,Vegetables
+57,13-426,"Beansprouts, mung, raw",DB,Vegetables
+58,13-056,"Black gram, urad gram, whole, dried, raw",DB,Vegetables
+59,13-164,"Beetroot, raw",DG,Vegetables
+60,13-167,"Breadfruit, raw",DG,Vegetables
+61,13-502,"Broccoli, green, raw",DG,Vegetables
+62,13-174,"Broccoli, purple sprouting, raw",DG,Vegetables
+63,13-177,"Brussels sprouts, raw",DG,Vegetables
+64,15-664,"Bean loaf, mixed beans, homemade",DR,Vegetables
+65,15-667,"Beanburger, red kidney bean, fried in rapeseed oil",DR,Vegetables
+66,15-669,"Bhaji, aubergine and potato, homemade",DR,Vegetables
+67,15-672,"Bhaji, cabbage and pea, with butter ghee, homemade",DR,Vegetables
+68,15-676,"Bhaji, carrot, potato and pea, with butter, homemade",DR,Vegetables
+69,15-703,"Bubble and squeak, fried in sunflower oil, homemade",DR,Vegetables
+70,14-364,"Blackberry and apple, stewed without sugar",F,Fruit
+71,14-043,"Babaco, flesh only",FA,Fruit
+72,14-318,"Bananas, flesh only",FA,Fruit
+73,14-388,"Blackberries, raw",FA,Fruit
+74,14-053,"Blackcurrants, raw",FA,Fruit
+75,14-325,Blueberries,FA,Fruit
+76,14-895,"Breadnut seeds, dried",G,Nuts and Seeds
+77,14-806,Betel nuts,GA,Nuts and Seeds
+78,13-805,"Basil, dried, ground",H,Herbs and Spices
+79,13-804,"Basil, fresh",H,Herbs and Spices
+80,16-385,"Bass, sea, flesh only, raw",JA,Fish and Fish Products
+81,16-003,"Bele, raw",JA,Fish and Fish Products
+82,16-004,"Boal, raw",JA,Fish and Fish Products
+83,16-005,Bombay duck,JA,Fish and Fish Products
+84,16-006,"Bream, Sea, raw",JA,Fish and Fish Products
+85,16-169,"Bacha, raw",JC,Fish and Fish Products
+86,19-646,"Bacon rashers, back, fat trimmed, raw",MAA,Meat and meat products
+87,18-006,"Beef, braising steak, raw, lean",MAC,Meat and meat products
+88,18-003,"Beef, fat, average, raw",MAC,Meat and meat products
+89,18-016,"Beef, fillet steak, raw, lean",MAC,Meat and meat products
+90,18-024,"Beef, flank, raw, lean",MAC,Meat and meat products
+91,18-028,"Beef, fore-rib/rib-roast, raw, lean",MAC,Meat and meat products
+92,18-468,"Beef, lean, average, raw",MAC,Meat and meat products
+93,18-469,"Beef, mince, raw",MAC,Meat and meat products
+94,18-043,"Beef, rump steak, raw, lean",MAC,Meat and meat products
+95,18-054,"Beef, silverside, raw, lean",MAC,Meat and meat products
+96,18-064,"Beef, sirloin steak, raw, lean",MAC,Meat and meat products
+97,18-076,"Beef, stewing steak, raw, lean",MAC,Meat and meat products
+98,18-084,"Beef, topside, raw, lean",MAC,Meat and meat products
+99,18-392,"Brain, lamb, boiled",MG,Meat and meat products
+100,19-113,"Black pudding, raw",MI,Meat and meat products
+101,17-685,"Butter, salted",OA,Fats and Oils
+102,17-661,"Butter, unsalted",OA,Fats and Oils
+103,17-001,"Butteroil, unsalted",OB,Fats and Oils
+104,17-823,"Build up, powder, shake, assorted flavours",PAA,Beverages
+105,17-743,"Barley water, undiluted",PCC,Beverages
+106,17-737,"Blackcurrant juice drink/squash, undiluted",PCC,Beverages
+107,17-208,"Beer, bitter, best, premium",QA,Alcoholic beverages
+108,17-766,Bounty bar and own brand equivalents,SEA,"Sugars, preserves and snacks"
+109,17-764,Bombay mix,SN,"Sugars, preserves and snacks"
+110,17-770,"Bouillabaisse, homemade",WAA,"Soups, sauces and miscellaneous foods"
+111,17-769,"Barbecue sauce, homemade",WC,"Soups, sauces and miscellaneous foods"
+112,17-771,"Bread sauce, made with skimmed milk, homemade",WCD,"Soups, sauces and miscellaneous foods"
+113,17-705,Barbecue sauce,WCN,"Soups, sauces and miscellaneous foods"
+114,17-678,"Brown sauce, reduced salt/sugar",WCN,"Soups, sauces and miscellaneous foods"
+115,17-355,Baking powder,WY,"Soups, sauces and miscellaneous foods"
+116,17-514,Beef extract,WY,"Soups, sauces and miscellaneous foods"
+117,17-356,Bicarbonate of soda,WY,"Soups, sauces and miscellaneous foods"
+0,11-011,"Cornmeal, sifted",AA,Cereals and cereal products
+1,11-1138,Custard powder,AA,Cereals and cereal products
+2,11-987,"Chapatis, made with fat, retail",AF,Cereals and cereal products
+3,11-988,Croissants,AG,Cereals and cereal products
+4,11-916,Cake rusks,AM,Cereals and cereal products
+5,11-819,"Cereal bars, with fruit and/or nuts, no chocolate, unfortified",AM,Cereals and cereal products
+6,11-824,"Cheese straws/twists, retail",AM,Cereals and cereal products
+7,11-820,Cream crackers,AM,Cereals and cereal products
+8,11-822,"Crispbread, rye",AM,Cereals and cereal products
+9,11-832,"Cake, sponge, soft iced, retail",AN,Cereals and cereal products
+10,11-840,Cakes from 'healthy eating' ranges,AN,Cereals and cereal products
+11,11-839,"Cakes, fancy iced, individual, retail",AN,Cereals and cereal products
+12,11-989,"Crumpets, toasted",AP,Cereals and cereal products
+13,11-1020,"Crumble, fruit, retail",AS,Cereals and cereal products
+14,11-997,"Cheese and onion rolls, pastry, retail",AT,Cereals and cereal products
+15,11-901,"Couscous, plain, raw",AT,Cereals and cereal products
+16,12-545,Cocoa powder,BH,Milk and milk products
+17,12-592,"Cream, fresh, clotted",BJC,Milk and milk products
+18,12-332,"Cream, fresh, single",BJC,Milk and milk products
+19,12-333,"Cream, fresh, whipping",BJC,Milk and milk products
+20,12-339,"Cream, dairy, UHT, half fat, canned spray",BJP,Milk and milk products
+21,12-537,"Cheese spread, plain, reduced fat",BL,Milk and milk products
+22,12-346,"Cheese, Cheddar, English",BL,Milk and milk products
+23,12-550,"Cheese, cottage, plain, reduced fat",BL,Milk and milk products
+24,12-354,"Cheese, Danish blue",BL,Milk and milk products
+25,12-357,"Cheese, goats milk, full fat, soft, white rind",BL,Milk and milk products
+26,12-360,"Cheese, Mozzarella, fresh",BL,Milk and milk products
+27,12-549,"Cheese, processed, slices, reduced fat",BL,Milk and milk products
+28,12-486,"Cheese, White Cheshire",BL,Milk and milk products
+29,12-507,Cornetto type ice cream cone,BP,Milk and milk products
+30,12-542,"Cheesecake, fruit, individual",BR,Milk and milk products
+31,12-519,"Custard, made up with semi-skimmed milk",BR,Milk and milk products
+32,13-582,"Cabbage, average, raw",DG,Vegetables
+33,13-187,"Cabbage, Chinese, raw",DG,Vegetables
+34,13-510,"Cabbage, green, raw",DG,Vegetables
+35,13-190,"Cabbage, red, raw",DG,Vegetables
+36,13-509,"Cabbage, white, raw",DG,Vegetables
+37,13-496,"Carrots, old, raw",DG,Vegetables
+38,13-448,"Carrots, young, raw",DG,Vegetables
+39,13-512,"Cauliflower, raw",DG,Vegetables
+40,13-219,"Celeriac, raw",DG,Vegetables
+41,13-636,"Celery, raw",DG,Vegetables
+42,13-223,"Chard, Swiss, raw",DG,Vegetables
+43,13-225,"Chicory, pale variety, raw",DG,Vegetables
+44,13-627,"Courgette, raw",DG,Vegetables
+45,13-234,"Curly kale, raw",DG,Vegetables
+46,13-668,"Courgette, dried",DI,Vegetables
+47,15-638,"Casserole, vegetable, homemade",DR,Vegetables
+48,15-637,"Cauliflower cheese, retail",DR,Vegetables
+49,15-719,"Chilli, bean and lentil, homemade",DR,Vegetables
+50,15-635,"Coleslaw, not low calorie, retail",DR,Vegetables
+51,15-748,"Curry, chick pea, UK type, homemade",DR,Vegetables
+52,15-752,"Curry, egg, in sweet sauce, UK type, homemade",DR,Vegetables
+53,15-146,"Curry, red kidney bean, Punjabi, homemade",DR,Vegetables
+54,14-382,"Cherries, flesh and skin, raw",FA,Fruit
+55,14-326,"Citrus fruit, soft/easy peelers, flesh only",FA,Fruit
+56,14-073,Cranberries,FA,Fruit
+57,14-074,Currants,FA,Fruit
+58,14-813,"Chestnuts, kernel only, raw",GA,Nuts and Seeds
+59,14-889,"Coconut milk, retail",GA,Nuts and Seeds
+60,13-808,Caraway seeds,H,Herbs and Spices
+61,13-809,"Cardamom, ground",H,Herbs and Spices
+62,13-810,Celery seeds,H,Herbs and Spices
+63,13-811,"Chervil, dried",H,Herbs and Spices
+64,13-873,Chilli powder,H,Herbs and Spices
+65,13-813,Chinese 5 spice,H,Herbs and Spices
+66,13-887,"Chives, fresh",H,Herbs and Spices
+67,13-874,"Cinnamon, ground",H,Herbs and Spices
+68,13-816,"Cloves, dried",H,Herbs and Spices
+69,13-818,"Coriander leaves, dried",H,Herbs and Spices
+70,13-889,Cumin seeds,H,Herbs and Spices
+71,13-876,Curry powder,H,Herbs and Spices
+72,16-428,"Cod, in batter, fried in sunflower oil, takeaway",J,Fish and Fish Products
+73,16-172,"Carp, raw",JA,Fish and Fish Products
+74,16-007,"Catfish, raw",JA,Fish and Fish Products
+75,16-011,"Chital, raw",JA,Fish and Fish Products
+76,16-373,"Cod, flesh only, baked",JA,Fish and Fish Products
+77,16-429,"Coley, flesh only, baked",JA,Fish and Fish Products
+78,16-452,"Crab, canned in brine, drained",JK,Fish and Fish Products
+79,16-441,"Crab, purchased cooked",JK,Fish and Fish Products
+80,16-235,"Crayfish, raw",JK,Fish and Fish Products
+81,16-404,"Calamari, coated in batter, baked",JM,Fish and Fish Products
+82,16-252,"Cockles, boiled",JM,Fish and Fish Products
+83,16-254,"Cuttlefish, raw",JM,Fish and Fish Products
+84,16-272,"Caviare, bottled in brine, drained",JR,Fish and Fish Products
+85,18-504,"Chicken breast/steak, coated, baked",MCA,Meat and meat products
+86,18-501,"Chicken pieces, coated, takeaway",MCA,Meat and meat products
+87,18-293,"Chicken, leg quarter, raw, meat and skin",MCA,Meat and meat products
+88,18-488,"Chicken, meat, average, raw",MCA,Meat and meat products
+89,18-297,"Chicken, whole, raw, meat and skin",MCA,Meat and meat products
+90,18-295,"Chicken, wing quarter, raw, meat and skin",MCA,Meat and meat products
+91,18-503,"Chicken/turkey pieces, coated, baked",MCA,Meat and meat products
+92,19-538,Chicken slices,MI,Meat and meat products
+93,19-516,Chorizo,MI,Meat and meat products
+94,19-128,"Corned beef, canned",MI,Meat and meat products
+95,19-296,"Curry, chicken tikka masala, retail, reheated",MIG,Meat and meat products
+96,19-484,"Casserole, sausage, homemade",MR,Meat and meat products
+97,19-321,"Chow mein, chicken, takeaway",MR,Meat and meat products
+98,19-466,"Cornish pasty, retail",MR,Meat and meat products
+99,19-477,"Coronation chicken, homemade",MR,Meat and meat products
+100,17-002,Cocoa butter,OE,Fats and Oils
+101,17-632,"Coffee, cappuccino, latte",P,Beverages
+102,17-175,Cola,PCA,Beverages
+103,17-744,Cranberry fruit juice drink,PE,Beverages
+104,17-224,"Cider, sweet",QC,Alcoholic beverages
+105,17-659,Chocolate spread,SC,"Sugars, preserves and snacks"
+106,17-658,Chocolate covered bar with caramel and cereal,SEA,"Sugars, preserves and snacks"
+107,17-763,Creme egg,SEA,"Sugars, preserves and snacks"
+108,17-645,Corn snacks,SN,"Sugars, preserves and snacks"
+109,17-782,"Chevda/chevra/chewra, homemade",SNC,"Sugars, preserves and snacks"
+110,17-697,"Chicken soup, cream of, canned, condensed, as served",WAC,"Soups, sauces and miscellaneous foods"
+111,17-719,Chilli sauce,WC,"Soups, sauces and miscellaneous foods"
+112,17-773,"Cheese sauce, made with skimmed milk, homemade",WCD,"Soups, sauces and miscellaneous foods"
+113,17-345,"Chutney, tomato",WCG,"Soups, sauces and miscellaneous foods"
+114,17-358,Cream of tartar,WY,"Soups, sauces and miscellaneous foods"
+0,11-850,"Doughnuts, ring, iced",AP,Cereals and cereal products
+1,11-849,"Doughnuts, with jam",AP,Cereals and cereal products
+2,11-962,"Dumplings, homemade",AT,Cereals and cereal products
+3,12-398,"Desserts, dairy, chocolate",BR,Milk and milk products
+4,14-077,"Damsons, flesh and skin, raw",FA,Fruit
+5,14-083,"Dates, raw, flesh and skin",FA,Fruit
+6,14-087,Dried mixed fruit,FA,Fruit
+7,13-824,"Dill, fresh",H,Herbs and Spices
+8,18-489,"Duck, meat only, raw",MCC,Meat and meat products
+9,19-539,"Doner kebabs, meat only",MR,Meat and meat products
+10,17-487,"Dripping, beef",OF,Fats and Oils
+11,17-498,"Drinking chocolate, powder",PAA,Beverages
+12,17-715,"Dressing, blue cheese",WCG,"Soups, sauces and miscellaneous foods"
+13,17-701,"Dressing, French",WCG,"Soups, sauces and miscellaneous foods"
+14,17-717,"Dressing, thousand island",WCG,"Soups, sauces and miscellaneous foods"
+0,12-937,"Eggs, chicken, whole, raw",CA,Eggs
+1,14-089,"Elderberries, whole fruit",FA,Fruit
+2,16-173,"Eel, yellow, raw",JC,Fish and fish products
+3,19-586,"Enchiladas, beef, homemade",MR,Meat and meat products
+4,17-672,"Energy drink, carbonated",PCA,Beverages
+0,11-899,"Flour, gari (cassava flour)",AA,Cereals and cereal products
+1,11-886,"Flour, wheat, white, plain, soft",AA,Cereals and cereal products
+2,11-805,Fig Rolls,AM,Cereals and cereal products
+3,11-814,"Flapjacks, retail",AM,Cereals and cereal products
+4,12-528,"Fromage frais, virtually fat free, natural",BN,Milk and milk products
+5,12-232,"Fruit fool, homemade",BR,Milk and milk products
+6,13-241,"Fennel, Florence, raw",DG,Vegetables
+7,13-243,"Fenugreek leaves, raw",DG,Vegetables
+8,15-804,"Flan, vegetable, homemade",DR,Vegetables
+9,15-807,"Fu-fu, yam, homemade",DR,Vegetables
+10,14-091,"Figs, whole green fruit, raw",FA,Fruit
+11,14-336,"Fruit cocktail, canned in juice, whole contents",FA,Fruit
+12,14-333,"Fruit salad, homemade",FA,Fruit
+13,16-405,"Fish fingers, cod, grilled/baked",JR,Fish and fish products
+14,16-458,"Fishcakes, cod, homemade",JR,Fish and fish products
+15,19-495,Frankfurter,MI,Meat and meat products
+16,19-131,"Faggots in gravy, retail, reheated",MR,Meat and meat products
+17,17-735,"Fruit juice drink, carbonated, ready to drink",PCA,Beverages
+18,17-738,"Fruit juice drink/squash, undiluted",PCC,Beverages
+19,17-107,Fruit gums/jellies,SEC,"Sugars, preserves and snacks"
+20,17-824,Fruit pastilles,SEC,"Sugars, preserves and snacks"
+21,17-683,"Fudge, homemade",SEC,"Sugars, preserves and snacks"
+0,11-1079,"Gingerbread, homemade",AN,Cereals and cereal products
+1,12-502,Ghee made from vegetable oil,BTM,Milk and milk products
+2,13-244,"Garlic, raw",DG,Vegetables
+3,13-245,"Gherkins, raw",DG,Vegetables
+4,13-608,"Green beans, dried",DI,Vegetables
+5,14-100,"Gooseberries, cooking, raw",FA,Fruit
+6,14-384,"Grapefruit, flesh only, raw",FA,Fruit
+7,14-322,"Grapes, green",FA,Fruit
+8,14-118,"Guava, flesh only, raw",FA,Fruit
+9,13-829,Garam masala,H,Herbs and spices
+10,13-830,Garlic powder,H,Herbs and spices
+11,13-890,"Ginger, fresh",H,Herbs and spices
+12,13-832,"Ginger, ground",H,Herbs and spices
+13,17-640,"Ghee, butter",OF,Meat and meat products
+14,17-745,"Grape juice, unsweetened",PE,Beverages
+15,17-049,"Glucose liquid, BP",SC,"Sugars, preserves and snacks"
+16,17-797,"Guacamole, homemade",WC,"Soups, sauces and miscellaneous foods"
+17,17-360,Gelatine,WY,"Soups, sauces and miscellaneous foods"
+18,17-724,Gravy instant granules,WY,"Soups, sauces and miscellaneous foods"
+0,11-1084,"Hot cross buns, homemade",AP,Cereals and cereal products
+1,13-556,Houmous,DB,Vegetables
+2,13-258,"Horseradish, raw",DG,Vegetables
+3,14-874,"Hazelnuts, kernel only",GA,Nuts and seeds
+4,16-375,"Haddock, flesh only, raw",JA,Fish and fish products
+5,16-070,"Hake, flesh only, raw",JA,Fish and fish products
+6,19-496,Ham,MAA,Meat and meat products
+7,19-132,"Haggis, boiled",MI,Meat and meat products
+8,19-522,"Hot pot, lamb/beef with potatoes, retail, reheated",MR,Meat and meat products
+9,17-731,"Horlicks, powder",PAA,Beverages
+10,17-050,Honey,SC,"Sugars, preserves and snacks"
+11,17-800,"Hollandaise sauce, homemade",WC,"Soups, sauces and miscellaneous foods"
+0,12-508,"Ice cream, dairy, vanilla, soft scoop",BP,Milk and milk products
+1,12-509,"Ice cream, non dairy, vanilla, soft scoop",BP,Milk and milk products
+2,17-783,"Icing, butter, homemade",S,"Sugars, preserves and snacks"
+3,17-689,"Ice cream sauce, topping, strawberry and chocolate flavours",SC,"Sugars, preserves and snacks"
+0,11-739,Jaffa cakes,AM,Cereals and cereal products
+1,11-846,"Jam tarts, retail",AS,Cereals and cereal products
+2,12-516,"Jelly, sugar free, made with water",BR,Milk and milk products
+3,17-075,"Jam, reduced sugar",SC,"Sugars, preserves and snacks"
+0,12-605,"Knickerbocker glory, homemade",BP,Milk and milk products
+1,12-606,"Kulfi, homemade",BP,Milk and milk products
+2,13-261,"Kohl rabi, raw",DG,Vegetables
+3,15-809,Khadhi,DR,Vegetables
+4,14-371,"Kiwi fruit, flesh only, raw",FA,Fruit
+5,14-125,"Kumquats, whole fruit, raw",FA,Fruit
+6,16-081,"Kalabasu, raw",JA,Fish and fish products
+7,16-186,"Katla, raw",JA,Fish and fish products
+8,16-397,"Kippers, flesh only, grilled",JC,Fish and fish products
+9,18-402,"Kidney, lamb, raw",MG,Meat and meat products
+0,12-373,"Lassi, sweetened",BN,Milk and milk products
+1,12-390,"Lollies, containing ice-cream",BP,Milk and milk products
+2,12-389,"Lollies, with real fruit juice",BP,Milk and milk products
+3,13-089,"Lentils, green and brown, whole, dried, raw",DB,Vegetables
+4,13-624,"Leeks, raw",DG,Vegetables
+5,13-520,"Lettuce, average, raw",DG,Vegetables
+6,13-271,"Lotus tubers, raw",DG,Vegetables
+7,15-651,"Lasagne, vegetable, retail",DR,Vegetables
+8,14-128,"Lemons, whole, without pips",FA,Fruit
+9,14-131,"Limes, flesh only",FA,Fruit
+10,14-133,"Loganberries, raw",FA,Fruit
+11,14-278,"Lemon juice, fresh, weighed as whole fruit",FC,Fruit
+12,16-332,"Lobster, boiled",JK,Fish and fish products
+13,18-478,"Lamb, average, raw, lean and fat",MAE,Meat and meat products
+14,18-111,"Lamb, breast, raw, lean",MAE,Meat and meat products
+15,18-115,"Lamb, chump chops, raw, lean and fat",MAE,Meat and meat products
+16,18-481,"Lamb, mince, raw",MAE,Meat and meat products
+17,18-413,"Liver, lamb, raw",MG,Meat and meat products
+18,19-136,"Luncheon meat, Chinese, steamed",MI,Meat and meat products
+19,17-010,Lard,OF,Fats and oils
+20,17-179,Lemonade,PCA,Beverages
+21,17-761,Lucozade,PCA,Beverages
+22,17-751,"Lager, premium",QA,Beverages
+23,17-244,"Liqueurs, high strength",QI,Beverages
+24,17-777,Liquorice allsorts,SEC,"Sugars, preserves and snacks"
+0,11-001,Arrowroot,AA,Cereals and cereal products
+1,13-145,"Ackee, canned, drained",DG,Vegetables
+2,13-146,"Agar, dried",DG,Vegetables
+3,13-148,"Alfalfa sprouts, raw",DG,Vegetables
+4,13-149,"Amaranth leaves, raw",DG,Vegetables
+5,13-151,"Arrowhead, raw",DG,Vegetables
+6,13-153,"Artichoke, globe, raw",DG,Vegetables
+7,13-157,"Asparagus, raw",DG,Vegetables
+8,13-161,"Aubergine, raw",DG,Vegetables
+9,15-001,"Aubergine, stuffed with lentils and vegetables",DR,Vegetables
+10,15-662,"Aubergine, stuffed with rice",DR,Vegetables
+11,15-663,"Aubergine, stuffed with vegetables, cheese topping",DR,Vegetables
+12,14-363,"Apples, cooking, raw, flesh only, weighed with skin and core",F,Fruit
+13,14-001,Amla,FA,Fruit
+14,14-025,"Apricots, raw, flesh and skin",FA,Fruit
+15,14-392,"Apricots, ready-to-eat, semi-dried",FA,Fruit
+16,14-040,"Avocado, Fuerte, flesh only, weighed with skin and stone",FA,Fruit
+17,14-387,"Avocado, Hass, flesh only, weighed with skin and stone",FA,Fruit
+18,14-331,"Apple juice, clear, ambient and chilled",FC,Fruit
+19,14-870,"Almonds, flaked and ground",GA,Nuts and Seeds
+20,14-897,"Almonds, toasted",GA,Nuts and Seeds
+21,14-896,"Almonds, whole kernels",GA,Nuts and Seeds
+22,13-801,"Allspice, ground",H,Herbs and Spices
+23,13-802,Anise seeds,H,Herbs and Spices
+24,13-803,Asafoetida,H,Herbs and Spices
+25,16-001,"Ayr, raw",JA,Fish and Fish Products
+26,16-448,"Anchovies, canned in oil, drained",JC,Fish and Fish Products
+27,14-272,"Apple juice concentrate, unsweetened, commerical",PE,Beverages
+28,17-851,"Apple sauce, homemade",WC,"Soups, sauces and miscellaneous foods"
+29,11-002,"Barley, pearl, raw",AA,Cereals and cereal products
+30,11-906,"Bran, wheat",AA,Cereals and cereal products
+31,11-006,"Buckwheat, groats",AA,Cereals and cereal products
+32,11-1144,"Bread rolls, brown, crusty",AF,Cereals and cereal products
+33,11-1006,"Bread rolls, white, soft",AF,Cereals and cereal products
+34,11-971,"Bread, brown, average",AF,Cereals and cereal products
+35,11-969,"Bread, ciabatta",AF,Cereals and cereal products
+36,11-937,"Bread, garlic and herb, retail",AF,Cereals and cereal products
+37,11-910,"Bread, naan, peshwari naan, takeaway and retail",AF,Cereals and cereal products
+38,11-973,"Bread, naan, retail",AF,Cereals and cereal products
+39,11-974,"Bread, pitta, white",AF,Cereals and cereal products
+40,11-947,"Bread, seeded",AF,Cereals and cereal products
+41,11-1145,"Bread, white, average",AF,Cereals and cereal products
+42,11-977,"Bread, white, farmhouse or split tin",AF,Cereals and cereal products
+43,11-978,"Bread, white, French stick",AF,Cereals and cereal products
+44,11-980,"Bread, white, sliced",AF,Cereals and cereal products
+45,11-1001,"Bread, white, toasted",AF,Cereals and cereal products
+46,11-981,"Bread, wholemeal, average",AF,Cereals and cereal products
+47,11-983,"Bread rolls, brown, soft",AG,Cereals and cereal products
+48,11-984,"Bread rolls, malted wheat",AG,Cereals and cereal products
+49,11-985,"Bread rolls, white, crusty",AG,Cereals and cereal products
+50,11-986,"Bread rolls, wholemeal",AG,Cereals and cereal products
+51,11-763,"Breakfast cereal, bran flakes, fortified",AI,Cereals and cereal products
+52,11-742,"Breakfast cereal, cornflakes, fortified",AI,Cereals and cereal products
+53,11-779,"Breakfast cereal, fruit and fibre type, fortified",AI,Cereals and cereal products
+54,11-755,"Breakfast cereal, honey loops and hoops, including Honey and Nut Cheerios, fortified",AI,Cereals and cereal products
+55,11-792,"Breakfast cereal, instant hot oat, plain, raw, fortified",AI,Cereals and cereal products
+56,11-753,"Breakfast cereal, rice, chocolate flavoured, fortified",AI,Cereals and cereal products
+57,11-778,"Breakfast cereal, Shredded Wheat, honey nut, Nestle",AI,Cereals and cereal products
+58,11-773,"Breakfast cereal, wheat biscuits, Weetabix type, fortified",AI,Cereals and cereal products
+59,11-821,"Biscuits, cheese flavoured",AM,Cereals and cereal products
+60,11-815,"Biscuits, cookies, chocolate chip, standard",AM,Cereals and cereal products
+61,11-799,"Biscuits, digestive, plain",AM,Cereals and cereal products
+62,11-809,"Biscuits, fully coated with chocolate",AM,Cereals and cereal products
+63,11-801,"Biscuits, plain, reduced fat",AM,Cereals and cereal products
+64,11-826,"Breadsticks, plain",AM,Cereals and cereal products
+65,11-1029,"Banana bread, homemade",AN,Cereals and cereal products
+66,11-1127,"Brownies, chocolate, homemade",AN,Cereals and cereal products
+67,11-970,"Bagels, plain",AP,Cereals and cereal products
+68,11-1038,"Bread pudding, homemade",AS,Cereals and cereal products
+69,12-500,"Baking fat and margarine (75-90% fat), hard block",BTM,Milk and milk products
+70,13-532,"Baked beans, canned in tomato sauce",DB,Vegetables
+71,13-041,"Beans, aduki, whole, dried, raw",DB,Vegetables
+72,13-062,"Beans, blackeye, whole, dried, raw",DB,Vegetables
+73,13-070,"Beans, butter, dried, raw",DB,Vegetables
+74,13-074,"Beans, chick peas, Kabuli, whole, dried, raw",DB,Vegetables
+75,13-080,"Beans, cluster, raw",DB,Vegetables
+76,13-667,"Beans, edamame, frozen, boiled in unsalted water",DB,Vegetables
+77,13-514,"Beans, green, raw",DB,Vegetables
+78,13-086,"Beans, haricot, whole, dried, raw",DB,Vegetables
+79,13-098,"Beans, mung, dahl, dried, raw",DB,Vegetables
+80,13-102,"Beans, pigeon peas, whole, dried, raw",DB,Vegetables
+81,13-106,"Beans, pinto, dried, raw",DB,Vegetables
+82,13-109,"Beans, red kidney, dried, raw",DB,Vegetables
+83,13-112,"Beans, runner, raw",DB,Vegetables
+84,13-115,"Beans, soya, dried, raw",DB,Vegetables
+85,13-117,"Beans, sword, raw",DB,Vegetables
+86,13-426,"Beansprouts, mung, raw",DB,Vegetables
+87,13-056,"Black gram, urad gram, whole, dried, raw",DB,Vegetables
+88,13-164,"Beetroot, raw",DG,Vegetables
+89,13-167,"Breadfruit, raw",DG,Vegetables
+90,13-502,"Broccoli, green, raw",DG,Vegetables
+91,13-174,"Broccoli, purple sprouting, raw",DG,Vegetables
+92,13-177,"Brussels sprouts, raw",DG,Vegetables
+93,15-664,"Bean loaf, mixed beans, homemade",DR,Vegetables
+94,15-667,"Beanburger, red kidney bean, fried in rapeseed oil",DR,Vegetables
+95,15-669,"Bhaji, aubergine and potato, homemade",DR,Vegetables
+96,15-672,"Bhaji, cabbage and pea, with butter ghee, homemade",DR,Vegetables
+97,15-676,"Bhaji, carrot, potato and pea, with butter, homemade",DR,Vegetables
+98,15-703,"Bubble and squeak, fried in sunflower oil, homemade",DR,Vegetables
+99,14-364,"Blackberry and apple, stewed without sugar",F,Fruit
+100,14-043,"Babaco, flesh only",FA,Fruit
+101,14-318,"Bananas, flesh only",FA,Fruit
+102,14-388,"Blackberries, raw",FA,Fruit
+103,14-053,"Blackcurrants, raw",FA,Fruit
+104,14-325,Blueberries,FA,Fruit
+105,14-895,"Breadnut seeds, dried",G,Nuts and Seeds
+106,14-806,Betel nuts,GA,Nuts and Seeds
+107,13-805,"Basil, dried, ground",H,Herbs and Spices
+108,13-804,"Basil, fresh",H,Herbs and Spices
+109,16-385,"Bass, sea, flesh only, raw",JA,Fish and Fish Products
+110,16-003,"Bele, raw",JA,Fish and Fish Products
+111,16-004,"Boal, raw",JA,Fish and Fish Products
+112,16-005,Bombay duck,JA,Fish and Fish Products
+113,16-006,"Bream, Sea, raw",JA,Fish and Fish Products
+114,16-169,"Bacha, raw",JC,Fish and Fish Products
+115,19-646,"Bacon rashers, back, fat trimmed, raw",MAA,Meat and meat products
+116,18-006,"Beef, braising steak, raw, lean",MAC,Meat and meat products
+117,18-003,"Beef, fat, average, raw",MAC,Meat and meat products
+118,18-016,"Beef, fillet steak, raw, lean",MAC,Meat and meat products
+119,18-024,"Beef, flank, raw, lean",MAC,Meat and meat products
+120,18-028,"Beef, fore-rib/rib-roast, raw, lean",MAC,Meat and meat products
+121,18-468,"Beef, lean, average, raw",MAC,Meat and meat products
+122,18-469,"Beef, mince, raw",MAC,Meat and meat products
+123,18-043,"Beef, rump steak, raw, lean",MAC,Meat and meat products
+124,18-054,"Beef, silverside, raw, lean",MAC,Meat and meat products
+125,18-064,"Beef, sirloin steak, raw, lean",MAC,Meat and meat products
+126,18-076,"Beef, stewing steak, raw, lean",MAC,Meat and meat products
+127,18-084,"Beef, topside, raw, lean",MAC,Meat and meat products
+128,18-392,"Brain, lamb, boiled",MG,Meat and meat products
+129,19-113,"Black pudding, raw",MI,Meat and meat products
+130,17-685,"Butter, salted",OA,Fats and Oils
+131,17-661,"Butter, unsalted",OA,Fats and Oils
+132,17-001,"Butteroil, unsalted",OB,Fats and Oils
+133,17-823,"Build up, powder, shake, assorted flavours",PAA,Beverages
+134,17-743,"Barley water, undiluted",PCC,Beverages
+135,17-737,"Blackcurrant juice drink/squash, undiluted",PCC,Beverages
+136,17-208,"Beer, bitter, best, premium",QA,Alcoholic beverages
+137,17-766,Bounty bar and own brand equivalents,SEA,"Sugars, preserves and snacks"
+138,17-764,Bombay mix,SN,"Sugars, preserves and snacks"
+139,17-770,"Bouillabaisse, homemade",WAA,"Soups, sauces and miscellaneous foods"
+140,17-769,"Barbecue sauce, homemade",WC,"Soups, sauces and miscellaneous foods"
+141,17-771,"Bread sauce, made with skimmed milk, homemade",WCD,"Soups, sauces and miscellaneous foods"
+142,17-705,Barbecue sauce,WCN,"Soups, sauces and miscellaneous foods"
+143,17-678,"Brown sauce, reduced salt/sugar",WCN,"Soups, sauces and miscellaneous foods"
+144,17-355,Baking powder,WY,"Soups, sauces and miscellaneous foods"
+145,17-514,Beef extract,WY,"Soups, sauces and miscellaneous foods"
+146,17-356,Bicarbonate of soda,WY,"Soups, sauces and miscellaneous foods"
+147,11-011,"Cornmeal, sifted",AA,Cereals and cereal products
+148,11-1138,Custard powder,AA,Cereals and cereal products
+149,11-987,"Chapatis, made with fat, retail",AF,Cereals and cereal products
+150,11-988,Croissants,AG,Cereals and cereal products
+151,11-916,Cake rusks,AM,Cereals and cereal products
+152,11-819,"Cereal bars, with fruit and/or nuts, no chocolate, unfortified",AM,Cereals and cereal products
+153,11-824,"Cheese straws/twists, retail",AM,Cereals and cereal products
+154,11-820,Cream crackers,AM,Cereals and cereal products
+155,11-822,"Crispbread, rye",AM,Cereals and cereal products
+156,11-832,"Cake, sponge, soft iced, retail",AN,Cereals and cereal products
+157,11-840,Cakes from 'healthy eating' ranges,AN,Cereals and cereal products
+158,11-839,"Cakes, fancy iced, individual, retail",AN,Cereals and cereal products
+159,11-989,"Crumpets, toasted",AP,Cereals and cereal products
+160,11-1020,"Crumble, fruit, retail",AS,Cereals and cereal products
+161,11-997,"Cheese and onion rolls, pastry, retail",AT,Cereals and cereal products
+162,11-901,"Couscous, plain, raw",AT,Cereals and cereal products
+163,12-545,Cocoa powder,BH,Milk and milk products
+164,12-592,"Cream, fresh, clotted",BJC,Milk and milk products
+165,12-332,"Cream, fresh, single",BJC,Milk and milk products
+166,12-333,"Cream, fresh, whipping",BJC,Milk and milk products
+167,12-339,"Cream, dairy, UHT, half fat, canned spray",BJP,Milk and milk products
+168,12-537,"Cheese spread, plain, reduced fat",BL,Milk and milk products
+169,12-346,"Cheese, Cheddar, English",BL,Milk and milk products
+170,12-550,"Cheese, cottage, plain, reduced fat",BL,Milk and milk products
+171,12-354,"Cheese, Danish blue",BL,Milk and milk products
+172,12-357,"Cheese, goats milk, full fat, soft, white rind",BL,Milk and milk products
+173,12-360,"Cheese, Mozzarella, fresh",BL,Milk and milk products
+174,12-549,"Cheese, processed, slices, reduced fat",BL,Milk and milk products
+175,12-486,"Cheese, White Cheshire",BL,Milk and milk products
+176,12-507,Cornetto type ice cream cone,BP,Milk and milk products
+177,12-542,"Cheesecake, fruit, individual",BR,Milk and milk products
+178,12-519,"Custard, made up with semi-skimmed milk",BR,Milk and milk products
+179,13-582,"Cabbage, average, raw",DG,Vegetables
+180,13-187,"Cabbage, Chinese, raw",DG,Vegetables
+181,13-510,"Cabbage, green, raw",DG,Vegetables
+182,13-190,"Cabbage, red, raw",DG,Vegetables
+183,13-509,"Cabbage, white, raw",DG,Vegetables
+184,13-496,"Carrots, old, raw",DG,Vegetables
+185,13-448,"Carrots, young, raw",DG,Vegetables
+186,13-512,"Cauliflower, raw",DG,Vegetables
+187,13-219,"Celeriac, raw",DG,Vegetables
+188,13-636,"Celery, raw",DG,Vegetables
+189,13-223,"Chard, Swiss, raw",DG,Vegetables
+190,13-225,"Chicory, pale variety, raw",DG,Vegetables
+191,13-627,"Courgette, raw",DG,Vegetables
+192,13-234,"Curly kale, raw",DG,Vegetables
+193,13-668,"Courgette, dried",DI,Vegetables
+194,15-638,"Casserole, vegetable, homemade",DR,Vegetables
+195,15-637,"Cauliflower cheese, retail",DR,Vegetables
+196,15-719,"Chilli, bean and lentil, homemade",DR,Vegetables
+197,15-635,"Coleslaw, not low calorie, retail",DR,Vegetables
+198,15-748,"Curry, chick pea, UK type, homemade",DR,Vegetables
+199,15-752,"Curry, egg, in sweet sauce, UK type, homemade",DR,Vegetables
+200,15-146,"Curry, red kidney bean, Punjabi, homemade",DR,Vegetables
+201,14-382,"Cherries, flesh and skin, raw",FA,Fruit
+202,14-326,"Citrus fruit, soft/easy peelers, flesh only",FA,Fruit
+203,14-073,Cranberries,FA,Fruit
+204,14-074,Currants,FA,Fruit
+205,14-813,"Chestnuts, kernel only, raw",GA,Nuts and Seeds
+206,14-889,"Coconut milk, retail",GA,Nuts and Seeds
+207,13-808,Caraway seeds,H,Herbs and Spices
+208,13-809,"Cardamom, ground",H,Herbs and Spices
+209,13-810,Celery seeds,H,Herbs and Spices
+210,13-811,"Chervil, dried",H,Herbs and Spices
+211,13-873,Chilli powder,H,Herbs and Spices
+212,13-813,Chinese 5 spice,H,Herbs and Spices
+213,13-887,"Chives, fresh",H,Herbs and Spices
+214,13-874,"Cinnamon, ground",H,Herbs and Spices
+215,13-816,"Cloves, dried",H,Herbs and Spices
+216,13-818,"Coriander leaves, dried",H,Herbs and Spices
+217,13-889,Cumin seeds,H,Herbs and Spices
+218,13-876,Curry powder,H,Herbs and Spices
+219,16-428,"Cod, in batter, fried in sunflower oil, takeaway",J,Fish and Fish Products
+220,16-172,"Carp, raw",JA,Fish and Fish Products
+221,16-007,"Catfish, raw",JA,Fish and Fish Products
+222,16-011,"Chital, raw",JA,Fish and Fish Products
+223,16-373,"Cod, flesh only, baked",JA,Fish and Fish Products
+224,16-429,"Coley, flesh only, baked",JA,Fish and Fish Products
+225,16-452,"Crab, canned in brine, drained",JK,Fish and Fish Products
+226,16-441,"Crab, purchased cooked",JK,Fish and Fish Products
+227,16-235,"Crayfish, raw",JK,Fish and Fish Products
+228,16-404,"Calamari, coated in batter, baked",JM,Fish and Fish Products
+229,16-252,"Cockles, boiled",JM,Fish and Fish Products
+230,16-254,"Cuttlefish, raw",JM,Fish and Fish Products
+231,16-272,"Caviare, bottled in brine, drained",JR,Fish and Fish Products
+232,18-504,"Chicken breast/steak, coated, baked",MCA,Meat and meat products
+233,18-501,"Chicken pieces, coated, takeaway",MCA,Meat and meat products
+234,18-293,"Chicken, leg quarter, raw, meat and skin",MCA,Meat and meat products
+235,18-488,"Chicken, meat, average, raw",MCA,Meat and meat products
+236,18-297,"Chicken, whole, raw, meat and skin",MCA,Meat and meat products
+237,18-295,"Chicken, wing quarter, raw, meat and skin",MCA,Meat and meat products
+238,18-503,"Chicken/turkey pieces, coated, baked",MCA,Meat and meat products
+239,19-538,Chicken slices,MI,Meat and meat products
+240,19-516,Chorizo,MI,Meat and meat products
+241,19-128,"Corned beef, canned",MI,Meat and meat products
+242,19-296,"Curry, chicken tikka masala, retail, reheated",MIG,Meat and meat products
+243,19-484,"Casserole, sausage, homemade",MR,Meat and meat products
+244,19-321,"Chow mein, chicken, takeaway",MR,Meat and meat products
+245,19-466,"Cornish pasty, retail",MR,Meat and meat products
+246,19-477,"Coronation chicken, homemade",MR,Meat and meat products
+247,17-002,Cocoa butter,OE,Fats and Oils
+248,17-632,"Coffee, cappuccino, latte",P,Beverages
+249,17-175,Cola,PCA,Beverages
+250,17-744,Cranberry fruit juice drink,PE,Beverages
+251,17-224,"Cider, sweet",QC,Alcoholic beverages
+252,17-659,Chocolate spread,SC,"Sugars, preserves and snacks"
+253,17-658,Chocolate covered bar with caramel and cereal,SEA,"Sugars, preserves and snacks"
+254,17-763,Creme egg,SEA,"Sugars, preserves and snacks"
+255,17-645,Corn snacks,SN,"Sugars, preserves and snacks"
+256,17-782,"Chevda/chevra/chewra, homemade",SNC,"Sugars, preserves and snacks"
+257,17-697,"Chicken soup, cream of, canned, condensed, as served",WAC,"Soups, sauces and miscellaneous foods"
+258,17-719,Chilli sauce,WC,"Soups, sauces and miscellaneous foods"
+259,17-773,"Cheese sauce, made with skimmed milk, homemade",WCD,"Soups, sauces and miscellaneous foods"
+260,17-345,"Chutney, tomato",WCG,"Soups, sauces and miscellaneous foods"
+261,17-358,Cream of tartar,WY,"Soups, sauces and miscellaneous foods"
+262,11-850,"Doughnuts, ring, iced",AP,Cereals and cereal products
+263,11-849,"Doughnuts, with jam",AP,Cereals and cereal products
+264,11-962,"Dumplings, homemade",AT,Cereals and cereal products
+265,12-398,"Desserts, dairy, chocolate",BR,Milk and milk products
+266,14-077,"Damsons, flesh and skin, raw",FA,Fruit
+267,14-083,"Dates, raw, flesh and skin",FA,Fruit
+268,14-087,Dried mixed fruit,FA,Fruit
+269,13-824,"Dill, fresh",H,Herbs and Spices
+270,18-489,"Duck, meat only, raw",MCC,Meat and meat products
+271,19-539,"Doner kebabs, meat only",MR,Meat and meat products
+272,17-487,"Dripping, beef",OF,Fats and Oils
+273,17-498,"Drinking chocolate, powder",PAA,Beverages
+274,17-715,"Dressing, blue cheese",WCG,"Soups, sauces and miscellaneous foods"
+275,17-701,"Dressing, French",WCG,"Soups, sauces and miscellaneous foods"
+276,17-717,"Dressing, thousand island",WCG,"Soups, sauces and miscellaneous foods"
+277,12-937,"Eggs, chicken, whole, raw",CA,Eggs
+278,14-089,"Elderberries, whole fruit",FA,Fruit
+279,16-173,"Eel, yellow, raw",JC,Fish and fish products
+280,19-586,"Enchiladas, beef, homemade",MR,Meat and meat products
+281,17-672,"Energy drink, carbonated",PCA,Beverages
+282,11-899,"Flour, gari (cassava flour)",AA,Cereals and cereal products
+283,11-886,"Flour, wheat, white, plain, soft",AA,Cereals and cereal products
+284,11-805,Fig Rolls,AM,Cereals and cereal products
+285,11-814,"Flapjacks, retail",AM,Cereals and cereal products
+286,12-528,"Fromage frais, virtually fat free, natural",BN,Milk and milk products
+287,12-232,"Fruit fool, homemade",BR,Milk and milk products
+288,13-241,"Fennel, Florence, raw",DG,Vegetables
+289,13-243,"Fenugreek leaves, raw",DG,Vegetables
+290,15-804,"Flan, vegetable, homemade",DR,Vegetables
+291,15-807,"Fu-fu, yam, homemade",DR,Vegetables
+292,14-091,"Figs, whole green fruit, raw",FA,Fruit
+293,14-336,"Fruit cocktail, canned in juice, whole contents",FA,Fruit
+294,14-333,"Fruit salad, homemade",FA,Fruit
+295,16-405,"Fish fingers, cod, grilled/baked",JR,Fish and fish products
+296,16-458,"Fishcakes, cod, homemade",JR,Fish and fish products
+297,19-495,Frankfurter,MI,Meat and meat products
+298,19-131,"Faggots in gravy, retail, reheated",MR,Meat and meat products
+299,17-735,"Fruit juice drink, carbonated, ready to drink",PCA,Beverages
+300,17-738,"Fruit juice drink/squash, undiluted",PCC,Beverages
+301,17-107,Fruit gums/jellies,SEC,"Sugars, preserves and snacks"
+302,17-824,Fruit pastilles,SEC,"Sugars, preserves and snacks"
+303,17-683,"Fudge, homemade",SEC,"Sugars, preserves and snacks"
+304,11-1079,"Gingerbread, homemade",AN,Cereals and cereal products
+305,12-502,Ghee made from vegetable oil,BTM,Milk and milk products
+306,13-244,"Garlic, raw",DG,Vegetables
+307,13-245,"Gherkins, raw",DG,Vegetables
+308,13-608,"Green beans, dried",DI,Vegetables
+309,14-100,"Gooseberries, cooking, raw",FA,Fruit
+310,14-384,"Grapefruit, flesh only, raw",FA,Fruit
+311,14-322,"Grapes, green",FA,Fruit
+312,14-118,"Guava, flesh only, raw",FA,Fruit
+313,13-829,Garam masala,H,Herbs and spices
+314,13-830,Garlic powder,H,Herbs and spices
+315,13-890,"Ginger, fresh",H,Herbs and spices
+316,13-832,"Ginger, ground",H,Herbs and spices
+317,17-640,"Ghee, butter",OF,Meat and meat products
+318,17-745,"Grape juice, unsweetened",PE,Beverages
+319,17-049,"Glucose liquid, BP",SC,"Sugars, preserves and snacks"
+320,17-797,"Guacamole, homemade",WC,"Soups, sauces and miscellaneous foods"
+321,17-360,Gelatine,WY,"Soups, sauces and miscellaneous foods"
+322,17-724,Gravy instant granules,WY,"Soups, sauces and miscellaneous foods"
+323,11-1084,"Hot cross buns, homemade",AP,Cereals and cereal products
+324,13-556,Houmous,DB,Vegetables
+325,13-258,"Horseradish, raw",DG,Vegetables
+326,14-874,"Hazelnuts, kernel only",GA,Nuts and seeds
+327,16-375,"Haddock, flesh only, raw",JA,Fish and fish products
+328,16-070,"Hake, flesh only, raw",JA,Fish and fish products
+329,19-496,Ham,MAA,Meat and meat products
+330,19-132,"Haggis, boiled",MI,Meat and meat products
+331,19-522,"Hot pot, lamb/beef with potatoes, retail, reheated",MR,Meat and meat products
+332,17-731,"Horlicks, powder",PAA,Beverages
+333,17-050,Honey,SC,"Sugars, preserves and snacks"
+334,17-800,"Hollandaise sauce, homemade",WC,"Soups, sauces and miscellaneous foods"
+335,12-508,"Ice cream, dairy, vanilla, soft scoop",BP,Milk and milk products
+336,12-509,"Ice cream, non dairy, vanilla, soft scoop",BP,Milk and milk products
+337,17-783,"Icing, butter, homemade",S,"Sugars, preserves and snacks"
+338,17-689,"Ice cream sauce, topping, strawberry and chocolate flavours",SC,"Sugars, preserves and snacks"
+339,11-739,Jaffa cakes,AM,Cereals and cereal products
+340,11-846,"Jam tarts, retail",AS,Cereals and cereal products
+341,12-516,"Jelly, sugar free, made with water",BR,Milk and milk products
+342,17-075,"Jam, reduced sugar",SC,"Sugars, preserves and snacks"
+343,12-605,"Knickerbocker glory, homemade",BP,Milk and milk products
+344,12-606,"Kulfi, homemade",BP,Milk and milk products
+345,13-261,"Kohl rabi, raw",DG,Vegetables
+346,15-809,Khadhi,DR,Vegetables
+347,14-371,"Kiwi fruit, flesh only, raw",FA,Fruit
+348,14-125,"Kumquats, whole fruit, raw",FA,Fruit
+349,16-081,"Kalabasu, raw",JA,Fish and fish products
+350,16-186,"Katla, raw",JA,Fish and fish products
+351,16-397,"Kippers, flesh only, grilled",JC,Fish and fish products
+352,18-402,"Kidney, lamb, raw",MG,Meat and meat products
+353,12-373,"Lassi, sweetened",BN,Milk and milk products
+354,12-390,"Lollies, containing ice-cream",BP,Milk and milk products
+355,12-389,"Lollies, with real fruit juice",BP,Milk and milk products
+356,13-089,"Lentils, green and brown, whole, dried, raw",DB,Vegetables
+357,13-624,"Leeks, raw",DG,Vegetables
+358,13-520,"Lettuce, average, raw",DG,Vegetables
+359,13-271,"Lotus tubers, raw",DG,Vegetables
+360,15-651,"Lasagne, vegetable, retail",DR,Vegetables
+361,14-128,"Lemons, whole, without pips",FA,Fruit
+362,14-131,"Limes, flesh only",FA,Fruit
+363,14-133,"Loganberries, raw",FA,Fruit
+364,14-278,"Lemon juice, fresh, weighed as whole fruit",FC,Fruit
+365,16-332,"Lobster, boiled",JK,Fish and fish products
+366,18-478,"Lamb, average, raw, lean and fat",MAE,Meat and meat products
+367,18-111,"Lamb, breast, raw, lean",MAE,Meat and meat products
+368,18-115,"Lamb, chump chops, raw, lean and fat",MAE,Meat and meat products
+369,18-481,"Lamb, mince, raw",MAE,Meat and meat products
+370,18-413,"Liver, lamb, raw",MG,Meat and meat products
+371,19-136,"Luncheon meat, Chinese, steamed",MI,Meat and meat products
+372,17-010,Lard,OF,Fats and oils
+373,17-179,Lemonade,PCA,Beverages
+374,17-761,Lucozade,PCA,Beverages
+375,17-751,"Lager, premium",QA,Beverages
+376,17-244,"Liqueurs, high strength",QI,Beverages
+377,17-777,Liquorice allsorts,SEC,"Sugars, preserves and snacks"
+378,11-001,Arrowroot,AA,Cereals and cereal products
+379,13-145,"Ackee, canned, drained",DG,Vegetables
+380,13-146,"Agar, dried",DG,Vegetables
+381,13-148,"Alfalfa sprouts, raw",DG,Vegetables
+382,13-149,"Amaranth leaves, raw",DG,Vegetables
+383,13-151,"Arrowhead, raw",DG,Vegetables
+384,13-153,"Artichoke, globe, raw",DG,Vegetables
+385,13-157,"Asparagus, raw",DG,Vegetables
+386,13-161,"Aubergine, raw",DG,Vegetables
+387,15-001,"Aubergine, stuffed with lentils and vegetables",DR,Vegetables
+388,15-662,"Aubergine, stuffed with rice",DR,Vegetables
+389,15-663,"Aubergine, stuffed with vegetables, cheese topping",DR,Vegetables
+390,14-363,"Apples, cooking, raw, flesh only, weighed with skin and core",F,Fruit
+391,14-001,Amla,FA,Fruit
+392,14-025,"Apricots, raw, flesh and skin",FA,Fruit
+393,14-392,"Apricots, ready-to-eat, semi-dried",FA,Fruit
+394,14-040,"Avocado, Fuerte, flesh only, weighed with skin and stone",FA,Fruit
+395,14-387,"Avocado, Hass, flesh only, weighed with skin and stone",FA,Fruit
+396,14-331,"Apple juice, clear, ambient and chilled",FC,Fruit
+397,14-870,"Almonds, flaked and ground",GA,Nuts and Seeds
+398,14-897,"Almonds, toasted",GA,Nuts and Seeds
+399,14-896,"Almonds, whole kernels",GA,Nuts and Seeds
+400,13-801,"Allspice, ground",H,Herbs and Spices
+401,13-802,Anise seeds,H,Herbs and Spices
+402,13-803,Asafoetida,H,Herbs and Spices
+403,16-001,"Ayr, raw",JA,Fish and Fish Products
+404,16-448,"Anchovies, canned in oil, drained",JC,Fish and Fish Products
+405,14-272,"Apple juice concentrate, unsweetened, commerical",PE,Beverages
+406,17-851,"Apple sauce, homemade",WC,"Soups, sauces and miscellaneous foods"
+407,11-002,"Barley, pearl, raw",AA,Cereals and cereal products
+408,11-906,"Bran, wheat",AA,Cereals and cereal products
+409,11-006,"Buckwheat, groats",AA,Cereals and cereal products
+410,11-1144,"Bread rolls, brown, crusty",AF,Cereals and cereal products
+411,11-1006,"Bread rolls, white, soft",AF,Cereals and cereal products
+412,11-971,"Bread, brown, average",AF,Cereals and cereal products
+413,11-969,"Bread, ciabatta",AF,Cereals and cereal products
+414,11-937,"Bread, garlic and herb, retail",AF,Cereals and cereal products
+415,11-910,"Bread, naan, peshwari naan, takeaway and retail",AF,Cereals and cereal products
+416,11-973,"Bread, naan, retail",AF,Cereals and cereal products
+417,11-974,"Bread, pitta, white",AF,Cereals and cereal products
+418,11-947,"Bread, seeded",AF,Cereals and cereal products
+419,11-1145,"Bread, white, average",AF,Cereals and cereal products
+420,11-977,"Bread, white, farmhouse or split tin",AF,Cereals and cereal products
+421,11-978,"Bread, white, French stick",AF,Cereals and cereal products
+422,11-980,"Bread, white, sliced",AF,Cereals and cereal products
+423,11-1001,"Bread, white, toasted",AF,Cereals and cereal products
+424,11-981,"Bread, wholemeal, average",AF,Cereals and cereal products
+425,11-983,"Bread rolls, brown, soft",AG,Cereals and cereal products
+426,11-984,"Bread rolls, malted wheat",AG,Cereals and cereal products
+427,11-985,"Bread rolls, white, crusty",AG,Cereals and cereal products
+428,11-986,"Bread rolls, wholemeal",AG,Cereals and cereal products
+429,11-763,"Breakfast cereal, bran flakes, fortified",AI,Cereals and cereal products
+430,11-742,"Breakfast cereal, cornflakes, fortified",AI,Cereals and cereal products
+431,11-779,"Breakfast cereal, fruit and fibre type, fortified",AI,Cereals and cereal products
+432,11-755,"Breakfast cereal, honey loops and hoops, including Honey and Nut Cheerios, fortified",AI,Cereals and cereal products
+433,11-792,"Breakfast cereal, instant hot oat, plain, raw, fortified",AI,Cereals and cereal products
+434,11-753,"Breakfast cereal, rice, chocolate flavoured, fortified",AI,Cereals and cereal products
+435,11-778,"Breakfast cereal, Shredded Wheat, honey nut, Nestle",AI,Cereals and cereal products
+436,11-773,"Breakfast cereal, wheat biscuits, Weetabix type, fortified",AI,Cereals and cereal products
+437,11-821,"Biscuits, cheese flavoured",AM,Cereals and cereal products
+438,11-815,"Biscuits, cookies, chocolate chip, standard",AM,Cereals and cereal products
+439,11-799,"Biscuits, digestive, plain",AM,Cereals and cereal products
+440,11-809,"Biscuits, fully coated with chocolate",AM,Cereals and cereal products
+441,11-801,"Biscuits, plain, reduced fat",AM,Cereals and cereal products
+442,11-826,"Breadsticks, plain",AM,Cereals and cereal products
+443,11-1029,"Banana bread, homemade",AN,Cereals and cereal products
+444,11-1127,"Brownies, chocolate, homemade",AN,Cereals and cereal products
+445,11-970,"Bagels, plain",AP,Cereals and cereal products
+446,11-1038,"Bread pudding, homemade",AS,Cereals and cereal products
+447,12-500,"Baking fat and margarine (75-90% fat), hard block",BTM,Milk and milk products
+448,13-532,"Baked beans, canned in tomato sauce",DB,Vegetables
+449,13-041,"Beans, aduki, whole, dried, raw",DB,Vegetables
+450,13-062,"Beans, blackeye, whole, dried, raw",DB,Vegetables
+451,13-070,"Beans, butter, dried, raw",DB,Vegetables
+452,13-074,"Beans, chick peas, Kabuli, whole, dried, raw",DB,Vegetables
+453,13-080,"Beans, cluster, raw",DB,Vegetables
+454,13-667,"Beans, edamame, frozen, boiled in unsalted water",DB,Vegetables
+455,13-514,"Beans, green, raw",DB,Vegetables
+456,13-086,"Beans, haricot, whole, dried, raw",DB,Vegetables
+457,13-098,"Beans, mung, dahl, dried, raw",DB,Vegetables
+458,13-102,"Beans, pigeon peas, whole, dried, raw",DB,Vegetables
+459,13-106,"Beans, pinto, dried, raw",DB,Vegetables
+460,13-109,"Beans, red kidney, dried, raw",DB,Vegetables
+461,13-112,"Beans, runner, raw",DB,Vegetables
+462,13-115,"Beans, soya, dried, raw",DB,Vegetables
+463,13-117,"Beans, sword, raw",DB,Vegetables
+464,13-426,"Beansprouts, mung, raw",DB,Vegetables
+465,13-056,"Black gram, urad gram, whole, dried, raw",DB,Vegetables
+466,13-164,"Beetroot, raw",DG,Vegetables
+467,13-167,"Breadfruit, raw",DG,Vegetables
+468,13-502,"Broccoli, green, raw",DG,Vegetables
+469,13-174,"Broccoli, purple sprouting, raw",DG,Vegetables
+470,13-177,"Brussels sprouts, raw",DG,Vegetables
+471,15-664,"Bean loaf, mixed beans, homemade",DR,Vegetables
+472,15-667,"Beanburger, red kidney bean, fried in rapeseed oil",DR,Vegetables
+473,15-669,"Bhaji, aubergine and potato, homemade",DR,Vegetables
+474,15-672,"Bhaji, cabbage and pea, with butter ghee, homemade",DR,Vegetables
+475,15-676,"Bhaji, carrot, potato and pea, with butter, homemade",DR,Vegetables
+476,15-703,"Bubble and squeak, fried in sunflower oil, homemade",DR,Vegetables
+477,14-364,"Blackberry and apple, stewed without sugar",F,Fruit
+478,14-043,"Babaco, flesh only",FA,Fruit
+479,14-318,"Bananas, flesh only",FA,Fruit
+480,14-388,"Blackberries, raw",FA,Fruit
+481,14-053,"Blackcurrants, raw",FA,Fruit
+482,14-325,Blueberries,FA,Fruit
+483,14-895,"Breadnut seeds, dried",G,Nuts and Seeds
+484,14-806,Betel nuts,GA,Nuts and Seeds
+485,13-805,"Basil, dried, ground",H,Herbs and Spices
+486,13-804,"Basil, fresh",H,Herbs and Spices
+487,16-385,"Bass, sea, flesh only, raw",JA,Fish and Fish Products
+488,16-003,"Bele, raw",JA,Fish and Fish Products
+489,16-004,"Boal, raw",JA,Fish and Fish Products
+490,16-005,Bombay duck,JA,Fish and Fish Products
+491,16-006,"Bream, Sea, raw",JA,Fish and Fish Products
+492,16-169,"Bacha, raw",JC,Fish and Fish Products
+493,19-646,"Bacon rashers, back, fat trimmed, raw",MAA,Meat and meat products
+494,18-006,"Beef, braising steak, raw, lean",MAC,Meat and meat products
+495,18-003,"Beef, fat, average, raw",MAC,Meat and meat products
+496,18-016,"Beef, fillet steak, raw, lean",MAC,Meat and meat products
+497,18-024,"Beef, flank, raw, lean",MAC,Meat and meat products
+498,18-028,"Beef, fore-rib/rib-roast, raw, lean",MAC,Meat and meat products
+499,18-468,"Beef, lean, average, raw",MAC,Meat and meat products
+500,18-469,"Beef, mince, raw",MAC,Meat and meat products
+501,18-043,"Beef, rump steak, raw, lean",MAC,Meat and meat products
+502,18-054,"Beef, silverside, raw, lean",MAC,Meat and meat products
+503,18-064,"Beef, sirloin steak, raw, lean",MAC,Meat and meat products
+504,18-076,"Beef, stewing steak, raw, lean",MAC,Meat and meat products
+505,18-084,"Beef, topside, raw, lean",MAC,Meat and meat products
+506,18-392,"Brain, lamb, boiled",MG,Meat and meat products
+507,19-113,"Black pudding, raw",MI,Meat and meat products
+508,17-685,"Butter, salted",OA,Fats and Oils
+509,17-661,"Butter, unsalted",OA,Fats and Oils
+510,17-001,"Butteroil, unsalted",OB,Fats and Oils
+511,17-823,"Build up, powder, shake, assorted flavours",PAA,Beverages
+512,17-743,"Barley water, undiluted",PCC,Beverages
+513,17-737,"Blackcurrant juice drink/squash, undiluted",PCC,Beverages
+514,17-208,"Beer, bitter, best, premium",QA,Alcoholic beverages
+515,17-766,Bounty bar and own brand equivalents,SEA,"Sugars, preserves and snacks"
+516,17-764,Bombay mix,SN,"Sugars, preserves and snacks"
+517,17-770,"Bouillabaisse, homemade",WAA,"Soups, sauces and miscellaneous foods"
+518,17-769,"Barbecue sauce, homemade",WC,"Soups, sauces and miscellaneous foods"
+519,17-771,"Bread sauce, made with skimmed milk, homemade",WCD,"Soups, sauces and miscellaneous foods"
+520,17-705,Barbecue sauce,WCN,"Soups, sauces and miscellaneous foods"
+521,17-678,"Brown sauce, reduced salt/sugar",WCN,"Soups, sauces and miscellaneous foods"
+522,17-355,Baking powder,WY,"Soups, sauces and miscellaneous foods"
+523,17-514,Beef extract,WY,"Soups, sauces and miscellaneous foods"
+524,17-356,Bicarbonate of soda,WY,"Soups, sauces and miscellaneous foods"
+525,11-011,"Cornmeal, sifted",AA,Cereals and cereal products
+526,11-1138,Custard powder,AA,Cereals and cereal products
+527,11-987,"Chapatis, made with fat, retail",AF,Cereals and cereal products
+528,11-988,Croissants,AG,Cereals and cereal products
+529,11-916,Cake rusks,AM,Cereals and cereal products
+530,11-819,"Cereal bars, with fruit and/or nuts, no chocolate, unfortified",AM,Cereals and cereal products
+531,11-824,"Cheese straws/twists, retail",AM,Cereals and cereal products
+532,11-820,Cream crackers,AM,Cereals and cereal products
+533,11-822,"Crispbread, rye",AM,Cereals and cereal products
+534,11-832,"Cake, sponge, soft iced, retail",AN,Cereals and cereal products
+535,11-840,Cakes from 'healthy eating' ranges,AN,Cereals and cereal products
+536,11-839,"Cakes, fancy iced, individual, retail",AN,Cereals and cereal products
+537,11-989,"Crumpets, toasted",AP,Cereals and cereal products
+538,11-1020,"Crumble, fruit, retail",AS,Cereals and cereal products
+539,11-997,"Cheese and onion rolls, pastry, retail",AT,Cereals and cereal products
+540,11-901,"Couscous, plain, raw",AT,Cereals and cereal products
+541,12-545,Cocoa powder,BH,Milk and milk products
+542,12-592,"Cream, fresh, clotted",BJC,Milk and milk products
+543,12-332,"Cream, fresh, single",BJC,Milk and milk products
+544,12-333,"Cream, fresh, whipping",BJC,Milk and milk products
+545,12-339,"Cream, dairy, UHT, half fat, canned spray",BJP,Milk and milk products
+546,12-537,"Cheese spread, plain, reduced fat",BL,Milk and milk products
+547,12-346,"Cheese, Cheddar, English",BL,Milk and milk products
+548,12-550,"Cheese, cottage, plain, reduced fat",BL,Milk and milk products
+549,12-354,"Cheese, Danish blue",BL,Milk and milk products
+550,12-357,"Cheese, goats milk, full fat, soft, white rind",BL,Milk and milk products
+551,12-360,"Cheese, Mozzarella, fresh",BL,Milk and milk products
+552,12-549,"Cheese, processed, slices, reduced fat",BL,Milk and milk products
+553,12-486,"Cheese, White Cheshire",BL,Milk and milk products
+554,12-507,Cornetto type ice cream cone,BP,Milk and milk products
+555,12-542,"Cheesecake, fruit, individual",BR,Milk and milk products
+556,12-519,"Custard, made up with semi-skimmed milk",BR,Milk and milk products
+557,13-582,"Cabbage, average, raw",DG,Vegetables
+558,13-187,"Cabbage, Chinese, raw",DG,Vegetables
+559,13-510,"Cabbage, green, raw",DG,Vegetables
+560,13-190,"Cabbage, red, raw",DG,Vegetables
+561,13-509,"Cabbage, white, raw",DG,Vegetables
+562,13-496,"Carrots, old, raw",DG,Vegetables
+563,13-448,"Carrots, young, raw",DG,Vegetables
+564,13-512,"Cauliflower, raw",DG,Vegetables
+565,13-219,"Celeriac, raw",DG,Vegetables
+566,13-636,"Celery, raw",DG,Vegetables
+567,13-223,"Chard, Swiss, raw",DG,Vegetables
+568,13-225,"Chicory, pale variety, raw",DG,Vegetables
+569,13-627,"Courgette, raw",DG,Vegetables
+570,13-234,"Curly kale, raw",DG,Vegetables
+571,13-668,"Courgette, dried",DI,Vegetables
+572,15-638,"Casserole, vegetable, homemade",DR,Vegetables
+573,15-637,"Cauliflower cheese, retail",DR,Vegetables
+574,15-719,"Chilli, bean and lentil, homemade",DR,Vegetables
+575,15-635,"Coleslaw, not low calorie, retail",DR,Vegetables
+576,15-748,"Curry, chick pea, UK type, homemade",DR,Vegetables
+577,15-752,"Curry, egg, in sweet sauce, UK type, homemade",DR,Vegetables
+578,15-146,"Curry, red kidney bean, Punjabi, homemade",DR,Vegetables
+579,14-382,"Cherries, flesh and skin, raw",FA,Fruit
+580,14-326,"Citrus fruit, soft/easy peelers, flesh only",FA,Fruit
+581,14-073,Cranberries,FA,Fruit
+582,14-074,Currants,FA,Fruit
+583,14-813,"Chestnuts, kernel only, raw",GA,Nuts and Seeds
+584,14-889,"Coconut milk, retail",GA,Nuts and Seeds
+585,13-808,Caraway seeds,H,Herbs and Spices
+586,13-809,"Cardamom, ground",H,Herbs and Spices
+587,13-810,Celery seeds,H,Herbs and Spices
+588,13-811,"Chervil, dried",H,Herbs and Spices
+589,13-873,Chilli powder,H,Herbs and Spices
+590,13-813,Chinese 5 spice,H,Herbs and Spices
+591,13-887,"Chives, fresh",H,Herbs and Spices
+592,13-874,"Cinnamon, ground",H,Herbs and Spices
+593,13-816,"Cloves, dried",H,Herbs and Spices
+594,13-818,"Coriander leaves, dried",H,Herbs and Spices
+595,13-889,Cumin seeds,H,Herbs and Spices
+596,13-876,Curry powder,H,Herbs and Spices
+597,16-428,"Cod, in batter, fried in sunflower oil, takeaway",J,Fish and Fish Products
+598,16-172,"Carp, raw",JA,Fish and Fish Products
+599,16-007,"Catfish, raw",JA,Fish and Fish Products
+600,16-011,"Chital, raw",JA,Fish and Fish Products
+601,16-373,"Cod, flesh only, baked",JA,Fish and Fish Products
+602,16-429,"Coley, flesh only, baked",JA,Fish and Fish Products
+603,16-452,"Crab, canned in brine, drained",JK,Fish and Fish Products
+604,16-441,"Crab, purchased cooked",JK,Fish and Fish Products
+605,16-235,"Crayfish, raw",JK,Fish and Fish Products
+606,16-404,"Calamari, coated in batter, baked",JM,Fish and Fish Products
+607,16-252,"Cockles, boiled",JM,Fish and Fish Products
+608,16-254,"Cuttlefish, raw",JM,Fish and Fish Products
+609,16-272,"Caviare, bottled in brine, drained",JR,Fish and Fish Products
+610,18-504,"Chicken breast/steak, coated, baked",MCA,Meat and meat products
+611,18-501,"Chicken pieces, coated, takeaway",MCA,Meat and meat products
+612,18-293,"Chicken, leg quarter, raw, meat and skin",MCA,Meat and meat products
+613,18-488,"Chicken, meat, average, raw",MCA,Meat and meat products
+614,18-297,"Chicken, whole, raw, meat and skin",MCA,Meat and meat products
+615,18-295,"Chicken, wing quarter, raw, meat and skin",MCA,Meat and meat products
+616,18-503,"Chicken/turkey pieces, coated, baked",MCA,Meat and meat products
+617,19-538,Chicken slices,MI,Meat and meat products
+618,19-516,Chorizo,MI,Meat and meat products
+619,19-128,"Corned beef, canned",MI,Meat and meat products
+620,19-296,"Curry, chicken tikka masala, retail, reheated",MIG,Meat and meat products
+621,19-484,"Casserole, sausage, homemade",MR,Meat and meat products
+622,19-321,"Chow mein, chicken, takeaway",MR,Meat and meat products
+623,19-466,"Cornish pasty, retail",MR,Meat and meat products
+624,19-477,"Coronation chicken, homemade",MR,Meat and meat products
+625,17-002,Cocoa butter,OE,Fats and Oils
+626,17-632,"Coffee, cappuccino, latte",P,Beverages
+627,17-175,Cola,PCA,Beverages
+628,17-744,Cranberry fruit juice drink,PE,Beverages
+629,17-224,"Cider, sweet",QC,Alcoholic beverages
+630,17-659,Chocolate spread,SC,"Sugars, preserves and snacks"
+631,17-658,Chocolate covered bar with caramel and cereal,SEA,"Sugars, preserves and snacks"
+632,17-763,Creme egg,SEA,"Sugars, preserves and snacks"
+633,17-645,Corn snacks,SN,"Sugars, preserves and snacks"
+634,17-782,"Chevda/chevra/chewra, homemade",SNC,"Sugars, preserves and snacks"
+635,17-697,"Chicken soup, cream of, canned, condensed, as served",WAC,"Soups, sauces and miscellaneous foods"
+636,17-719,Chilli sauce,WC,"Soups, sauces and miscellaneous foods"
+637,17-773,"Cheese sauce, made with skimmed milk, homemade",WCD,"Soups, sauces and miscellaneous foods"
+638,17-345,"Chutney, tomato",WCG,"Soups, sauces and miscellaneous foods"
+639,17-358,Cream of tartar,WY,"Soups, sauces and miscellaneous foods"
+640,11-850,"Doughnuts, ring, iced",AP,Cereals and cereal products
+641,11-849,"Doughnuts, with jam",AP,Cereals and cereal products
+642,11-962,"Dumplings, homemade",AT,Cereals and cereal products
+643,12-398,"Desserts, dairy, chocolate",BR,Milk and milk products
+644,14-077,"Damsons, flesh and skin, raw",FA,Fruit
+645,14-083,"Dates, raw, flesh and skin",FA,Fruit
+646,14-087,Dried mixed fruit,FA,Fruit
+647,13-824,"Dill, fresh",H,Herbs and Spices
+648,18-489,"Duck, meat only, raw",MCC,Meat and meat products
+649,19-539,"Doner kebabs, meat only",MR,Meat and meat products
+650,17-487,"Dripping, beef",OF,Fats and Oils
+651,17-498,"Drinking chocolate, powder",PAA,Beverages
+652,17-715,"Dressing, blue cheese",WCG,"Soups, sauces and miscellaneous foods"
+653,17-701,"Dressing, French",WCG,"Soups, sauces and miscellaneous foods"
+654,17-717,"Dressing, thousand island",WCG,"Soups, sauces and miscellaneous foods"
+655,12-937,"Eggs, chicken, whole, raw",CA,Eggs
+656,14-089,"Elderberries, whole fruit",FA,Fruit
+657,16-173,"Eel, yellow, raw",JC,Fish and fish products
+658,19-586,"Enchiladas, beef, homemade",MR,Meat and meat products
+659,17-672,"Energy drink, carbonated",PCA,Beverages
+660,11-899,"Flour, gari (cassava flour)",AA,
+661,11-886,"Flour, wheat, white, plain, soft",AA,
+662,11-805,Fig Rolls,AM,
+663,11-814,"Flapjacks, retail",AM,
+664,12-528,"Fromage frais, virtually fat free, natural",BN,
+665,12-232,"Fruit fool, homemade",BR,
+666,13-241,"Fennel, Florence, raw",DG,
+667,13-243,"Fenugreek leaves, raw",DG,
+668,15-804,"Flan, vegetable, homemade",DR,
+669,15-807,"Fu-fu, yam, homemade",DR,
+670,14-091,"Figs, whole green fruit, raw",FA,
+671,14-336,"Fruit cocktail, canned in juice, whole contents",FA,
+672,14-333,"Fruit salad, homemade",FA,
+673,16-405,"Fish fingers, cod, grilled/baked",JR,
+674,16-458,"Fishcakes, cod, homemade",JR,
+675,19-495,Frankfurter,MI,
+676,19-131,"Faggots in gravy, retail, reheated",MR,
+677,17-735,"Fruit juice drink, carbonated, ready to drink",PCA,
+678,17-738,"Fruit juice drink/squash, undiluted",PCC,
+679,17-107,Fruit gums/jellies,SEC,
+680,17-824,Fruit pastilles,SEC,
+681,17-683,"Fudge, homemade",SEC,
+682,11-1079,"Gingerbread, homemade",AN,Cereals and cereal products
+683,12-502,Ghee made from vegetable oil,BTM,Milk and milk products
+684,13-244,"Garlic, raw",DG,Vegetables
+685,13-245,"Gherkins, raw",DG,Vegetables
+686,13-608,"Green beans, dried",DI,Vegetables
+687,14-100,"Gooseberries, cooking, raw",FA,Fruit
+688,14-384,"Grapefruit, flesh only, raw",FA,Fruit
+689,14-322,"Grapes, green",FA,Fruit
+690,14-118,"Guava, flesh only, raw",FA,Fruit
+691,13-829,Garam masala,H,Herbs and spices
+692,13-830,Garlic powder,H,Herbs and spices
+693,13-890,"Ginger, fresh",H,Herbs and spices
+694,13-832,"Ginger, ground",H,Herbs and spices
+695,17-640,"Ghee, butter",OF,Meat and meat products
+696,17-745,"Grape juice, unsweetened",PE,Beverages
+697,17-049,"Glucose liquid, BP",SC,"Sugars, preserves and snacks"
+698,17-797,"Guacamole, homemade",WC,"Soups, sauces and miscellaneous foods"
+699,17-360,Gelatine,WY,"Soups, sauces and miscellaneous foods"
+700,17-724,Gravy instant granules,WY,"Soups, sauces and miscellaneous foods"
+701,11-1084,"Hot cross buns, homemade",AP,Cereals and cereal products
+702,13-556,Houmous,DB,Vegetables
+703,13-258,"Horseradish, raw",DG,Vegetables
+704,14-874,"Hazelnuts, kernel only",GA,Nuts and seeds
+705,16-375,"Haddock, flesh only, raw",JA,Fish and fish products
+706,16-070,"Hake, flesh only, raw",JA,Fish and fish products
+707,19-496,Ham,MAA,Meat and meat products
+708,19-132,"Haggis, boiled",MI,Meat and meat products
+709,19-522,"Hot pot, lamb/beef with potatoes, retail, reheated",MR,Meat and meat products
+710,17-731,"Horlicks, powder",PAA,Beverages
+711,17-050,Honey,SC,"Sugars, preserves and snacks"
+712,17-800,"Hollandaise sauce, homemade",WC,"Soups, sauces and miscellaneous foods"
+713,12-508,"Ice cream, dairy, vanilla, soft scoop",BP,Milk and milk products
+714,12-509,"Ice cream, non dairy, vanilla, soft scoop",BP,Milk and milk products
+715,17-783,"Icing, butter, homemade",S,"Sugars, preserves and snacks"
+716,17-689,"Ice cream sauce, topping, strawberry and chocolate flavours",SC,"Sugars, preserves and snacks"
+717,11-739,Jaffa cakes,AM,Cereals and cereal products
+718,11-846,"Jam tarts, retail",AS,Cereals and cereal products
+719,12-516,"Jelly, sugar free, made with water",BR,Milk and milk products
+720,17-075,"Jam, reduced sugar",SC,"Sugars, preserves and snacks"
+721,12-605,"Knickerbocker glory, homemade",BP,Milk and milk products
+722,12-606,"Kulfi, homemade",BP,Milk and milk products
+723,13-261,"Kohl rabi, raw",DG,Vegetables
+724,15-809,Khadhi,DR,Vegetables
+725,14-371,"Kiwi fruit, flesh only, raw",FA,Fruit
+726,14-125,"Kumquats, whole fruit, raw",FA,Fruit
+727,16-081,"Kalabasu, raw",JA,Fish and fish products
+728,16-186,"Katla, raw",JA,Fish and fish products
+729,16-397,"Kippers, flesh only, grilled",JC,Fish and fish products
+730,18-402,"Kidney, lamb, raw",MG,Meat and meat products
+731,12-373,"Lassi, sweetened",BN,Milk and milk products
+732,12-390,"Lollies, containing ice-cream",BP,Milk and milk products
+733,12-389,"Lollies, with real fruit juice",BP,Milk and milk products
+734,13-089,"Lentils, green and brown, whole, dried, raw",DB,Vegetables
+735,13-624,"Leeks, raw",DG,Vegetables
+736,13-520,"Lettuce, average, raw",DG,Vegetables
+737,13-271,"Lotus tubers, raw",DG,Vegetables
+738,15-651,"Lasagne, vegetable, retail",DR,Vegetables
+739,14-128,"Lemons, whole, without pips",FA,Fruit
+740,14-131,"Limes, flesh only",FA,Fruit
+741,14-133,"Loganberries, raw",FA,Fruit
+742,14-278,"Lemon juice, fresh, weighed as whole fruit",FC,Fruit
+743,16-332,"Lobster, boiled",JK,Fish and fish products
+744,18-478,"Lamb, average, raw, lean and fat",MAE,Meat and meat products
+745,18-111,"Lamb, breast, raw, lean",MAE,Meat and meat products
+746,18-115,"Lamb, chump chops, raw, lean and fat",MAE,Meat and meat products
+747,18-481,"Lamb, mince, raw",MAE,Meat and meat products
+748,18-413,"Liver, lamb, raw",MG,Meat and meat products
+749,19-136,"Luncheon meat, Chinese, steamed",MI,Meat and meat products
+750,17-010,Lard,OF,Fats and oils
+751,17-179,Lemonade,PCA,Beverages
+752,17-761,Lucozade,PCA,Beverages
+753,17-751,"Lager, premium",QA,Beverages
+754,17-244,"Liqueurs, high strength",QI,Beverages
+755,17-777,Liquorice allsorts,SEC,"Sugars, preserves and snacks"
+756,11-954,"Macaroni cheese, homemade",AD,Cereals and cereal products
+757,11-780,"Muesli, Swiss style, unfortified",AI,Cereals and cereal products
+758,11-737,"Muffins, American, chocolate, retail",AN,Cereals and cereal products
+759,11-848,"Mince pies, retail",AS,Cereals and cereal products
+760,12-512,"Milk, 1% fat, pasteurised",BA,Milk and milk products
+761,12-322,"Milk, Channel islands, whole, summer",BAB,Milk and milk products
+762,12-307,"Milk, skimmed, pasteurised, average",BAE,Milk and milk products
+763,12-313,"Milk, semi-skimmed, pasteurised, average",BAH,Milk and milk products
+764,12-596,"Milk, whole, pasteurised, average",BAK,Milk and milk products
+765,12-520,"Milk, condensed, whole, sweetened",BAR,Milk and milk products
+766,12-522,"Milk, evaporated, whole",BAR,Milk and milk products
+767,12-524,"Milk, soya, non-dairy alternative to milk, unsweetened, fortified",BC,Milk and milk products
+768,12-517,"Meringue, homemade",BR,Milk and milk products
+769,12-401,"Mousse, chocolate, low fat",BR,Milk and milk products
+770,12-951,"Macaroon, homemade",CDH,Eggs
+771,13-273,"Mango, unripe, green flesh, raw",DG,Vegetables
+772,13-505,"Mushrooms, white, raw",DG,Vegetables
+773,13-298,"Mustard leaves, raw",DG,Vegetables
+774,15-652,"Moussaka, vegetable, retail",DR,Vegetables
+775,14-378,"Mangoes, ripe, flesh only, raw",FA,Fruit
+776,14-339,"Melon, Canteloupe-type, flesh only",FA,Fruit
+777,14-168,"Mulberries, whole fruit, raw",FA,Fruit
+778,14-891,"Macadamia nuts, salted",G,Nuts and seeds
+779,14-875,"Marzipan, white and yellow, retail",GA,Nuts and seeds
+780,13-835,"Marjoram, dried",H,Herbs and Spices
+781,13-836,"Mint, fresh",H,Herbs and Spices
+782,13-886,Mixed curry spices,H,Herbs and Spices
+783,13-884,"Mixed herbs, dried",H,Herbs and Spices
+784,13-839,Mustard seeds,H,Herbs and Spices
+785,16-393,"Mackerel, flesh only, raw",JC,Fish and fish products
+786,16-497,"Mussels, raw",JM,Fish and fish products
+787,19-605,"Meat loaf, homemade",MR,Meat and meat products
+788,19-326,"Meat samosas, takeaway",MR,Meat and meat products
+789,19-613,"Meatballs, pork and beef, in tomato sauce, homemade",MR,Meat and meat products
+790,17-733,"Milk shake, powder",PAA,Beverages
+791,17-078,Marmalade,SC,"Sugars, preserves and snacks"
+792,17-651,Maltesers and similar products,SEA,"Sugars, preserves and snacks"
+793,17-668,Mars bar and own brand equivalents,SEA,"Sugars, preserves and snacks"
+794,17-669,Milky Way and own brand equivalents,SEA,"Sugars, preserves and snacks"
+795,17-114,Marshmallows,SEC,"Sugars, preserves and snacks"
+796,17-654,"Mayonnaise, standard, retail",WCG,"Soups, sauces and miscellaneous foods"
+797,17-364,"Mustard, smooth",WY,"Soups, sauces and miscellaneous foods"
+798,11-719,"Noodles, egg, dried, raw",AD,Cereals and cereal products
+799,14-380,"Nectarines, flesh and skin, raw",FA,Fruit
+800,14-880,"Nuts, mixed",GA,Nuts and seeds
+801,13-877,"Nutmeg, ground",H,Herbs and Spices
+802,17-814,"Nougat, homemade",SEC,"Sugars, preserves and snacks"
+803,11-823,"Oatcakes, plain, retail",AM,Cereals and cereal products
+804,13-300,"Okra, raw",DG,Vegetables
+805,13-499,"Onions, raw",DG,Vegetables
+806,14-340,"Olives, green, in brine, drained, flesh and skin",FA,Fruit
+807,14-327,"Oranges, flesh only",FA,Fruit
+808,14-369,"Orange juice, freshly squeezed",FC,Fruit
+809,13-878,"Oregano, dried, ground",H,Herbs and Spices
+810,16-259,"Octopus, raw",JM,Fish and fish products
+811,16-260,"Oysters, raw",JM,Fish and fish products
+812,18-419,"Oxtail, raw",MG,Meat and meat products
+813,17-031,"Oil, coconut",OC,Fats and oils
+814,17-039,"Oil, palm",OC,Fats and oils
+815,17-044,"Oil, soya",OC,Fats and oils
+816,17-045,"Oil, sunflower",OC,Fats and oils
+817,17-686,"Oil, vegetable, average",OC,Fats and oils
+818,17-734,"Ovaltine, powder",PAA,Beverages
+819,11-936,"Pizza, cheese and tomato, retail",A,Cereals and cereal products
+820,11-788,"Porridge oats, unfortified",A,Cereals and cereal products
+821,11-450,"Pasta, plain, fresh, boiled",AD,Cereals and cereal products
+822,11-735,"Pasta, spaghetti, canned, in tomato sauce",AD,Cereals and cereal products
+823,11-998,"Papadums, takeaway",AF,Cereals and cereal products
+824,11-853,"Pastry, shortcrust, retail, cooked",AO,Cereals and cereal products
+825,11-844,"Pastries, chocolate eclairs, cream filled, retail",AP,Cereals and cereal products
+826,11-1141,"Pancakes, sweet, made with skimmed milk, homemade",AS,Cereals and cereal products
+827,11-921,"Pie, apple, pastry, double crust, retail",AS,Cereals and cereal products
+828,11-847,"Pie, fruit, individual, retail",AS,Cereals and cereal products
+829,11-1119,"Pudding, sponge, homemade",AS,Cereals and cereal products
+830,11-1023,"Prawn crackers, takeaway",AT,Cereals and cereal products
+831,12-553,"Pudding, rice, canned, low fat",BR,Milk and milk products
+832,13-534,"Potatoes, old, roasted in rapeseed oil",DA,Vegetables
+833,13-487,"Potato chips, oven ready, no batter, baked",DAP,Vegetables
+834,13-483,"Potato wedges, retail, cooked",DAR,Vegetables
+835,13-564,"Peas, canned in water, re-heated, drained",DF,Vegetables
+836,13-527,"Peas, frozen, raw",DF,Vegetables
+837,13-516,"Pak choi, steamed",DG,Vegetables
+838,13-311,"Papaya, unripe, green flesh, raw",DG,Vegetables
+839,13-312,"Parsnip, raw",DG,Vegetables
+840,13-524,"Pepper, capsicum, red, raw",DG,Vegetables
+841,13-323,"Plantain, green flesh, raw",DG,Vegetables
+842,13-326,"Pumpkin, flesh only, raw",DG,Vegetables
+843,14-365,"Pears, average, raw, flesh only",F,Fruit
+844,14-188,"Peaches, canned in juice, whole contents",FA,Fruit
+845,14-196,"Pears, dried",FA,Fruit
+846,14-376,"Pineapple, flesh only, raw",FA,Fruit
+847,14-222,"Plums, Victoria, stewed without sugar",FA,Fruit
+848,14-226,"Pomegranate, flesh and pips",FA,Fruit
+849,14-285,Passion fruit juice,FC,Fruit
+850,14-341,Pomegranate juice drink,FC,Fruit
+851,14-289,Prune juice,FC,Fruit
+852,14-892,"Peanut butter, smooth",GA,Nuts and seeds
+853,14-882,Peanuts and raisins,GA,Nuts and seeds
+854,14-840,"Pistachio nuts, kernel only, roasted and salted",GA,Nuts and seeds
+855,13-879,Paprika,H,Herbs and Spices
+856,13-844,"Parsley, fresh",H,Herbs and Spices
+857,13-880,"Pepper, black",H,Herbs and Spices
+858,16-378,"Pollock, Alaskan, flesh only, raw",JA,Fish and fish products
+859,16-387,"Prawns, king, raw",JK,Fish and fish products
+860,18-609,"Pork, spare ribs, raw, lean and fat",MAG,Meat and meat products
+861,17-234,Port,QF,Alcoholic beverages
+862,17-117,Peppermints,SEC,"Sugars, preserves and snacks"
+863,17-692,"Popcorn, salted, retail",SN,"Sugars, preserves and snacks"
+864,17-132,Pork scratchings,SN,"Sugars, preserves and snacks"
+865,17-693,"Potato crisps, low fat",SN,"Sugars, preserves and snacks"
+866,17-623,"Pesto, red",WC,"Soups, sauces and miscellaneous foods"
+867,17-718,"Pickle, sweet",WCG,"Soups, sauces and miscellaneous foods"
+868,17-702,Piccalilli,WCN,"Soups, sauces and miscellaneous foods"
+869,12-949,"Quiche, vegetable, retail",CD,Eggs
+870,15-262,Quorn korma,DR,Vegetables
+871,14-843,"Quinoa, raw",GA,Nuts and seeds
+872,11-866,"Rice, brown, basmati, raw",AC,Cereals and cereal products
+873,11-870,"Rice, brown, easy cook, raw",AC,Cereals and cereal products
+874,11-874,"Rice, Thai fragrant, raw",AC,Cereals and cereal products
+875,11-863,"Rice, white, long grain, easy cook, raw",AC,Cereals and cereal products
+876,11-940,Rusks,AK,Cereals and cereal products
+877,11-999,"Risotto, plain, homemade",AT,Cereals and cereal products
+878,12-595,"Raita, yogurt and gram flour, homemade",BV,Milk and milk products
+879,13-332,"Radish leaves, raw",DG,Vegetables
+880,13-522,"Rocket, raw",DG,Vegetables
+881,15-869,"Roulade, spinach",DR,Vegetables
+882,14-393,"Raisins, dried",FA,Fruit
+883,14-375,"Raspberries, raw",FA,Fruit
+884,14-249,"Redcurrants, raw",FA,Fruit
+885,14-252,"Rhubarb, stems only, raw",FA,Fruit
+886,13-892,"Rosemary, fresh",H,Herbs and spices
+887,18-387,"Rabbit, raw, meat only",MEC,Meat and meat products
+888,17-354,"Relish, tomato based",WCN,"Soups, sauces and miscellaneous foods"
+889,11-903,"Semolina, raw",AA,Cereals and cereal products
+890,11-955,"Sandwich, white bread, bacon, lettuce and tomato",AB,Cereals and cereal products
+891,11-802,Shortbread,AM,Cereals and cereal products
+892,11-544,"Scotch pancakes, retail",AP,Cereals and cereal products
+893,11-919,"Strudel, fruit filled, retail, frozen",AS,Cereals and cereal products
+894,17-371,"Stuffing mix, dried",AT,Cereals and cereal products
+895,13-521,"Spinach, baby, raw",DG,Vegetables
+896,13-359,"Swede, flesh only, raw",DG,Vegetables
+897,13-672,"Sweet potato, baked",DG,Vegetables
+898,13-529,"Sweetcorn kernels, canned in water, drained",DG,Vegetables
+899,13-622,"Sweetcorn, kernels, raw",DG,Vegetables
+900,15-872,"Salad, pasta, vegetables and mayonnaise",DR,Vegetables
+901,15-883,"Shepherd's pie, vegetable",DR,Vegetables
+902,15-617,"Sushi, vegetable",DR,Vegetables
+903,14-059,Star fruit,FA,Fruit
+904,14-324,"Strawberries, raw",FA,Fruit
+905,14-845,Sunflower seeds,GA,Nuts and seeds
+906,13-852,Saffron,H,Herbs and spices
+907,13-854,"Sage, dried, ground",H,Herbs and spices
+908,17-236,"Sherry, medium",QF,Alcoholic beverages
+909,17-247,"Spirits, 40% volume",QK,Alcoholic beverages
+910,17-060,"Sugar, brown",SC,"Sugars, preserves and snacks"
+911,17-062,"Sugar, icing",SC,"Sugars, preserves and snacks"
+912,17-063,"Sugar, white",SC,"Sugars, preserves and snacks"
+913,17-065,"Syrup, golden",SC,"Sugars, preserves and snacks"
+914,17-096,Smartie-type sweets,SEA,"Sugars, preserves and snacks"
+915,17-711,"Soup, minestrone, canned",WA,"Soups, sauces and miscellaneous foods"
+916,17-695,"Soup, chicken, cream of, canned",WAC,"Soups, sauces and miscellaneous foods"
+917,17-652,"Soup, cream of tomato, canned",WAC,"Soups, sauces and miscellaneous foods"
+918,17-698,"Soup, lentil, canned",WAC,"Soups, sauces and miscellaneous foods"
+919,17-700,"Soup, oxtail, canned",WAC,"Soups, sauces and miscellaneous foods"
+920,17-712,"Soup, vegetable, canned",WAC,"Soups, sauces and miscellaneous foods"
+921,17-653,"Soup, instant, dried, as purchased",WAE,"Soups, sauces and miscellaneous foods"
+922,17-628,"Sauce, Chinese cook in, sweet & sour",WC,"Soups, sauces and miscellaneous foods"
+923,17-629,"Sauce, Chinese stir fry",WC,"Soups, sauces and miscellaneous foods"
+924,17-703,Salad cream,WCG,"Soups, sauces and miscellaneous foods"
+925,17-336,"Sauce, sweet and sour, take-away",WCN,"Soups, sauces and miscellaneous foods"
+926,17-721,"Soy sauce, light and dark varieties",WCN,"Soups, sauces and miscellaneous foods"
+927,17-367,Salt,WY,"Soups, sauces and miscellaneous foods"
+928,17-515,"Stock cubes, beef",WY,"Soups, sauces and miscellaneous foods"
+929,17-680,Stock gel,WY,"Soups, sauces and miscellaneous foods"
+930,17-681,"Stock, chicken, ready made, retail",WY,"Soups, sauces and miscellaneous foods"
+931,11-925,"Tortilla, wheat, soft",AF,
+932,11-845,"Tarts, bakewell, iced, retail",AS,
+933,12-547,Tzatziki,BN,
+934,13-570,"Tofu, soya bean, steamed",DB,
+935,13-530,"Tomatoes, canned, whole contents",DG,
+936,13-517,"Tomatoes, standard, raw",DG,
+937,13-389,"Turnip, flesh only, raw",DG,
+938,14-847,Tahini paste,GA,
+939,14-848,Tigernuts,GA,
+940,14-849,Trail mix,GA,
+941,13-858,"Tarragon, dried, ground",H,
+942,13-883,"Thyme, dried, ground",H,
+943,13-861,"Turmeric, ground",H,
+944,16-154,"Tilapia, raw",JA,
+945,16-224,"Trout, brown, raw",JC,
+946,16-416,"Tuna, canned in brine, drained",JC,
+947,18-352,"Turkey, whole, raw",MCO,
+948,18-423,"Tongue, lamb, raw",MG,
+949,18-428,"Tripe, dressed, raw",MG,
+950,17-644,Tortilla chips fried in sunflower oil,SN,
+951,17-694,Twiglets,SN,
+952,17-722,Tartare sauce,WCN,
+953,17-709,Tomato ketchup,WCN,
+954,13-543,"Vegetables, mixed, frozen, boiled in unsalted water",DG,Vegetables
+955,15-656,"Vegeburger, retail, grilled",DR,Vegetables
+956,15-345,"Vegetable stir fry mix, fried in sunflower oil",DR,Vegetables
+957,18-390,"Venison, meat only, raw",MEE,Meat and meat products
+958,17-239,"Vermouth, dry",QG,Alcoholic beverages
+959,17-339,Vinegar,WY,"Soups, sauces and miscellaneous foods"
+960,11-800,"Wafers, plain ice cream wafers, not filled",AM,Cereals and cereal products
+961,13-673,"Watercress, raw",DG, Vegetables
+962,14-268,"Whitecurrants, raw",FA, Fruit
+963,14-879,"Walnuts, kernel only",GA,Nuts and seeds
+964,16-231,"Whitebait, in flour, fried",JC,Fish and fish products
+965,17-752,"Wine, red",QE,Alcoholic beverages
+966,17-756,"Wine, white, medium",QE,Alcoholic beverages
+967,17-778,"White sauce, savoury, made with skimmed milk, homemade",WCD,"Soups, sauces and miscellaneous foods"
+968,17-723,Worcestershire sauce,WCN,"Soups, sauces and miscellaneous foods"
+969,17-377,"Water, distilled",WY,"Soups, sauces and miscellaneous foods"
+970,11-1135,"Yorkshire pudding, made with skimmed milk, homemade",AT,Cereals and cereal products
+971,12-555,"Yogurt, Greek style, plain",BN,Milk and milk products
+972,12-375,"Yogurt, whole milk, fruit",BN,Milk and milk products
+973,13-398,"Yam, baked",DG, Vegetables
+974,17-517,Yeast extract,WY,"Soups, sauces and miscellaneous foods"
+975,11-954,"Macaroni cheese, homemade",AD,Cereals and cereal products
+976,11-780,"Muesli, Swiss style, unfortified",AI,Cereals and cereal products
+977,11-737,"Muffins, American, chocolate, retail",AN,Cereals and cereal products
+978,11-848,"Mince pies, retail",AS,Cereals and cereal products
+979,12-512,"Milk, 1% fat, pasteurised",BA,Milk and milk products
+980,12-322,"Milk, Channel islands, whole, summer",BAB,Milk and milk products
+981,12-307,"Milk, skimmed, pasteurised, average",BAE,Milk and milk products
+982,12-313,"Milk, semi-skimmed, pasteurised, average",BAH,Milk and milk products
+983,12-596,"Milk, whole, pasteurised, average",BAK,Milk and milk products
+984,12-520,"Milk, condensed, whole, sweetened",BAR,Milk and milk products
+985,12-522,"Milk, evaporated, whole",BAR,Milk and milk products
+986,12-524,"Milk, soya, non-dairy alternative to milk, unsweetened, fortified",BC,Milk and milk products
+987,12-517,"Meringue, homemade",BR,Milk and milk products
+988,12-401,"Mousse, chocolate, low fat",BR,Milk and milk products
+989,12-951,"Macaroon, homemade",CDH,Eggs
+990,13-273,"Mango, unripe, green flesh, raw",DG,Vegetables
+991,13-505,"Mushrooms, white, raw",DG,Vegetables
+992,13-298,"Mustard leaves, raw",DG,Vegetables
+993,15-652,"Moussaka, vegetable, retail",DR,Vegetables
+994,14-378,"Mangoes, ripe, flesh only, raw",FA,Fruit
+995,14-339,"Melon, Canteloupe-type, flesh only",FA,Fruit
+996,14-168,"Mulberries, whole fruit, raw",FA,Fruit
+997,14-891,"Macadamia nuts, salted",G,Nuts and seeds
+998,14-875,"Marzipan, white and yellow, retail",GA,Nuts and seeds
+999,13-835,"Marjoram, dried",H,Herbs and Spices
+1000,13-836,"Mint, fresh",H,Herbs and Spices
+1001,13-886,Mixed curry spices,H,Herbs and Spices
+1002,13-884,"Mixed herbs, dried",H,Herbs and Spices
+1003,13-839,Mustard seeds,H,Herbs and Spices
+1004,16-393,"Mackerel, flesh only, raw",JC,Fish and fish products
+1005,16-497,"Mussels, raw",JM,Fish and fish products
+1006,19-605,"Meat loaf, homemade",MR,Meat and meat products
+1007,19-326,"Meat samosas, takeaway",MR,Meat and meat products
+1008,19-613,"Meatballs, pork and beef, in tomato sauce, homemade",MR,Meat and meat products
+1009,17-733,"Milk shake, powder",PAA,Beverages
+1010,17-078,Marmalade,SC,"Sugars, preserves and snacks"
+1011,17-651,Maltesers and similar products,SEA,"Sugars, preserves and snacks"
+1012,17-668,Mars bar and own brand equivalents,SEA,"Sugars, preserves and snacks"
+1013,17-669,Milky Way and own brand equivalents,SEA,"Sugars, preserves and snacks"
+1014,17-114,Marshmallows,SEC,"Sugars, preserves and snacks"
+1015,17-654,"Mayonnaise, standard, retail",WCG,"Soups, sauces and miscellaneous foods"
+1016,17-364,"Mustard, smooth",WY,"Soups, sauces and miscellaneous foods"
+1017,11-719,"Noodles, egg, dried, raw",AD,Cereals and cereal products
+1018,14-380,"Nectarines, flesh and skin, raw",FA,Fruit
+1019,14-880,"Nuts, mixed",GA,Nuts and seeds
+1020,13-877,"Nutmeg, ground",H,Herbs and Spices
+1021,17-814,"Nougat, homemade",SEC,"Sugars, preserves and snacks"
+1022,11-823,"Oatcakes, plain, retail",AM,Cereals and cereal products
+1023,13-300,"Okra, raw",DG,Vegetables
+1024,13-499,"Onions, raw",DG,Vegetables
+1025,14-340,"Olives, green, in brine, drained, flesh and skin",FA,Fruit
+1026,14-327,"Oranges, flesh only",FA,Fruit
+1027,14-369,"Orange juice, freshly squeezed",FC,Fruit
+1028,13-878,"Oregano, dried, ground",H,Herbs and Spices
+1029,16-259,"Octopus, raw",JM,Fish and fish products
+1030,16-260,"Oysters, raw",JM,Fish and fish products
+1031,18-419,"Oxtail, raw",MG,Meat and meat products
+1032,17-031,"Oil, coconut",OC,Fats and oils
+1033,17-039,"Oil, palm",OC,Fats and oils
+1034,17-044,"Oil, soya",OC,Fats and oils
+1035,17-045,"Oil, sunflower",OC,Fats and oils
+1036,17-686,"Oil, vegetable, average",OC,Fats and oils
+1037,17-734,"Ovaltine, powder",PAA,Beverages
+1038,11-936,"Pizza, cheese and tomato, retail",A,Cereals and cereal products
+1039,11-788,"Porridge oats, unfortified",A,Cereals and cereal products
+1040,11-450,"Pasta, plain, fresh, boiled",AD,Cereals and cereal products
+1041,11-735,"Pasta, spaghetti, canned, in tomato sauce",AD,Cereals and cereal products
+1042,11-998,"Papadums, takeaway",AF,Cereals and cereal products
+1043,11-853,"Pastry, shortcrust, retail, cooked",AO,Cereals and cereal products
+1044,11-844,"Pastries, chocolate eclairs, cream filled, retail",AP,Cereals and cereal products
+1045,11-1141,"Pancakes, sweet, made with skimmed milk, homemade",AS,Cereals and cereal products
+1046,11-921,"Pie, apple, pastry, double crust, retail",AS,Cereals and cereal products
+1047,11-847,"Pie, fruit, individual, retail",AS,Cereals and cereal products
+1048,11-1119,"Pudding, sponge, homemade",AS,Cereals and cereal products
+1049,11-1023,"Prawn crackers, takeaway",AT,Cereals and cereal products
+1050,12-553,"Pudding, rice, canned, low fat",BR,Milk and milk products
+1051,13-534,"Potatoes, old, roasted in rapeseed oil",DA,Vegetables
+1052,13-487,"Potato chips, oven ready, no batter, baked",DAP,Vegetables
+1053,13-483,"Potato wedges, retail, cooked",DAR,Vegetables
+1054,13-564,"Peas, canned in water, re-heated, drained",DF,Vegetables
+1055,13-527,"Peas, frozen, raw",DF,Vegetables
+1056,13-516,"Pak choi, steamed",DG,Vegetables
+1057,13-311,"Papaya, unripe, green flesh, raw",DG,Vegetables
+1058,13-312,"Parsnip, raw",DG,Vegetables
+1059,13-524,"Pepper, capsicum, red, raw",DG,Vegetables
+1060,13-323,"Plantain, green flesh, raw",DG,Vegetables
+1061,13-326,"Pumpkin, flesh only, raw",DG,Vegetables
+1062,14-365,"Pears, average, raw, flesh only",F,Fruit
+1063,14-188,"Peaches, canned in juice, whole contents",FA,Fruit
+1064,14-196,"Pears, dried",FA,Fruit
+1065,14-376,"Pineapple, flesh only, raw",FA,Fruit
+1066,14-222,"Plums, Victoria, stewed without sugar",FA,Fruit
+1067,14-226,"Pomegranate, flesh and pips",FA,Fruit
+1068,14-285,Passion fruit juice,FC,Fruit
+1069,14-341,Pomegranate juice drink,FC,Fruit
+1070,14-289,Prune juice,FC,Fruit
+1071,14-892,"Peanut butter, smooth",GA,Nuts and seeds
+1072,14-882,Peanuts and raisins,GA,Nuts and seeds
+1073,14-840,"Pistachio nuts, kernel only, roasted and salted",GA,Nuts and seeds
+1074,13-879,Paprika,H,Herbs and Spices
+1075,13-844,"Parsley, fresh",H,Herbs and Spices
+1076,13-880,"Pepper, black",H,Herbs and Spices
+1077,16-378,"Pollock, Alaskan, flesh only, raw",JA,Fish and fish products
+1078,16-387,"Prawns, king, raw",JK,Fish and fish products
+1079,18-609,"Pork, spare ribs, raw, lean and fat",MAG,Meat and meat products
+1080,17-234,Port,QF,Alcoholic beverages
+1081,17-117,Peppermints,SEC,"Sugars, preserves and snacks"
+1082,17-692,"Popcorn, salted, retail",SN,"Sugars, preserves and snacks"
+1083,17-132,Pork scratchings,SN,"Sugars, preserves and snacks"
+1084,17-693,"Potato crisps, low fat",SN,"Sugars, preserves and snacks"
+1085,17-623,"Pesto, red",WC,"Soups, sauces and miscellaneous foods"
+1086,17-718,"Pickle, sweet",WCG,"Soups, sauces and miscellaneous foods"
+1087,17-702,Piccalilli,WCN,"Soups, sauces and miscellaneous foods"
+1088,12-949,"Quiche, vegetable, retail",CD,Eggs
+1089,15-262,Quorn korma,DR,Vegetables
+1090,14-843,"Quinoa, raw",GA,Nuts and seeds
+1091,11-866,"Rice, brown, basmati, raw",AC,Cereals and cereal products
+1092,11-870,"Rice, brown, easy cook, raw",AC,Cereals and cereal products
+1093,11-874,"Rice, Thai fragrant, raw",AC,Cereals and cereal products
+1094,11-863,"Rice, white, long grain, easy cook, raw",AC,Cereals and cereal products
+1095,11-940,Rusks,AK,Cereals and cereal products
+1096,11-999,"Risotto, plain, homemade",AT,Cereals and cereal products
+1097,12-595,"Raita, yogurt and gram flour, homemade",BV,Milk and milk products
+1098,13-332,"Radish leaves, raw",DG,Vegetables
+1099,13-522,"Rocket, raw",DG,Vegetables
+1100,15-869,"Roulade, spinach",DR,Vegetables
+1101,14-393,"Raisins, dried",FA,Fruit
+1102,14-375,"Raspberries, raw",FA,Fruit
+1103,14-249,"Redcurrants, raw",FA,Fruit
+1104,14-252,"Rhubarb, stems only, raw",FA,Fruit
+1105,13-892,"Rosemary, fresh",H,Herbs and spices
+1106,18-387,"Rabbit, raw, meat only",MEC,Meat and meat products
+1107,17-354,"Relish, tomato based",WCN,"Soups, sauces and miscellaneous foods"
+1108,11-903,"Semolina, raw",AA,Cereals and cereal products
+1109,11-955,"Sandwich, white bread, bacon, lettuce and tomato",AB,Cereals and cereal products
+1110,11-802,Shortbread,AM,Cereals and cereal products
+1111,11-544,"Scotch pancakes, retail",AP,Cereals and cereal products
+1112,11-919,"Strudel, fruit filled, retail, frozen",AS,Cereals and cereal products
+1113,17-371,"Stuffing mix, dried",AT,Cereals and cereal products
+1114,13-521,"Spinach, baby, raw",DG,Vegetables
+1115,13-359,"Swede, flesh only, raw",DG,Vegetables
+1116,13-672,"Sweet potato, baked",DG,Vegetables
+1117,13-529,"Sweetcorn kernels, canned in water, drained",DG,Vegetables
+1118,13-622,"Sweetcorn, kernels, raw",DG,Vegetables
+1119,15-872,"Salad, pasta, vegetables and mayonnaise",DR,Vegetables
+1120,15-883,"Shepherd's pie, vegetable",DR,Vegetables
+1121,15-617,"Sushi, vegetable",DR,Vegetables
+1122,14-059,Star fruit,FA,Fruit
+1123,14-324,"Strawberries, raw",FA,Fruit
+1124,14-845,Sunflower seeds,GA,Nuts and seeds
+1125,13-852,Saffron,H,Herbs and spices
+1126,13-854,"Sage, dried, ground",H,Herbs and spices
+1127,17-236,"Sherry, medium",QF,Alcoholic beverages
+1128,17-247,"Spirits, 40% volume",QK,Alcoholic beverages
+1129,17-060,"Sugar, brown",SC,"Sugars, preserves and snacks"
+1130,17-062,"Sugar, icing",SC,"Sugars, preserves and snacks"
+1131,17-063,"Sugar, white",SC,"Sugars, preserves and snacks"
+1132,17-065,"Syrup, golden",SC,"Sugars, preserves and snacks"
+1133,17-096,Smartie-type sweets,SEA,"Sugars, preserves and snacks"
+1134,17-711,"Soup, minestrone, canned",WA,"Soups, sauces and miscellaneous foods"
+1135,17-695,"Soup, chicken, cream of, canned",WAC,"Soups, sauces and miscellaneous foods"
+1136,17-652,"Soup, cream of tomato, canned",WAC,"Soups, sauces and miscellaneous foods"
+1137,17-698,"Soup, lentil, canned",WAC,"Soups, sauces and miscellaneous foods"
+1138,17-700,"Soup, oxtail, canned",WAC,"Soups, sauces and miscellaneous foods"
+1139,17-712,"Soup, vegetable, canned",WAC,"Soups, sauces and miscellaneous foods"
+1140,17-653,"Soup, instant, dried, as purchased",WAE,"Soups, sauces and miscellaneous foods"
+1141,17-628,"Sauce, Chinese cook in, sweet & sour",WC,"Soups, sauces and miscellaneous foods"
+1142,17-629,"Sauce, Chinese stir fry",WC,"Soups, sauces and miscellaneous foods"
+1143,17-703,Salad cream,WCG,"Soups, sauces and miscellaneous foods"
+1144,17-336,"Sauce, sweet and sour, take-away",WCN,"Soups, sauces and miscellaneous foods"
+1145,17-721,"Soy sauce, light and dark varieties",WCN,"Soups, sauces and miscellaneous foods"
+1146,17-367,Salt,WY,"Soups, sauces and miscellaneous foods"
+1147,17-515,"Stock cubes, beef",WY,"Soups, sauces and miscellaneous foods"
+1148,17-680,Stock gel,WY,"Soups, sauces and miscellaneous foods"
+1149,17-681,"Stock, chicken, ready made, retail",WY,"Soups, sauces and miscellaneous foods"
+1150,11-925,"Tortilla, wheat, soft",AF,Cereals and cereal products
+1151,11-845,"Tarts, bakewell, iced, retail",AS,Cereals and cereal products
+1152,12-547,Tzatziki,BN, Milk and milk products
+1153,13-570,"Tofu, soya bean, steamed",DB, Vegetables
+1154,13-530,"Tomatoes, canned, whole contents",DG,Vegetables
+1155,13-517,"Tomatoes, standard, raw",DG,Vegetables
+1156,13-389,"Turnip, flesh only, raw",DG,Vegetables
+1157,14-847,Tahini paste,GA,Nuts and seeds
+1158,14-848,Tigernuts,GA,Nuts and seeds
+1159,14-849,Trail mix,GA,Nuts and seeds
+1160,13-858,"Tarragon, dried, ground",H,Herbs and spices
+1161,13-883,"Thyme, dried, ground",H,Herbs and spices
+1162,13-861,"Turmeric, ground",H,Herbs and spices
+1163,16-154,"Tilapia, raw",JA,Fish and fish products
+1164,16-224,"Trout, brown, raw",JC,Fish and fish products
+1165,16-416,"Tuna, canned in brine, drained",JC,Fish and fish products
+1166,18-352,"Turkey, whole, raw",MCO,Meat and meat products
+1167,18-423,"Tongue, lamb, raw",MG,Meat and meat products
+1168,18-428,"Tripe, dressed, raw",MG,Meat and meat products
+1169,17-644,Tortilla chips fried in sunflower oil,SN,"Sugars, preserves and snacks"
+1170,17-694,Twiglets,SN,"Sugars, preserves and snacks"
+1171,17-722,Tartare sauce,WCN,"Soups, sauces and miscellaneous foods"
+1172,17-709,Tomato ketchup,WCN,"Soups, sauces and miscellaneous foods"
+1173,13-543,"Vegetables, mixed, frozen, boiled in unsalted water",DG,Vegetables
+1174,15-656,"Vegeburger, retail, grilled",DR,Vegetables
+1175,15-345,"Vegetable stir fry mix, fried in sunflower oil",DR,Vegetables
+1176,18-390,"Venison, meat only, raw",MEE,Meat and meat products
+1177,17-239,"Vermouth, dry",QG,Alcoholic beverages
+1178,17-339,Vinegar,WY,"Soups, sauces and miscellaneous foods"
+1179,11-800,"Wafers, plain ice cream wafers, not filled",AM,Cereals and cereal products
+1180,13-673,"Watercress, raw",DG, Vegetables
+1181,14-268,"Whitecurrants, raw",FA, Fruit
+1182,14-879,"Walnuts, kernel only",GA,Nuts and seeds
+1183,16-231,"Whitebait, in flour, fried",JC,Fish and fish products
+1184,17-752,"Wine, red",QE,Alcoholic beverages
+1185,17-756,"Wine, white, medium",QE,Alcoholic beverages
+1186,17-778,"White sauce, savoury, made with skimmed milk, homemade",WCD,"Soups, sauces and miscellaneous foods"
+1187,17-723,Worcestershire sauce,WCN,"Soups, sauces and miscellaneous foods"
+1188,17-377,"Water, distilled",WY,"Soups, sauces and miscellaneous foods"
+1189,11-1135,"Yorkshire pudding, made with skimmed milk, homemade",AT,Cereals and cereal products
+1190,12-555,"Yogurt, Greek style, plain",BN,Milk and milk products
+1191,12-375,"Yogurt, whole milk, fruit",BN,Milk and milk products
+1192,13-398,"Yam, baked",DG, Vegetables
+1193,17-517,Yeast extract,WY,"Soups, sauces and miscellaneous foods"
+0,11-954,"Macaroni cheese, homemade",AD,Cereals and cereal products
+1,11-780,"Muesli, Swiss style, unfortified",AI,Cereals and cereal products
+2,11-737,"Muffins, American, chocolate, retail",AN,Cereals and cereal products
+3,11-848,"Mince pies, retail",AS,Cereals and cereal products
+4,12-512,"Milk, 1% fat, pasteurised",BA,Milk and milk products
+5,12-322,"Milk, Channel islands, whole, summer",BAB,Milk and milk products
+6,12-307,"Milk, skimmed, pasteurised, average",BAE,Milk and milk products
+7,12-313,"Milk, semi-skimmed, pasteurised, average",BAH,Milk and milk products
+8,12-596,"Milk, whole, pasteurised, average",BAK,Milk and milk products
+9,12-520,"Milk, condensed, whole, sweetened",BAR,Milk and milk products
+10,12-522,"Milk, evaporated, whole",BAR,Milk and milk products
+11,12-524,"Milk, soya, non-dairy alternative to milk, unsweetened, fortified",BC,Milk and milk products
+12,12-517,"Meringue, homemade",BR,Milk and milk products
+13,12-401,"Mousse, chocolate, low fat",BR,Milk and milk products
+14,12-951,"Macaroon, homemade",CDH,Eggs
+15,13-273,"Mango, unripe, green flesh, raw",DG,Vegetables
+16,13-505,"Mushrooms, white, raw",DG,Vegetables
+17,13-298,"Mustard leaves, raw",DG,Vegetables
+18,15-652,"Moussaka, vegetable, retail",DR,Vegetables
+19,14-378,"Mangoes, ripe, flesh only, raw",FA,Fruit
+20,14-339,"Melon, Canteloupe-type, flesh only",FA,Fruit
+21,14-168,"Mulberries, whole fruit, raw",FA,Fruit
+22,14-891,"Macadamia nuts, salted",G,Nuts and seeds
+23,14-875,"Marzipan, white and yellow, retail",GA,Nuts and seeds
+24,13-835,"Marjoram, dried",H,Herbs and Spices
+25,13-836,"Mint, fresh",H,Herbs and Spices
+26,13-886,Mixed curry spices,H,Herbs and Spices
+27,13-884,"Mixed herbs, dried",H,Herbs and Spices
+28,13-839,Mustard seeds,H,Herbs and Spices
+29,16-393,"Mackerel, flesh only, raw",JC,Fish and fish products
+30,16-497,"Mussels, raw",JM,Fish and fish products
+31,19-605,"Meat loaf, homemade",MR,Meat and meat products
+32,19-326,"Meat samosas, takeaway",MR,Meat and meat products
+33,19-613,"Meatballs, pork and beef, in tomato sauce, homemade",MR,Meat and meat products
+34,17-733,"Milk shake, powder",PAA,Beverages
+35,17-078,Marmalade,SC,"Sugars, preserves and snacks"
+36,17-651,Maltesers and similar products,SEA,"Sugars, preserves and snacks"
+37,17-668,Mars bar and own brand equivalents,SEA,"Sugars, preserves and snacks"
+38,17-669,Milky Way and own brand equivalents,SEA,"Sugars, preserves and snacks"
+39,17-114,Marshmallows,SEC,"Sugars, preserves and snacks"
+40,17-654,"Mayonnaise, standard, retail",WCG,"Soups, sauces and miscellaneous foods"
+41,17-364,"Mustard, smooth",WY,"Soups, sauces and miscellaneous foods"
+0,11-719,"Noodles, egg, dried, raw",AD,Cereals and cereal products
+1,14-380,"Nectarines, flesh and skin, raw",FA,Fruit
+2,14-880,"Nuts, mixed",GA,Nuts and seeds
+3,13-877,"Nutmeg, ground",H,Herbs and Spices
+4,17-814,"Nougat, homemade",SEC,"Sugars, preserves and snacks"
+0,11-823,"Oatcakes, plain, retail",AM,Cereals and cereal products
+1,13-300,"Okra, raw",DG,Vegetables
+2,13-499,"Onions, raw",DG,Vegetables
+3,14-340,"Olives, green, in brine, drained, flesh and skin",FA,Fruit
+4,14-327,"Oranges, flesh only",FA,Fruit
+5,14-369,"Orange juice, freshly squeezed",FC,Fruit
+6,13-878,"Oregano, dried, ground",H,Herbs and Spices
+7,16-259,"Octopus, raw",JM,Fish and fish products
+8,16-260,"Oysters, raw",JM,Fish and fish products
+9,18-419,"Oxtail, raw",MG,Meat and meat products
+10,17-031,"Oil, coconut",OC,Fats and oils
+11,17-039,"Oil, palm",OC,Fats and oils
+12,17-044,"Oil, soya",OC,Fats and oils
+13,17-045,"Oil, sunflower",OC,Fats and oils
+14,17-686,"Oil, vegetable, average",OC,Fats and oils
+15,17-734,"Ovaltine, powder",PAA,Beverages
+0,11-936,"Pizza, cheese and tomato, retail",A,Cereals and cereal products
+1,11-788,"Porridge oats, unfortified",A,Cereals and cereal products
+2,11-450,"Pasta, plain, fresh, boiled",AD,Cereals and cereal products
+3,11-735,"Pasta, spaghetti, canned, in tomato sauce",AD,Cereals and cereal products
+4,11-998,"Papadums, takeaway",AF,Cereals and cereal products
+5,11-853,"Pastry, shortcrust, retail, cooked",AO,Cereals and cereal products
+6,11-844,"Pastries, chocolate eclairs, cream filled, retail",AP,Cereals and cereal products
+7,11-1141,"Pancakes, sweet, made with skimmed milk, homemade",AS,Cereals and cereal products
+8,11-921,"Pie, apple, pastry, double crust, retail",AS,Cereals and cereal products
+9,11-847,"Pie, fruit, individual, retail",AS,Cereals and cereal products
+10,11-1119,"Pudding, sponge, homemade",AS,Cereals and cereal products
+11,11-1023,"Prawn crackers, takeaway",AT,Cereals and cereal products
+12,12-553,"Pudding, rice, canned, low fat",BR,Milk and milk products
+13,13-534,"Potatoes, old, roasted in rapeseed oil",DA,Vegetables
+14,13-487,"Potato chips, oven ready, no batter, baked",DAP,Vegetables
+15,13-483,"Potato wedges, retail, cooked",DAR,Vegetables
+16,13-564,"Peas, canned in water, re-heated, drained",DF,Vegetables
+17,13-527,"Peas, frozen, raw",DF,Vegetables
+18,13-516,"Pak choi, steamed",DG,Vegetables
+19,13-311,"Papaya, unripe, green flesh, raw",DG,Vegetables
+20,13-312,"Parsnip, raw",DG,Vegetables
+21,13-524,"Pepper, capsicum, red, raw",DG,Vegetables
+22,13-323,"Plantain, green flesh, raw",DG,Vegetables
+23,13-326,"Pumpkin, flesh only, raw",DG,Vegetables
+24,14-365,"Pears, average, raw, flesh only",F,Fruit
+25,14-188,"Peaches, canned in juice, whole contents",FA,Fruit
+26,14-196,"Pears, dried",FA,Fruit
+27,14-376,"Pineapple, flesh only, raw",FA,Fruit
+28,14-222,"Plums, Victoria, stewed without sugar",FA,Fruit
+29,14-226,"Pomegranate, flesh and pips",FA,Fruit
+30,14-285,Passion fruit juice,FC,Fruit
+31,14-341,Pomegranate juice drink,FC,Fruit
+32,14-289,Prune juice,FC,Fruit
+33,14-892,"Peanut butter, smooth",GA,Nuts and seeds
+34,14-882,Peanuts and raisins,GA,Nuts and seeds
+35,14-840,"Pistachio nuts, kernel only, roasted and salted",GA,Nuts and seeds
+36,13-879,Paprika,H,Herbs and Spices
+37,13-844,"Parsley, fresh",H,Herbs and Spices
+38,13-880,"Pepper, black",H,Herbs and Spices
+39,16-378,"Pollock, Alaskan, flesh only, raw",JA,Fish and fish products
+40,16-387,"Prawns, king, raw",JK,Fish and fish products
+41,18-609,"Pork, spare ribs, raw, lean and fat",MAG,Meat and meat products
+42,17-234,Port,QF,Alcoholic beverages
+43,17-117,Peppermints,SEC,"Sugars, preserves and snacks"
+44,17-692,"Popcorn, salted, retail",SN,"Sugars, preserves and snacks"
+45,17-132,Pork scratchings,SN,"Sugars, preserves and snacks"
+46,17-693,"Potato crisps, low fat",SN,"Sugars, preserves and snacks"
+47,17-623,"Pesto, red",WC,"Soups, sauces and miscellaneous foods"
+48,17-718,"Pickle, sweet",WCG,"Soups, sauces and miscellaneous foods"
+49,17-702,Piccalilli,WCN,"Soups, sauces and miscellaneous foods"
+0,12-949,"Quiche, vegetable, retail",CD,Eggs
+1,15-262,Quorn korma,DR,Vegetables
+2,14-843,"Quinoa, raw",GA,Nuts and seeds
+0,11-866,"Rice, brown, basmati, raw",AC,Cereals and cereal products
+1,11-870,"Rice, brown, easy cook, raw",AC,Cereals and cereal products
+2,11-874,"Rice, Thai fragrant, raw",AC,Cereals and cereal products
+3,11-863,"Rice, white, long grain, easy cook, raw",AC,Cereals and cereal products
+4,11-940,Rusks,AK,Cereals and cereal products
+5,11-999,"Risotto, plain, homemade",AT,Cereals and cereal products
+6,12-595,"Raita, yogurt and gram flour, homemade",BV,Milk and milk products
+7,13-332,"Radish leaves, raw",DG,Vegetables
+8,13-522,"Rocket, raw",DG,Vegetables
+9,15-869,"Roulade, spinach",DR,Vegetables
+10,14-393,"Raisins, dried",FA,Fruit
+11,14-375,"Raspberries, raw",FA,Fruit
+12,14-249,"Redcurrants, raw",FA,Fruit
+13,14-252,"Rhubarb, stems only, raw",FA,Fruit
+14,13-892,"Rosemary, fresh",H,Herbs and spices
+15,18-387,"Rabbit, raw, meat only",MEC,Meat and meat products
+16,17-354,"Relish, tomato based",WCN,"Soups, sauces and miscellaneous foods"
+0,11-903,"Semolina, raw",AA,Cereals and cereal products
+1,11-955,"Sandwich, white bread, bacon, lettuce and tomato",AB,Cereals and cereal products
+2,11-802,Shortbread,AM,Cereals and cereal products
+3,11-544,"Scotch pancakes, retail",AP,Cereals and cereal products
+4,11-919,"Strudel, fruit filled, retail, frozen",AS,Cereals and cereal products
+5,17-371,"Stuffing mix, dried",AT,Cereals and cereal products
+6,13-521,"Spinach, baby, raw",DG,Vegetables
+7,13-359,"Swede, flesh only, raw",DG,Vegetables
+8,13-672,"Sweet potato, baked",DG,Vegetables
+9,13-529,"Sweetcorn kernels, canned in water, drained",DG,Vegetables
+10,13-622,"Sweetcorn, kernels, raw",DG,Vegetables
+11,15-872,"Salad, pasta, vegetables and mayonnaise",DR,Vegetables
+12,15-883,"Shepherd's pie, vegetable",DR,Vegetables
+13,15-617,"Sushi, vegetable",DR,Vegetables
+14,14-059,Star fruit,FA,Fruit
+15,14-324,"Strawberries, raw",FA,Fruit
+16,14-845,Sunflower seeds,GA,Nuts and seeds
+17,13-852,Saffron,H,Herbs and spices
+18,13-854,"Sage, dried, ground",H,Herbs and spices
+19,17-236,"Sherry, medium",QF,Alcoholic beverages
+20,17-247,"Spirits, 40% volume",QK,Alcoholic beverages
+21,17-060,"Sugar, brown",SC,"Sugars, preserves and snacks"
+22,17-062,"Sugar, icing",SC,"Sugars, preserves and snacks"
+23,17-063,"Sugar, white",SC,"Sugars, preserves and snacks"
+24,17-065,"Syrup, golden",SC,"Sugars, preserves and snacks"
+25,17-096,Smartie-type sweets,SEA,"Sugars, preserves and snacks"
+26,17-711,"Soup, minestrone, canned",WA,"Soups, sauces and miscellaneous foods"
+27,17-695,"Soup, chicken, cream of, canned",WAC,"Soups, sauces and miscellaneous foods"
+28,17-652,"Soup, cream of tomato, canned",WAC,"Soups, sauces and miscellaneous foods"
+29,17-698,"Soup, lentil, canned",WAC,"Soups, sauces and miscellaneous foods"
+30,17-700,"Soup, oxtail, canned",WAC,"Soups, sauces and miscellaneous foods"
+31,17-712,"Soup, vegetable, canned",WAC,"Soups, sauces and miscellaneous foods"
+32,17-653,"Soup, instant, dried, as purchased",WAE,"Soups, sauces and miscellaneous foods"
+33,17-628,"Sauce, Chinese cook in, sweet & sour",WC,"Soups, sauces and miscellaneous foods"
+34,17-629,"Sauce, Chinese stir fry",WC,"Soups, sauces and miscellaneous foods"
+35,17-703,Salad cream,WCG,"Soups, sauces and miscellaneous foods"
+36,17-336,"Sauce, sweet and sour, take-away",WCN,"Soups, sauces and miscellaneous foods"
+37,17-721,"Soy sauce, light and dark varieties",WCN,"Soups, sauces and miscellaneous foods"
+38,17-367,Salt,WY,"Soups, sauces and miscellaneous foods"
+39,17-515,"Stock cubes, beef",WY,"Soups, sauces and miscellaneous foods"
+40,17-680,Stock gel,WY,"Soups, sauces and miscellaneous foods"
+41,17-681,"Stock, chicken, ready made, retail",WY,"Soups, sauces and miscellaneous foods"
+0,11-925,"Tortilla, wheat, soft",AF,Cereals and cereal products
+1,11-845,"Tarts, bakewell, iced, retail",AS,Cereals and cereal products
+2,12-547,Tzatziki,BN, Milk and milk products
+3,13-570,"Tofu, soya bean, steamed",DB, Vegetables
+4,13-530,"Tomatoes, canned, whole contents",DG,Vegetables
+5,13-517,"Tomatoes, standard, raw",DG,Vegetables
+6,13-389,"Turnip, flesh only, raw",DG,Vegetables
+7,14-847,Tahini paste,GA,Nuts and seeds
+8,14-848,Tigernuts,GA,Nuts and seeds
+9,14-849,Trail mix,GA,Nuts and seeds
+10,13-858,"Tarragon, dried, ground",H,Herbs and spices
+11,13-883,"Thyme, dried, ground",H,Herbs and spices
+12,13-861,"Turmeric, ground",H,Herbs and spices
+13,16-154,"Tilapia, raw",JA,Fish and fish products
+14,16-224,"Trout, brown, raw",JC,Fish and fish products
+15,16-416,"Tuna, canned in brine, drained",JC,Fish and fish products
+16,18-352,"Turkey, whole, raw",MCO,Meat and meat products
+17,18-423,"Tongue, lamb, raw",MG,Meat and meat products
+18,18-428,"Tripe, dressed, raw",MG,Meat and meat products
+19,17-644,Tortilla chips fried in sunflower oil,SN,"Sugars, preserves and snacks"
+20,17-694,Twiglets,SN,"Sugars, preserves and snacks"
+21,17-722,Tartare sauce,WCN,"Soups, sauces and miscellaneous foods"
+22,17-709,Tomato ketchup,WCN,"Soups, sauces and miscellaneous foods"
+0,13-543,"Vegetables, mixed, frozen, boiled in unsalted water",DG,Vegetables
+1,15-656,"Vegeburger, retail, grilled",DR,Vegetables
+2,15-345,"Vegetable stir fry mix, fried in sunflower oil",DR,Vegetables
+3,18-390,"Venison, meat only, raw",MEE,Meat and meat products
+4,17-239,"Vermouth, dry",QG,Alcoholic beverages
+5,17-339,Vinegar,WY,"Soups, sauces and miscellaneous foods"
+0,11-800,"Wafers, plain ice cream wafers, not filled",AM,Cereals and cereal products
+1,13-673,"Watercress, raw",DG, Vegetables
+2,14-268,"Whitecurrants, raw",FA, Fruit
+3,14-879,"Walnuts, kernel only",GA,Nuts and seeds
+4,16-231,"Whitebait, in flour, fried",JC,Fish and fish products
+5,17-752,"Wine, red",QE,Alcoholic beverages
+6,17-756,"Wine, white, medium",QE,Alcoholic beverages
+7,17-778,"White sauce, savoury, made with skimmed milk, homemade",WCD,"Soups, sauces and miscellaneous foods"
+8,17-723,Worcestershire sauce,WCN,"Soups, sauces and miscellaneous foods"
+9,17-377,"Water, distilled",WY,"Soups, sauces and miscellaneous foods"
+0,11-1135,"Yorkshire pudding, made with skimmed milk, homemade",AT,Cereals and cereal products
+1,12-555,"Yogurt, Greek style, plain",BN,Milk and milk products
+2,12-375,"Yogurt, whole milk, fruit",BN,Milk and milk products
+3,13-398,"Yam, baked",DG, Vegetables
+4,17-517,Yeast extract,WY,"Soups, sauces and miscellaneous foods"

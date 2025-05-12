@@ -1,0 +1,548 @@
+,Food Code,Food Name,Food sub-group codes,Food Group,Sale format(s),Weight,PurEqualCon,Portion Consumed,Source
+0,17-208,"beer, bitter, best, premium",QA,Alcoholic beverages,"can, can multipack, bottle, bottle multipack",574g,Y,1 pint,FPS
+1,17-224,"cider, sweet",QC,Alcoholic beverages,"can, can multipack, bottle, bottle multipack",300g,Y,,FPS
+2,17-234,port,QF,Alcoholic beverages,bottle,161g,Y,"Hot wings, with bones, 5 pieces",FPS
+3,17-236,"sherry, medium",QF,Alcoholic beverages,bottle,,,,
+4,17-247,"spirits, 40% volume",QK,Alcoholic beverages,"bottle, miniature",29g,Y,1 miniature,FPS
+5,17-239,"vermouth, dry",QG,Alcoholic beverages,bottle,50g/100g,Y,per bag,FPS
+6,17-752,"wine, red",QE,Alcoholic beverages,"bottle, small bottle, box",180g,Y,I bottle,FPS
+7,17-756,"wine, white, medium",QE,Alcoholic beverages,"bottle, small bottle, box",180g,Y,I bottle,FPS
+8,14-272,"apple juice concentrate, unsweetened, commerical",PE,Beverages,"carton, tetrapak, bottle",130g,Y,,FPS
+9,17-632,"coffee, cappuccino, latte",P,Beverages,,170g,Y,1 average vending machine cup,FPS
+10,17-175,cola,PCA,Beverages,"can, ready to drink bottle, sharing bottle",11g,Y,"1 sachet, average",FPS
+11,17-744,cranberry fruit juice drink,PE,Beverages,"carton, tetrapak, bottle",130g,Y,,FPS
+12,17-498,"drinking chocolate, powder",PAA,Beverages,,11g,Y,"1 sachet, average",FPS
+13,17-672,"energy drink, carbonated",PCA,Beverages,"can, ready to drink bottle, sharing bottle",130g,Y,,FPS
+14,17-745,"grape juice, unsweetened",PE,Beverages,"carton, tetrapak, bottle",130g,Y,,FPS
+15,17-731,"horlicks, powder",PAA,Beverages,,32g,Y,1 sachet,FPS
+16,17-179,lemonade,PCA,Beverages,"can, ready to drink bottle, sharing bottle",20g,Y,1 individual carton,FPS
+17,17-761,lucozade,PCA,Beverages,"ready to drink bottle, sharing bottle",170g,Y,"in sauce, purchased, frozen",FPS
+18,17-751,"lager, premium",QA,Beverages,"can, multipack can, bottle, multipack bottle",574g,Y,1 pint,FPS
+19,17-244,"liqueurs, high strength",QI,Beverages,"bottle, miniature",150g,Y,pots,FPS
+20,17-733,"milk shake, powder",PAA,Beverages,,11g,Y,1 sachet,FPS
+21,17-734,"ovaltine, powder",PAA,Beverages,,200g,Y,I small bottle,FPS
+22,11-001,arrowroot,AA,Cereals and cereal products,,,,,
+23,11-002,"barley, pearl, raw",AA,Cereals and cereal products,packet,180g,Y,I bottle,FPS
+24,11-906,"bran, wheat",AA,Cereals and cereal products,cereal box,125g ,Y,pots,FPS
+25,11-006,"buckwheat, groats",AA,Cereals and cereal products,packet,170g,Y,1 average vending machine cup,FPS
+26,11-1144,"bread rolls, brown, crusty",AF,Cereals and cereal products,"loose, individual
+multiple pack",330g,"Y, P","6 in pack, 55g",Confirmed on Ocado Website
+27,11-1006,"bread rolls, white, soft",AF,Cereals and cereal products,"loose, individual
+multiple pack",330g,"Y, P","6 in pack, 55g",Confirmed on Ocado Website
+28,11-971,"bread, brown, average",AF,Cereals and cereal products,loaf,330g,"Y, P","6 in pack, 55g",Confirmed on Ocado Website
+29,11-969,"bread, ciabatta",AF,Cereals and cereal products,"loose, individual
+multiple pack",400g,Y,loaf,Ocado Website
+30,11-937,"bread, garlic and herb, retail",AF,Cereals and cereal products,"loose, individual
+multiple pack",400g,Y,loaf,Ocado Website
+31,11-910,"bread, naan, peshwari naan, takeaway and retail",AF,Cereals and cereal products,"loose, individual
+multiple pack",400g,Y,loaf,Ocado Website
+32,11-973,"bread, naan, retail",AF,Cereals and cereal products,"loose, individual
+multiple pack",400g,Y,loaf,Ocado Website
+33,11-974,"bread, pitta, white",AF,Cereals and cereal products,"loose, individual
+multiple pack",330g,"Y, P","6 in pack, 55g",Confirmed on Ocado Website
+34,11-947,"bread, seeded",AF,Cereals and cereal products,loaf,400g,Y,loaf,Ocado Website
+35,11-1145,"bread, white, average",AF,Cereals and cereal products,loaf,330g,"Y, P","6 in pack, 55g",Confirmed on Ocado Website
+36,11-977,"bread, white, farmhouse or split tin",AF,Cereals and cereal products,loaf,330g,"Y, P","6 in pack, 55g",Confirmed on Ocado Website
+37,11-978,"bread, white, french stick",AF,Cereals and cereal products,baguette,11g,Y,1 sachet,FPS
+38,11-980,"bread, white, sliced",AF,Cereals and cereal products,loaf,330g,"Y, P","6 in pack, 55g",Confirmed on Ocado Website
+39,11-981,"bread, wholemeal, average",AF,Cereals and cereal products,loaf,330g,"Y, P","6 in pack, 55g",Confirmed on Ocado Website
+40,11-983,"bread rolls, brown, soft",AG,Cereals and cereal products,"loose, individual
+multiple pack",330g,"Y, P","6 in pack, 55g",Confirmed on Ocado Website
+41,11-984,"bread rolls, malted wheat",AG,Cereals and cereal products,"loose, individual
+multiple pack",400g,Y,loaf,Ocado Website
+42,11-985,"bread rolls, white, crusty",AG,Cereals and cereal products,"loose, individual
+multiple pack",330g,"Y, P","6 in pack, 55g",Confirmed on Ocado Website
+43,11-986,"bread rolls, wholemeal",AG,Cereals and cereal products,"loose, individual
+multiple pack",400g,Y,loaf,Ocado Website
+44,11-763,"breakfast cereal, bran flakes, fortified",AI,Cereals and cereal products,cereal box,150g,Y,1 small carton (5 fi. oz),FPS
+45,11-742,"breakfast cereal, cornflakes, fortified",AI,Cereals and cereal products,cereal box,150g,Y,1 small carton (5 fi. oz),FPS
+46,11-779,"breakfast cereal, fruit and fibre type, fortified",AI,Cereals and cereal products,cereal box,200g,Y,individual carton,FPS
+47,11-755,"breakfast cereal, honey loops and hoops, including honey and nut cheerios, fortified",AI,Cereals and cereal products,cereal box,100g,Y,,FPS
+48,11-792,"breakfast cereal, instant hot oat, plain, raw, fortified",AI,Cereals and cereal products,cereal box,11g,Y,"1 sachet, average",FPS
+49,11-753,"breakfast cereal, rice, chocolate flavoured, fortified",AI,Cereals and cereal products,cereal box,11g,Y,"1 sachet, average",FPS
+50,11-778,"breakfast cereal, shredded wheat, honey nut, nestle",AI,Cereals and cereal products,cereal box,100g,Y,,FPS
+51,11-773,"breakfast cereal, wheat biscuits, weetabix type, fortified",AI,Cereals and cereal products,cereal box,191g,Y,Cup drinks,FPS
+52,11-821,"biscuits, cheese flavoured",AM,Cereals and cereal products,wrapper or box,116g,Y,average,FPS
+53,11-815,"biscuits, cookies, chocolate chip, standard",AM,Cereals and cereal products,wrapper or box,11g,Y,"1 sachet, average",FPS
+54,11-799,"biscuits, digestive, plain",AM,Cereals and cereal products,wrapper or box,266g,Y,,Ocado Website
+55,11-809,"biscuits, fully coated with chocolate",AM,Cereals and cereal products,wrapper or box,11g,Y,"1 sachet, average",FPS
+56,11-801,"biscuits, plain, reduced fat",AM,Cereals and cereal products,wrapper or box,32g,Y,1 sachet,FPS
+57,11-826,"breadsticks, plain",AM,Cereals and cereal products,box,266g,Y,,Ocado Website
+58,,"banana bread, retail",AN,Cereals and cereal products,loaf,400g,Y,loaf,Ocado Website
+59,,"brownies, chocolate, retail",AN,Cereals and cereal products,,11g,Y,"1 sachet, average",FPS
+60,,"brownies, chocolate, baking mix",AN,Cereals and cereal products,packet,11g,Y,"1 sachet, average",FPS
+61,11-970,"bagels, plain",AP,Cereals and cereal products,"loose, individual
+multiple pack",266g,Y,,Ocado Website
+62,,bread and butter pudding,AS,Cereals and cereal products,,175g,Y,,Ocado Website
+63,11-011,"cornmeal, sifted",AA,Cereals and cereal products,packet,170g,Y,1 average vending machine cup,FPS
+64,11-988,croissants,AG,Cereals and cereal products,,60g,Y,,FPS
+65,11-820,cream crackers,AM,Cereals and cereal products,wrapper or box,50g,Y,bar,FPS
+66,11-839,"cakes, fancy iced, individual, retail",AN,Cereals and cereal products,,30g,"Y, P",per bag,FPS
+67,11-1020,"crumble, fruit, retail",AS,Cereals and cereal products,,200g,Y,individual carton,FPS
+68,11-850,"doughnuts, ring, iced",AP,Cereals and cereal products,,30g,"Y, P",per bag,FPS
+69,11-849,"doughnuts, with jam",AP,Cereals and cereal products,,360g,"Y, P","6 in pack, 60g",Confirmed on Ocado Website
+70,,"dumplings,",AT,Cereals and cereal products,,24g,Y,per bag,FPS
+71,,"biscuit, gingerbread",AN,Cereals and cereal products,,61g,Y,,FPS
+72,,"hot cross buns, ",AP,Cereals and cereal products,packet,60g,Y,small,FPS
+73,11-739,jaffa cakes,AM,Cereals and cereal products,wrapper or box,56g,Y,per bag,FPS
+74,11-846,"jam tarts, retail",AS,Cereals and cereal products,,165g,Y,,FPS
+75,,"macaroni cheese, retail",AD,Cereals and cereal products,,116g,Y,average,FPS
+76,11-780,"muesli, swiss style, unfortified",AI,Cereals and cereal products,cereal box,168g,Y,,FPS
+77,11-737,"muffins, american, chocolate, retail",AN,Cereals and cereal products,,11g,Y,"1 sachet, average",FPS
+78,11-848,"mince pies, retail",AS,Cereals and cereal products,,213g,Y,small,FPS
+79,11-719,"noodles, egg, dried, raw",AD,Cereals and cereal products,,40g,Y,,FPS
+80,11-823,"oatcakes, plain, retail",AM,Cereals and cereal products,wrapper or box,266g,Y,,Ocado Website
+81,11-936,"pizza, cheese and tomato, retail",A,Cereals and cereal products,,350-500g,Y,large,FPS
+82,11-788,"porridge oats, unfortified",A,Cereals and cereal products,,,,,
+83,11-726,"pasta, egg, fresh, raw",AD,Cereals and cereal products,,40g,Y,,FPS
+84,11-718,"pasta, wholewheat, spaghetti, dried, raw",AD,Cereals and cereal products,,75g,Y,1 raw small eating (6 to lb) ,FPS
+85,11-735,"pasta, spaghetti, canned, in tomato sauce",AD,Cereals and cereal products,tin,250ml,Y,slim can,FPS
+86,,"papadums, retail",AF,Cereals and cereal products,,165g,Y,,FPS
+87,11-853,"pastry, shortcrust, retail, cooked",AO,Cereals and cereal products,,320g,Y,purchased frozen ready meal for one,FPS
+88,11-844,"pastries, chocolate eclairs, cream filled, retail",AP,Cereals and cereal products,,11g,Y,"1 sachet, average",FPS
+89,,pancakes,AS,Cereals and cereal products,,260g,Y,loaf,Ocado Website
+90,11-544,"scotch pancakes, retail",AS,Cereals and cereal products,,165g,Y,,FPS
+91,11-921,"pie, apple, pastry, double crust, retail",AS,Cereals and cereal products,,600g,Y,6 servings,Ocado & Tesco Website
+92,11-847,"pie, fruit, individual, retail",AS,Cereals and cereal products,,200g,Y,individual carton,FPS
+93,,"pudding, sponge, retail",AS,Cereals and cereal products,,210g,Y,small can,FPS
+94,11-1021,"pudding, sponge, canned",AS,Cereals and cereal products,,250ml,Y,slim can,FPS
+95,,prawn crackers,AT,Cereals and cereal products,packet,56g,Y,per bag,FPS
+96,11-866,"rice, brown, basmati, raw",AC,Cereals and cereal products,packet,330g,"Y, P","6 in pack, 55g",Confirmed on Ocado Website
+97,11-870,"rice, brown, easy cook, raw",AC,Cereals and cereal products,packet,330g,"Y, P","6 in pack, 55g",Confirmed on Ocado Website
+98,11-874,"rice, thai fragrant, raw",AC,Cereals and cereal products,packet,75g,Y,1 raw small eating (6 to lb) ,FPS
+99,11-863,"rice, white, long grain, easy cook, raw",AC,Cereals and cereal products,packet,330g,"Y, P","6 in pack, 55g",Confirmed on Ocado Website
+100,11-940,rusks,AK,Cereals and cereal products,,,,,
+101,,"risotto, plain",AT,Cereals and cereal products,,266g,Y,,Ocado Website
+102,11-903,"semolina, raw",AA,Cereals and cereal products,,75g,Y,1 raw small eating (6 to lb) ,FPS
+103,,"sandwich, white bread,",AB,Cereals and cereal products,,330g,"Y, P","6 in pack, 55g",Confirmed on Ocado Website
+104,,"sandwich, brown bread",AB,Cereals and cereal products,,330g,"Y, P","6 in pack, 55g",Confirmed on Ocado Website
+105,11-802,shortbread,AM,Cereals and cereal products,wrapper or box,175g,Y,,Ocado Website
+106,11-544,"scotch pancakes, retail",AP,Cereals and cereal products,,165g,Y,,FPS
+107,11-919,"strudel, fruit filled, retail, frozen",AS,Cereals and cereal products,,200g,Y,individual carton,FPS
+108,17-371,"stuffing mix, dried",AT,Cereals and cereal products,,100g,Y,per bag,FPS
+109,11-800,"wafers, plain ice cream wafers, not filled",AM,Cereals and cereal products,,266g,Y,,Ocado Website
+110,,yorkshire pudding,AT,Cereals and cereal products,,210g,Y,small can,FPS
+111,12-937,"eggs, chicken, whole, raw",CA,Eggs,"egg box, 6, 10, 12, 30",85g,Y,packet,FPS
+112,12-949,"quiche, vegetable, retail",CD,Eggs,"small individual, large sharing",340g,Y,,FPS
+113,17-487,"dripping, beef",OF,Fats and oils,jar,213g,Y,small,FPS
+114,17-010,lard,OF,Fats and oils,block,38g,Y,tube,FPS
+115,17-031,"oil, coconut",OC,Fats and oils,jar,53g,Y,,FPS
+116,17-039,"oil, palm",OC,Fats and oils,bottle,200g,Y,1 small can,FPS
+117,17-044,"oil, soya",OC,Fats and oils,bottle,200g,Y,1 small can,FPS
+118,17-045,"oil, sunflower",OC,Fats and oils,bottle,200g,Y,1 small can,FPS
+119,17-686,"oil, vegetable, average",OC,Fats and oils,bottle,330g,"Y, P","6 in pack, 55g",Confirmed on Ocado Website
+120,16-001,"ayr, raw",JA,Fish and fish products,,75g,Y,1 raw small eating (6 to lb) ,FPS
+121,,"anchovies, canned in oil,",JC,Fish and fish products,tin,250ml,Y,slim can,FPS
+122,16-385,"bass, sea, flesh only, raw",JA,Fish and fish products,fillet,75g,Y,1 raw small eating (6 to lb) ,FPS
+123,16-003,"bele, raw",JA,Fish and fish products,fillet,75g,Y,1 raw small eating (6 to lb) ,FPS
+124,16-004,"boal, raw",JA,Fish and fish products,fillet,75g,Y,1 raw small eating (6 to lb) ,FPS
+125,16-005,bombay duck,JA,Fish and fish products,,125g,Y,,FPS
+126,16-006,"bream, sea, raw",JA,Fish and fish products,fillet,75g,Y,1 raw small eating (6 to lb) ,FPS
+127,16-169,"bacha, raw",JC,Fish and fish products,fillet,75g,Y,1 raw small eating (6 to lb) ,FPS
+128,16-372,"cod, flesh only, raw",JA,Fish and fish products,fillet,170g,Y,"in sauce, purchased, frozen",FPS
+129,16-172,"carp, raw",JA,Fish and fish products,fillet,75g,Y,1 raw small eating (6 to lb) ,FPS
+130,16-007,"catfish, raw",JA,Fish and fish products,fillet,75g,Y,1 raw small eating (6 to lb) ,FPS
+131,16-011,"chital, raw",JA,Fish and fish products,fillet,75g,Y,1 raw small eating (6 to lb) ,FPS
+132,16-383,"coley, flesh only, raw",JA,Fish and fish products,fillet,75g,Y,1 raw small eating (6 to lb) ,FPS
+133,,"crab, canned in brine",JK,Fish and fish products,tin,250ml,Y,slim can,FPS
+134,,crab,JK,Fish and fish products,,85g,Y,1 small can,FPS
+135,,"crab, white meat",JK,Fish and fish products,,330g,"Y, P","6 in pack, 55g",Confirmed on Ocado Website
+136,16-235,"crayfish, raw",JK,Fish and fish products,,75g,Y,1 raw small eating (6 to lb) ,FPS
+137,,calamari,JM,Fish and fish products,,30g,Y,bar,FPS
+138,,cockles,JM,Fish and fish products,,142g,Y,small jar,FPS
+139,16-254,"cuttlefish, raw",JM,Fish and fish products,,75g,Y,1 raw small eating (6 to lb) ,FPS
+140,,caviare,JR,Fish and fish products,"tin, jar",,,,
+141,16-173,"eel, yellow, raw",JC,Fish and fish products,,75g,Y,1 raw small eating (6 to lb) ,FPS
+142,16-375,"haddock, flesh only, raw",JA,Fish and fish products,,75g,Y,1 raw small eating (6 to lb) ,FPS
+143,16-070,"hake, flesh only, raw",JA,Fish and fish products,,75g,Y,1 raw small eating (6 to lb) ,FPS
+144,16-081,"kalabasu, raw",JA,Fish and fish products,,75g,Y,1 raw small eating (6 to lb) ,FPS
+145,16-186,"katla, raw",JA,Fish and fish products,,75g,Y,1 raw small eating (6 to lb) ,FPS
+146,,"kippers, flesh only",JC,Fish and fish products,,70g,Y,,FPS
+147,16-393,"mackerel, flesh only, raw",JC,Fish and fish products,,200g,Y,1 small can,FPS
+148,16-497,"mussels, raw",JM,Fish and fish products,,75g,Y,1 raw small eating (6 to lb) ,FPS
+149,16-259,"octopus, raw",JM,Fish and fish products,,75g,Y,1 raw small eating (6 to lb) ,FPS
+150,16-260,"oysters, raw",JM,Fish and fish products,,105g,Y,1 can smoked oysters,FPS
+151,16-378,"pollock, alaskan, flesh only, raw",JA,Fish and fish products,,75g,Y,1 raw small eating (6 to lb) ,FPS
+152,16-387,"prawns, king, raw",JK,Fish and fish products,,100g,Y,1 small jar prawns,FPS
+153,14-363,"apples, cooking, raw, flesh only, weighed with skin and core",F,Fruit,,360g,"Y, P","6 in pack, 60g",Confirmed on Ocado Website
+154,14-319,"apples, eating, raw, flesh and skin",F,Fruit,,50g,Y,bar,FPS
+155,14-001,amla,FA,Fruit,,80g,"Y, P","individual, 2 in a pack",Tesco
+156,14-025,"apricots, raw, flesh and skin",FA,Fruit,punnet,50g,Y,bar,FPS
+157,14-392,"apricots, ready-to-eat, semi-dried",FA,Fruit,packet,130g,Y,,FPS
+158,14-040,"avocado, fuerte, flesh only, weighed with skin and stone",FA,Fruit,"loose, individual",360g,"Y, P","6 in pack, 60g",Confirmed on Ocado Website
+159,14-387,"avocado, hass, flesh only, weighed with skin and stone",FA,Fruit,"loose, individual",360g,"Y, P","6 in pack, 60g",Confirmed on Ocado Website
+160,14-331,"apple juice, clear, ambient and chilled",FC,Fruit,"carton, tetrapak, bottle",130g,Y,,FPS
+161,14-043,"babaco, flesh only",FA,Fruit,"loose, individual",70g,Y,,FPS
+162,14-318,"bananas, flesh and skin",FA,Fruit,"loose, individual/bunch",50g,Y,bar,FPS
+163,14-388,"blackberries, raw",FA,Fruit,punnet,75g,Y,1 raw small eating (6 to lb) ,FPS
+164,14-053,"blackcurrants, raw",FA,Fruit,punnet,75g,Y,1 raw small eating (6 to lb) ,FPS
+165,14-325,blueberries,FA,Fruit,punnet,300g,Y,1 packet made up,FPS
+166,14-382,"cherries, flesh and skin, raw",FA,Fruit,punnet,50g,Y,bar,FPS
+167,14-326,"citrus fruit, soft/easy peelers, flesh with skin",FA,Fruit,net,200g,Y,individual carton,FPS
+168,14-073,cranberries,FA,Fruit,punnet,85g,Y,1 small can,FPS
+169,14-074,currants,FA,Fruit,packet,100g,Y,1 small jar prawns,FPS
+170,14-077,"damsons, flesh and skin, raw",FA,Fruit,punnet,50g,Y,bar,FPS
+171,14-083,"dates, raw, flesh and skin",FA,Fruit,packet,50g,Y,bar,FPS
+172,14-087,dried mixed fruit,FA,Fruit,packet,200g,Y,individual carton,FPS
+173,14-089,"elderberries, whole fruit",FA,Fruit,punnet,200g,Y,individual carton,FPS
+174,14-100,"gooseberries, cooking, raw",FA,Fruit,punnet,75g,Y,1 raw small eating (6 to lb) ,FPS
+175,14-384,"grapefruit, flesh only, raw",FA,Fruit,"loose, individual",75g,Y,1 raw small eating (6 to lb) ,FPS
+176,14-322,"grapes, green",FA,Fruit,punnet,500g,"Y, P",pack,FPS
+177,14-118,"guava, flesh only, raw",FA,Fruit,"loose, individual",75g,Y,1 raw small eating (6 to lb) ,FPS
+178,14-371,"kiwi fruit, flesh only, raw",FA,Fruit,"loose, individual, punnet",200g,Y,individual carton,FPS
+179,14-373,"kiwi fruit, flesh only, raw, weighed with skin",FA,Fruit,,200g,Y,individual carton,FPS
+180,14-125,"kumquats, whole fruit, raw",FA,Fruit,punnet,200g,Y,individual carton,FPS
+181,14-128,"lemons, whole, without pips",FA,Fruit,"loose, individual, net",330g,"Y, P","6 in pack, 55g",Confirmed on Ocado Website
+182,14-131,"limes, flesh only",FA,Fruit,"loose, individual, net",70g,Y,,FPS
+183,14-132,"limes, flesh and skin",FA,Fruit,,50g,Y,bar,FPS
+184,14-133,"loganberries, raw",FA,Fruit,punnet,75g,Y,1 raw small eating (6 to lb) ,FPS
+185,14-277,"lemon juice, fresh",FC,Fruit,,130g,Y,,FPS
+186,14-378,"mangoes, ripe, flesh only, raw",FA,Fruit,"loose, individual",75g,Y,1 raw small eating (6 to lb) ,FPS
+187,14-379,"mangoes, raw, weighed with skin and stone",FA,Fruit,"loose, individual",360g,"Y, P","6 in pack, 60g",Confirmed on Ocado Website
+188,14-339,"melon, canteloupe-type, flesh only",FA,Fruit,"loose, individual",70g,Y,,FPS
+189,14-353,"melon, canteloupe-type, flesh and skin",FA,Fruit,"loose, individual",50g,Y,bar,FPS
+190,14-356,"melon, flesh and skin",FA,Fruit,"loose, individual",50g,Y,bar,FPS
+191,14-168,"mulberries, whole fruit, raw",FA,Fruit,punnet,200g,Y,individual carton,FPS
+192,14-380,"nectarines, flesh and skin, raw",FA,Fruit,punnet,50g,Y,bar,FPS
+193,,"olives, ",FA,Fruit,"tin, jar",125g,Y,,FPS
+194,14-327,"oranges, flesh only",FA,Fruit,"loose, individual, net",70g,Y,,FPS
+195,14-360,"oranges, flesh with peel and pips",FA,Fruit,"loose, individual, net",360g,"Y, P","6 in pack, 60g",Confirmed on Ocado Website
+196,14-369,"orange juice, freshly squeezed",FC,Fruit,"carton, tetrapak, bottle",130g,Y,,FPS
+197,14-361,"pears, average, flesh and skin, raw, weighed with core and stalk",F,Fruit,"loose, individual, bag",330g,"Y, P","6 in pack, 55g",Confirmed on Ocado Website
+198,14-188,"peaches, canned in juice, whole contents",FA,Fruit,tin  ,130g,Y,,FPS
+199,14-321,"pears, raw, flesh and skin",FA,Fruit,packet,50g,Y,bar,FPS
+200,14-376,"pineapple, flesh only, raw",FA,Fruit,"loose, individual",75g,Y,1 raw small eating (6 to lb) ,FPS
+201,14-377,"pineapple, flesh with skin and top",FA,Fruit,"loose, individual",360g,"Y, P","6 in pack, 60g",Confirmed on Ocado Website
+202,14-211,"pineapple, canned in juice, whole contents",FA,Fruit,"loose, individual",130g,Y,,FPS
+203,14-396,"pineapple, dried",FA,Fruit,"loose, individual",200g,Y,I small bottle,FPS
+204,14-220,"plums, victoria, flesh and skin, raw",FA,Fruit,,50g,Y,bar,FPS
+205,14-227,"pomegranate, flesh and pips, weighed with skin",FA,Fruit,"loose, individual",360g,"Y, P","6 in pack, 60g",Confirmed on Ocado Website
+206,14-285,passion fruit juice,FC,Fruit,"carton, tetrapak, bottle",130g,Y,,FPS
+207,14-179,"passion fruit, flesh and pips, weighed with skin",FA,Fruit,,200g,Y,individual carton,FPS
+208,14-341,pomegranate juice drink,FC,Fruit,"carton, tetrapak, bottle",130g,Y,,FPS
+209,14-227,"pomegranate, flesh and pips, weighed with skin",FA,Fruit,,360g,"Y, P","6 in pack, 60g",Confirmed on Ocado Website
+210,14-289,prune juice,FC,Fruit,"carton, tetrapak, bottle",130g,Y,,FPS
+211,14-237,"prunes, canned in juice, whole contents",FA,Fruit,tin,130g,Y,,FPS
+212,14-231,"prunes, flesh and skin",FA,Fruit,,50g,Y,bar,FPS
+213,14-391,"prunes, ready-to-eat, semi-dried",FA,Fruit,,130g,Y,,FPS
+214,14-393,"raisins, dried",FA,Fruit,packet,44g,Y,packet,FPS
+215,14-375,"raspberries, raw",FA,Fruit,punnet,75g,Y,1 raw small eating (6 to lb) ,FPS
+216,14-249,"redcurrants, raw",FA,Fruit,punnet,75g,Y,1 raw small eating (6 to lb) ,FPS
+217,14-252,"rhubarb, stems only, raw",FA,Fruit,bunch,75g,Y,1 raw small eating (6 to lb) ,FPS
+218,14-059,star fruit,FA,Fruit,"loose, individual",200g,Y,individual carton,FPS
+219,14-324,"strawberries, raw",FA,Fruit,punnet,75g,Y,1 raw small eating (6 to lb) ,FPS
+220,14-268,"whitecurrants, raw",FA,Fruit,punnet,75g,Y,1 raw small eating (6 to lb) ,FPS
+221,13-801,"allspice, ground",H,Herbs and spices,spice jar,300g,Y,1 packet made up,FPS
+222,13-802,anise seeds,H,Herbs and spices,spice jar,37g,Y,packet,FPS
+223,13-803,asafoetida,H,Herbs and spices,,,,,
+224,13-805,"basil, dried, ground",H,Herbs and spices,spice jar,300g,Y,1 packet made up,FPS
+225,13-804,"basil, fresh",H,Herbs and spices,bunch,115g,Y,,FPS
+226,13-808,caraway seeds,H,Herbs and spices,spice jar,85g,Y,1 small can,FPS
+227,13-809,"cardamom, ground",H,Herbs and spices,spice jar,30g,Y,bar,FPS
+228,13-810,celery seeds,H,Herbs and spices,spice jar,37g,Y,packet,FPS
+229,13-811,"chervil, dried",H,Herbs and spices,spice jar,300g,Y,1 packet made up,FPS
+230,13-873,chilli powder,H,Herbs and spices,spice jar,290g,Y,meal for one,FPS
+231,13-813,chinese 5 spice,H,Herbs and spices,spice jar,116g,Y,average,FPS
+232,13-887,"chives, fresh",H,Herbs and spices,bunch,115g,Y,,FPS
+233,13-874,"cinnamon, ground",H,Herbs and spices,spice jar,,,,
+234,13-816,"cloves, dried",H,Herbs and spices,spice jar,300g,Y,1 packet made up,FPS
+235,13-818,"coriander leaves, dried",H,Herbs and spices,spice jar,170g,Y,1 average vending machine cup,FPS
+236,13-889,cumin seeds,H,Herbs and spices,spice jar,37g,Y,packet,FPS
+237,13-876,curry powder,H,Herbs and spices,spice jar,125g,Y,1 can ,FPS
+238,13-824,"dill, fresh",H,Herbs and spices,bunch,115g,Y,,FPS
+239,13-829,garam masala,H,Herbs and spices,spice jar,12g,Y,1 sachet,FPS
+240,13-830,garlic powder,H,Herbs and spices,spice jar,20g,Y,1 slice,FPS
+241,13-890,"ginger, fresh",H,Herbs and spices,"loose, individual",115g,Y,,FPS
+242,13-832,"ginger, ground",H,Herbs and spices,spice jar,200g,Y,I small bottle,FPS
+243,13-835,"marjoram, dried",H,Herbs and spices,spice jar,300g,Y,1 packet made up,FPS
+244,13-836,"mint, fresh",H,Herbs and spices,bunch,47g,Y,tube,FPS
+245,13-886,mixed curry spices,H,Herbs and spices,spice jar,125g,Y,1 can ,FPS
+246,13-884,"mixed herbs, dried",H,Herbs and spices,spice jar,40g,Y,per bag,FPS
+247,13-839,mustard seeds,H,Herbs and spices,spice jar,125g,Y,1 can ,FPS
+248,13-877,"nutmeg, ground",H,Herbs and spices,spice jar,170g,Y,1 average vending machine cup,FPS
+249,13-878,"oregano, dried, ground",H,Herbs and spices,spice jar,300g,Y,1 packet made up,FPS
+250,13-879,paprika,H,Herbs and spices,spice jar,,,,
+251,13-844,"parsley, fresh",H,Herbs and spices,bunch,115g,Y,,FPS
+252,13-880,"pepper, black",H,Herbs and spices,,630g,Y,,FPS
+253,13-892,"rosemary, fresh",H,Herbs and spices,bunch,115g,Y,,FPS
+254,13-852,saffron,H,Herbs and spices,spice jar,,,,
+255,13-854,"sage, dried, ground",H,Herbs and spices,spice jar,300g,Y,1 packet made up,FPS
+256,19-646,"bacon rashers, back, fat trimmed, raw",MAA,Meat and meat products,,32g,Y,1 sachet,FPS
+257,18-006,"beef, braising steak, raw, lean",MAC,Meat and meat products,,170g,Y,1 average vending machine cup,FPS
+258,18-003,"beef, fat, average, raw",MAC,Meat and meat products,,32g,Y,1 sachet,FPS
+259,18-016,"beef, fillet steak, raw, lean",MAC,Meat and meat products,,75g,Y,1 raw small eating (6 to lb) ,FPS
+260,18-024,"beef, flank, raw, lean",MAC,Meat and meat products,,75g,Y,1 raw small eating (6 to lb) ,FPS
+261,18-468,"beef, lean, average, raw",MAC,Meat and meat products,,330g,"Y, P","6 in pack, 55g",Confirmed on Ocado Website
+262,18-469,"beef, mince, raw",MAC,Meat and meat products,,75g,Y,1 raw small eating (6 to lb) ,FPS
+263,18-054,"beef, silverside, raw, lean",MAC,Meat and meat products,,75g,Y,1 raw small eating (6 to lb) ,FPS
+264,18-064,"beef, sirloin steak, raw, lean",MAC,Meat and meat products,,170g,Y,1 average vending machine cup,FPS
+265,18-084,"beef, topside, raw, lean",MAC,Meat and meat products,,75g,Y,1 raw small eating (6 to lb) ,FPS
+266,18-504,"chicken breast/steak, coated, baked",MCA,Meat and meat products,,240g,Y,,Tesco Website
+267,18-501,"chicken pieces, coated, takeaway",MCA,Meat and meat products,,70g,Y,,FPS
+268,18-293,"chicken, leg quarter, raw, meat and skin",MCA,Meat and meat products,,160g,Y,average,FPS
+269,18-488,"chicken, meat, average, raw",MCA,Meat and meat products,,330g,"Y, P","6 in pack, 55g",Confirmed on Ocado Website
+270,18-297,"chicken, whole, raw, meat and skin",MCA,Meat and meat products,,160g,Y,average,FPS
+271,18-295,"chicken, wing quarter, raw, meat and skin",MCA,Meat and meat products,,160g,Y,average,FPS
+272,18-503,"chicken/turkey pieces, coated, baked",MCA,Meat and meat products,,240g,Y,,Tesco Website
+273,19-538,chicken slices,MI,Meat and meat products,,70g,Y,,FPS
+274,19-516,chorizo,MI,Meat and meat products,,50g,Y,per bag,FPS
+275,19-128,"corned beef, canned",MI,Meat and meat products,tin,250ml,Y,slim can,FPS
+276,19-449,"curry, chicken balti, retail",MR,Meat and meat products,,125g,Y,1 can ,FPS
+277,,"casserole, sausage,retail",MR,Meat and meat products,,165g,Y,,FPS
+278,,"chow mein, chicken, retail",MR,Meat and meat products,,70g,Y,,FPS
+279,19-466,"cornish pasty, retail",MR,Meat and meat products,,165g,Y,,FPS
+280,,"coronation chicken, retail",MR,Meat and meat products,,70g,Y,,FPS
+281,18-489,"duck, meat only, raw",MCC,Meat and meat products,,160g,Y,average,FPS
+282,19-539,"doner kebabs, meat only",MR,Meat and meat products,,160g,Y,average,FPS
+283,,"enchiladas, meal kit, retail",MR,Meat and meat products,,260g,Y,serves one,FPS
+284,17-640,"ghee, butter",OF,Meat and meat products,,175g,Y,,Ocado Website
+285,19-496,ham,MAA,Meat and meat products,,106g,Y,,FPS
+286,,"haggis,",MI,Meat and meat products,,,,,
+287,,"hot pot, lamb/beef with potatoes, retail,",MR,Meat and meat products,,360g,"Y, P","6 in pack, 60g",Confirmed on Ocado Website
+288,18-402,"kidney, lamb, raw",MG,Meat and meat products,,75g,Y,1 raw small eating (6 to lb) ,FPS
+289,18-478,"lamb, average, raw, lean and fat",MAE,Meat and meat products,,32g,Y,1 sachet,FPS
+290,18-111,"lamb, breast, raw, lean",MAE,Meat and meat products,,75g,Y,1 raw small eating (6 to lb) ,FPS
+291,18-115,"lamb, chump chops, raw, lean and fat",MAE,Meat and meat products,,32g,Y,1 sachet,FPS
+292,18-481,"lamb, mince, raw",MAE,Meat and meat products,,75g,Y,1 raw small eating (6 to lb) ,FPS
+293,18-413,"liver, lamb, raw",MG,Meat and meat products,,75g,Y,1 raw small eating (6 to lb) ,FPS
+294,,"luncheon meat,",MI,Meat and meat products,,160g,Y,average,FPS
+295,19-326,"meat samosas, takeaway",MR,Meat and meat products,,160g,Y,average,FPS
+296,,"meatballs, beef, retail",MR,Meat and meat products,,213g,Y,small,FPS
+297,,"meatballs, in tomatoe sauce, retail",MR,Meat and meat products,,160g,Y,"fast food outlet, average",FPS
+298,18-419,"oxtail, raw",MG,Meat and meat products,,75g,Y,1 raw small eating (6 to lb) ,FPS
+299,18-609,"pork, spare ribs, raw, lean and fat",MAG,Meat and meat products,,32g,Y,1 sachet,FPS
+300,18-387,"rabbit, raw, meat only",MEC,Meat and meat products,,160g,Y,average,FPS
+301,18-390,"venison, meat only, raw",MEE,Meat and meat products,,160g,Y,average,FPS
+302,12-500,"baking fat and margarine (75-90% fat), hard block",BTM,Milk and milk products,block,32g,Y,1 sachet,FPS
+303,12-333,"cream, fresh, whipping",BJC,Milk and milk products,tub,50g,Y,bar,FPS
+304,12-537,"cheese spread, plain, reduced fat",BL,Milk and milk products,tub,32g,Y,1 sachet,FPS
+305,12-346,"cheese, cheddar, english",BL,Milk and milk products,block,116g,Y,average,FPS
+306,12-354,"cheese, danish blue",BL,Milk and milk products,tub,400g,Y,loaf,Ocado Website
+307,12-357,"cheese, goats milk, full fat, soft, white rind",BL,Milk and milk products,,11g,Y,1 sachet,FPS
+308,12-360,"cheese, mozzarella, fresh",BL,Milk and milk products,,116g,Y,average,FPS
+309,12-549,"cheese, processed, slices, reduced fat",BL,Milk and milk products,,32g,Y,1 sachet,FPS
+310,12-486,"cheese, white cheshire",BL,Milk and milk products,,330g,"Y, P","6 in pack, 55g",Confirmed on Ocado Website
+311,12-507,cornetto type ice cream cone,BP,Milk and milk products,box,50g,Y,bar,FPS
+312,12-542,"cheesecake, fruit, individual",BR,Milk and milk products,,200g,Y,individual carton,FPS
+313,12-461,"tarts, custard, individual",BR,Milk and milk products,,150g,Y,per individual pot,FPS
+314,12-543,"custard, ready to eat, canned and tetra-pak",BR,Milk and milk products,can,130g,Y,,FPS
+315,12-398,"desserts, dairy, chocolate",BR,Milk and milk products,,125g,Y,,FPS
+316,12-508,"ice cream, dairy, vanilla, soft scoop",BP,Milk and milk products,,54g,Y,standard bar,FPS
+317,12-509,"ice cream, non dairy, vanilla, soft scoop",BP,Milk and milk products,,54g,Y,standard bar,FPS
+318,,"jelly, retail",BR,Milk and milk products,,115g,Y,box,FPS
+319,12-373,"lassi, sweetened",BN,Milk and milk products,bottle,12g,"Y, P",1 sachet,FPS
+320,12-390,"lollies, containing ice-cream",BP,Milk and milk products,,50g,Y,bar,FPS
+321,12-389,"lollies, with real fruit juice",BP,Milk and milk products,,130g,Y,,FPS
+322,12-512,"milk, 1% fat, pasteurised",BA,Milk and milk products,"bottle 1 pint, 2 pint, 4 pint, 6 pint, carton 1 litre",11g,Y,1 sachet,FPS
+323,12-322,"milk, channel islands, whole, summer",BAB,Milk and milk products,"bottle 1 pint, 2 pint, 4 pint, 6 pint, carton 1 litre",11g,Y,1 sachet,FPS
+324,12-307,"milk, skimmed, pasteurised, average",BAE,Milk and milk products,"bottle 1 pint, 2 pint, 4 pint, 6 pint, carton 1 litre",11g,Y,1 sachet,FPS
+325,12-313,"milk, semi-skimmed, pasteurised, average",BAH,Milk and milk products,"bottle 1 pint, 2 pint, 4 pint, 6 pint, carton 1 litre",11g,Y,1 sachet,FPS
+326,12-596,"milk, whole, pasteurised, average",BAK,Milk and milk products,"bottle 1 pint, 2 pint, 4 pint, 6 pint, carton 1 litre",11g,Y,1 sachet,FPS
+327,12-520,"milk, condensed, whole, sweetened",BAR,Milk and milk products,tin,11g,Y,1 sachet,FPS
+328,12-522,"milk, evaporated, whole",BAR,Milk and milk products,tin,11g,Y,1 sachet,FPS
+329,12-524,"milk, soya, non-dairy alternative to milk, unsweetened, fortified",BC,Milk and milk products,"carton, 1L",130g,Y,,FPS
+330,12-401,"mousse, chocolate, low fat",BR,Milk and milk products,,11g,Y,"1 sachet, average",FPS
+331,12-553,"pudding, rice, canned, low fat",BR,Milk and milk products,tin,250ml,Y,slim can,FPS
+332,,"raita, retail",BV,Milk and milk products,,165g,Y,,FPS
+333,12-555,"yogurt, greek style, plain",BN,Milk and milk products,,266g,Y,,Ocado Website
+334,12-375,"yogurt, whole milk, fruit",BN,Milk and milk products,,200g,Y,individual carton,FPS
+335,14-870,"almonds, flaked and ground",GA,Nuts and seeds,packet,50g,Y,bar,FPS
+336,14-897,"almonds, toasted",GA,Nuts and seeds,packet,200g,Y,pack,"Tesco, Ocado, Asda Website"
+337,14-896,"almonds, whole kernels",GA,Nuts and seeds,packet,51g,Y,standard,FPS
+338,14-895,"breadnut seeds, dried",G,Nuts and seeds,packet,300g,Y,1 packet made up,FPS
+339,14-806,betel nuts,GA,Nuts and seeds,packet,47g,Y,packet,FPS
+340,14-813,"chestnuts, kernel only, raw",GA,Nuts and seeds,packet,75g,Y,1 raw small eating (6 to lb) ,FPS
+341,14-889,"coconut milk, retail",GA,Nuts and seeds,carton/tetrapak,11g,Y,1 sachet,FPS
+342,14-874,"hazelnuts, kernel only",GA,Nuts and seeds,packet,70g,Y,,FPS
+343,14-891,"macadamia nuts, salted",G,Nuts and seeds,packet,47g,Y,packet,FPS
+344,14-875,"marzipan, white and yellow, retail",GA,Nuts and seeds,packet,330g,"Y, P","6 in pack, 55g",Confirmed on Ocado Website
+345,14-880,"nuts, mixed",GA,Nuts and seeds,packet,47g,Y,packet,FPS
+346,14-892,"peanut butter, smooth",GA,Nuts and seeds,jar,175g,Y,,Ocado Website
+347,14-882,peanuts and raisins,GA,Nuts and seeds,packet,50g,Y,bar,FPS
+348,14-840,"pistachio nuts, kernel only, roasted and salted",GA,Nuts and seeds,packet,47g,Y,packet,FPS
+349,14-843,"quinoa, raw",GA,Nuts and seeds,packet,75g,Y,1 raw small eating (6 to lb) ,FPS
+350,14-845,sunflower seeds,GA,Nuts and seeds,packet,37g,Y,packet,FPS
+351,14-879,"walnuts, kernel only",GA,Nuts and seeds,packet,70g,Y,,FPS
+352,,"apple sauce, retail",WC,"Soups, sauces and miscellaneous foods",jar,600g,Y,6 servings,Ocado & Tesco Website
+353,17-705,barbecue sauce,WC,"Soups, sauces and miscellaneous foods",,170g,Y,"frozen, purchased",FPS
+354,17-678,"brown sauce, reduced salt/sugar",WCN,"Soups, sauces and miscellaneous foods",,330g,"Y, P","6 in pack, 55g",Confirmed on Ocado Website
+355,17-697,"chicken soup, cream of, canned, condensed, as served",WAC,"Soups, sauces and miscellaneous foods",can,250ml,Y,slim can,FPS
+356,17-719,chilli sauce,WC,"Soups, sauces and miscellaneous foods",,170g,Y,"frozen, purchased",FPS
+357,,cheese sauce,WCD,"Soups, sauces and miscellaneous foods",,116g,Y,average,FPS
+358,17-345,"chutney, tomato",WCG,"Soups, sauces and miscellaneous foods",jar,116g,Y,average,FPS
+359,17-358,cream of tartar,WY,"Soups, sauces and miscellaneous foods",sachet,30g,Y,bar,FPS
+360,17-715,"dressing, blue cheese",WCG,"Soups, sauces and miscellaneous foods",,116g,Y,average,FPS
+361,17-701,"dressing, french",WCG,"Soups, sauces and miscellaneous foods",,114g,Y,bar,FPS
+362,17-717,"dressing, thousand island",WCG,"Soups, sauces and miscellaneous foods",,37g,Y,packet,FPS
+363,,"guacamole, retail",WC,"Soups, sauces and miscellaneous foods",,165g,Y,,FPS
+364,17-360,gelatine,WY,"Soups, sauces and miscellaneous foods",,200g,Y,I small bottle,FPS
+365,17-724,gravy instant granules,WY,"Soups, sauces and miscellaneous foods",,11g,Y,"1 sachet, average",FPS
+366,,"hollandaise sauce, retail",WC,"Soups, sauces and miscellaneous foods",jar,170g,Y,"frozen, purchased",FPS
+367,,"hollandaise sauce, vegan, retail",WC,"Soups, sauces and miscellaneous foods",jar,400g,Y,jar,Ocado Website
+368,17-654,"mayonnaise, standard, retail",WCG,"Soups, sauces and miscellaneous foods",,165g,Y,,FPS
+369,17-364,"mustard, smooth",WY,"Soups, sauces and miscellaneous foods",jar,125g,Y,1 can ,FPS
+370,17-623,"pesto, red",WC,"Soups, sauces and miscellaneous foods",jar,55g,"Y, P",individual,Tesco Website
+371,17-718,"pickle, sweet",WCG,"Soups, sauces and miscellaneous foods",jar,300g,Y,,FPS
+372,17-702,piccalilli,WCN,"Soups, sauces and miscellaneous foods",jar,20g,Y,1 portion pack,FPS
+373,17-354,"relish, tomato based",WCN,"Soups, sauces and miscellaneous foods",jar,116g,Y,average,FPS
+374,17-711,"soup, minestrone, canned",WA,"Soups, sauces and miscellaneous foods",can,250ml,Y,slim can,FPS
+375,17-695,"soup, chicken, cream of, canned",WAC,"Soups, sauces and miscellaneous foods",can,250ml,Y,slim can,FPS
+376,17-652,"soup, cream of tomato, canned",WAC,"Soups, sauces and miscellaneous foods",can,250ml,Y,slim can,FPS
+377,17-698,"soup, lentil, canned",WAC,"Soups, sauces and miscellaneous foods",can,250ml,Y,slim can,FPS
+378,17-700,"soup, oxtail, canned",WAC,"Soups, sauces and miscellaneous foods",can,250ml,Y,slim can,FPS
+379,17-712,"soup, vegetable, canned",WAC,"Soups, sauces and miscellaneous foods",can,250ml,Y,slim can,FPS
+380,17-653,"soup, instant, dried, as purchased",WAE,"Soups, sauces and miscellaneous foods",can,11g,Y,"1 sachet, average",FPS
+381,17-628,"sauce, chinese cook in, sweet & sour",WC,"Soups, sauces and miscellaneous foods",,160g,Y,"fast food outlet, average",FPS
+382,17-629,"sauce, chinese stir fry",WC,"Soups, sauces and miscellaneous foods",,50g,Y,bar,FPS
+383,17-703,salad cream,WCG,"Soups, sauces and miscellaneous foods",,50g,Y,bar,FPS
+384,,"sauce, sweet and sour, retail",WCN,"Soups, sauces and miscellaneous foods",jar,50g,Y,bar,FPS
+385,17-721,"soy sauce, light and dark varieties",WCN,"Soups, sauces and miscellaneous foods",,266g,Y,,Ocado Website
+386,17-367,salt,WY,"Soups, sauces and miscellaneous foods",,25g,Y,"small, per bag",FPS
+387,17-515,"stock cubes, beef",WY,"Soups, sauces and miscellaneous foods",,213g,Y,small,FPS
+388,17-680,stock gel,WY,"Soups, sauces and miscellaneous foods",,100g,Y,1 average stick,FPS
+389,17-681,"stock, chicken, ready made, retail",WY,"Soups, sauces and miscellaneous foods",,130g,Y,,FPS
+390,17-339,vinegar,WY,"Soups, sauces and miscellaneous foods",,10g,Y,per bag,FPS
+391,,"white sauce, retial",WCD,"Soups, sauces and miscellaneous foods",jar,330g,"Y, P","6 in pack, 55g",Confirmed on Ocado Website
+392,,"white sauce, vegan, retial",WCD,"Soups, sauces and miscellaneous foods",jar,400g,Y,jar,Ocado Website
+393,17-723,worcestershire sauce,WCN,"Soups, sauces and miscellaneous foods",,170g,Y,"frozen, purchased",FPS
+394,17-377,"water, distilled",WY,"Soups, sauces and miscellaneous foods",,500g,Y,large,FPS
+395,17-517,yeast extract,WY,"Soups, sauces and miscellaneous foods",jar,170g,Y,1 average vending machine cup,FPS
+396,17-659,chocolate spread,SC,"Sugars, preserves and snacks",jar,11g,Y,"1 sachet, average",FPS
+397,17-658,chocolate covered bar with caramel and cereal,SEA,"Sugars, preserves and snacks","indiviudal bar, multipack",11g,Y,"1 sachet, average",FPS
+398,17-763,creme egg,SEA,"Sugars, preserves and snacks",individual,40g,Y,,FPS
+399,17-645,corn snacks,SN,"Sugars, preserves and snacks",bag,100g,Y,per bag,FPS
+400,,"chevda/chevra/chewra, retial",SNC,"Sugars, preserves and snacks",,,,,
+401,17-049,"glucose liquid, bp",SC,"Sugars, preserves and snacks",tube,170g,Y,"in sauce, purchased, frozen",FPS
+402,17-050,honey,SC,"Sugars, preserves and snacks",jar,135g,Y,,FPS
+403,17-689,"ice cream sauce, topping, strawberry and chocolate flavours",SC,"Sugars, preserves and snacks",,11g,Y,"1 sachet, average",FPS
+404,17-075,"jam, reduced sugar",SC,"Sugars, preserves and snacks",jar,29g,Y,bar,FPS
+405,17-777,liquorice allsorts,SEC,"Sugars, preserves and snacks",bag,115g,Y,box,FPS
+406,17-078,marmalade,SC,"Sugars, preserves and snacks",jar,20g,Y,1 individual carton,FPS
+407,17-651,maltesers and similar products,SEA,"Sugars, preserves and snacks","individual bag, share bag",50g,Y,bar,FPS
+408,17-668,mars bar and own brand equivalents,SEA,"Sugars, preserves and snacks","indiviudal bar, multipack",50g,Y,standard bar,FPS
+409,17-669,milky way and own brand equivalents,SEA,"Sugars, preserves and snacks","indiviudal bar, multipack",50g,Y,bar,FPS
+410,17-114,marshmallows,SEC,"Sugars, preserves and snacks",,40g,Y,bag,FPS
+411,,nougat,SEC,"Sugars, preserves and snacks",,114g,Y,bar,FPS
+412,17-117,peppermints,SEC,"Sugars, preserves and snacks",,44g,Y,tube,FPS
+413,17-692,"popcorn, salted, retail",SN,"Sugars, preserves and snacks",,25g,Y,"small, per bag",FPS
+414,17-132,pork scratchings,SN,"Sugars, preserves and snacks",bag,300g,Y,,FPS
+415,17-693,"potato crisps, low fat",SN,"Sugars, preserves and snacks",bag,32g,Y,1 sachet,FPS
+416,17-060,"sugar, brown",SC,"Sugars, preserves and snacks",bag,330g,"Y, P","6 in pack, 55g",Confirmed on Ocado Website
+417,17-062,"sugar, icing",SC,"Sugars, preserves and snacks",bag,6g,Y,1 'packet' sugar,FPS
+418,17-063,"sugar, white",SC,"Sugars, preserves and snacks",bag,330g,"Y, P","6 in pack, 55g",Confirmed on Ocado Website
+419,17-065,"syrup, golden",SC,"Sugars, preserves and snacks",tin,100g,Y,,FPS
+420,17-096,smartie-type sweets,SEA,"Sugars, preserves and snacks",tube,37g,Y,tube,FPS
+421,,"ackee, canned",DG,Vegetables,tin,250ml,Y,slim can,FPS
+422,13-146,"agar, dried",DG,Vegetables,,300g,Y,1 packet made up,FPS
+423,13-148,"alfalfa sprouts, raw",DG,Vegetables,,75g,Y,1 raw small eating (6 to lb) ,FPS
+424,13-149,"amaranth leaves, raw",DG,Vegetables,,75g,Y,1 raw small eating (6 to lb) ,FPS
+425,13-151,"arrowhead, raw",DG,Vegetables,,75g,Y,1 raw small eating (6 to lb) ,FPS
+426,13-153,"artichoke, globe, raw",DG,Vegetables,"loose, individual",75g,Y,1 raw small eating (6 to lb) ,FPS
+427,,"artichoke, canned",DG,Vegetables,tin,250ml,Y,slim can,FPS
+428,,"artichoke, jar",DG,Vegetables,jar,300g,Y,1 packet made up,FPS
+429,13-157,"asparagus, raw",DG,Vegetables,"bunch, packet",75g,Y,1 raw small eating (6 to lb) ,FPS
+430,13-161,"aubergine, raw",DG,Vegetables,"loose, individual",75g,Y,1 raw small eating (6 to lb) ,FPS
+431,13-532,"baked beans, canned in tomato sauce",DB,Vegetables,tin,250ml,Y,slim can,FPS
+432,13-041,"beans, aduki, whole, dried, raw",DB,Vegetables,packet,51g,Y,standard,FPS
+433,,"beans, aduki, canned",DB,Vegetables,tin,250ml,Y,slim can,FPS
+434,13-062,"beans, blackeye, whole, dried, raw",DB,Vegetables,packet,51g,Y,standard,FPS
+435,,"beans, blackeye, canned",DB,Vegetables,tin,250ml,Y,slim can,FPS
+436,13-070,"beans, butter, dried, raw",DB,Vegetables,packet,175g,Y,,Ocado Website
+437,,"beans, butter, canned",DB,Vegetables,tin,250ml,Y,slim can,FPS
+438,13-074,"beans, chick peas, kabuli, whole, dried, raw",DB,Vegetables,packet,51g,Y,standard,FPS
+439,,"beans, chick peas, canned",DB,Vegetables,tin,250ml,Y,slim can,FPS
+440,13-080,"beans, cluster, raw",DB,Vegetables,packet,75g,Y,1 raw small eating (6 to lb) ,FPS
+441,,"beans, edamame, frozen",DB,Vegetables,packet,295g,"Y, P",with cheese,Tesco Website
+442,,"beans, edamame, canned",DB,Vegetables,tin,250ml,Y,slim can,FPS
+443,13-514,"beans, green, raw",DB,Vegetables,packet,75g,Y,1 raw small eating (6 to lb) ,FPS
+444,13-086,"beans, haricot, whole, dried, raw",DB,Vegetables,jar,51g,Y,standard,FPS
+445,,"beans, haricot, canned",DB,Vegetables,tin,250ml,Y,slim can,FPS
+446,13-098,"beans, mung, dahl, dried, raw",DB,Vegetables,packet,75g,Y,1 raw small eating (6 to lb) ,FPS
+447,13-102,"beans, pigeon peas, whole, dried, raw",DB,Vegetables,packet,51g,Y,standard,FPS
+448,13-106,"beans, pinto, dried, raw",DB,Vegetables,packet,75g,Y,1 raw small eating (6 to lb) ,FPS
+449,,"beans, pinto, canned, ",DB,Vegetables,tin,250ml,Y,slim can,FPS
+450,13-109,"beans, red kidney, dried, raw",DB,Vegetables,packet,75g,Y,1 raw small eating (6 to lb) ,FPS
+451,,"beans, red kidney, canned",DB,Vegetables,tin,250ml,Y,slim can,FPS
+452,13-112,"beans, runner, raw",DB,Vegetables,packet,75g,Y,1 raw small eating (6 to lb) ,FPS
+453,13-115,"beans, soya, dried, raw",DB,Vegetables,packet,75g,Y,1 raw small eating (6 to lb) ,FPS
+454,13-117,"beans, sword, raw",DB,Vegetables,packet,75g,Y,1 raw small eating (6 to lb) ,FPS
+455,13-426,"beansprouts, mung, raw",DB,Vegetables,packet,75g,Y,1 raw small eating (6 to lb) ,FPS
+456,13-056,"black gram, urad gram, whole, dried, raw",DB,Vegetables,packet,630g,Y,,FPS
+457,13-164,"beetroot, raw",DG,Vegetables,"loose, individual",75g,Y,1 raw small eating (6 to lb) ,FPS
+458,13-167,"breadfruit, raw",DG,Vegetables,"loose, individual",75g,Y,1 raw small eating (6 to lb) ,FPS
+459,13-502,"broccoli, green, raw",DG,Vegetables,"loose, individual",75g,Y,1 raw small eating (6 to lb) ,FPS
+460,13-174,"broccoli, purple sprouting, raw",DG,Vegetables,packet,75g,Y,1 raw small eating (6 to lb) ,FPS
+461,13-177,"brussels sprouts, raw",DG,Vegetables,packet,75g,Y,1 raw small eating (6 to lb) ,FPS
+462,,"beanburger, retail",DR,Vegetables,packet,165g,Y,,FPS
+463,,"beanburger, vegetarian",DR,Vegetables,packet,150g,Y,average,FPS
+464,13-067,"beans, broad, dried, raw",DB,Vegetables,"loose, individual",75g,Y,1 raw small eating (6 to lb) ,FPS
+465,,"beans, broad, canned",DB,Vegetables,tin,250ml,Y,slim can,FPS
+466,13-064,"beans, broad, whole, raw, without pod",DB,Vegetables,packet,330g,"Y, P","6 in pack, 55g",Confirmed on Ocado Website
+467,,"beans, cannellini, canned",DB,Vegetables,can,250ml,Y,slim can,FPS
+468,13-582,"cabbage, average, raw",DG,Vegetables,"loose, individual",330g,"Y, P","6 in pack, 55g",Confirmed on Ocado Website
+469,13-187,"cabbage, chinese, raw",DG,Vegetables,"loose, individual",75g,Y,1 raw small eating (6 to lb) ,FPS
+470,13-510,"cabbage, green, raw",DG,Vegetables,"loose, individual",75g,Y,1 raw small eating (6 to lb) ,FPS
+471,13-190,"cabbage, red, raw",DG,Vegetables,"loose, individual",75g,Y,1 raw small eating (6 to lb) ,FPS
+472,13-509,"cabbage, white, raw",DG,Vegetables,"loose, individual",330g,"Y, P","6 in pack, 55g",Confirmed on Ocado Website
+473,13-448,"carrots, young, raw",DG,Vegetables,"loose, individual, bag",75g,Y,1 raw small eating (6 to lb) ,FPS
+474,13-512,"cauliflower, raw",DG,Vegetables,"loose, individual",75g,Y,1 raw small eating (6 to lb) ,FPS
+475,13-219,"celeriac, raw",DG,Vegetables,"loose, individual",75g,Y,1 raw small eating (6 to lb) ,FPS
+476,13-636,"celery, raw",DG,Vegetables,"loose, individual",75g,Y,1 raw small eating (6 to lb) ,FPS
+477,13-223,"chard, swiss, raw",DG,Vegetables,"loose, individual",75g,Y,1 raw small eating (6 to lb) ,FPS
+478,13-225,"chicory, pale variety, raw",DG,Vegetables,"loose, individual",75g,Y,1 raw small eating (6 to lb) ,FPS
+479,13-627,"courgette, raw",DG,Vegetables,"loose, individual",75g,Y,1 raw small eating (6 to lb) ,FPS
+480,13-234,"curly kale, raw",DG,Vegetables,bag,29g,Y,,FPS
+481,,"casserole, vegetable, retail",DR,Vegetables,packet,340g,Y,,FPS
+482,15-637,"cauliflower cheese, retail",DR,Vegetables,packet,116g,Y,average,FPS
+483,15-635,"coleslaw, not low calorie, retail",DR,Vegetables,packet,32g,Y,1 sachet,FPS
+484,,"curry, vegetable, mixed, canned",DR,Vegetables,tin,250ml,Y,slim can,FPS
+485,13-244,"garlic, raw",DG,Vegetables,"individual, pack",20g,Y,1 slice,FPS
+486,13-245,"gherkins, raw",DG,Vegetables,jar,75g,Y,1 raw small eating (6 to lb) ,FPS
+487,13-608,"green beans, dried",DI,Vegetables,packet,170g,Y,small tin,FPS
+488,,"green beans, in water, canned ",DI,Vegetables,tin,250ml,Y,slim can,FPS
+489,13-556,houmous,DB,Vegetables,packet,,,,
+490,13-258,"horseradish, raw",DG,Vegetables,,75g,Y,1 raw small eating (6 to lb) ,FPS
+491,13-261,"kohl rabi, raw",DG,Vegetables,"loose, individual",75g,Y,1 raw small eating (6 to lb) ,FPS
+492,15-809,khadhi,DR,Vegetables,,350g,Y,average,FPS
+493,13-089,"lentils, green and brown, whole, dried, raw",DB,Vegetables,packet,330g,"Y, P","6 in pack, 55g",Confirmed on Ocado Website
+494,,"lentils, canned",DB,Vegetables,can,250ml,Y,slim can,FPS
+495,13-624,"leeks, raw",DG,Vegetables,"loose, individual",75g,Y,1 raw small eating (6 to lb) ,FPS
+496,13-520,"lettuce, average, raw",DG,Vegetables,"loose, individual",330g,"Y, P","6 in pack, 55g",Confirmed on Ocado Website
+497,13-271,"lotus tubers, raw",DG,Vegetables,,75g,Y,1 raw small eating (6 to lb) ,FPS
+498,15-651,"lasagne, vegetable, retail",DR,Vegetables,packet,290g,Y,"purchased ready meal for one, average",FPS
+499,13-505,"mushrooms, white, raw",DG,Vegetables,packet,330g,"Y, P","6 in pack, 55g",Confirmed on Ocado Website
+500,13-298,"mustard leaves, raw",DG,Vegetables,,125g,Y,1 can ,FPS
+501,15-652,"moussaka, vegetable, retail",DR,Vegetables,packet,340g,Y,,FPS
+502,13-300,"okra, raw",DG,Vegetables,packet,75g,Y,1 raw small eating (6 to lb) ,FPS
+503,13-499,"onions, raw",DG,Vegetables,"loose, individual",75g,Y,1 raw small eating (6 to lb) ,FPS
+504,,"potatoes,",DA,Vegetables,,75g,Y,small,FPS
+505,,"potato chips,",DAP,Vegetables,,320g,Y,purchased frozen ready meal for one,FPS
+506,,"potato wedges, retail, ",DAR,Vegetables,,320g,Y,purchased frozen ready meal for one,FPS
+507,,"peas, canned in water",DF,Vegetables,tin,250ml,Y,slim can,FPS
+508,13-527,"peas, frozen, raw",DF,Vegetables,,295g,"Y, P",with cheese,Tesco Website
+509,,"pak choi, raw",DG,Vegetables,,75g,Y,1 raw small eating (6 to lb) ,FPS
+510,13-311,"papaya, unripe, green flesh, raw",DG,Vegetables,"loose, individual",75g,Y,1 raw small eating (6 to lb) ,FPS
+511,13-312,"parsnip, raw",DG,Vegetables,"loose, individual, packet",75g,Y,1 raw small eating (6 to lb) ,FPS
+512,13-524,"pepper, capsicum, red, raw",DG,Vegetables,"loose, individual",75g,Y,1 raw small eating (6 to lb) ,FPS
+513,13-323,"plantain, green flesh, raw",DG,Vegetables,"loose, individual",75g,Y,1 raw small eating (6 to lb) ,FPS
+514,13-326,"pumpkin, flesh only, raw",DG,Vegetables,"loose, individual",75g,Y,1 raw small eating (6 to lb) ,FPS
+515,15-262,quorn korma,DR,Vegetables,,350g,Y,average,FPS
+516,13-332,"radish leaves, raw",DG,Vegetables,,75g,Y,1 raw small eating (6 to lb) ,FPS
+517,13-522,"rocket, raw",DG,Vegetables,packet,100g,Y,1 average stick,FPS
+518,15-869,"roulade, spinach",DR,Vegetables,,37g,Y,packet,FPS
+519,13-521,"spinach, baby, raw",DG,Vegetables,packet,130g,Y,,FPS
+520,13-359,"swede, flesh only, raw",DG,Vegetables,,75g,Y,1 raw small eating (6 to lb) ,FPS
+521,,"swede, raw,flesh and skin",DG,Vegetables,,50g,Y,bar,FPS
+522,13-463,"sweet potato, raw, flesh only",DG,Vegetables,packet,320g,Y,purchased frozen ready meal for one,FPS
+523,,"sweet potato, raw, flesh and skin",DG,Vegetables,packet,50g,Y,bar,FPS
+524,,"sweetcorn kernels, canned",DG,Vegetables,tin,250ml,Y,slim can,FPS
+525,13-622,"sweetcorn, kernels, raw",DG,Vegetables,packet,75g,Y,1 raw small eating (6 to lb) ,FPS
+526,,sweetcorn on a cob,DG,Vegetables,packet,105g,Y,average,FPS
+527,15-872,"salad, pasta, vegetables and mayonnaise",DR,Vegetables,,50g,Y,bar,FPS
+528,15-883,"shepherd's pie, vegetable",DR,Vegetables,,11g,Y,1 sachet,FPS
+529,15-617,"sushi, vegetable",DR,Vegetables,,340g,Y,,FPS
+530,,"vegetables, mixed, frozen",DG,Vegetables,,295g,"Y, P",with cheese,Tesco Website
+531,15-656,"vegeburger, retail, grilled",DR,Vegetables,,165g,Y,,FPS
+532,,"vegetable stir fry mix,",DR,Vegetables,packet,50g,Y,bar,FPS
+533,13-673,"watercress, raw",DG,Vegetables,packet,75g,Y,1 raw small eating (6 to lb) ,FPS
+534,13-397,"yam, flesh only, raw",DG,Vegetables,,75g,Y,1 raw small eating (6 to lb) ,FPS

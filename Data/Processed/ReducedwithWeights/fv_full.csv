@@ -1,0 +1,170 @@
+,Food Code,Food Name,Food sub-group codes,Food Group,Product Weight,Source,Similarity Score,Packaging,Purchase Date,Pack Size
+0,13-145,ackee,DG,Vegetables,,,,Can,,
+1,13-146,agar,DG,Vegetables,,,,Bag,,
+2,13-148,alfalfa sprouts,DG,Vegetables,29.4,PH15,0.7071067811865476,Loose  ,19.10.15  ,Purchase Date:  
+4,13-149,amaranth leaves,DG,Vegetables,,,,Bagged produce,,
+6,14-016,apples eating,FA,Fruit,128.4,DoH11,1.0,Plastic ,14.11.2011 ,
+7,14-031,apricots,FA,Fruit,8.9,PH15,1.0,Plastic  ,28.01.16  ,500g  
+9,13-153,artichoke globe,DG,Vegetables,,,,Loose produce,,
+10,13-157,asparagus,DG,Vegetables,16.6g,PH15,1.0,Plastic  ,26.08.15  ,250g  
+11,13-161,aubergine,DG,Vegetables,265.0,PH15,1.0,Loose  ,28.09.15  ,Purchase Date:  
+20,13-070,beans butter,DB,Vegetables,25g,FPS,0.859017757864948,"Plastic,1 portion pack",,
+21,13-514,beans green,DB,Vegetables,210g/440g,FPS,1.0,Bagged produce,,
+26,13-164,beetroot,DG,Vegetables,84.3g,PH15,1.0,Plastic  ,28.09.15  ,300g  
+34,14-388,blackberries,FA,Fruit,7.0g,PH15,1.0,Plastic  ,26.08.15  ,350g  
+35,14-053,blackcurrants,FA,Fruit,,,,Punnet,,
+42,13-502,broccoli green,DG,Vegetables,890.8,DoH11,0.6455735193104358,Plastic ,17.10.2011 ,
+43,13-177,brussels sprouts,DG,Vegetables,29.4,PH15,1.0000000000000002,Loose  ,19.10.15  ,Purchase Date:  
+46,13-190,cabbage red,DG,Vegetables,100.0,PH15,0.6284590868598239,Mixed material  ,26.10.15  ,500g  
+51,13-496,carrots old,DG,Vegetables,67.2,DoH11,1.0,Plastic ,10.10.2011 ,
+52,13-512,cauliflower,DG,Vegetables,1123.0,DoH11,1.0,Plastic ,17.10.2011 ,
+53,13-636,celery,DG,Vegetables,,,,Loose produce,,
+79,13-627,courgette,DG,Vegetables,224.8g,,,Loose produce,,
+86,14-087,mixed fruit,FA,Fruit,95.8,PH15,0.7071067811865476,Loose  ,19.10.15  ,Purchase Date:  
+88,14-395,figs ready-to-eat semi-,FA,Fruit,14.3,PH15,1.0,Mixed material  ,27.01.16  ,250g  
+97,13-245,gherkins,DG,Vegetables,,,,Jar,,
+99,14-323,grapes red,FA,Fruit,100.0,PH15,0.6284590868598239,Mixed material  ,26.10.15  ,500g  
+108,13-624,leeks,DG,Vegetables,271.7,PH15,1.0,Loose  ,19.10.15  ,Purchase Date:  
+110,13-657,lentils red split,DB,Vegetables,500g  ,PH15,0.8199321156499115,Mixed material  ,26.10.15  ,500g  
+111,13-520,lettuce,DG,Vegetables,290.9,DoH11,0.7071067811865476,Plastic ,26.09.2011 ,
+116,13-279,matoki,DG,Vegetables,,,,Bagged produce,,
+125,17-416,mushroom,DI,Vegetables,,,,Bag,,
+126,13-288,mushrooms chinese,DG,Vegetables,23.7,DoH11,1.0,Plastic ,03.10.2011 ,
+127,13-294,mushrooms shiitake,DG,Vegetables,23.7,DoH11,1.0,Plastic ,03.10.2011 ,
+128,13-505,mushrooms white,DG,Vegetables,23.7,DoH11,1.0,Plastic ,03.10.2011 ,
+140,13-499,onions,DG,Vegetables,200.5,DoH11,1.0,Netting ,10.10.2011 ,
+143,14-285,passion fruit juice,FC,Fruit,200g,FPS,1.0,Individual carton,,Purchase Date:  
+149,14-196,pears,FA,Fruit,201.8,DoH11,1.0,Plastic ,18.11.2011 ,
+150,13-527,peas frozen,DF,Vegetables,462.9,PH15,0.7071067811865476,Plastic  ,30.11.15  ,500g  
+151,13-438,peas,DF,Vegetables,900.0,DoH11,0.7467549140718786,Plastic ,27.01.2012 ,
+155,14-396,pineapple,FA,Fruit,1198.4g,,,Can,,
+159,13-489,potatoes old,DAM,Vegetables,200.5,DoH11,1.0,Plastic ,03.10.2011 ,
+161,14-391,prunes ready-to-eat semi-,FA,Fruit,7.5,PH15,1.0,Plastic  ,26.10.15  ,500g  
+164,14-393,raisins,FA,Fruit,0.6g,PH15,1.0,Mixed material  ,26.10.15  ,500g  
+169,13-522,rocket,DG,Vegetables,,,,Bagged produce,,
+170,15-648,salad green,DR,Vegetables,210g/440g,FPS,1.0,Can,,
+171,15-875,salad rice brown,DR,Vegetables,300g,FPS,1.0,Bag,,
+176,15-658,sausages vegetarian baked/grilled,DR,Vegetables,171g,FPS,1.0,Pack - McDonald's Sausage and Egg McMuffin,,
+182,13-521,spinach baby,DG,Vegetables,401.7,PH15,0.7071067811865476,Plastic  ,09.11.15  ,190g  
+183,17-417,spinach,DI,Vegetables,200.0,DoH11,0.7071067811865476,Plastic ,28.09.2011 ,
+184,13-348,spring greens,DG,Vegetables,,,,Loose produce,,
+185,13-355,squash butternut,DG,Vegetables,1026.4g,PH15,1.0000000000000002,Loose  ,05.10.15  ,Purchase Date:  
+186,14-059,star fruit,FA,Fruit,95.8,PH15,0.7071067811865476,Loose  ,19.10.15  ,Purchase Date:  
+187,14-324,strawberries,FA,Fruit,16.7,DoH11,1.0,Plastic ,23.08.2011 ,
+193,15-617,sushi,DR,Vegetables,,,,Bottle,,
+194,13-672,sweet potato baked,DG,Vegetables,249.3g,PH15,1.0000000000000002,Plastic  ,07.12.15  ,1kg 
+195,13-609,sweetcorn,DI,Vegetables,401.7,PH15,0.7071067811865476,Plastic  ,09.11.15  ,190g  
+198,13-531,tomato puree,DG,Vegetables,142.0,DoH11,1.0,Metal ,30.01.2012 ,
+199,13-519,tomatoes cherry,DG,Vegetables,,,,Packaged produce,,
+324,14-363,apples,F,Fruit,128.4,DoH11,0.6650993146211334,Plastic ,14.11.2011 ,
+325,14-319,apples eating,F,Fruit,128.4,DoH11,1.0,Plastic ,14.11.2011 ,
+326,14-025,apricots,FA,Fruit,8.9,PH15,1.0,Plastic  ,28.01.16  ,500g  
+327,14-040,avocado fuerte,FA,Fruit,209.0,PH15,0.7071067811865476,"loose, individual",07.12.15  ,Purchase Date:  
+328,14-387,avocado hass,FA,Fruit,214.6g,PH15,0.7071067811865476,"loose, individual",07.12.15  ,Purchase Date:  
+329,14-331,apple juice,FC,Fruit,,,,"carton, tetrapak, bottle",,
+330,14-043,babaco,FA,Fruit,,,,"loose, individual",,
+331,14-318,bananas,FA,Fruit,174.8,DoH11,1.0,Plastic ,21.11.2011 ,
+333,14-382,cherries,FA,Fruit,9.8g,PH15,1.0,Plastic  ,11.08.15  ,Purchase Date:  
+334,14-326,citrus fruit soft/easy peelers,FA,Fruit,95.8,PH15,0.7071067811865476,Loose  ,19.10.15  ,Purchase Date:  
+337,14-077,damsons,FA,Fruit,,,,punnet,,
+338,14-083,dates,FA,Fruit,,,,packet,,
+339,14-089,elderberries,FA,Fruit,,,,punnet,,
+340,14-100,gooseberries,FA,Fruit,,,,punnet,,
+341,14-384,grapefruit,FA,Fruit,331.7g,PH15,1.0,Loose  ,05.10.15  ,Purchase Date:  
+342,14-322,grapes green,FA,Fruit,500.0,DoH11,1.0,Plastic ,14.11.2011 ,
+343,14-118,guava,FA,Fruit,,,,"loose, individual",,
+344,14-371,kiwi fruit,FA,Fruit,83.8g,PH15,1.0000000000000002,Loose  ,19.10.15  ,Purchase Date:  
+345,14-373,kiwi fruit  weighed with skin,FA,Fruit,95.8,PH15,0.8218024408117858,Loose  ,19.10.15  ,Purchase Date:  
+346,14-125,kumquats,FA,Fruit,,,,punnet,,
+347,14-128,lemons,FA,Fruit,,,,"loose, individual, net",,
+348,14-131,limes,FA,Fruit,,,,"loose, individual, net",,
+351,14-277,lemon juice,FC,Fruit,,,,,,
+352,14-378,mangoes ripe,FA,Fruit,321.7,PH15,1.0,Plastic  ,07.12.15  ,3 fruits  
+353,14-379,mangoes,FA,Fruit,375.2g,PH15,0.7639387535946407,Plastic  ,07.12.15  ,3 fruits  
+354,14-339,melon canteloupe-type,FA,Fruit,1333.8,DoH11,0.7071067811865476,"loose, individual",30.08.2011 ,
+355,14-353,melon canteloupe-type,FA,Fruit,1333.8,DoH11,0.7071067811865476,"loose, individual",30.08.2011 ,
+356,14-356,melon,FA,Fruit,1333.8,DoH11,0.7071067811865476,"loose, individual",30.08.2011 ,
+357,14-168,mulberries,FA,Fruit,,,,punnet,,
+358,14-380,nectarines,FA,Fruit,131.6g,,,punnet,,
+360,14-327,oranges,FA,Fruit,271.3,DoH11,1.0,Netting ,21.11.201 1 ,
+361,14-360,oranges  with peel and pips,FA,Fruit,271.3,DoH11,0.7071067811865476,Netting ,21.11.201 1 ,
+362,14-369,orange juice freshly squeezed,FC,Fruit,1.0,DoH11,0.6398754068029437,Tetra pak ,27.01.2012 ,
+363,14-361,pears,F,Fruit,201.8,DoH11,1.0,Plastic ,18.11.2011 ,
+364,14-188,peaches in juice whole contents,FA,Fruit,,,,tin  ,,
+365,14-321,pears,FA,Fruit,201.8,DoH11,1.0,Plastic ,18.11.2011 ,
+366,14-377,pineapple  and top,FA,Fruit,1198.4g,,,"loose, individual",,
+367,14-211,pineapple in juice whole contents,FA,Fruit,,,,"loose, individual",,
+368,14-220,plums victoria,FA,Fruit,76.8g,PH15,,,,
+369,14-227,pomegranate,FA,Fruit,,,,"loose, individual",,
+370,14-179,passion fruit,FA,Fruit,95.8,PH15,0.7071067811865476,Loose  ,19.10.15  ,Purchase Date:  
+371,14-341,pomegranate juice,FC,Fruit,,,,"carton, tetrapak, bottle",,
+372,14-227,pomegranate,FA,Fruit,,,,,,
+373,14-289,prune juice,FC,Fruit,,,,"carton, tetrapak, bottle",,
+374,14-237,prunes in juice whole contents,FA,Fruit,7.5,PH15,1.0,Plastic  ,26.10.15  ,500g  
+375,14-231,prunes,FA,Fruit,7.5,PH15,1.0,Plastic  ,26.10.15  ,500g  
+376,14-391,prunes ready-to-eat semi-,FA,Fruit,7.5,PH15,1.0,Plastic  ,26.10.15  ,500g  
+379,14-252,rhubarb stems,FA,Fruit,109.0g,PH15,1.0,Plastic  ,17.08.15  ,400g  
+513,,artichoke jar,DG,Vegetables,,,,jar,,
+514,13-532,baked beans in tomato sauce,DB,Vegetables,150g/205g,FPS,1.0,Can,,
+515,13-041,beans aduki whole,DB,Vegetables,14.5g,,,packet,,
+516,,beans aduki,DB,Vegetables,6.0,DoH11,0.763698128297522,Plastic ,19.09.2011 ,
+517,13-062,beans blackeye whole,DB,Vegetables,,,,packet,,
+518,,beans blackeye,DB,Vegetables,6.0,DoH11,0.763698128297522,Plastic ,19.09.2011 ,
+519,,beans butter,DB,Vegetables,23.8g,DoH11,0.763698128297522,Plastic ,19.09.2011 ,
+520,13-074,beans chick peas kabuli whole,DB,Vegetables,,,,packet,,
+521,,beans chick peas,DB,Vegetables,,,,tin,,
+522,13-080,beans cluster,DB,Vegetables,6.0,DoH11,0.763698128297522,Plastic ,19.09.2011 ,
+523,,beans edamame frozen,DB,Vegetables,462.9,PH15,0.924728131149382,Plastic  ,30.11.15  ,500g  
+524,,beans edamame,DB,Vegetables,6.0,DoH11,0.763698128297522,Plastic ,19.09.2011 ,
+525,13-086,beans haricot whole,DB,Vegetables,,,,jar,,
+526,,beans haricot,DB,Vegetables,6.0,DoH11,0.763698128297522,Plastic ,19.09.2011 ,
+527,13-098,beans mung dahl,DB,Vegetables,6.0,DoH11,0.763698128297522,Plastic ,19.09.2011 ,
+528,13-102,beans pigeon peas whole,DB,Vegetables,,,,packet,,
+529,,beans pinto,DB,Vegetables,6.0,DoH11,0.763698128297522,Plastic ,19.09.2011 ,
+530,13-109,beans red kidney,DB,Vegetables,100.0,PH15,1.0,Mixed material  ,26.10.15  ,500g  
+531,,beans red kidney,DB,Vegetables,100.0,PH15,1.0,Mixed material  ,26.10.15  ,500g  
+532,13-112,beans runner,DB,Vegetables,23.8g,PH15,1.0,Plastic  ,11.08.15  ,255g  
+533,13-115,beans soya,DB,Vegetables,42.3g,DoH11,0.763698128297522,Plastic ,19.09.2011 ,
+534,13-117,beans sword,DB,Vegetables,6.0,DoH11,0.763698128297522,Plastic ,19.09.2011 ,
+535,13-426,beansprouts mung,DB,Vegetables,,,,packet,,
+536,13-056,black gram urad gram whole,DB,Vegetables,,,,packet,,
+538,13-174,broccoli purple sprouting,DG,Vegetables,,,,packet,,
+540,13-067,beans broad,DB,Vegetables,42.3g,PH15,1.0,Plastic  ,11.08.15  ,500g  
+541,13-064,beans broad whole without pod,DB,Vegetables,39.2,PH15,1.0,Plastic  ,11.08.15  ,500g  
+542,,beans cannellini,DB,Vegetables,508.7,PH15,0.8277751531630342,Metal  ,26.10.15  ,Net weight: 400g; drained weight: 246g  
+543,13-582,cabbage,DG,Vegetables,890.8,DoH11,0.763698128297522,Plastic ,17.10.2011 ,
+544,13-187,cabbage chinese,DG,Vegetables,890.8,DoH11,0.763698128297522,Plastic ,17.10.2011 ,
+545,13-510,cabbage green,DG,Vegetables,890.8,DoH11,1.0,Plastic ,17.10.2011 ,
+547,13-223,chard swiss,DG,Vegetables,,,,"loose, individual",,
+548,13-225,chicory pale variety,DG,Vegetables,,,,"loose, individual",,
+549,13-234,curly kale,DG,Vegetables,42.3g,PH15,1.0000000000000002,Plastic  ,26.10.15  ,206g  
+551,15-637,cauliflower cheese,DR,Vegetables,1123.0,DoH11,1.0,Plastic ,17.10.2011 ,
+552,15-635,coleslaw not low calorie,DR,Vegetables,,,,packet,,
+553,,curry mixed,DR,Vegetables,35g,FPS,0.5250807136598507,tin,,
+555,13-608,green beans,DI,Vegetables,6.0,DoH11,1.0,Plastic ,19.09.2011 ,
+556,,green beans in water,DI,Vegetables,6.0,DoH11,0.6567486715248725,Plastic ,19.09.2011 ,
+557,13-261,kohl rabi,DG,Vegetables,,,,"loose, individual",,
+559,13-089,lentils green and brown whole,DB,Vegetables,,,,packet,,
+561,13-520,lettuce,DG,Vegetables,290.9,DoH11,0.7071067811865476,Plastic ,26.09.2011 ,
+562,13-271,lotus tubers,DG,Vegetables,,,,,,
+564,13-298,mustard leaves,DG,Vegetables,5g,FPS,1.0,,,
+568,,potato chips,DAP,Vegetables,142.0,PH15,0.7071067811865476,Plastic  ,07.12.15  ,1kg 
+569,,potato wedges,DAR,Vegetables,249.3g,PH15,0.7071067811865476,Plastic  ,07.12.15  ,1kg 
+570,,peas in water,DF,Vegetables,,,,tin,,
+571,,pak choi,DG,Vegetables,,,,,,
+572,13-311,papaya unripe green,DG,Vegetables,463.0,PH15,0.7576296477010735,Loose  ,05.10.15  ,Purchase Date:  
+574,13-524,pepper capsicum red,DG,Vegetables,100.0,PH15,0.6284590868598239,Mixed material  ,26.10.15  ,500g  
+575,13-323,plantain green,DG,Vegetables,890.8,DoH11,0.6455735193104358,Plastic ,17.10.2011 ,
+576,13-326,pumpkin,DG,Vegetables,,,,"loose, individual",,
+577,15-262,quorn korma,DR,Vegetables,,,,,,
+578,13-332,radish leaves,DG,Vegetables,16.0,PH15,1.0,Plastic  ,19.10.15  ,240g  
+579,13-359,swede,DG,Vegetables,789.4g,PH15,1.0,Plastic  ,26.10.15  ,Min. 400g  
+580,,swede,DG,Vegetables,789.4g,PH15,1.0,Plastic  ,26.10.15  ,Min. 400g  
+581,13-622,sweetcorn kernels,DG,Vegetables,401.7,PH15,0.7071067811865476,Plastic  ,09.11.15  ,190g  
+582,,sweetcorn on a cob,DG,Vegetables,12.7g,PH15,0.7071067811865476,Plastic  ,09.11.15  ,190g  
+583,15-872,salad pasta vegetables and mayonnaise,DR,Vegetables,12g,FPS,1.0,,,
+584,15-883,shepherd's pie,DR,Vegetables,,,,,,
+586,,vegetables mixed frozen,DG,Vegetables,462.9,PH15,0.7071067811865476,Plastic  ,30.11.15  ,500g  
+587,15-656,vegeburger grilled,DR,Vegetables,,,,,,
+589,13-397,yam,DG,Vegetables,1635.1g,PH15,1.0,Loose  ,30.10.15  ,Purchase Date:  
+590,13-530,tomatoes whole contents,DG,Vegetables,428.9,DoH11,0.8893120751035134,Metal ,27.01.2012 ,
