@@ -1,0 +1,9 @@
+pandas
+numpy
+requests
+plotly
+dash
+scikit-learn
+fuzzywuzzy
+python-Levenshtein
+openpyxl
