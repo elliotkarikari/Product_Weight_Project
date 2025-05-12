@@ -42,7 +42,7 @@ Goal 1: Produce a comprehensive product list with standardized weights and meta-
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/shelfscale.git
+git clone https://github.com/yourusername/Product_Weight_Project.git
 cd shelfscale
 
 # Install the package
