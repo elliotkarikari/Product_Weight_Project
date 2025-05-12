@@ -5,7 +5,9 @@ Main script demonstrating ShelfScale package usage
 import os
 import pandas as pd
 from shelfscale.data_sourcing.open_food_facts import OpenFoodFactsClient
-from shelfscale.data_processing.cleaning import clean_weight_column, clean_food_groups, handle_missing_values
+from shelfscale.data_processing.weight_extraction import clean_weights
+from shelfscale.data_processing.categorization import clean_food_categories
+from shelfscale.data_processing.cleaner import DataCleaner
 from shelfscale.data_processing.transformation import normalize_weights, create_food_group_summary
 from shelfscale.matching.algorithm import FoodMatcher
 from shelfscale.visualization.dashboard import ShelfScaleDashboard
@@ -43,7 +45,7 @@ def main():
     cleaned_df = clean_food_groups(combined_df)
     
     print("  Cleaning weight column...")
-    cleaned_df = clean_weight_column(cleaned_df)
+    cleaned_df = clean_weights(cleaned_df)
     
     print("  Handling missing values...")
     cleaned_df = handle_missing_values(cleaned_df, strategy='drop')
