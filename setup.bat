@@ -1,35 +1,44 @@
 @echo off
-echo Setting up Product Weight Project environment...
+echo ===================================================
+echo    Product Weight Project Environment Setup
+echo ===================================================
 
-:: Create a virtual environment using Python's venv
-echo Creating virtual environment...
-python -m venv product_weight_env
+:: Move to a clean directory outside the current path
+cd ..
+mkdir product_weight_clean_env
+cd product_weight_clean_env
 
-:: Activate the virtual environment
-echo Activating environment...
-call product_weight_env\Scripts\activate.bat
+:: Create virtual environment
+echo Creating clean virtual environment...
+python -m venv venv
 
-:: Upgrade pip
-echo Upgrading pip...
-python -m pip install --upgrade pip
+:: Activate the environment
+call venv\Scripts\activate.bat
+echo Environment activated
 
-:: Install core dependencies
-echo Installing core packages...
-pip install pandas numpy scikit-learn
-
-:: Install additional dependencies
-echo Installing additional packages...
+:: Install all required packages
+echo Installing packages...
+pip install pandas==2.0.3 numpy==1.24.3 scikit-learn==1.2.2
 pip install fuzzywuzzy python-Levenshtein tabula-py PyPDF2 tqdm
-
-:: Install visualization tools
-echo Installing visualization packages...
 pip install matplotlib seaborn plotly dash
 
-:: Success message
+:: Create a run script
+echo Creating run script...
+cd ..
+cd Product_Weight_Project_Build
+
+echo @echo off > run_project.bat
+echo cd .. >> run_project.bat
+echo cd product_weight_clean_env >> run_project.bat
+echo call venv\Scripts\activate.bat >> run_project.bat
+echo cd .. >> run_project.bat
+echo cd Product_Weight_Project_Build >> run_project.bat
+echo python shelfscale\main.py >> run_project.bat
+echo pause >> run_project.bat
+
+echo ===================================================
+echo Setup complete! 
 echo.
-echo Environment setup complete!
-echo To activate this environment in the future, run: product_weight_env\Scripts\activate.bat
-echo.
-echo For future use, remember to activate the environment before running any scripts.
-echo.
+echo To run your project, use: run_project.bat
+echo ===================================================
 pause
