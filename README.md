@@ -24,11 +24,11 @@ Goal 1: Produce a comprehensive product list with standardized weights and meta-
 
 ## Methodology & Decisions Made
 
-*Workflow Approach: Initial work was done in alphabetical order to build a systematic workflow which was then automated.
-*Data Grouping: Foods were grouped by McCance, Widdowson Group (2 or 3 letter codes assigned to every food) and counted.
-*Data Reduction: Product list was reduced to its most basic form by research and verification against retail sources (e.g., Tesco website).
-*Hierarchical Categorization: Added "Super Group" classification to create a larger category for easier searching, aligned with the Eatwell Guide groupings.
-\*Data Integration: All tables were joined together to create a comprehensive database.
+* Workflow Approach: Initial work was done in alphabetical order to build a systematic workflow which was then automated.
+* Data Grouping: Foods were grouped by McCance, Widdowson Group (2 or 3 letter codes assigned to every food) and counted.
+* Data Reduction: Product list was reduced to its most basic form by research and verification against retail sources (e.g., Tesco website).
+* Hierarchical Categorization: Added "Super Group" classification to create a larger category for easier searching, aligned with the Eatwell Guide groupings.
+\* Data Integration: All tables were joined together to create a comprehensive database.
 
 ## Features
 
