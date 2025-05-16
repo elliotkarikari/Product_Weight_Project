@@ -5,7 +5,7 @@ Comprehensive data cleaning pipeline for ShelfScale datasets
 import pandas as pd
 import numpy as np
 import re
-from typing import Dict, Any
+from typing import Dict, Any, List, Optional, Union
 import logging
 
 # Import from other modules
@@ -19,67 +19,37 @@ logger = logging.getLogger(__name__)
 
 
 class DataCleaner:
-    """Configurable data cleaning pipeline for food datasets"""
+    """Data cleaning and preprocessing for ShelfScale datasets"""
     
-    def __init__(self, config=None):
+    def __init__(self, 
+                standardize_columns: bool = True,
+                handle_duplicates: bool = True,
+                missing_strategy: str = 'drop',
+                categorize_foods: bool = True,
+                categories_path: str = None):
         """
-        Initialize with configuration
+        Initialize data cleaner
         
         Args:
-            config: Dictionary with cleaning configuration
+            standardize_columns: Whether to standardize column names
+            handle_duplicates: Whether to remove duplicate rows
+            missing_strategy: How to handle missing values ('drop', 'fill_zeros', 'fill_mean')
+            categorize_foods: Whether to categorize food items
+            categories_path: Path to food categories file
         """
-        self.config = config or {}
-        self.default_config = {
-            'weight': {
-                'enabled': True,
-                'column': 'Weight',
-                'target_unit': 'g',
-                'keep_original': True
-            },
-            'categories': {
-                'enabled': True,
-                'column': 'Product Name',
-                'new_column': 'Food_Category',
-                'super_category_column': 'Super_Category',
-                'mapping_file': None
-            },
-            'text': {
-                'enabled': True,
-                'columns': ['Product Name'],
-                'remove_special_chars': True,
-                'lowercase': True
-            },
-            'duplicates': {
-                'enabled': True,
-                'columns': None
-            },
-            'missing_values': {
-                'enabled': True,
-                'strategy': 'drop'
-            }
-        }
+        self.standardize_columns = standardize_columns
+        self.handle_duplicates = handle_duplicates
+        self.missing_strategy = missing_strategy
+        self.categorize_foods = categorize_foods
         
-        # Merge with default config
-        for section, defaults in self.default_config.items():
-            if section not in self.config:
-                self.config[section] = defaults
-            else:
-                for key, value in defaults.items():
-                    if key not in self.config[section]:
-                        self.config[section][key] = value
-                        
-        # Initialize components
-        self.weight_extractor = WeightExtractor(
-            target_unit=self.config['weight']['target_unit']
-        )
-        
+        # Initialize food categorizer
         self.categorizer = FoodCategorizer(
-            mapping_file=self.config['categories'].get('mapping_file')
+            food_categories_path=categories_path
         )
         
     def clean(self, df: pd.DataFrame) -> pd.DataFrame:
         """
-        Apply the cleaning pipeline to a DataFrame
+        Clean and preprocess a DataFrame
         
         Args:
             df: Input DataFrame
@@ -87,136 +57,175 @@ class DataCleaner:
         Returns:
             Cleaned DataFrame
         """
+        if df is None or len(df) == 0:
+            logger.warning("Empty DataFrame provided for cleaning")
+            return pd.DataFrame()
+        
         logger.info(f"Starting cleaning pipeline on DataFrame with {len(df)} rows")
         
-        # Make a copy of the input DataFrame
+        # Make a copy to avoid modifying the original
         cleaned_df = df.copy()
         
-        # Standardize column names for common variations
-        cleaned_df = self._standardize_column_names(cleaned_df)
+        # Track changes
+        changes = {}
+        
+        # Standardize column names
+        if self.standardize_columns:
+            cleaned_df = self._standardize_column_names(cleaned_df)
+            
         logger.info(f"Columns after standardization: {cleaned_df.columns.tolist()}")
         
-        # Track changes
-        changes = []
-        
-        # 1. Clean text columns
-        if self.config['text']['enabled']:
-            for col in self.config['text']['columns']:
-                if col in cleaned_df.columns:
-                    logger.info(f"Cleaning text in column: {col}")
-                    
-                    # Apply text cleaning
-                    cleaned_df[col] = cleaned_df[col].apply(self._clean_text)
-                    changes.append(f"Cleaned text in '{col}'")
-        
-        # 2. Clean weight column
-        if self.config['weight']['enabled'] and self.config['weight']['column'] in cleaned_df.columns:
-            logger.info(f"Cleaning weights in column: {self.config['weight']['column']}")
-            
-            # Extract weights
-            extracted = cleaned_df[self.config['weight']['column']].apply(self.weight_extractor.extract)
-            cleaned_df['Weight_Value'] = extracted.apply(lambda x: x[0])
-            cleaned_df['Weight_Unit'] = extracted.apply(lambda x: x[1])
-            
-            # Calculate success rate
-            success_count = cleaned_df['Weight_Value'].notna().sum()
-            total_count = len(cleaned_df)
-            success_rate = (success_count / total_count) * 100 if total_count > 0 else 0
-            
-            changes.append(f"Extracted weights with {success_rate:.2f}% success rate")
-            
-            # Remove original if configured
-            if not self.config['weight']['keep_original']:
-                cleaned_df.drop(columns=[self.config['weight']['column']], inplace=True)
-                changes.append(f"Removed original weight column '{self.config['weight']['column']}'")
-        
-        # 3. Clean food categories
-        if self.config['categories']['enabled'] and self.config['categories']['column'] in cleaned_df.columns:
-            logger.info(f"Cleaning food categories from column: {self.config['categories']['column']}")
-            
-            # Apply categorization
-            cleaned_df[self.config['categories']['new_column']] = cleaned_df[self.config['categories']['column']].apply(
-                self.categorizer.categorize
-            )
-            
-            # Add super categories
-            cleaned_df[self.config['categories']['super_category_column']] = cleaned_df[self.config['categories']['new_column']].apply(
-                self.categorizer.get_super_category
-            )
-            
-            changes.append(f"Added food categories in '{self.config['categories']['new_column']}'")
-            changes.append(f"Added super categories in '{self.config['categories']['super_category_column']}'")
-        
-        # 4. Remove duplicates
-        if self.config['duplicates']['enabled']:
+        # Remove duplicate rows
+        if self.handle_duplicates:
             logger.info("Removing duplicate rows")
-            
-            # Count before
-            rows_before = len(cleaned_df)
-            
-            # Remove duplicates
-            cleaned_df = cleaned_df.drop_duplicates(subset=self.config['duplicates']['columns'])
-            
-            # Count after
-            rows_after = len(cleaned_df)
-            rows_removed = rows_before - rows_after
-            
-            if rows_removed > 0:
-                changes.append(f"Removed {rows_removed} duplicate rows")
+            initial_rows = len(cleaned_df)
+            cleaned_df = cleaned_df.drop_duplicates()
+            changes['duplicates_removed'] = initial_rows - len(cleaned_df)
         
-        # 5. Handle missing values
-        if self.config['missing_values']['enabled']:
-            logger.info(f"Handling missing values with strategy: {self.config['missing_values']['strategy']}")
-            
-            # Count missing values before
-            missing_before = cleaned_df.isna().sum().sum()
-            
-            # Apply strategy
-            if self.config['missing_values']['strategy'] == 'drop':
-                cleaned_df = cleaned_df.dropna()
-            elif self.config['missing_values']['strategy'] == 'fill_mean':
-                numeric_cols = cleaned_df.select_dtypes(include=[np.number]).columns
-                for col in numeric_cols:
-                    cleaned_df[col] = cleaned_df[col].fillna(cleaned_df[col].mean())
-            elif self.config['missing_values']['strategy'] == 'fill_median':
-                numeric_cols = cleaned_df.select_dtypes(include=[np.number]).columns
-                for col in numeric_cols:
-                    cleaned_df[col] = cleaned_df[col].fillna(cleaned_df[col].median())
-            elif self.config['missing_values']['strategy'] == 'fill_mode':
-                for col in cleaned_df.columns:
-                    if cleaned_df[col].isna().any():
-                        mode_val = cleaned_df[col].mode()
-                        if not mode_val.empty:
-                            cleaned_df[col] = cleaned_df[col].fillna(mode_val[0])
-                            
-            # Count missing values after
-            missing_after = cleaned_df.isna().sum().sum()
-            
-            changes.append(f"Handled {missing_before - missing_after} missing values")
+        # Handle missing values
+        logger.info(f"Handling missing values with strategy: {self.missing_strategy}")
+        changes['missing_handled'] = self._handle_missing_values(cleaned_df)
         
-        # Log summary
-        logger.info(f"Cleaning complete. Changes made: {', '.join(changes)}")
+        # Categorize food names if requested
+        if self.categorize_foods:
+            food_name_col = self._find_food_name_column(cleaned_df)
+            if food_name_col:
+                food_category_col = 'Food_Category'
+                super_category_col = 'Super_Category'
+                
+                cleaned_df = self.categorizer.clean_food_categories(
+                    cleaned_df, 
+                    food_name_col, 
+                    food_category_col, 
+                    super_category_col
+                )
+                
+                changes['categorized'] = len(cleaned_df)
+        
+        logger.info(f"Cleaning complete. Changes made: {changes}")
         logger.info(f"Rows after cleaning: {len(cleaned_df)}")
         
         return cleaned_df
     
-    def _clean_text(self, text):
-        """Clean and standardize text"""
-        if pd.isna(text) or not isinstance(text, str):
-            return text
-            
-        # Apply configured transformations
-        if self.config['text']['lowercase']:
-            text = text.lower()
-            
-        if self.config['text']['remove_special_chars']:
-            # Keep alphanumeric, spaces, and some punctuation
-            text = re.sub(r'[^\w\s\.,;-]', '', text)
-            
-        # Remove extra whitespace
-        text = ' '.join(text.split())
+    def _standardize_column_names(self, df: pd.DataFrame) -> pd.DataFrame:
+        """
+        Standardize column names for consistency
         
-        return text
+        Args:
+            df: Input DataFrame
+            
+        Returns:
+            DataFrame with standardized column names
+        """
+        # Create a copy
+        standardized_df = df.copy()
+        
+        # Define column name mappings
+        mapping = {}
+        for col in standardized_df.columns:
+            col_lower = col.lower()
+            
+            # Food name
+            if "food" in col_lower and "name" in col_lower:
+                mapping[col] = "Food_Name"
+            elif "product" in col_lower and "name" in col_lower:
+                mapping[col] = "Food_Name"
+            elif "name" in col_lower and not any(x in col_lower for x in ["brand", "company", "manufacturer"]):
+                mapping[col] = "Food_Name"
+                
+            # Weight
+            elif "weight" in col_lower and "g" in col_lower:
+                mapping[col] = "Weight_g"
+            elif "weight" in col_lower and not any(x in col_lower for x in ["volume", "height"]):
+                mapping[col] = "Weight_g"
+                
+            # Food categories
+            elif "category" in col_lower:
+                if "super" in col_lower or "parent" in col_lower:
+                    mapping[col] = "Super_Category"
+                else:
+                    mapping[col] = "Food_Category"
+                    
+            # Food groups
+            elif "group" in col_lower and not "super" in col_lower:
+                mapping[col] = "Food_Group"
+        
+        # Apply mappings
+        if mapping:
+            standardized_df = standardized_df.rename(columns=mapping)
+            
+        return standardized_df
+    
+    def _handle_missing_values(self, df: pd.DataFrame) -> float:
+        """
+        Handle missing values based on strategy
+        
+        Args:
+            df: Input DataFrame (modified in-place)
+            
+        Returns:
+            Number of missing values handled
+        """
+        # Count missing values
+        missing_count = df.isna().sum().sum()
+        
+        # Apply strategy
+        if self.missing_strategy == 'drop':
+            # Drop rows with any missing values
+            df.dropna(inplace=True)
+            
+        elif self.missing_strategy == 'fill_zeros':
+            # Fill numeric columns with zeros, non-numeric with empty string
+            for col in df.columns:
+                if pd.api.types.is_numeric_dtype(df[col]):
+                    df[col].fillna(0, inplace=True)
+                else:
+                    df[col].fillna("", inplace=True)
+                    
+        elif self.missing_strategy == 'fill_mean':
+            # Fill numeric columns with mean, non-numeric with most frequent value
+            for col in df.columns:
+                if pd.api.types.is_numeric_dtype(df[col]):
+                    df[col].fillna(df[col].mean(), inplace=True)
+                else:
+                    most_frequent = df[col].mode()[0] if not df[col].mode().empty else ""
+                    df[col].fillna(most_frequent, inplace=True)
+        
+        return missing_count
+    
+    def _find_food_name_column(self, df: pd.DataFrame) -> Optional[str]:
+        """
+        Find the best column to use for food names
+        
+        Args:
+            df: Input DataFrame
+            
+        Returns:
+            Best column name or None if not found
+        """
+        # Check for standardized column
+        if "Food_Name" in df.columns:
+            return "Food_Name"
+        
+        # Check for common variations
+        common_names = [
+            "Food Name", "FoodName", "Name", "Product Name", 
+            "ProductName", "Item", "Description"
+        ]
+        
+        for name in common_names:
+            if name in df.columns:
+                return name
+        
+        # Look for columns with "food" and "name" in their name
+        for col in df.columns:
+            col_lower = col.lower()
+            if "food" in col_lower and "name" in col_lower:
+                return col
+            if "name" in col_lower and not any(x in col_lower for x in ["brand", "manufacturer"]):
+                return col
+                
+        return None
 
     def validate_data(self, df: pd.DataFrame) -> Dict[str, Any]:
         """
@@ -229,64 +238,3 @@ class DataCleaner:
             Dictionary with validation results
         """
         return validate_data(df)
-
-    def _standardize_column_names(self, df: pd.DataFrame) -> pd.DataFrame:
-        """
-        Standardize column names to handle common variations
-        
-        Args:
-            df: Input DataFrame
-            
-        Returns:
-            DataFrame with standardized column names
-        """
-        # Dictionary of common variations and their standard forms
-        name_variants = {
-            'FoodName': 'Food Name',
-            'Food_Name': 'Food Name',
-            'foodname': 'Food Name',
-            'food_name': 'Food Name',
-            'food name': 'Food Name',
-            
-            'FoodCode': 'Food Code',
-            'Food_Code': 'Food Code',
-            'foodcode': 'Food Code',
-            'food_code': 'Food Code',
-            'food code': 'Food Code',
-            
-            'FoodGroup': 'Food Group',
-            'Food_Group': 'Food Group',
-            'foodgroup': 'Food Group',
-            'food_group': 'Food Group',
-            'food group': 'Food Group',
-            
-            'PackSize': 'Pack Size',
-            'Pack_Size': 'Pack Size',
-            'packsize': 'Pack Size',
-            'pack_size': 'Pack Size',
-            'pack size': 'Pack Size',
-            
-            'Weight': 'Weight_g',
-            'Weight_g': 'Weight_g',
-            'weight_g': 'Weight_g',
-            'weight': 'Weight_g',
-            'WeightGrams': 'Weight_g',
-            'WeightG': 'Weight_g'
-        }
-        
-        # Create a copy of the dataframe to avoid modifying the original during iteration
-        result_df = df.copy()
-        
-        # Standardize column names
-        rename_map = {}
-        for col in df.columns:
-            std_name = name_variants.get(col)
-            if std_name and std_name not in df.columns:
-                rename_map[col] = std_name
-        
-        # Only rename if needed
-        if rename_map:
-            logger.info(f"Standardizing column names: {rename_map}")
-            result_df = result_df.rename(columns=rename_map)
-        
-        return result_df
