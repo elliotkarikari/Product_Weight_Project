@@ -41,8 +41,7 @@ def preprocess_text(text: str) -> str:
     processed = text.lower().strip()
     
     # Replace punctuation with spaces
-for char in ",.
-        :!?/\\()[]{}<>\"'":
+    for char in ",.;:!?/\\()[]{}<>\"'":
         processed = processed.replace(char, ' ')
     
     # Replace multiple spaces with a single space
@@ -608,13 +607,13 @@ class FoodMatcher:
                 similarity = similarities[target_idx]
             
                 # Calculate additional features for machine learning scoring
-            features = self._calculate_additional_features(
+                features = self._calculate_additional_features(
                     source_item, 
                     target_item,
                     source_col,
                     target_col,
                     additional_match_cols
-            )
+                )
             
                 # Use ML model if available for final score
                 match_probability = self._predict_match_probability(features, similarity)
@@ -642,7 +641,7 @@ class FoodMatcher:
         match_df = pd.DataFrame(matches)
         
         # Sort by similarity score
-            match_df = match_df.sort_values('Similarity_Score', ascending=False)
+        match_df = match_df.sort_values('Similarity_Score', ascending=False)
         
         # Keep only the best match for each source item
         if self.learning_enabled and self.model is not None:
@@ -915,12 +914,12 @@ class FoodMatcher:
             
             # Try to train the model
             try:
-            clf.fit(X_train, y_train)
-            
+                clf.fit(X_train, y_train)
+                
                 # Evaluate the model
-            y_pred = clf.predict(X_test)
-            
-            # Calculate metrics
+                y_pred = clf.predict(X_test)
+                
+                # Calculate metrics
                 accuracy = accuracy_score(y_test, y_pred)
                 precision = precision_score(y_test, y_pred, zero_division=0)
                 recall = recall_score(y_test, y_pred, zero_division=0)
@@ -935,11 +934,11 @@ class FoodMatcher:
                 feature_importance = {}
                 for i, feature in enumerate(X_df.columns):
                     feature_importance[feature] = float(clf.feature_importances_[i])  # Convert numpy types to native Python types
-        
+            
                 # Save the feature importance
                 self.feature_importance = feature_importance
-        self._save_model()
-        
+                self._save_model()
+                
                 return feature_importance
                 
             except Exception as e:
