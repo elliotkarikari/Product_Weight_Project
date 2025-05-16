@@ -92,6 +92,10 @@ class DataCleaner:
         # Make a copy of the input DataFrame
         cleaned_df = df.copy()
         
+        # Standardize column names for common variations
+        cleaned_df = self._standardize_column_names(cleaned_df)
+        logger.info(f"Columns after standardization: {cleaned_df.columns.tolist()}")
+        
         # Track changes
         changes = []
         
@@ -225,3 +229,64 @@ class DataCleaner:
             Dictionary with validation results
         """
         return validate_data(df)
+
+    def _standardize_column_names(self, df: pd.DataFrame) -> pd.DataFrame:
+        """
+        Standardize column names to handle common variations
+        
+        Args:
+            df: Input DataFrame
+            
+        Returns:
+            DataFrame with standardized column names
+        """
+        # Dictionary of common variations and their standard forms
+        name_variants = {
+            'FoodName': 'Food Name',
+            'Food_Name': 'Food Name',
+            'foodname': 'Food Name',
+            'food_name': 'Food Name',
+            'food name': 'Food Name',
+            
+            'FoodCode': 'Food Code',
+            'Food_Code': 'Food Code',
+            'foodcode': 'Food Code',
+            'food_code': 'Food Code',
+            'food code': 'Food Code',
+            
+            'FoodGroup': 'Food Group',
+            'Food_Group': 'Food Group',
+            'foodgroup': 'Food Group',
+            'food_group': 'Food Group',
+            'food group': 'Food Group',
+            
+            'PackSize': 'Pack Size',
+            'Pack_Size': 'Pack Size',
+            'packsize': 'Pack Size',
+            'pack_size': 'Pack Size',
+            'pack size': 'Pack Size',
+            
+            'Weight': 'Weight_g',
+            'Weight_g': 'Weight_g',
+            'weight_g': 'Weight_g',
+            'weight': 'Weight_g',
+            'WeightGrams': 'Weight_g',
+            'WeightG': 'Weight_g'
+        }
+        
+        # Create a copy of the dataframe to avoid modifying the original during iteration
+        result_df = df.copy()
+        
+        # Standardize column names
+        rename_map = {}
+        for col in df.columns:
+            std_name = name_variants.get(col)
+            if std_name and std_name not in df.columns:
+                rename_map[col] = std_name
+        
+        # Only rename if needed
+        if rename_map:
+            logger.info(f"Standardizing column names: {rename_map}")
+            result_df = result_df.rename(columns=rename_map)
+        
+        return result_df

@@ -22,14 +22,21 @@ from shelfscale.data_processing.categorization import clean_food_categories, Foo
 from shelfscale.data_processing.cleaner import DataCleaner
 from shelfscale.data_processing.transformation import normalize_weights, create_food_group_summary
 from shelfscale.matching.algorithm import FoodMatcher
-from shelfscale.visualization.dashboard import ShelfScaleDashboard
-from shelfscale.utils.helpers import load_data, save_data, split_data_by_group
+from shelfscale.utils.helpers import (
+    load_data, 
+    save_data, 
+    split_data_by_group,
+    get_path,
+)
 from shelfscale.utils.learning import (
     train_matcher_from_existing_data, 
     evaluate_matcher_performance,
     generate_training_data_from_matches,
-    create_weight_predictions
+    create_weight_predictions,
+    apply_feedback_to_matches,
+    load_existing_matches
 )
+from shelfscale.data_sourcing.pdf_extraction import PDFExtractor
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -132,9 +139,69 @@ def extract_fruit_veg_survey_data(pdf_path):
 def load_mccance_widdowson_data(file_path):
     """Load McCance and Widdowson's food composition data"""
     print("Loading McCance and Widdowson's data...")
-    df = pd.read_csv(file_path)
-    print(f"  Loaded {len(df)} food items")
-    return df
+    try:
+        if not os.path.exists(file_path):
+            print(f"  Error: McCance and Widdowson data file not found: {file_path}")
+            return pd.DataFrame()
+            
+        # Try different sheet names since the data format might vary
+        sheet_names = ["1.2 Factors", "1.2_Factors", "Factors", "Food Composition"]
+        df = None
+        
+        # First try to get all sheet names from the file
+        try:
+            available_sheets = pd.ExcelFile(file_path).sheet_names
+            print(f"  Available sheets: {', '.join(available_sheets)}")
+            
+            # Add available sheets to our list to try
+            for sheet in available_sheets:
+                if sheet not in sheet_names:
+                    sheet_names.append(sheet)
+        except Exception as e:
+            print(f"  Warning: Could not read sheet names: {str(e)}")
+        
+        # Try each sheet name until we find one that works
+        for sheet in sheet_names:
+            try:
+                df = pd.read_excel(file_path, sheet_name=sheet)
+                if len(df) > 0:
+                    print(f"  Successfully loaded data from sheet: {sheet}")
+                    break
+            except Exception as e:
+                print(f"  Could not load sheet '{sheet}': {str(e)}")
+        
+        if df is None or len(df) == 0:
+            print("  Error: Could not load any data from the Excel file.")
+            return pd.DataFrame()
+        
+        print(f"  Loaded {len(df)} food items")
+        print(f"  Available columns: {', '.join(df.columns.tolist())}")
+        
+        # Check if data is valid
+        non_null_counts = df.count()
+        if non_null_counts.sum() == 0:
+            print("  Warning: Data appears to be empty or corrupted (all values are NaN)")
+            return pd.DataFrame()
+            
+        # Identify key columns that should have data
+        key_cols = ['Food Name', 'Food Code', 'FoodName', 'Food_Name', 'Description']
+        found_key_col = False
+        
+        for col in key_cols:
+            if col in df.columns and df[col].notna().sum() > 0:
+                found_key_col = True
+                # Standardize the column name to 'Food Name'
+                if col != 'Food Name':
+                    df.rename(columns={col: 'Food Name'}, inplace=True)
+                break
+        
+        if not found_key_col:
+            print(f"  Warning: No key column with food names found. Available columns: {', '.join(df.columns)}")
+        
+        return df
+    except Exception as e:
+        print(f"Error loading McCance and Widdowson data: {str(e)}")
+        return pd.DataFrame()
 
 
 def match_datasets(main_df, secondary_df, main_col, secondary_col, threshold=70, additional_cols=None):
@@ -195,399 +262,320 @@ def main():
     print("ShelfScale - Comprehensive Food Product Weight Analysis")
     print("=" * 60)
     
+    # Set up more detailed logging for debugging
+    logging.basicConfig(level=logging.INFO, 
+                      format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    logger = logging.getLogger(__name__)
+    
     # Parse command line arguments
-    parser = argparse.ArgumentParser(description='ShelfScale - Food Product Weight Analysis')
-    parser.add_argument('--evaluate', action='store_true', help='Evaluate matcher performance')
-    parser.add_argument('--train', action='store_true', help='Train matcher from existing data')
-    parser.add_argument('--generate-training', action='store_true', help='Generate training data')
-    parser.add_argument('--predict', action='store_true', help='Run weight predictions on input file')
-    parser.add_argument('--input-file', type=str, help='Input file for predictions')
+    parser = argparse.ArgumentParser(description="ShelfScale - Food Product Weight Analysis")
+    parser.add_argument("--output", default="output/weight_dataset.csv", help="Output file path")
+    parser.add_argument("--food-portion-pdf", default="D:/LIDA/Product_Weight_Project/Product_Weight_Project_Build/Data/Raw Data/Food_Portion_Sizes.pdf", help="Food Portion Sizes PDF path")
+    parser.add_argument("--fruit-veg-pdf", default="D:/LIDA/Product_Weight_Project/Product_Weight_Project_Build/Data/Raw Data/fruit_and_vegetable_survey_2015_sampling_report.pdf", help="Fruit and Veg Survey PDF path")
+    parser.add_argument("--mccance-widdowson", default="D:/LIDA/Product_Weight_Project/Product_Weight_Project_Build/Data/Raw Data/McCance_Widdowsons_2021.xlsx", help="McCance and Widdowson data path")
+    parser.add_argument("--matching-threshold", type=int, default=70, help="Matching threshold percentage")
+    parser.add_argument("--run-dashboard", action="store_true", help="Run interactive dashboard")
+    parser.add_argument("--load-cache", action="store_true", help="Load cached data (faster)")
+    parser.add_argument("--skip-pdfs", action="store_true", help="Skip PDF extraction (faster)")
+    parser.add_argument("--use-super-group", action="store_true", default=False, help="Use Super Group reduced data")
+    
     args = parser.parse_args()
     
-    # Handle evaluation mode
-    if args.evaluate:
-        print("\nEvaluating matcher performance...")
-        metrics = evaluate_matcher_performance()
-        for key, value in metrics.items():
-            if isinstance(value, float):
-                print(f"  {key}: {value:.4f}")
-            else:
-                print(f"  {key}: {value}")
-        return
+    # Create output directory if it doesn't exist
+    os.makedirs(os.path.dirname(args.output), exist_ok=True)
     
-    # Handle training mode
-    if args.train:
-        print("\nTraining matcher from existing data...")
-        matcher = train_matcher_from_existing_data()
-        print("Matcher training complete.")
-        
-        if args.generate_training:
-            print("Generating training data...")
-            generate_training_data_from_matches(matcher)
-        return
+    # Setup data sources
+    data_sources = {}
     
-    # Handle prediction mode
-    if args.predict and args.input_file:
-        if not os.path.exists(args.input_file):
-            print(f"Error: Input file {args.input_file} not found.")
-            return
-        
-        print(f"\nGenerating weight predictions for {args.input_file}...")
-        try:
-            # Determine file type and load
-            if args.input_file.endswith('.csv'):
-                df = pd.read_csv(args.input_file)
-            elif args.input_file.endswith(('.xls', '.xlsx')):
-                df = pd.read_excel(args.input_file)
-            else:
-                print("Error: Input file must be CSV or Excel.")
-                return
-            
-            # Get product name column
-            name_cols = [col for col in df.columns if any(term in col.lower() for term in ['name', 'product', 'description', 'item'])]
-            if not name_cols:
-                print("Error: Could not find a product name column.")
-                return
-            
-            product_name_col = name_cols[0]
-            print(f"Using '{product_name_col}' as product name column")
-            
-            # Find potential weight columns
-            weight_cols = [col for col in df.columns if any(term in col.lower() for term in ['weight', 'size', 'volume', 'amount'])]
-            existing_weight_col = weight_cols[0] if weight_cols else None
-            
-            # Generate predictions
-            result_df = create_weight_predictions(df, product_name_col, existing_weight_col)
-            
-            # Save results
-            output_file = os.path.splitext(args.input_file)[0] + '_predicted.csv'
-            result_df.to_csv(output_file, index=False)
-            print(f"Predictions saved to {output_file}")
-            return
-        except Exception as e:
-            print(f"Error generating predictions: {str(e)}")
-            return
-    
-    # Create output directory
-    os.makedirs("output", exist_ok=True)
-    
-    # Step 1: Data Loading from Multiple Sources
-    print("\n1. Loading data from multiple sources...")
-    
-    # Set paths to data files (with both absolute and relative path options)
-    base_path = os.environ.get('PRODUCT_WEIGHT_PROJECT_PATH', 'D:/LIDA/Product_Weight_Project')
-    data_path = os.path.join(base_path, 'Product_Weight_Project_Build/Data')
-    
-    # Define paths with fallbacks between absolute and relative paths
-    def get_path(rel_path):
-        abs_path = os.path.join(data_path, rel_path)
-        return abs_path if os.path.exists(abs_path) else rel_path
-    
-    mw_path = get_path('Raw Data/Labelling2021_watercress.csv')
-    portion_sizes_path = get_path('Food_Portion_Sizes.pdf')
-    fruit_veg_survey_path = get_path('fruit_and_vegetable_survey_2015_sampling_report.pdf')
-    
-    # Set up error recovery for data loading
-    mw_df = None
-    fps_df = None
-    fvs_df = None
-    api_df = None
-    
-    # 1.1. Load McCance and Widdowson data
-    try:
-        mw_df = load_mccance_widdowson_data(mw_path)
-    except Exception as e:
-        print(f"ERROR: Failed to load McCance and Widdowson data: {str(e)}")
-        print("Creating minimal sample data...")
-        # Create minimal sample data
-        mw_df = pd.DataFrame({
-            'Food Name': [f'Sample Food {i}' for i in range(1, 101)],
-            'Food Code': [f'F{i:03d}' for i in range(1, 101)],
-            'Food Group': ['Vegetables', 'Fruits', 'Cereals', 'Dairy'] * 25,
-        })
-    
-    # 1.2. Extract data from Food Portion Sizes PDF
-    try:
-        fps_df = extract_food_portion_data(portion_sizes_path)
-        # Check if we got empty results
-        if fps_df.empty:
-            raise ValueError("No data extracted from Food Portion Sizes PDF")
-    except Exception as e:
-        print(f"ERROR: Failed to extract Food Portion Sizes data: {str(e)}")
-        print("Creating minimal sample data...")
-        # Create minimal sample data
-        fps_df = pd.DataFrame({
-            'Food_Name': mw_df['Food Name'].sample(n=min(50, len(mw_df))).tolist(),
-            'Portion_Size': ['Medium', 'Large', 'Small'] * 20,
-            'Weight_g': [str(random.randint(50, 500)) for _ in range(50)],
-            'Notes': [''] * 50
-        })
-    
-    # 1.3. Extract data from Fruit and Vegetable Survey PDF
-    try:
-        fvs_df = extract_fruit_veg_survey_data(fruit_veg_survey_path)
-        # Check if we got empty results
-        if fvs_df.empty:
-            raise ValueError("No data extracted from Fruit and Vegetable Survey PDF")
-    except Exception as e:
-        print(f"ERROR: Failed to extract Fruit and Vegetable Survey data: {str(e)}")
-        print("Creating minimal sample data...")
-        # Create minimal sample data
-        fvs_df = pd.DataFrame({
-            'Page': list(range(1, 31)),
-            'Sample_Number': [f'S{i:03d}' for i in range(1, 31)],
-            'Sample_Name': [f'Sample Fruit {i}' for i in range(1, 31)],
-            'Pack_Size': [f'{random.randint(100, 1000)}g' for _ in range(30)]
-        })
-    
-    # 1.4. Get data from Open Food Facts API for additional items
-    print("\nFetching data from Open Food Facts API for supplementary information...")
-    client = OpenFoodFactsClient(retry_delay=2.0, max_retries=3)
-    
-    # Get data for key food groups
-    food_groups = ['vegetables', 'fruits', 'cereals', 'dairy']
-    api_dfs = []
-    
-    for group in food_groups:
-        try:
-            print(f"  Fetching data for {group}...")
-            df = client.search_by_food_group(group)
-            df['Food Group'] = group.title()
-            api_dfs.append(df)
-        except Exception as e:
-            print(f"  ERROR: Failed to fetch {group} data: {str(e)}")
-            # Create minimal fallback data
-            fallback_df = pd.DataFrame({
-                'Product Name': [f'{group.title()} Sample {i}' for i in range(1, 11)],
-                'Weight': [f'{random.randint(100, 1000)}g' for _ in range(10)],
-                'Packaging Details': ['Plastic', 'Box', 'Jar', 'Bag', 'Container'] * 2,
-                'Country': ['Sample Country'] * 10,
-                'Food Group': [group.title()] * 10
-            })
-            api_dfs.append(fallback_df)
-    
-    # Combine API results
-    api_df = pd.concat(api_dfs, ignore_index=True)
-    print(f"  Total products fetched from API: {len(api_df)}")
-    
-    # Step 2: Data Processing and Cleaning
-    print("\n2. Processing and cleaning data...")
-    
-    # 2.1 Clean McCance and Widdowson data
-    try:
-        print("  Processing McCance and Widdowson data...")
-        mw_df = clean_food_categories(mw_df, text_col='Food Name', new_col='Food_Category')
-    except Exception as e:
-        print(f"  ERROR: Error cleaning McCance and Widdowson data: {str(e)}")
-        # Add a basic Food_Category column if needed
-        if 'Food_Category' not in mw_df.columns:
-            mw_df['Food_Category'] = mw_df.get('Food Group', ['Uncategorized'] * len(mw_df))
-    
-    # 2.2 Clean Food Portion Sizes data
-    try:
-        print("  Processing Food Portion Sizes data...")
-        fps_df = process_weight_info(fps_df, weight_col='Weight_g')
-    except Exception as e:
-        print(f"  ERROR: Error cleaning Food Portion Sizes data: {str(e)}")
-        # Add basic Weight_Value if needed
-        if 'Weight_Value' not in fps_df.columns:
-            fps_df['Weight_Value'] = fps_df['Weight_g'].apply(
-                lambda x: float(x.replace('g', '')) if isinstance(x, str) and 'g' in x else None
-            )
-    
-    # 2.3 Clean Fruit and Vegetable Survey data
-    try:
-        print("  Processing Fruit and Vegetable Survey data...")
-        fvs_df = process_weight_info(fvs_df, weight_col='Pack_Size')
-    except Exception as e:
-        print(f"  ERROR: Error cleaning Fruit and Vegetable Survey data: {str(e)}")
-        # Add basic Weight_Value if needed
-        if 'Weight_Value' not in fvs_df.columns:
-            fvs_df['Weight_Value'] = fvs_df['Pack_Size'].apply(
-                lambda x: float(x.replace('g', '')) if isinstance(x, str) and 'g' in x else None
-            )
-    
-    # 2.4 Clean API data
-    try:
-        print("  Processing API data...")
-        api_df = clean_food_categories(api_df, text_col='Product Name', new_col='Food_Category')
-        api_df = clean_weights(api_df)
-    except Exception as e:
-        print(f"  ERROR: Error cleaning API data: {str(e)}")
-        # Add basic Weight_Value if needed
-        if 'Weight_Value' not in api_df.columns:
-            api_df['Weight_Value'] = api_df['Weight'].apply(
-                lambda x: float(x.replace('g', '')) if isinstance(x, str) and 'g' in x else None
-            )
-        # Add basic Food_Category if needed
-        if 'Food_Category' not in api_df.columns:
-            api_df['Food_Category'] = api_df['Food Group']
-    
-    # Step 3: Matching and Merging Datasets
-    print("\n3. Matching and merging datasets...")
-    
-    # 3.1 Match McCance and Widdowson data with Food Portion Sizes
-    try:
-        mw_fps_df = match_datasets(
-            mw_df, 
-            fps_df, 
-            'Food Name', 
-            'Food_Name', 
-            threshold=70
-        )
-    except Exception as e:
-        print(f"  ERROR: Failed to match MW with FPS data: {str(e)}")
-        # Create empty DataFrame with correct structure
-        mw_fps_df = pd.DataFrame(columns=[
-            'Source_Index', 'Target_Index', 'Source_Item', 'Target_Item', 'Similarity_Score'
-        ])
-    
-    # 3.2 Match McCance and Widdowson data with Fruit and Vegetable Survey
-    try:
-        mw_fvs_df = match_datasets(
-            mw_df, 
-            fvs_df, 
-            'Food Name', 
-            'Sample_Name', 
-            threshold=70
-        )
-    except Exception as e:
-        print(f"  ERROR: Failed to match MW with FVS data: {str(e)}")
-        # Create empty DataFrame with correct structure
-        mw_fvs_df = pd.DataFrame(columns=[
-            'Source_Index', 'Target_Index', 'Source_Item', 'Target_Item', 'Similarity_Score'
-        ])
-    
-    # 3.3 Create consolidated weights dataset
-    print("  Creating consolidated weights dataset...")
-    
-    # Start with McCance and Widdowson data
-    consolidated_df = mw_df.copy()
-    
-    # Add weight information from Food Portion Sizes matches
-    if 'Weight_Value_target' in mw_fps_df.columns:
-        # Map weights back to main dataset
-        weight_map = dict(zip(
-            mw_fps_df['Food Name_source'], 
-            mw_fps_df['Weight_Value_target']
-        ))
-        
-        # Create new column for FPS weights
-        consolidated_df['FPS_Weight'] = consolidated_df['Food Name'].map(weight_map)
+    # 1. Load McCance and Widdowson's dataset (highest quality)
+    if args.load_cache and os.path.exists("output/mw_data_cached.csv"):
+        print("Loading cached McCance and Widdowson data...")
+        data_sources["mw_data"] = pd.read_csv("output/mw_data_cached.csv")
     else:
-        consolidated_df['FPS_Weight'] = None
+        data_sources["mw_data"] = load_mccance_widdowson_data(args.mccance_widdowson)
+        # Cache the data for future runs
+        data_sources["mw_data"].to_csv("output/mw_data_cached.csv", index=False)
     
-    # Add weight information from Fruit and Vegetable Survey matches
-    if 'Weight_Value_target' in mw_fvs_df.columns:
-        # Map weights back to main dataset
-        weight_map = dict(zip(
-            mw_fvs_df['Food Name_source'], 
-            mw_fvs_df['Weight_Value_target']
-        ))
+    # Print dataset info for debugging
+    print(f"\nMcCance and Widdowson dataset shape: {data_sources['mw_data'].shape}")
+    print(f"Columns: {', '.join(data_sources['mw_data'].columns.tolist())}")
+    print(f"Sample row: \n{data_sources['mw_data'].iloc[0].to_dict()}\n")
+    
+    # 2. Load McCance and Widdowson's Super Group reduced dataset
+    # This contains better structured and cleaned food group data
+    super_group_data = {}
+    if args.use_super_group:
+        print("Loading McCance and Widdowson Super Group reduced data...")
+        super_group_dir = "Data/Processed/MW_DataReduction/Reduced Super Group"
+        super_group_dir = get_path(super_group_dir)
+        if not os.path.isdir(super_group_dir):
+            logger.warning(f"Super-group directory '{super_group_dir}' not found – skipping.")
+            super_group_files = []
+        else:
+            super_group_files = [
+                f for f in os.listdir(super_group_dir)
+                if f.endswith(".csv") and not f.startswith(".")
+            ]
         
-        # Create new column for FVS weights
-        consolidated_df['FVS_Weight'] = consolidated_df['Food Name'].map(weight_map)
-    else:
-        consolidated_df['FVS_Weight'] = None
-    
-    # Use cleaner to handle missing values
-    try:
-        cleaner = DataCleaner(config={
-            'categories': {'enabled': False},
-            'weight': {'enabled': False},
-            'text': {'enabled': False},
-            'duplicates': {'enabled': True},
-            'missing_values': {'enabled': False}  # We want to keep NaN values for analysis
-        })
-        consolidated_df = cleaner.clean(consolidated_df)
-    except Exception as e:
-        print(f"  WARNING: Error while cleaning consolidated data: {str(e)}")
-        # Remove duplicate rows as a basic cleanup step
-        consolidated_df = consolidated_df.drop_duplicates()
-    
-    # Step 4: Create final weight dataset with priority logic
-    print("\n4. Creating final weight dataset with priority logic...")
-    
-    # Calculate standardized weight based on priority:
-    # 1. FPS weight (most reliable)
-    # 2. FVS weight (survey data)
-    # 3. API weight (least reliable)
-    consolidated_df['Standardized_Weight'] = consolidated_df['FPS_Weight']
-    
-    # Where FPS weight is missing, use FVS weight
-    mask = consolidated_df['Standardized_Weight'].isna()
-    consolidated_df.loc[mask, 'Standardized_Weight'] = consolidated_df.loc[mask, 'FVS_Weight']
-    
-    # Calculate weight coverage
-    total_items = len(consolidated_df)
-    items_with_weight = consolidated_df['Standardized_Weight'].notna().sum()
-    coverage_pct = (items_with_weight / total_items) * 100 if total_items > 0 else 0
-    
-    print(f"  Total food items: {total_items}")
-    print(f"  Items with standardized weight: {items_with_weight} ({coverage_pct:.1f}%)")
-    
-    # Step 5: Create summary statistics by food group
-    print("\n5. Creating food group summary statistics...")
-    try:
-        summary_df = consolidated_df.groupby('Food_Category').agg({
-            'Standardized_Weight': ['count', 'mean', 'median', 'min', 'max', 'std'],
-            'Food Name': 'count'
-        }).reset_index()
+        # Create output directory if it doesn't exist
+        os.makedirs("output", exist_ok=True)
         
-        # Flatten the MultiIndex columns
-        summary_df.columns = [
-            'Food_Category' if col[0] == 'Food_Category' else 
-            f"{col[0]}_{col[1]}" for col in summary_df.columns
-        ]
+        for file in super_group_files:
+            try:
+                # Extract food group from filename
+                food_group = os.path.splitext(file)[0]
+                file_path = os.path.join(super_group_dir, file)
+                
+                if not os.path.exists(file_path):
+                    logger.warning(f"Super-group file '{file_path}' not found – skipping.")
+                    continue
+                
+                df = pd.read_csv(file_path)
+                print(f"  Loaded {len(df)} items from {food_group}")
+                
+                # Store in our dict with food group as key
+                super_group_data[food_group] = df
+                
+            except Exception as e:
+                print(f"  Error loading {file}: {str(e)}")
         
-        # Calculate coverage by food group
-        summary_df['Coverage_Pct'] = (summary_df['Standardized_Weight_count'] / summary_df['Food Name_count']) * 100
+        # Combine all super group data
+        if super_group_data:
+            all_super_group = pd.concat(super_group_data.values(), ignore_index=True)
+            print(f"  Combined super group data: {len(all_super_group)} items")
+            
+            # Add this as a data source
+            data_sources["super_group"] = all_super_group
         
-        # Display summary
-        print("\nWeight coverage by food category:")
-        sorted_summary = summary_df.sort_values('Coverage_Pct', ascending=False)
-        for _, row in sorted_summary.iterrows():
-            if row['Food Name_count'] > 0:
-                print(f"  {row['Food_Category']}: {row['Coverage_Pct']:.1f}% coverage ({row['Standardized_Weight_count']}/{row['Food Name_count']} items)")
-    except Exception as e:
-        print(f"  ERROR: Failed to create summary statistics: {str(e)}")
-        summary_df = pd.DataFrame()
+        # Also load the cleaned version if available
+        cleaned_dir = os.path.join(super_group_dir, "Cleaned")
+        if os.path.exists(cleaned_dir):
+            cleaned_files = [f for f in os.listdir(cleaned_dir) if f.endswith('.csv') and not f.startswith('.')]
+            cleaned_dfs = []
+            
+            for file in cleaned_files:
+                try:
+                    file_path = os.path.join(cleaned_dir, file)
+                    if not os.path.exists(file_path):
+                        logger.warning(f"Cleaned super-group file '{file_path}' not found – skipping.")
+                        continue
+                    
+                    df = pd.read_csv(file_path)
+                    cleaned_dfs.append(df)
+                except Exception as e:
+                    print(f"  Error loading cleaned file {file}: {str(e)}")
+            
+            if cleaned_dfs:
+                all_cleaned = pd.concat(cleaned_dfs, ignore_index=True)
+                print(f"  Loaded cleaned super group data: {len(all_cleaned)} items")
+                data_sources["super_group_cleaned"] = all_cleaned
     
-    # Step 6: Save processed data
-    print("\n6. Saving processed data...")
-    try:
-        save_data(consolidated_df, "output/consolidated_weights.csv")
-        if not summary_df.empty:
-            save_data(summary_df, "output/food_group_summary.csv")
-        
-        # Also save individual datasets
-        save_data(mw_fps_df, "output/mw_fps_matches.csv")
-        save_data(mw_fvs_df, "output/mw_fvs_matches.csv")
-        print("  All data successfully saved to output directory")
-    except Exception as e:
-        print(f"  ERROR: Failed to save data: {str(e)}")
-    
-    # Step 7: Optional - Launch dashboard
-    print("\n7. Would you like to launch the interactive dashboard? (y/n)")
-    response = input().strip().lower()
-    
-    if response == 'y':
+    # 3. Load Food Portion Sizes data (portion-specific)
+    if not args.skip_pdfs:
         try:
-            print("  Launching dashboard...")
-            dashboard = ShelfScaleDashboard(consolidated_df)
-            dashboard.run_server(debug=True)
-        except Exception as e:
-            print(f"  ERROR: Failed to launch dashboard: {str(e)}")
+            food_portion_path = get_path(args.food_portion_pdf)
+            pdf_extractor = PDFExtractor(cache_dir="output")
+            data_sources["portion_data"] = pdf_extractor.extract_food_portion_sizes(food_portion_path)
+        except FileNotFoundError as e:
+            logger.error(f"Could not find food portion PDF: {e}")
+            data_sources["portion_data"] = pd.DataFrame()
+    elif args.load_cache and os.path.exists("output/food_portion_sizes.csv"):
+        print("Loading cached Food Portion data...")
+        data_sources["portion_data"] = pd.read_csv("output/food_portion_sizes.csv")
     
-    # Train the matcher with the latest matches for future use
-    try:
-        print("\n9. Training matcher from the new matches data...")
-        matcher = train_matcher_from_existing_data()
-        print("  Matcher trained successfully")
-    except Exception as e:
-        print(f"  Warning: Could not train matcher - {str(e)}")
+    # 4. Load Fruit and Veg survey data (retail-specific)
+    if not args.skip_pdfs:
+        try:
+            fruit_veg_path = get_path(args.fruit_veg_pdf)
+            pdf_extractor = PDFExtractor(cache_dir="output") if 'pdf_extractor' not in locals() else pdf_extractor
+            data_sources["fruit_veg_data"] = pdf_extractor.extract_fruit_veg_survey(fruit_veg_path)
+        except FileNotFoundError as e:
+            logger.error(f"Could not find fruit and veg PDF: {e}")
+            data_sources["fruit_veg_data"] = pd.DataFrame()
+    elif args.load_cache and os.path.exists("output/fruit_veg_survey.csv"):
+        print("Loading cached Fruit and Veg data...")
+        data_sources["fruit_veg_data"] = pd.read_csv("output/fruit_veg_survey.csv")
     
-    print("\nShelfScale workflow completed!")
+    # Cache PDF-extracted data for future runs if not using cache
+    if not args.skip_pdfs and not args.load_cache:
+        if "portion_data" in data_sources:
+            data_sources["portion_data"].to_csv("output/food_portion_sizes.csv", index=False)
+        if "fruit_veg_data" in data_sources:
+            data_sources["fruit_veg_data"].to_csv("output/fruit_veg_survey.csv", index=False)
+    
+    # Create a main dataset from the best available data
+    print("\nCreating integrated dataset from all sources...")
+    
+    # Start with McCance and Widdowson as the base (highest quality)
+    main_dataset = data_sources["mw_data"].copy()
+    print(f"Base dataset from McCance and Widdowson: {len(main_dataset)} items")
+    
+    # Merge with super group data if available
+    if "super_group_cleaned" in data_sources:
+        super_group_data = data_sources["super_group_cleaned"]
+        print(f"Adding Super Group cleaned data: {len(super_group_data)} items")
+        
+        # Set up columns for matching
+        mw_col = 'Food Name'
+        sg_col = 'Food Name'
+        
+        # Match datasets
+        super_group_matcher = FoodMatcher(similarity_threshold=0.7)  # Higher threshold for high-quality data
+        super_group_matches = super_group_matcher.match_datasets(
+            main_dataset,
+            super_group_data,
+            mw_col,
+            sg_col,
+            additional_match_cols=[('Food Code', 'Food Code')] if 'Food Code' in main_dataset.columns and 'Food Code' in super_group_data.columns else None
+        )
+        
+        # Merge the datasets
+        integrated_dataset = super_group_matcher.merge_matched_datasets(
+            main_dataset,
+            super_group_data,
+            super_group_matches,
+            merged_cols={'Super_Group': 'Super Group', 'Sale_Format': 'Sale format(s)'}
+        )
+        
+        print(f"Integrated dataset with Super Group data: {len(integrated_dataset)} items")
+        main_dataset = integrated_dataset
+    
+    # Match with portion data if available
+    if "portion_data" in data_sources and len(data_sources["portion_data"]) > 0:
+        portion_data = data_sources["portion_data"]
+        print(f"Matching with Food Portion data: {len(portion_data)} items")
+        
+        # Match food names
+        mw_col = 'Food Name'
+        portion_col = 'Food_Name'
+        
+        # Match datasets using the food matcher
+        portion_matcher = FoodMatcher(similarity_threshold=args.matching_threshold/100)
+        portion_matches = portion_matcher.match_datasets(
+            main_dataset,
+            portion_data,
+            mw_col,
+            portion_col
+        )
+        
+        # Merge the datasets
+        portion_merged = portion_matcher.merge_matched_datasets(
+            main_dataset,
+            portion_data,
+            portion_matches
+        )
+        
+        # Process weight information
+        weight_col = next((c for c in portion_merged.columns if c.endswith('Weight_g')), None)
+        if weight_col:
+            portion_merged = process_weight_info(portion_merged, weight_col)
+        
+        print(f"Merged with portion data: {len(portion_merged)} items")
+        main_dataset = portion_merged
+    
+    # Match with fruit and veg data if available
+    if "fruit_veg_data" in data_sources and len(data_sources["fruit_veg_data"]) > 0:
+        fruit_veg_data = data_sources["fruit_veg_data"]
+        print(f"Matching with Fruit and Veg data: {len(fruit_veg_data)} items")
+        
+        # Match food names
+        mw_col = 'Food Name'
+        fv_col = 'Sample_Name'
+        
+        # Match datasets using the food matcher
+        fv_matcher = FoodMatcher(similarity_threshold=args.matching_threshold/100)
+        fv_matches = fv_matcher.match_datasets(
+            main_dataset,
+            fruit_veg_data,
+            mw_col,
+            fv_col
+        )
+        
+        # Merge the datasets
+        fv_merged = fv_matcher.merge_matched_datasets(
+            main_dataset,
+            fruit_veg_data,
+            fv_matches
+        )
+        
+        # Process weight information
+        pack_size_col = next((c for c in fv_merged.columns if c.endswith('Pack_Size')), None)
+        if pack_size_col:
+            fv_merged = process_weight_info(fv_merged, pack_size_col)
+        
+        print(f"Merged with fruit and veg data: {len(fv_merged)} items")
+        main_dataset = fv_merged
+    
+    # Create a data cleaner for the final cleanup
+    print("\nCleaning and formatting the integrated dataset...")
+    cleaner = DataCleaner()
+    
+    # Apply consistent naming and cleaning
+    cleaned_dataset = cleaner.clean(main_dataset)
+    
+    # Check if we have any data to process
+    if len(cleaned_dataset) == 0:
+        print("Warning: No data available after cleaning. Using original dataset.")
+        cleaned_dataset = main_dataset
+    
+    # Identify appropriate column for categorization
+    food_name_col = None
+    possible_cols = ['Food Name', 'Food_Name', 'Food Name_source', 'Food_Name_target']
+    for col in possible_cols:
+        if col in cleaned_dataset.columns:
+            food_name_col = col
+            break
+    
+    if food_name_col is None:
+        print("Warning: Could not find a food name column for categorization.")
+        print(f"Available columns: {', '.join(cleaned_dataset.columns.tolist())}")
+        food_name_col = cleaned_dataset.columns[0] if len(cleaned_dataset.columns) > 0 else 'Food Name'
+    
+    # Categorize foods more precisely
+    categorizer = FoodCategorizer()
+    # Use clean_food_categories function with the identified column
+    print(f"Categorizing foods using column: {food_name_col}")
+    categorized_dataset = clean_food_categories(cleaned_dataset, food_name_col, 'Food_Category', 'Super_Category', categorizer)
+    
+    # Normalize weights across different units
+    print("Normalizing weights...")
+    if len(categorized_dataset) == 0:
+        print("Warning: No data available for weight normalization.")
+        normalized_dataset = categorized_dataset
+    else:
+        normalized_dataset = normalize_weights(categorized_dataset)
+        
+    # Generate summary stats
+    print("\nGenerating food group summaries...")
+    if len(normalized_dataset) == 0:
+        print("Warning: No data available for summary generation.")
+        summary = pd.DataFrame()
+    else:
+        summary = create_food_group_summary(normalized_dataset)
+    
+    # Save the final dataset
+    print(f"\nSaving integrated dataset to {args.output}...")
+    normalized_dataset.to_csv(args.output, index=False)
+    
+    # Also save the summary
+    summary_path = args.output.replace('.csv', '_summary.csv')
+    summary.to_csv(summary_path, index=False)
+    print(f"Food group summary saved to {summary_path}")
+    
+    # Launch dashboard if requested
+    if args.run_dashboard:
+        print("\nLaunching interactive dashboard...")
+        try:
+            # Only import the dashboard when needed
+            from shelfscale.visualization.dashboard import ShelfScaleDashboard
+            dashboard = ShelfScaleDashboard(normalized_dataset)
+            dashboard.run_server(debug=False, port=8050)
+        except ImportError as e:
+            logger.error(f"Could not load dashboard. Dashboard dependencies may not be installed: {e}")
+            print("Error: Dashboard dependencies not installed. Install with 'pip install dash plotly'.")
+    
+    print("\nProcess completed successfully!")
+    return normalized_dataset
 
 
 if __name__ == "__main__":

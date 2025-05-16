@@ -122,15 +122,17 @@ def create_weight_distribution_chart(df: pd.DataFrame,
 class ShelfScaleDashboard:
     """Dashboard for interactive visualization of ShelfScale data"""
     
-    def __init__(self, df: pd.DataFrame, title: str = "ShelfScale Dashboard"):
+    def __init__(self, df: pd.DataFrame, summary: pd.DataFrame = None, title: str = "ShelfScale Dashboard"):
         """
         Initialize the dashboard
         
         Args:
             df: Input DataFrame
+            summary: Summary DataFrame (optional)
             title: Dashboard title
         """
         self.df = df
+        self.summary = summary if summary is not None else pd.DataFrame()
         self.title = title
         self.app = Dash(__name__)
         
@@ -142,8 +144,14 @@ class ShelfScaleDashboard:
     
     def _setup_layout(self):
         """Set up the dashboard layout"""
-        # Get list of food groups for dropdown
-        food_groups = sorted(self.df['Food Group'].unique())
+        # Try to get food groups, handling cases where the column might not exist
+        food_groups = []
+        if 'Food Group' in self.df.columns:
+            food_groups = sorted(self.df['Food Group'].unique())
+        elif 'Food_Group' in self.df.columns:
+            food_groups = sorted(self.df['Food_Group'].unique())
+        elif 'Food_Category' in self.df.columns:
+            food_groups = sorted(self.df['Food_Category'].unique())
         
         self.app.layout = html.Div([
             # Title
@@ -183,58 +191,132 @@ class ShelfScaleDashboard:
             Input('food-group-dropdown', 'value')
         )
         def update_treemap(selected_groups):
+            # Identify the correct group column
+            group_col = self._get_group_column()
+            weight_col = self._get_weight_column()
+            
+            if not group_col or not weight_col:
+                # Return empty figure if necessary columns aren't found
+                return go.Figure().update_layout(title="No suitable data columns found")
+            
             # Filter data if groups are selected
             filtered_df = self.df
             if selected_groups:
                 if isinstance(selected_groups, list):
-                    filtered_df = self.df[self.df['Food Group'].isin(selected_groups)]
+                    filtered_df = self.df[self.df[group_col].isin(selected_groups)]
                 else:
-                    filtered_df = self.df[self.df['Food Group'] == selected_groups]
+                    filtered_df = self.df[self.df[group_col] == selected_groups]
             
             # Create the treemap
-            return create_food_group_treemap(filtered_df)
+            try:
+                fig = create_food_group_treemap(filtered_df, group_col, weight_col)
+                # Prevent memory leaks in matplotlib backend
+                import matplotlib.pyplot as plt
+                plt.close('all')
+                return fig
+            except Exception as e:
+                # Return empty figure with error message
+                return go.Figure().update_layout(title=f"Error creating treemap: {str(e)}")
         
         @self.app.callback(
             Output('distribution-chart', 'figure'),
             Input('food-group-dropdown', 'value')
         )
         def update_distribution(selected_groups):
+            # Identify the correct group column
+            group_col = self._get_group_column()
+            weight_col = self._get_weight_column()
+            
+            if not group_col or not weight_col:
+                # Return empty figure if necessary columns aren't found
+                return go.Figure().update_layout(title="No suitable data columns found")
+            
             # Filter data if groups are selected
             filtered_df = self.df
             if selected_groups:
                 if isinstance(selected_groups, list):
-                    filtered_df = self.df[self.df['Food Group'].isin(selected_groups)]
+                    filtered_df = self.df[self.df[group_col].isin(selected_groups)]
                 else:
-                    filtered_df = self.df[self.df['Food Group'] == selected_groups]
+                    filtered_df = self.df[self.df[group_col] == selected_groups]
             
             # Create the distribution chart
-            return create_weight_distribution_chart(filtered_df)
+            try:
+                fig = create_weight_distribution_chart(filtered_df, group_col, weight_col)
+                # Prevent memory leaks in matplotlib backend
+                import matplotlib.pyplot as plt
+                plt.close('all')
+                return fig
+            except Exception as e:
+                # Return empty figure with error message
+                return go.Figure().update_layout(title=f"Error creating distribution chart: {str(e)}")
         
         @self.app.callback(
             Output('data-table', 'children'),
             Input('food-group-dropdown', 'value')
         )
         def update_table(selected_groups):
+            # Identify the correct group column
+            group_col = self._get_group_column()
+            
             # Filter data if groups are selected
             filtered_df = self.df
-            if selected_groups:
+            if selected_groups and group_col:
                 if isinstance(selected_groups, list):
-                    filtered_df = self.df[self.df['Food Group'].isin(selected_groups)]
+                    filtered_df = self.df[self.df[group_col].isin(selected_groups)]
                 else:
-                    filtered_df = self.df[self.df['Food Group'] == selected_groups]
+                    filtered_df = self.df[self.df[group_col] == selected_groups]
+            
+            # Limit the displayed columns to make the table readable
+            display_cols = self._get_display_columns(filtered_df)
+            display_df = filtered_df[display_cols]
             
             # Create a table from the DataFrame
-            table = html.Table(
+            try:
+                rows = []
                 # Header
-                [html.Tr([html.Th(col) for col in filtered_df.columns])] +
+                rows.append(html.Tr([html.Th(col) for col in display_cols]))
                 
-                # Body
-                [html.Tr([
-                    html.Td(filtered_df.iloc[i][col]) for col in filtered_df.columns
-                ]) for i in range(min(100, len(filtered_df)))]
-            )
-            
-            return table
+                # Body - limit to 100 rows for performance
+                for i in range(min(100, len(display_df))):
+                    rows.append(html.Tr([html.Td(str(display_df.iloc[i][col])) for col in display_cols]))
+                
+                return html.Table(rows, style={'width': '100%', 'border': '1px solid black'})
+            except Exception as e:
+                return html.Div(f"Error creating table: {str(e)}")
+    
+    def _get_group_column(self):
+        """Find the appropriate food group column in the DataFrame"""
+        possible_cols = ['Food Group', 'Food_Group', 'Food_Category', 'Super_Category']
+        for col in possible_cols:
+            if col in self.df.columns:
+                return col
+        return None
+    
+    def _get_weight_column(self):
+        """Find the appropriate weight column in the DataFrame"""
+        possible_cols = ['Normalized_Weight', 'Weight_Value', 'Weight_g', 'Weight']
+        for col in possible_cols:
+            if col in self.df.columns:
+                return col
+        return None
+    
+    def _get_display_columns(self, df, max_cols=10):
+        """Get a subset of columns for display in the data table"""
+        # Priority columns to always include if available
+        priority_cols = ['Food Name', 'Food_Name', 'Food Group', 'Food_Group', 'Food_Category', 
+                       'Weight_Value', 'Weight_g', 'Normalized_Weight']
+        
+        # Filter to only include columns that exist in the DataFrame
+        available_priority = [col for col in priority_cols if col in df.columns]
+        
+        # If we have too few priority columns, add some other columns
+        if len(available_priority) < max_cols:
+            remaining_cols = [col for col in df.columns if col not in available_priority]
+            # Add remaining columns up to the max_cols limit
+            available_priority.extend(remaining_cols[:max_cols - len(available_priority)])
+        
+        # If we have too many columns, truncate to max_cols
+        return available_priority[:max_cols]
     
     def run_server(self, debug: bool = True, port: int = 8050):
         """

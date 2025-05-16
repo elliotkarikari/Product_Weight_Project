@@ -6,7 +6,24 @@ import pandas as pd
 import numpy as np
 import os
 import re
+import json
 from typing import Dict, List, Optional, Union, Any, Tuple
+
+
+class NumPyJSONEncoder(json.JSONEncoder):
+    """JSON encoder that can handle NumPy data types"""
+    def default(self, obj):
+        if isinstance(obj, (np.integer, np.int_, np.intc, np.intp, np.int8,
+                          np.int16, np.int32, np.int64, np.uint8,
+                          np.uint16, np.uint32, np.uint64)):
+            return int(obj)
+        elif isinstance(obj, (np.floating, np.float_, np.float16, np.float32, np.float64)):
+            return float(obj)
+        elif isinstance(obj, (np.ndarray,)):
+            return obj.tolist()
+        elif isinstance(obj, (np.bool_)):
+            return bool(obj)
+        return super(NumPyJSONEncoder, self).default(obj)
 
 
 def load_data(file_path: str) -> pd.DataFrame:
@@ -58,7 +75,8 @@ def save_data(df: pd.DataFrame, file_path: str, index: bool = False) -> None:
     elif ext == '.xlsx':
         df.to_excel(file_path, index=index)
     elif ext == '.json':
-        df.to_json(file_path, orient='records')
+        with open(file_path, 'w') as f:
+            json.dump(df.to_dict(orient='records'), f, cls=NumPyJSONEncoder, indent=2)
     elif ext == '.pkl':
         df.to_pickle(file_path)
     else:
@@ -179,6 +197,23 @@ def get_unique_values(df: pd.DataFrame, column: str) -> List[Any]:
         raise ValueError(f"Column '{column}' not found in DataFrame")
     
     return sorted(df[column].unique().tolist())
+
+
+def get_path(file_path: str) -> str:
+    """
+    Get absolute path for a file, handling both absolute and relative paths
+    
+    Args:
+        file_path: Path to the file (absolute or relative)
+        
+    Returns:
+        Absolute path to the file
+    """
+    if os.path.isabs(file_path):
+        return file_path
+    else:
+        # If relative, make it relative to the current working directory
+        return os.path.abspath(file_path)
 
 
 def split_data_by_group(df: pd.DataFrame, 
