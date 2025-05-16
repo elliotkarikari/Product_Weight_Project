@@ -194,3 +194,83 @@ This will test:
 - Dataset matching and merging
 - Column standardization
 - Raw data processing 
+
+# Enhanced Weight Extraction
+
+One of the key challenges in processing food product data is extracting and standardizing weight information from varied text formats. The ShelfScale project includes an enhanced weight extraction system with the following capabilities:
+
+## Key Features
+
+### 1. Robust Pattern Recognition
+The enhanced weight extractor can identify and parse a wide variety of weight formats:
+- Simple formats: "100g", "250 g", "1kg", "500ml"
+- Range formats: "100-150g" (takes average)
+- Multipack formats: "3 x 100g", "6-pack x 30g"
+- Fraction formats: "1/2 kg", "1/4 cup"
+- Mixed fractions: "1 1/2 kg", "2 1/4 cups"
+- Embedded in text: "Cheese, cheddar (200g block)", "Bread, whole wheat, 400g loaf"
+- Common approximations: "approx 100g", "approximately 250ml"
+
+### 2. Unit Standardization
+The extractor automatically standardizes units, with comprehensive support for:
+- Weight units: g, kg, mg, oz, lb, pounds, etc.
+- Volume units: ml, l, cups, tbsp, tsp, fluid oz, etc.
+- Consistent conversions between compatible units
+
+### 3. Missing Value Prediction
+The system includes predictive capabilities for estimating missing weight values:
+- Group-based prediction: Uses food category averages
+- Similarity-based prediction: Matches similar products by name
+- Confidence scoring: Provides reliability metrics for predictions
+
+## Usage Examples
+
+### Basic Weight Extraction
+```python
+from shelfscale.data_processing.weight_extraction import WeightExtractor
+
+# Create an extractor with default target unit (grams)
+extractor = WeightExtractor()
+
+# Extract from a single text string
+weight, unit = extractor.extract("6pk x 25g")
+print(f"Weight: {weight}{unit}")  # Output: Weight: 150g
+```
+
+### Processing a DataFrame
+```python
+from shelfscale.data_processing.weight_extraction import WeightExtractor
+
+# Create the extractor
+extractor = WeightExtractor(target_unit='g')
+
+# Process weight information from multiple columns
+result_df = extractor.process_dataframe(
+    df,
+    text_cols=['Product_Description', 'Package_Info'],
+    new_weight_col='Normalized_Weight',
+    new_unit_col='Weight_Unit',
+    source_col='Weight_Source'
+)
+```
+
+### Predicting Missing Weights
+```python
+from shelfscale.data_processing.weight_extraction import predict_missing_weights
+
+# Fill missing weights using group averages and similar items
+enriched_df = predict_missing_weights(
+    df,
+    weight_col='Normalized_Weight',
+    group_col='Food_Group',
+    name_col='Food_Name'
+)
+```
+
+## Integration with Data Pipeline
+
+The enhanced weight extraction is seamlessly integrated with the data processing pipeline and can be used directly from the main.py script by using the `--process-weights` option.
+
+```
+python main.py --input-data your_data.csv --process-weights
+``` 

@@ -614,10 +614,10 @@ class FoodMatcher:
                     target_col,
                     additional_match_cols
                 )
-            
+                
                 # Use ML model if available for final score
                 match_probability = self._predict_match_probability(features, similarity)
-            
+                
                 # Override with similarity if no ML used
                 if not self.learning_enabled or self.model is None:
                     match_probability = similarity
@@ -632,7 +632,7 @@ class FoodMatcher:
                 }
                 
                 matches.append(match_info)
-                
+        
         # Create a DataFrame from matches
         if not matches:
             logger.warning("No matches found exceeding the similarity threshold")
@@ -934,7 +934,7 @@ class FoodMatcher:
                 feature_importance = {}
                 for i, feature in enumerate(X_df.columns):
                     feature_importance[feature] = float(clf.feature_importances_[i])  # Convert numpy types to native Python types
-            
+                
                 # Save the feature importance
                 self.feature_importance = feature_importance
                 self._save_model()

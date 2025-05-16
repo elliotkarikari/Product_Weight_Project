@@ -10,6 +10,49 @@ ShelfScale is a comprehensive tool for analyzing and predicting food product wei
 - **Weight prediction**: Predicts product weights for new items based on similar products in the database.
 - **Comprehensive data processing**: Cleans, transforms, and normalizes weight data from various formats.
 - **Food categorization**: Categorizes products into food groups for better analysis.
+- **Enhanced weight extraction**: Advanced pattern recognition for extracting weight information from text descriptions in various formats.
+
+## Enhanced Weight Extraction
+
+The system includes a robust weight extraction module with:
+
+1. **Advanced pattern recognition**: Intelligently extracts weight information from diverse text formats 
+2. **Support for multiple formats**:
+   - Simple weights: "100g", "1kg"
+   - Ranges: "100-150g"
+   - Multipacks: "3 x 100g"
+   - Fractions: "1/2 kg", "1 1/2 kg"
+   - Mixed units: "1kg 500g"
+3. **Unit standardization**: Converts various units (g, kg, oz, lb, ml, l) to standard units
+4. **Weight prediction**: For products with missing weights using:
+   - Group-based prediction using food category averages
+   - Similarity-based matching based on product names
+5. **Confidence scoring**: Indicates reliability of extracted and predicted weights
+
+### Using Weight Extraction in Code
+
+```python
+from shelfscale import WeightExtractor, predict_missing_weights
+
+# Extract weights from text
+extractor = WeightExtractor(target_unit='g')
+weight, unit = extractor.extract("Chocolate bar, 3.5oz")
+print(f"Extracted: {weight} {unit}")  # Output: 99.23 g
+
+# Process a DataFrame with multiple columns
+result_df = extractor.process_dataframe(
+    df, 
+    text_cols=['Product_Name', 'Description', 'Package_Size']
+)
+
+# Predict missing weights based on groups and similar items
+result_df = predict_missing_weights(
+    result_df,
+    weight_col='Normalized_Weight',
+    group_col='Food_Group',
+    name_col='Food_Name'
+)
+```
 
 ## Machine Learning Capabilities
 

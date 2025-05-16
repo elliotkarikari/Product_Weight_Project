@@ -172,8 +172,8 @@ def load_mccance_widdowson_data(file_path):
             except Exception as e:
                 print(f"  Could not load sheet '{sheet}': {str(e)}")
         
-        if df is None or len(df) == 0:
-            print("  Error: Could not load any data from the Excel file.")
+                if df is None or len(df) == 0:
+                 print("  Error: Could not load any data from the Excel file.")
             return pd.DataFrame()
         
         print(f"  Loaded {len(df)} food items")
@@ -200,10 +200,11 @@ def load_mccance_widdowson_data(file_path):
         if not found_key_col:
             print(f"  Warning: No key column with food names found. Available columns: {', '.join(df.columns)}")
         
-        return df
     except Exception as e:
         print(f"Error loading McCance and Widdowson data: {str(e)}")
         return pd.DataFrame()
+    
+    return df
 
 
 def match_datasets(main_df, secondary_df, main_col, secondary_col, threshold=70, additional_cols=None):
@@ -245,7 +246,7 @@ def match_datasets(main_df, secondary_df, main_col, secondary_col, threshold=70,
 
 def process_weight_info(df, weight_cols):
     """
-    Process weight information from one or more columns
+    Process weight information from one or more columns using enhanced weight extraction
     
     Args:
         df: Input DataFrame
@@ -280,168 +281,60 @@ def process_weight_info(df, weight_cols):
             weight_processed_df['Normalized_Weight'] = np.nan
             return weight_processed_df
     
-    # Create a normalized weight column
-    weight_processed_df['Normalized_Weight'] = np.nan
-    weight_processed_df['Weight_Unit'] = None
-    weight_processed_df['Weight_Source_Col'] = None
+    # Use the enhanced weight extraction
+    from shelfscale.data_processing.weight_extraction import WeightExtractor
     
-    # Count successful extractions
-    total_count = 0
-    success_count = 0
-    extraction_stats = {}
+    # Create weight extractor with default target unit (grams)
+    extractor = WeightExtractor()
     
-    # Process each weight column
-    for weight_col in weight_cols:
-        if weight_col not in weight_processed_df.columns:
-            print(f"  Warning: Weight column '{weight_col}' not found in DataFrame")
-            continue
+    # Process all weight columns at once using the enhanced extractor
+    result_df = extractor.process_dataframe(
+        weight_processed_df,
+        weight_cols,
+        new_weight_col='Normalized_Weight',
+        new_unit_col='Weight_Unit',
+        source_col='Weight_Source_Col'
+    )
+    
+    # Get extraction statistics
+    success_count = result_df['Normalized_Weight'].notna().sum()
+    total_count = len(result_df)
+    success_rate = (success_count / total_count) * 100 if total_count > 0 else 0
+    
+    print(f"  Successfully extracted {success_count} weights out of {total_count} items ({success_rate:.1f}%)")
+    
+    # Try to predict missing weights using group averages and similar items
+    if success_count > 0 and success_count < total_count:
+        from shelfscale.data_processing.weight_extraction import predict_missing_weights
         
-        # Initialize stats for this column
-        extraction_stats[weight_col] = {'total': 0, 'success': 0}
-        
-        # Check if the column has any non-null values
-        if weight_processed_df[weight_col].isna().all():
-            print(f"  Warning: Weight column '{weight_col}' contains only null values")
-            continue
-            
-        # Iterate through rows
-        for idx, row in weight_processed_df.iterrows():
-            # Skip if we already have a normalized weight from a previous column
-            if not pd.isna(weight_processed_df.loc[idx, 'Normalized_Weight']):
-                continue
+        # Check if we have food group or name columns that could help with prediction
+        group_col = None
+        for col_name in ['Food_Group', 'Food Group', 'Category', 'Super_Group', 'Super Group']:
+            if col_name in result_df.columns:
+                group_col = col_name
+                break
                 
-            # Skip if empty
-            if pd.isna(row[weight_col]):
-                continue
+        name_col = None
+        for col_name in ['Food_Name', 'Food Name', 'Product_Name', 'Product Name', 'Name', 'Description']:
+            if col_name in result_df.columns:
+                name_col = col_name
+                break
                 
-            extraction_stats[weight_col]['total'] += 1
-            total_count += 1
-            weight_text = str(row[weight_col])
+        if group_col or name_col:
+            print(f"  Attempting to predict missing weights using {'food groups and ' if group_col else ''}{'similar item names' if name_col else ''}")
+            result_df = predict_missing_weights(
+                result_df,
+                weight_col='Normalized_Weight',
+                group_col=group_col,
+                name_col=name_col
+            )
             
-            # Skip empty or "nan" values
-            if not weight_text or weight_text.lower() == "nan":
-                continue
-                
-            # Extract weight value using helper function
-            try:
-                weight, unit = extract_numeric_value(weight_text, return_unit=True)
-                
-                # If successful, add to normalized column
-                if weight is not None and weight > 0:
-                    weight_processed_df.loc[idx, 'Normalized_Weight'] = weight
-                    weight_processed_df.loc[idx, 'Weight_Unit'] = unit if unit else 'g'
-                    weight_processed_df.loc[idx, 'Weight_Source_Col'] = weight_col
-                    extraction_stats[weight_col]['success'] += 1
-                    success_count += 1
-            except Exception as e:
-                logger.warning(f"Error extracting weight from '{weight_text}': {e}")
+            # Report prediction results
+            predicted_count = result_df['Weight_Prediction_Source'].notna().sum()
+            if predicted_count > 0:
+                print(f"  Successfully predicted {predicted_count} additional weights")
     
-    # Calculate success rate
-    success_rate = (success_count / max(1, total_count)) * 100
-    print(f"  Successfully extracted {success_count} weights out of {total_count} entries ({success_rate:.2f}%)")
-    
-    # Print per-column statistics
-    for col, stats in extraction_stats.items():
-        if stats['total'] > 0:
-            col_success_rate = (stats['success'] / stats['total']) * 100
-            print(f"    {col}: {stats['success']}/{stats['total']} ({col_success_rate:.2f}%)")
-    
-    return weight_processed_df
-
-
-def extract_numeric_value(text, return_unit=False):
-    """
-    Extract numeric value from text, optionally returning the unit
-    
-    Args:
-        text: Text string containing a numeric value
-        return_unit: Whether to return the unit as well
-        
-    Returns:
-        If return_unit is False: Extracted numeric value or None
-        If return_unit is True: Tuple of (numeric value, unit) or (None, None)
-    """
-    if not text or pd.isna(text):
-        return (None, None) if return_unit else None
-    
-    text = str(text).lower().strip()
-    
-    # Common unit patterns
-    unit_patterns = {
-        'kg': ['kg', 'kilo', 'kilogram'],
-        'g': ['g', 'gram', 'grams', 'gm'],
-        'mg': ['mg', 'milligram'],
-        'lb': ['lb', 'pound', 'lbs'],
-        'oz': ['oz', 'ounce'],
-    }
-    
-    # Detect unit
-    detected_unit = None
-    for unit, patterns in unit_patterns.items():
-        if any(pattern in text for pattern in patterns):
-            detected_unit = unit
-            break
-    
-    # Remove all unit text
-    for unit, patterns in unit_patterns.items():
-        for pattern in patterns:
-            text = text.replace(pattern, '')
-    
-    # Clean the text
-    text = text.replace(',', '.').strip()
-    
-    # Try direct conversion
-    try:
-        value = float(text)
-        if return_unit:
-            return value, detected_unit or 'g'  # Default to grams
-        return value
-    except ValueError:
-        pass
-    
-    # Try to extract numbers with regex
-    try:
-        # Look for decimal numbers
-        match = re.search(r'(\d+\.?\d*)', text)
-        if match:
-            value = float(match.group(1))
-            
-            # Apply unit conversion if needed
-            if detected_unit == 'kg':
-                value *= 1000
-                detected_unit = 'g'
-            elif detected_unit == 'mg':
-                value /= 1000
-                detected_unit = 'g'
-            
-            if return_unit:
-                return value, detected_unit or 'g'
-            return value
-    except Exception:
-        pass
-    
-    # Last resort - look for ranges and take average
-    try:
-        range_match = re.search(r'(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)', text)
-        if range_match:
-            start, end = float(range_match.group(1)), float(range_match.group(2))
-            value = (start + end) / 2
-            
-            # Apply unit conversion if needed
-            if detected_unit == 'kg':
-                value *= 1000
-                detected_unit = 'g'
-            elif detected_unit == 'mg':
-                value /= 1000
-                detected_unit = 'g'
-            
-            if return_unit:
-                return value, detected_unit or 'g'
-            return value
-    except Exception:
-        pass
-    
-    return (None, None) if return_unit else None
+    return result_df
 
 
 def main():
@@ -523,7 +416,7 @@ def main():
             data_sources["super_group"] = pd.concat(super_group_data.values())
             print(f"  Total super group items: {len(data_sources['super_group'])}")
     
-    # 3. Load Food Portion Sizes data (portion-specific)
+        # 3. Load Food Portion Sizes data (portion-specific)
     if not args.skip_pdfs:
         try:
             food_portion_path = get_path(args.food_portion_pdf)
@@ -708,7 +601,7 @@ def main():
         if not food_name_col:
             logger.warning("Could not find a food name column for categorization.")
             logger.info(f"Available columns:\n{cleaned_dataset.columns.tolist()}")
-    
+            
             # Create a dummy column to avoid errors
             if len(cleaned_dataset) > 0:
                 cleaned_dataset['Food_Name'] = "Unknown Food"
