@@ -20,6 +20,8 @@ from sklearn.model_selection import StratifiedKFold
 from Levenshtein import distance as lev_distance
 import joblib
 
+import shelfscale.config as config
+
 # Configure logging
 logger = logging.getLogger(__name__)
 
@@ -54,28 +56,28 @@ class FoodMatcher:
     """Food matching algorithm with machine learning capabilities to find matches between food datasets"""
     
     def __init__(self, similarity_threshold: float = 0.6, 
-                 model_path: str = "models/food_matcher_model.pkl",
-                 features_path: str = "models/food_matcher_features.pkl",
+                 model_path: Optional[str] = None,
+                 features_path: Optional[str] = None,
                  learning_enabled: bool = True):
         """
         Initialize the food matcher
         
         Args:
             similarity_threshold: Threshold for considering a match
-            model_path: Path to save/load the machine learning model
-            features_path: Path to save/load feature importance information
+            model_path: Path to save/load the machine learning model. Defaults to config.FOOD_MATCHER_MODEL_PATH.
+            features_path: Path to save/load feature importance information. Defaults to config.FOOD_MATCHER_FEATURES_PATH.
             learning_enabled: Whether to use machine learning capabilities
         """
         self.similarity_threshold = similarity_threshold
         self.vectorizer = None
-        self.model_path = model_path
-        self.features_path = features_path
+        self.model_path = model_path if model_path is not None else config.FOOD_MATCHER_MODEL_PATH
+        self.features_path = features_path if features_path is not None else config.FOOD_MATCHER_FEATURES_PATH
         self.learning_enabled = learning_enabled
         self.model = None
         self.feature_importance = {}
         
-        # Create model directory if it doesn't exist
-        os.makedirs(os.path.dirname(model_path), exist_ok=True)
+        # Model directory is created by config.py
+        # os.makedirs(os.path.dirname(self.model_path), exist_ok=True) 
         
         # Try to load existing model and features
         self._load_model()

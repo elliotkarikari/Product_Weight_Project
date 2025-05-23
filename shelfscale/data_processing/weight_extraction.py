@@ -253,49 +253,77 @@ class WeightExtractor:
                 return None, None
                 
             # Standardize unit and convert value
-            return self._standardize_unit(value, unit)
+        return self.standardize_value_and_unit(value, unit) # Use the now public method
             
         except (ValueError, TypeError) as e:
             logger.warning(f"Error processing weight pattern '{pattern_text}': {e}")
             return None, None
     
-    def _standardize_unit(self, value: float, unit: str) -> Tuple[float, str]:
+    def standardize_value_and_unit(self, value: Optional[float], original_unit: Optional[str]) -> Tuple[Optional[float], Optional[str]]:
         """
-        Standardize unit and convert value to target unit
-        
+        Standardize a given unit and convert the value to the extractor's target_unit.
+
         Args:
-            value: Weight/volume value
-            unit: Original unit
-            
+            value: Numeric weight/volume value.
+            original_unit: Original unit of the value.
+
         Returns:
-            Tuple of (converted value, standardized unit)
+            Tuple of (converted_value, target_unit) if successful, 
+            or (original_value, original_unit) if conversion is not possible or applicable.
+            Returns (None, None) if input value or unit is None.
         """
-        # Find the standardized version of the unit
-        std_unit = None
-        for u in self.conversion_factors:
-            if unit == u or unit.startswith(u):
-                std_unit = u
+        if value is None or original_unit is None:
+            logger.debug(f"Input value or unit is None. Value: {value}, Unit: {original_unit}. Cannot standardize.")
+            return None, None
+
+        unit_lower = original_unit.lower()
+        
+        # Find the base unit and conversion factor from the original_unit
+        base_unit_of_original = None
+        conversion_factor_to_base = None
+
+        for known_unit_key, factor in self.conversion_factors.items():
+            if unit_lower == known_unit_key: # Exact match first
+                base_unit_of_original = known_unit_key
+                conversion_factor_to_base = factor
                 break
+            # Allow partial match e.g. "g" for "grams" if "grams" itself isn't a primary key
+            # This part might be tricky if "g" and "grams" are both keys with different factors (they shouldn't be)
+            if unit_lower.startswith(known_unit_key) and known_unit_key in self.weight_units.union(self.volume_units):
+                 # check if a more specific key exists e.g. "gram" vs "grams"
+                is_more_specific_key_present = any(uk for uk in self.conversion_factors if unit_lower.startswith(uk) and len(uk) > len(known_unit_key))
+                if not is_more_specific_key_present:
+                    base_unit_of_original = known_unit_key
+                    conversion_factor_to_base = factor
+                    #  Don't break, continue searching for a potentially more specific match like 'gram' vs 'g'
+
+        if base_unit_of_original is None:
+            logger.warning(f"Unit '{original_unit}' not recognized or no conversion factor available. Returning original value and unit.")
+            return value, original_unit
+
+        # Determine if the original unit is weight or volume
+        original_is_weight = base_unit_of_original in self.weight_units
+        original_is_volume = base_unit_of_original in self.volume_units
+
+        # Determine if the target unit is weight or volume
+        target_is_weight = self.target_unit.lower() in self.weight_units
+        target_is_volume = self.target_unit.lower() in self.volume_units
+
+        if (original_is_weight and target_is_volume) or \
+           (original_is_volume and target_is_weight):
+            logger.warning(f"Unit mismatch: Cannot convert from '{original_unit}' (system: {'weight' if original_is_weight else 'volume'}) to '{self.target_unit}' (system: {'weight' if target_is_weight else 'volume'}). Returning original value and unit.")
+            return value, original_unit
         
-        # If no standard unit found, use as is
-        if std_unit is None:
-            return value, unit
+        # Convert original value to its base standard (grams or mL)
+        value_in_base_standard = value * conversion_factor_to_base
         
-        # Check unit system compatibility
-        if self.target_unit in ('g', 'kg', 'mg'):
-            target_is_weight = True
-        else:
-            target_is_weight = False
-            
-        unit_is_weight = std_unit in self.weight_units
-        
-        # Cannot convert between weight and volume
-        if target_is_weight != unit_is_weight:
-            logger.warning(f"Cannot convert between weight ({std_unit}) and volume ({self.target_unit})")
-            return value, std_unit
-            
-        # Apply conversion factor
-        converted_value = value * self.conversion_factors[std_unit]
+        # Now convert from base standard to the target_unit of the extractor
+        target_conversion_factor = self.conversion_factors.get(self.target_unit.lower())
+        if target_conversion_factor is None: # Should not happen if target_unit is valid
+            logger.error(f"Target unit '{self.target_unit}' has no defined conversion factor. This is an internal error.")
+            return value, original_unit # Fallback
+
+        converted_value = value_in_base_standard / target_conversion_factor
         
         return converted_value, self.target_unit
     

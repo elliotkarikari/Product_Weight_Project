@@ -149,7 +149,13 @@ class DataCleaner:
             # Food groups
             elif "group" in col_lower and not "super" in col_lower:
                 mapping[col] = "Food_Group"
-        
+            
+            # Portion Size
+            elif "portion" in col_lower and "size" in col_lower:
+                mapping[col] = "Portion_Size"
+            elif "serving" in col_lower and "size" in col_lower: # common alternative
+                mapping[col] = "Portion_Size"
+
         # Apply mappings
         if mapping:
             standardized_df = standardized_df.rename(columns=mapping)

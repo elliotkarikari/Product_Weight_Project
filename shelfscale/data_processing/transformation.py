@@ -21,15 +21,27 @@ def create_food_group_summary(df: pd.DataFrame,
     Returns:
         DataFrame with food group statistics
     """
+    logger = logging.getLogger(__name__) # Ensure logger is available
+
     if group_col not in df.columns:
-        raise ValueError(f"Column '{group_col}' not found in DataFrame")
+        msg = f"Group column '{group_col}' not found in DataFrame for food group summary."
+        logger.error(msg)
+        raise ValueError(msg)
         
     if weight_col not in df.columns:
-        raise ValueError(f"Column '{weight_col}' not found in DataFrame")
+        msg = f"Weight column '{weight_col}' not found in DataFrame for food group summary."
+        logger.error(msg)
+        raise ValueError(msg)
     
     # Remove rows with missing values in key columns
     filtered_df = df.dropna(subset=[group_col, weight_col])
+
+    if filtered_df.empty:
+        logger.warning(f"DataFrame is empty after dropping NaNs in '{group_col}' or '{weight_col}'. Returning empty summary.")
+        # Return empty DataFrame with expected columns for consistency
+        return pd.DataFrame(columns=[group_col, 'count', 'mean', 'median', 'std', 'min', 'max'])
     
+    logger.info(f"Creating food group summary for column '{group_col}' using weight column '{weight_col}'.")
     # Group by food group and calculate statistics
     summary = filtered_df.groupby(group_col)[weight_col].agg([
         ('count', 'count'),
@@ -60,46 +72,47 @@ def normalize_weights(df: pd.DataFrame,
         DataFrame with normalized weights
     """
     if weight_col not in df.columns:
-        raise ValueError(f"Column '{weight_col}' not found in DataFrame")
-        
+        raise ValueError(f"Weight column '{weight_col}' not found in DataFrame.")
     if unit_col not in df.columns:
-        raise ValueError(f"Column '{unit_col}' not found in DataFrame")
+        raise ValueError(f"Unit column '{unit_col}' not found in DataFrame.")
+
+    from shelfscale.data_processing.weight_extraction import WeightExtractor # Local import
+
+    extractor = WeightExtractor(target_unit=target_unit)
     
-    # Create a copy to avoid modifying the original
+    # Create a copy to avoid modifying the original DataFrame
     normalized_df = df.copy()
-    
-    # Define conversion factors
-    conversion_factors = {
-        'kg': 1000,  # 1 kg = 1000 g
-        'g': 1,      # 1 g = 1 g
-        'l': 1000,   # 1 l = 1000 ml
-        'ml': 1      # 1 ml = 1 ml
-    }
-    
-    # Determine the target system (mass or volume)
-    is_mass_target = target_unit in ['g', 'kg']
-    
-    # Function to convert and normalize weights
-    def normalize_weight(row):
-        if pd.isna(row[weight_col]) or pd.isna(row[unit_col]):
-            return np.nan
+
+    # Initialize new columns if they don't exist
+    if 'Normalized_Weight' not in normalized_df.columns:
+        normalized_df['Normalized_Weight'] = np.nan
+    if 'Normalized_Unit' not in normalized_df.columns:
+        normalized_df['Normalized_Unit'] = None
+
+    # Iterate over rows and apply normalization
+    for index, row in normalized_df.iterrows():
+        original_value = row[weight_col]
+        original_unit = row[unit_col]
+
+        if pd.isna(original_value) or pd.isna(original_unit):
+            normalized_df.loc[index, 'Normalized_Weight'] = np.nan
+            normalized_df.loc[index, 'Normalized_Unit'] = None # Or keep original unit if preferred for NaNs
+            continue
+
+        converted_value, standardized_unit = extractor.standardize_value_and_unit(original_value, str(original_unit))
         
-        unit = row[unit_col].lower()
-        
-        # Skip if units are incompatible (mass vs. volume)
-        if (is_mass_target and unit in ['ml', 'l']) or (not is_mass_target and unit in ['g', 'kg']):
-            return np.nan
-            
-        # Convert to target unit
-        if unit in conversion_factors:
-            return row[weight_col] * conversion_factors[unit]
-        
-        return np.nan
-    
-    # Apply normalization
-    normalized_df['Normalized_Weight'] = normalized_df.apply(normalize_weight, axis=1)
-    normalized_df['Normalized_Unit'] = target_unit
-    
+        if standardized_unit == extractor.target_unit and converted_value is not None:
+            normalized_df.loc[index, 'Normalized_Weight'] = converted_value
+            normalized_df.loc[index, 'Normalized_Unit'] = standardized_unit
+        else:
+            # If conversion was not possible or unit is not the target unit, store NaN or original value.
+            # Storing NaN for weight and None for unit indicates failed/inapplicable normalization.
+            normalized_df.loc[index, 'Normalized_Weight'] = np.nan 
+            normalized_df.loc[index, 'Normalized_Unit'] = original_unit # Keep original unit to show what it was
+            # logger.warning(f"Could not normalize weight for row {index}: value {original_value} {original_unit} to target {target_unit}. "
+            # f"Got {converted_value} {standardized_unit}")
+
+
     return normalized_df
 
 
@@ -117,15 +130,26 @@ def pivot_food_groups(df: pd.DataFrame,
     Returns:
         Pivot table with food group weights
     """
+    logger = logging.getLogger(__name__) # Ensure logger is available
+
     if group_col not in df.columns:
-        raise ValueError(f"Column '{group_col}' not found in DataFrame")
+        msg = f"Group column '{group_col}' not found in DataFrame for pivot table."
+        logger.error(msg)
+        raise ValueError(msg)
         
     if weight_col not in df.columns:
-        raise ValueError(f"Column '{weight_col}' not found in DataFrame")
+        msg = f"Weight column '{weight_col}' not found in DataFrame for pivot table."
+        logger.error(msg)
+        raise ValueError(msg)
     
     # Remove rows with missing values in key columns
     filtered_df = df.dropna(subset=[group_col, weight_col])
-    
+
+    if filtered_df.empty:
+        logger.warning(f"DataFrame is empty after dropping NaNs in '{group_col}' or '{weight_col}'. Returning empty pivot table.")
+        return pd.DataFrame() # Return empty DataFrame
+
+    logger.info(f"Creating pivot table for food groups in column '{group_col}' using weight column '{weight_col}'.")
     # Create pivot table with sum of weights by food group
     pivot = pd.pivot_table(
         filtered_df,
