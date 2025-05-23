@@ -20,10 +20,13 @@ from sklearn.model_selection import StratifiedKFold
 from Levenshtein import distance as lev_distance
 import joblib
 
-import shelfscale.config as config
+from shelfscale.config_manager import get_config
 
 # Configure logging
 logger = logging.getLogger(__name__)
+
+# Get configuration
+config = get_config()
 
 
 def preprocess_text(text: str) -> str:

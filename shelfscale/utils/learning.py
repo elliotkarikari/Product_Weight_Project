@@ -10,7 +10,7 @@ import json
 from datetime import datetime
 from typing import Dict, List, Optional, Tuple, Any
 
-import shelfscale.config as config
+from shelfscale.config_manager import get_config
 from shelfscale.matching.algorithm import FoodMatcher
 from shelfscale.utils.helpers import load_data, save_data # Assuming load_data and save_data don't need config paths directly
 

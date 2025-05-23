@@ -142,7 +142,7 @@ To improve the matching algorithm:
 
 ## Project Structure
 
-```
+```md
 shelfscale/
   ├── data_processing/        # Data cleaning and transformation
   ├── data_sourcing/          # Data acquisition components

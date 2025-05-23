@@ -253,7 +253,7 @@ class WeightExtractor:
                 return None, None
                 
             # Standardize unit and convert value
-        return self.standardize_value_and_unit(value, unit) # Use the now public method
+            return self.standardize_value_and_unit(value, unit) # Use the now public method
             
         except (ValueError, TypeError) as e:
             logger.warning(f"Error processing weight pattern '{pattern_text}': {e}")

@@ -17,7 +17,7 @@ import random
 import logging
 from typing import List, Dict, Tuple, Optional, Any, Union
 
-import shelfscale.config as config
+from shelfscale.config_manager import get_config
 from shelfscale.data_sourcing.open_food_facts import OpenFoodFactsClient
 from shelfscale.data_processing.weight_extraction import clean_weights
 from shelfscale.data_processing.categorization import FoodCategorizer, clean_food_categories
@@ -43,10 +43,14 @@ from shelfscale.data_sourcing.pdf_extraction import PDFExtractor
 from shelfscale.data_sourcing.excel_loader import ExcelLoader # Added
 from shelfscale.data_sourcing.csv_loader import CsvLoader # Added
 from shelfscale.data_processing.raw_processor import RawDataProcessor, process_raw_data
+from shelfscale.data_processing.fallback_processor import check_and_repair_empty_super_groups # Added
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+# Get configuration
+config = get_config()
 
 # Local data loading functions (extract_food_portion_data, extract_fruit_veg_survey_data, load_mccance_widdowson_data)
 # are now removed. Their responsibilities are moved to PDFExtractor and ExcelLoader respectively.
@@ -250,6 +254,15 @@ def main():
     super_group_data = {}
     if args.use_super_group:
         print("Loading McCance and Widdowson Super Group reduced data...")
+        
+        # Check and repair empty super groups before loading
+        logger.info("Checking super group data integrity...")
+        repair_success = check_and_repair_empty_super_groups()
+        if repair_success:
+            logger.info("Super group data is ready for loading")
+        else:
+            logger.warning("Super group repair failed, continuing with available data")
+        
         # Using config.MW_PROCESSED_SUPER_GROUP_PATH
         super_group_dir_path = config.MW_PROCESSED_SUPER_GROUP_PATH 
         # get_path might be redundant if config paths are absolute or correctly relative
@@ -470,29 +483,29 @@ def main():
     if food_name_col not in cleaned_dataset.columns:
         food_name_col = None
         # Try to find a suitable column for categorization
-    for col_candidate in ['Food_Name', 'Food Name', 'name', 'description', 'Name', 'Description']: # Prioritize common names
-        if col_candidate in cleaned_dataset.columns:
-            food_name_col = col_candidate
+        for col_candidate in ['Food_Name', 'Food Name', 'name', 'description', 'Name', 'Description']: # Prioritize common names
+            if col_candidate in cleaned_dataset.columns:
+                food_name_col = col_candidate
                 break
-    else: # If no exact match, then search more broadly
-        for col in cleaned_dataset.columns:
-            if 'food' in col.lower() and 'name' in col.lower():
-                food_name_col = col
-                break
-            elif 'name' in col.lower(): # Broader 'name' check
-                food_name_col = col
-                break
-            elif 'description' in col.lower(): # Broader 'description' check
-                food_name_col = col
-                break
-        else: # If still not found
-            logger.warning("Could not find a suitable food name column for categorization.")
-            logger.info(f"Available columns:\n{cleaned_dataset.columns.tolist()}")
-            if len(cleaned_dataset) > 0: # Create a dummy column only if df is not empty
-                cleaned_dataset['Food_Name_Fallback_For_Categorization'] = "Unknown Food"
-                food_name_col = 'Food_Name_Fallback_For_Categorization'
-            else:
-                food_name_col = None # No column to use if df is empty
+        else: # If no exact match, then search more broadly
+            for col in cleaned_dataset.columns:
+                if 'food' in col.lower() and 'name' in col.lower():
+                    food_name_col = col
+                    break
+                elif 'name' in col.lower(): # Broader 'name' check
+                    food_name_col = col
+                    break
+                elif 'description' in col.lower(): # Broader 'description' check
+                    food_name_col = col
+                    break
+            else: # If still not found
+                logger.warning("Could not find a suitable food name column for categorization.")
+                logger.info(f"Available columns:\n{cleaned_dataset.columns.tolist()}")
+                if len(cleaned_dataset) > 0: # Create a dummy column only if df is not empty
+                    cleaned_dataset['Food_Name_Fallback_For_Categorization'] = "Unknown Food"
+                    food_name_col = 'Food_Name_Fallback_For_Categorization'
+                else:
+                    food_name_col = None # No column to use if df is empty
 
     if food_name_col:
         print(f"Categorizing foods using column: {food_name_col}")

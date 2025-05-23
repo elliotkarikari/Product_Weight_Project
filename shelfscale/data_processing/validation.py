@@ -111,6 +111,31 @@ def validate_schema(df: pd.DataFrame, schema: Dict[str, Dict[str, Any]]) -> List
         
     return errors
 
+
+def validate_data(df: pd.DataFrame, schema: Dict[str, Dict[str, Any]] = None) -> bool:
+    """
+    Simple data validation function that checks basic DataFrame properties.
+    
+    Args:
+        df: The DataFrame to validate
+        schema: Optional schema to validate against
+        
+    Returns:
+        True if data passes validation, False otherwise
+    """
+    if df is None or df.empty:
+        logger.warning("DataFrame is None or empty")
+        return False
+        
+    if schema:
+        errors = validate_schema(df, schema)
+        if errors:
+            logger.warning(f"Schema validation failed: {errors}")
+            return False
+            
+    return True
+
+
 if __name__ == '__main__':
     logging.basicConfig(level=logging.DEBUG) 
 

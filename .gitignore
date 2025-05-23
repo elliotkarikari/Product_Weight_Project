@@ -1,0 +1,156 @@
+# Environment Variables and Configuration
+.env
+.env.local
+.env.production
+.env.staging
+config_template.env
+*.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+product_weight_env/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# IDE and Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Output and Cache Directories
+output/
+cache/
+temp/
+tmp/
+.cache/
+*.log
+logs/
+
+# Data Files (Large datasets)
+*.csv
+!*sample*.csv
+!*example*.csv
+*.xlsx
+*.xls
+!*sample*.xlsx
+!*example*.xlsx
+*.parquet
+*.pickle
+*.pkl
+*.h5
+*.hdf5
+
+# Model Files
+*.model
+*.pkl
+models/weights/
+models/checkpoints/
+
+# API Keys and Secrets
+secrets/
+private/
+confidential/
+*.key
+*.pem
+*.cert
+
+# OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Backup Files
+*.bak
+*.backup
+*_backup_*
+enhanced_rules_curator_backup_*.py
+
+# Test Coverage
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Documentation Build
+docs/_build/
+site/
+
+# PyCharm
+.idea/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# Large Data Processing Files
+raw_data_processing.log
+*_processing.log
+temp_pdf_cache/
+
+# Specific to this project
+llm_reasoning_analysis.json
+hybrid_analyses.json
+*_cached.csv
+
+# Windows
+*.lnk
+
+# Linux
+*~
+
+# macOS
+.AppleDouble
+.LSOverride 
