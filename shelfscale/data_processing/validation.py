@@ -17,15 +17,14 @@ TYPE_MAPPING = {
 
 def validate_schema(df: pd.DataFrame, schema: Dict[str, Dict[str, Any]]) -> List[str]:
     """
-    Validates a DataFrame against a predefined schema.
-
+    Validates a pandas DataFrame against a specified schema for column types, presence, and nullability.
+    
     Args:
-        df: The pandas DataFrame to validate.
-        schema: A dictionary defining the schema. 
-                Example: {'col_name': {'type': 'str', 'required': True, 'nullable': False}}
-
+        df: The DataFrame to validate.
+        schema: A dictionary mapping column names to their validation rules, including expected type ('str', 'int', 'float', 'bool'), whether the column is required, and whether it allows null values.
+    
     Returns:
-        A list of error messages. An empty list means validation passed.
+        A list of error messages describing any schema violations. Returns an empty list if the DataFrame passes all schema checks.
     """
     errors: List[str] = []
 

@@ -60,14 +60,14 @@ class FoodMatcher:
                  features_path: Optional[str] = None,
                  learning_enabled: bool = True):
         """
-        Initialize the food matcher
-        
-        Args:
-            similarity_threshold: Threshold for considering a match
-            model_path: Path to save/load the machine learning model. Defaults to config.FOOD_MATCHER_MODEL_PATH.
-            features_path: Path to save/load feature importance information. Defaults to config.FOOD_MATCHER_FEATURES_PATH.
-            learning_enabled: Whether to use machine learning capabilities
-        """
+                 Initializes a FoodMatcher instance for matching food items using text similarity and machine learning.
+                 
+                 Args:
+                     similarity_threshold: Minimum similarity score required to consider two items as a match.
+                     model_path: Optional path for loading or saving the machine learning model. Uses the default from configuration if not provided.
+                     features_path: Optional path for loading or saving feature importance data. Uses the default from configuration if not provided.
+                     learning_enabled: Enables or disables machine learning-based matching.
+                 """
         self.similarity_threshold = similarity_threshold
         self.vectorizer = None
         self.model_path = model_path if model_path is not None else config.FOOD_MATCHER_MODEL_PATH

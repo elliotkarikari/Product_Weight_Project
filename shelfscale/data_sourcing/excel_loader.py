@@ -15,8 +15,9 @@ class ExcelLoader:
 
     def __init__(self):
         """
-        Initialize the ExcelLoader.
-        Configuration for paths and sheet names are primarily sourced from shelfscale.config.
+        Initializes an instance of the ExcelLoader.
+        
+        Currently, no initialization logic is performed.
         """
         pass # Constructor might be expanded later if needed
 
@@ -28,20 +29,18 @@ class ExcelLoader:
         expected_columns: Optional[List[str]] = None
     ) -> Optional[pd.DataFrame]:
         """
-        Load and validate McCance and Widdowson's food composition data from an Excel file.
-
+        Loads and validates McCance and Widdowson food composition data from an Excel file.
+        
+        Attempts to read the specified Excel file, trying the primary and fallback sheet names in order, and loads the first non-empty sheet found. Validates that all expected columns are present and that the resulting DataFrame is not empty.
+        
         Args:
-            file_path: Path to the Excel file. Defaults to config.MCCANCE_WIDDOWSON_PATH.
-            sheet_name_primary: Primary sheet name to try. Defaults to config.MW_FACTORS_SHEET_NAME.
-                                (Note: main.py uses config.MW_SHEET_NAME_FOR_MAIN_PY, raw_processor uses config.MW_FACTORS_SHEET_NAME.
-                                 This loader will default to MW_FACTORS_SHEET_NAME as it's more for detailed data loading)
-            fallback_sheet_names: A list of alternative sheet names to try if the primary one fails.
-                                  Defaults to a common list e.g. ["Factors", "Sheet1", etc.]
-            expected_columns: A list of column names expected to be in the DataFrame. 
-                              Defaults to config.MW_EXPECTED_COLUMNS.
-
+            file_path: Optional path to the Excel file. If not provided, uses the default from configuration.
+            sheet_name_primary: Optional primary sheet name to try first. Defaults to the configured value.
+            fallback_sheet_names: Optional list of alternative sheet names to try if the primary fails.
+            expected_columns: Optional list of column names expected in the DataFrame.
+        
         Returns:
-            A pandas DataFrame containing the loaded data, or None if loading or validation fails.
+            A pandas DataFrame containing the loaded and validated data, or None if loading or validation fails.
         """
         actual_file_path = file_path if file_path is not None else config.MCCANCE_WIDDOWSON_PATH
         primary_sheet = sheet_name_primary if sheet_name_primary is not None else config.MW_FACTORS_SHEET_NAME
