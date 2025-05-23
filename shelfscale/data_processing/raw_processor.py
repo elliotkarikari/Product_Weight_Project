@@ -36,13 +36,10 @@ class RawDataProcessor:
                  processed_data_dir: Optional[str] = None,
                  pdf_cache_dir: Optional[str] = None):
         """
-        Initialize the processor
-        
-        Args:
-            raw_data_dir: Path to raw data directory. Defaults to config.RAW_DATA_DIR.
-            processed_data_dir: Path to processed data directory. Defaults to config.PROCESSED_DATA_DIR.
-            pdf_cache_dir: Path for PDFExtractor's cache. Defaults to config.RAW_PROCESSOR_TEMP_CACHE_DIR.
-        """
+                 Initializes a RawDataProcessor with configured directories and helper classes.
+                 
+                 If directory paths are not provided, defaults are taken from the configuration. Initializes PDF extraction, Excel and CSV loading, data cleaning, and food categorization helpers for processing raw datasets.
+                 """
         self.raw_data_dir = raw_data_dir if raw_data_dir is not None else config.RAW_DATA_DIR
         self.processed_data_dir = processed_data_dir if processed_data_dir is not None else config.PROCESSED_DATA_DIR
         pdf_temp_cache = pdf_cache_dir if pdf_cache_dir is not None else config.RAW_PROCESSOR_TEMP_CACHE_DIR
@@ -60,10 +57,10 @@ class RawDataProcessor:
     
     def process_all(self) -> Dict[str, pd.DataFrame]:
         """
-        Process all available raw data
+        Processes all configured raw datasets and returns cleaned DataFrames.
         
         Returns:
-            Dictionary of processed datasets
+            A dictionary mapping dataset names to their processed pandas DataFrames.
         """
         processed_data = {}
         
@@ -95,10 +92,9 @@ class RawDataProcessor:
     
     def process_mccance_widdowson(self) -> Optional[pd.DataFrame]:
         """
-        Process McCance Widdowson Excel data
+        Processes the McCance & Widdowson Excel dataset into a cleaned and standardized DataFrame.
         
-        Returns:
-            Processed DataFrame or None if processing failed
+        Loads the dataset using the configured Excel loader, standardizes column names, and applies data cleaning. If a food group column is present, the data is split by group, each subset is cleaned, and saved to separate files. The full cleaned dataset is saved to a configured location. Returns the cleaned DataFrame, or None if processing fails.
         """
         try:
             # Use ExcelLoader to load and validate McCance & Widdowson data
@@ -183,10 +179,11 @@ class RawDataProcessor:
     
     def process_food_portion_sizes(self) -> Optional[pd.DataFrame]:
         """
-        Process Food Portion Sizes PDF
+        Processes the Food Portion Sizes PDF into a cleaned and normalized DataFrame.
         
-        Returns:
-            Processed DataFrame or None if processing failed
+        Extracts data from the configured Food Portion Sizes PDF, applies schema validation and cleaning,
+        ensures a numeric 'Normalized_Weight' column, saves both raw and processed outputs to configured paths,
+        and returns the cleaned DataFrame. Returns None if extraction or processing fails.
         """
         fps_file_path = config.FOOD_PORTION_PDF_PATH
         
@@ -244,10 +241,9 @@ class RawDataProcessor:
     
     def process_fruit_veg_survey(self) -> Optional[pd.DataFrame]:
         """
-        Process Fruit and Vegetable Survey PDF
+        Processes all Fruit and Vegetable Survey PDF files, extracting, cleaning, and combining their data.
         
-        Returns:
-            Processed DataFrame or None if processing failed
+        Searches for PDF files matching the configured pattern in the raw data directory, extracts and validates tabular data from each using the PDF extractor, and appends a source filename column. Combines all extracted DataFrames, saves the raw extracted data, applies further cleaning, saves the processed data, and returns the cleaned DataFrame. Returns None if no PDFs are found or no data is extracted.
         """
         fvs_glob_pattern = os.path.join(self.raw_data_dir, config.FRUIT_VEG_PDF_GLOB_PATTERN)
         fvs_files = glob.glob(fvs_glob_pattern)
@@ -304,10 +300,10 @@ class RawDataProcessor:
     
     def process_labelling_data(self) -> Optional[pd.DataFrame]:
         """
-        Process Labelling dataset CSV/Excel files
+        Processes labelling dataset CSV files, cleans and categorizes the data, and saves the result.
         
         Returns:
-            Processed DataFrame or None if processing failed
+            The processed and categorized DataFrame, or None if processing fails.
         """
         try:
             # CsvLoader.load_labelling_data uses config.RAW_DATA_DIR, 
@@ -379,14 +375,16 @@ def process_raw_data(
     # pdf_cache_dir is not exposed here, uses default from RawDataProcessor init
 ) -> Dict[str, pd.DataFrame]:
     """
-    Process all raw data. Uses paths from config.py by default.
+    Processes all raw ShelfScale datasets into cleaned and categorized DataFrames.
+    
+    Instantiates a RawDataProcessor with optional directory paths and processes all supported datasets, returning a dictionary of processed DataFrames keyed by dataset name. Uses configuration defaults if paths are not provided.
     
     Args:
-        raw_data_dir: Optional. Path to raw data directory.
-        processed_data_dir: Optional. Path to processed data directory.
-        
+        raw_data_dir: Optional path to the raw data directory. If None, uses the configured default.
+        processed_data_dir: Optional path to the processed data directory. If None, uses the configured default.
+    
     Returns:
-        Dictionary of processed datasets
+        A dictionary mapping dataset names to their processed pandas DataFrames.
     """
     # RawDataProcessor will use config defaults if these are None
     processor = RawDataProcessor(raw_data_dir=raw_data_dir, processed_data_dir=processed_data_dir)

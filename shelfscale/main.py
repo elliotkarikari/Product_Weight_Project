@@ -53,7 +53,22 @@ logger = logging.getLogger(__name__)
 
 
 def match_datasets(main_df, secondary_df, main_col, secondary_col, threshold=70, additional_cols=None):
-    """Match items between datasets using fuzzy matching with machine learning"""
+    """
+    Matches and merges items between two datasets using fuzzy matching enhanced by a machine learning model.
+    
+    Attempts to use a trained matcher for improved accuracy; falls back to a default matcher if unavailable. Supports matching on additional columns present in both datasets. Returns a DataFrame containing merged matched items with similarity above the specified threshold.
+    
+    Args:
+        main_df: The primary DataFrame to match from.
+        secondary_df: The secondary DataFrame to match against.
+        main_col: Column name in the primary DataFrame to use for matching.
+        secondary_col: Column name in the secondary DataFrame to use for matching.
+        threshold: Minimum similarity percentage required for a match (default is 70).
+        additional_cols: Optional list of additional column names to include in the matching process.
+    
+    Returns:
+        A DataFrame containing merged rows from both datasets where matches were found above the similarity threshold.
+    """
     print(f"Matching datasets based on {main_col} and {secondary_col}...")
     
     # Try to load a trained matcher first for better results
@@ -184,7 +199,14 @@ def process_weight_info(df, weight_cols):
 
 
 def main():
-    """Main function demonstrating ShelfScale workflow with multiple data sources"""
+    """
+    Orchestrates the ShelfScale workflow for comprehensive food product weight analysis.
+    
+    This function integrates multiple food-related datasets from Excel and PDF sources, performs fuzzy matching and merging using machine learning, cleans and categorizes the combined data, processes and predicts weight information, saves the final dataset, and optionally launches an interactive dashboard for visualization. It supports command-line arguments for data paths, matching thresholds, caching, and workflow options.
+    
+    Returns:
+        pandas.DataFrame: The final integrated and normalized dataset containing food products with matched, categorized, and processed weight information.
+    """
     print("ShelfScale - Comprehensive Food Product Weight Analysis")
     print("=" * 60)
     

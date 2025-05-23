@@ -16,8 +16,9 @@ class CsvLoader:
 
     def __init__(self):
         """
-        Initialize the CsvLoader.
-        Configuration for paths and patterns are primarily sourced from shelfscale.config.
+        Initializes a CsvLoader instance.
+        
+        Currently, no initialization logic is required.
         """
         pass # Constructor might be expanded later if needed
 
@@ -28,15 +29,17 @@ class CsvLoader:
         encoding: str = 'utf-8'
     ) -> Optional[pd.DataFrame]:
         """
-        Load data from a single CSV file and optionally validate required columns.
-
+        Loads a CSV file from the specified path with optional required column validation.
+        
+        Attempts to read the CSV using the provided encoding, falling back to 'latin1' if 'utf-8' fails. Returns a pandas DataFrame if successful, or None if the file is missing, cannot be read, or required columns are absent.
+        
         Args:
             file_path: Absolute path to the CSV file.
-            required_columns: A list of column names that must be present in the CSV.
-            encoding: The encoding to use when reading the CSV. Defaults to 'utf-8'.
-
+            required_columns: List of column names that must be present for validation.
+            encoding: Text encoding to use when reading the file (default is 'utf-8').
+        
         Returns:
-            A pandas DataFrame containing the loaded data, or None if loading or validation fails.
+            A pandas DataFrame with the loaded data, or None if loading or validation fails.
         """
         if not os.path.exists(file_path):
             logger.error(f"CSV file not found at: {file_path}")
@@ -91,17 +94,17 @@ class CsvLoader:
         required_columns: Optional[List[str]] = None
     ) -> Optional[pd.DataFrame]:
         """
-        Load and combine Labelling data from multiple CSV files matching a pattern.
-
+        Loads and combines Labelling data from multiple CSV files matching a specified pattern.
+        
+        Searches for CSV files in the given directory using a glob pattern, loads each file, concatenates the resulting DataFrames, and validates that the combined DataFrame contains all required columns. Returns the combined DataFrame on success, or None if no files are found, loading fails, or required columns are missing.
+        
         Args:
-            file_pattern_csv: Glob pattern for CSV files. Defaults to config.LABELLING_CSV_GLOB_PATTERN.
-            base_dir: Base directory to search for files. Defaults to config.RAW_DATA_DIR.
-            required_columns: A list of column names expected in the combined DataFrame.
-                              Defaults to config.LABELLING_EXPECTED_COLUMNS.
-
+            file_pattern_csv: Optional glob pattern for locating CSV files. If not provided, uses the default from configuration.
+            base_dir: Optional base directory to search for files. If not provided, uses the default from configuration.
+            required_columns: Optional list of column names expected in the combined DataFrame. If not provided, uses the default from configuration.
+        
         Returns:
-            A pandas DataFrame containing the combined data from all found CSVs, 
-            or None if no files are found or validation fails.
+            A pandas DataFrame containing the combined data from all found CSV files, or None if loading or validation fails.
         """
         actual_base_dir = base_dir if base_dir is not None else config.RAW_DATA_DIR
         actual_pattern_csv = file_pattern_csv if file_pattern_csv is not None else config.LABELLING_CSV_GLOB_PATTERN
