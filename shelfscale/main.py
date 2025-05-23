@@ -17,6 +17,7 @@ import random
 import logging
 from typing import List, Dict, Tuple, Optional, Any, Union
 
+import shelfscale.config as config
 from shelfscale.data_sourcing.open_food_facts import OpenFoodFactsClient
 from shelfscale.data_processing.weight_extraction import clean_weights
 from shelfscale.data_processing.categorization import FoodCategorizer, clean_food_categories
@@ -27,7 +28,7 @@ from shelfscale.utils.helpers import (
     load_data, 
     save_data, 
     split_data_by_group,
-    get_path,
+    # get_path, # No longer needed here as config paths are absolute
     extract_numeric_value
 )
 from shelfscale.utils.learning import (
@@ -39,172 +40,16 @@ from shelfscale.utils.learning import (
     load_existing_matches
 )
 from shelfscale.data_sourcing.pdf_extraction import PDFExtractor
+from shelfscale.data_sourcing.excel_loader import ExcelLoader # Added
+from shelfscale.data_sourcing.csv_loader import CsvLoader # Added
 from shelfscale.data_processing.raw_processor import RawDataProcessor, process_raw_data
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-
-def extract_food_portion_data(pdf_path):
-    """Extract data from Food Portion Sizes PDF"""
-    print("Extracting data from Food Portion Sizes PDF...")
-    
-    try:
-        # Extract tables from PDF
-        tables = tabula.read_pdf(pdf_path, 
-                                pages="12-114", 
-                                stream=True, 
-                                multiple_tables=True, 
-                                guess=False, 
-                                encoding="latin1",
-                                pandas_options={"header": [0, 1, 2, 3]}
-                            )
-        
-        # Combine tables into single DataFrame
-        df = pd.DataFrame()
-        for table in tables:
-            df = pd.concat([df, table], ignore_index=True)
-        
-        # Clean up the DataFrame
-        df.columns = ['Food_Name', 'Portion_Size', 'Weight_g', 'Notes']
-        df = df.dropna(thresh=2)  # Drop rows with less than 2 non-NaN values
-        
-        print(f"  Extracted {len(df)} food portion records")
-        return df
-    except Exception as e:
-        print(f"Error extracting data from PDF: {str(e)}")
-        # Return empty DataFrame as fallback
-        return pd.DataFrame(columns=['Food_Name', 'Portion_Size', 'Weight_g', 'Notes'])
-
-
-def extract_fruit_veg_survey_data(pdf_path):
-    """Extract data from Fruit and Vegetable survey PDF"""
-    print("Extracting data from Fruit and Vegetable Survey PDF...")
-    
-    try:
-        # Extract text from PDF
-        extracted_data = {}
-        with open(pdf_path, "rb") as file:
-            pdf_reader = PyPDF2.PdfReader(file)
-            num_pages = len(pdf_reader.pages)
-            
-            # Extract data from pages with sample information
-            start_page = 11
-            end_page = min(1291, num_pages)
-            
-            for page_num in range(start_page - 1, end_page):
-                try:
-                    # Get the page
-                    page = pdf_reader.pages[page_num]
-                    # Extract text
-                    page_text = page.extract_text()
-                    # Store in dict
-                    extracted_data[page_num + 1] = page_text
-                except Exception as e:
-                    print(f"  Warning: Error extracting text from page {page_num + 1}: {str(e)}")
-                    continue
-        
-        # Parse extracted text into structured data
-        samples = []
-        
-        # Regular expressions for key information
-        sample_number_pattern = r"Composite Sample Number:\s*(\d+)"
-        sample_name_pattern = r"Composite Sample Name:\s*(.*?)\n"
-        weight_pattern = r"Pack size:\s*(.*?)\n"
-        
-        # Process each page
-        for page_num, text in extracted_data.items():
-            # Extract information using regex
-            sample_number_match = re.search(sample_number_pattern, text)
-            sample_name_match = re.search(sample_name_pattern, text)
-            weight_match = re.search(weight_pattern, text)
-            
-            if sample_name_match:
-                sample = {
-                    'Page': page_num,
-                    'Sample_Number': sample_number_match.group(1) if sample_number_match else None,
-                    'Sample_Name': sample_name_match.group(1).strip() if sample_name_match else None,
-                    'Pack_Size': weight_match.group(1).strip() if weight_match else None
-                }
-                samples.append(sample)
-        
-        # Create DataFrame
-        df = pd.DataFrame(samples)
-        print(f"  Extracted {len(df)} fruit and vegetable samples")
-        return df
-    except Exception as e:
-        print(f"Error extracting data from fruit and vegetable survey PDF: {str(e)}")
-        # Return empty DataFrame as fallback
-        return pd.DataFrame(columns=['Page', 'Sample_Number', 'Sample_Name', 'Pack_Size'])
-
-
-def load_mccance_widdowson_data(file_path):
-    """Load McCance and Widdowson's food composition data"""
-    print("Loading McCance and Widdowson's data...")
-    try:
-        if not os.path.exists(file_path):
-            print(f"  Error: McCance and Widdowson data file not found: {file_path}")
-            return pd.DataFrame()
-        # Try different sheet names since the data format might vary
-        sheet_names = ["1.2 Factors", "1.2_Factors", "Factors", "Food Composition"]
-        df = None
-        
-        # First try to get all sheet names from the file
-        try:
-            available_sheets = pd.ExcelFile(file_path).sheet_names
-            print(f"  Available sheets: {', '.join(available_sheets)}")
-            
-            # Add available sheets to our list to try
-            for sheet in available_sheets:
-                if sheet not in sheet_names:
-                    sheet_names.append(sheet)
-        except Exception as e:
-            print(f"  Warning: Could not read sheet names: {str(e)}")
-        
-        # Try each sheet name until we find one that works
-        for sheet in sheet_names:
-            try:
-                df = pd.read_excel(file_path, sheet_name=sheet)
-                if len(df) > 0:
-                    print(f"  Successfully loaded data from sheet: {sheet}")
-                    break
-            except Exception as e:
-                print(f"  Could not load sheet '{sheet}': {str(e)}")
-        
-                if df is None or len(df) == 0:
-                 print("  Error: Could not load any data from the Excel file.")
-            return pd.DataFrame()
-        
-        print(f"  Loaded {len(df)} food items")
-        print(f"  Available columns: {', '.join(df.columns.tolist())}")
-        
-        # Check if data is valid
-        non_null_counts = df.count()
-        if non_null_counts.sum() == 0:
-            print("  Warning: Data appears to be empty or corrupted (all values are NaN)")
-            return pd.DataFrame()
-            
-        # Identify key columns that should have data
-        key_cols = ['Food Name', 'Food Code', 'FoodName', 'Food_Name', 'Description']
-        found_key_col = False
-        
-        for col in key_cols:
-            if col in df.columns and df[col].notna().sum() > 0:
-                found_key_col = True
-                # Standardize the column name to 'Food Name'
-                if col != 'Food Name':
-                    df.rename(columns={col: 'Food Name'}, inplace=True)
-                break
-        
-        if not found_key_col:
-            print(f"  Warning: No key column with food names found. Available columns: {', '.join(df.columns)}")
-        
-    except Exception as e:
-        print(f"Error loading McCance and Widdowson data: {str(e)}")
-        return pd.DataFrame()
-    
-    return df
+# Local data loading functions (extract_food_portion_data, extract_fruit_veg_survey_data, load_mccance_widdowson_data)
+# are now removed. Their responsibilities are moved to PDFExtractor and ExcelLoader respectively.
 
 
 def match_datasets(main_df, secondary_df, main_col, secondary_col, threshold=70, additional_cols=None):
@@ -212,8 +57,9 @@ def match_datasets(main_df, secondary_df, main_col, secondary_col, threshold=70,
     print(f"Matching datasets based on {main_col} and {secondary_col}...")
     
     # Try to load a trained matcher first for better results
+    # Note: train_matcher_from_existing_data might need path updates if it loads files
     try:
-        matcher = train_matcher_from_existing_data()
+        matcher = train_matcher_from_existing_data(model_dir=config.MODEL_DIR) # Assuming it might save/load models
         logger.info("Using trained matcher for dataset matching")
     except Exception as e:
         logger.warning(f"Could not load trained matcher: {e}. Using default matcher.")
@@ -349,14 +195,14 @@ def main():
     
     # Parse command line arguments
     parser = argparse.ArgumentParser(description="ShelfScale - Food Product Weight Analysis")
-    parser.add_argument("--output", default="output/weight_dataset.csv", help="Output file path")
-    parser.add_argument("--food-portion-pdf", default="D:/LIDA/Product_Weight_Project/Product_Weight_Project_Build/Data/Raw Data/Food_Portion_Sizes.pdf", help="Food Portion Sizes PDF path")
-    parser.add_argument("--fruit-veg-pdf", default="D:/LIDA/Product_Weight_Project/Product_Weight_Project_Build/Data/Raw Data/fruit_and_vegetable_survey_2015_sampling_report.pdf", help="Fruit and Veg Survey PDF path")
-    parser.add_argument("--mccance-widdowson", default="D:/LIDA/Product_Weight_Project/Product_Weight_Project_Build/Data/Raw Data/McCance_Widdowsons_2021.xlsx", help="McCance and Widdowson data path")
-    parser.add_argument("--matching-threshold", type=int, default=70, help="Matching threshold percentage")
+    parser.add_argument("--output", default=os.path.join(config.OUTPUT_DIR, "weight_dataset.csv"), help="Output file path")
+    parser.add_argument("--food-portion-pdf", default=config.FOOD_PORTION_PDF_PATH, help="Food Portion Sizes PDF path")
+    parser.add_argument("--fruit-veg-pdf", default=config.FRUIT_VEG_SURVEY_PDF_PATH, help="Fruit and Veg Survey PDF path") # Corrected to use full path
+    parser.add_argument("--mccance-widdowson", default=config.MCCANCE_WIDDOWSON_PATH, help="McCance and Widdowson data path")
+    parser.add_argument("--matching-threshold", type=int, default=config.DEFAULT_MATCHING_THRESHOLD, help="Matching threshold percentage")
     parser.add_argument("--run-dashboard", action="store_true", help="Run interactive dashboard")
     parser.add_argument("--load-cache", action="store_true", help="Load cached data (faster)")
-    parser.add_argument("--skip-pdfs", action="store_true", help="Skip PDF extraction (faster)")
+    # --skip-pdfs argument is removed
     parser.add_argument("--use-super-group", action="store_false", default=True, help="Use Super Group reduced data")
     parser.add_argument("--process-raw", action="store_true", help="Process all raw data and save to Processed directory")
     
@@ -369,40 +215,59 @@ def main():
         print("Raw data processing complete. Results saved to Processed directory.")
         return processed_data
     
-    # Create output directory if it doesn't exist
-    os.makedirs(os.path.dirname(args.output), exist_ok=True)
+    # Output directory is created by config.py
     
+    # Instantiate loaders
+    excel_loader = ExcelLoader()
+    pdf_extractor = PDFExtractor(cache_dir=config.CACHE_DIR) # PDFExtractor handles its own caching
+    # csv_loader = CsvLoader() # Not directly used for initial data load in main, but available
+
     # Setup data sources
     data_sources = {}
     
     # 1. Load McCance and Widdowson's dataset (highest quality)
-    if args.load_cache and os.path.exists("output/mw_data_cached.csv"):
-        print("Loading cached McCance and Widdowson data...")
-        data_sources["mw_data"] = pd.read_csv("output/mw_data_cached.csv")
+    # TODO: Consider moving caching logic into ExcelLoader for consistency.
+    if args.load_cache and os.path.exists(config.MW_DATA_CACHED_PATH):
+        logger.info(f"Loading cached McCance and Widdowson data from {config.MW_DATA_CACHED_PATH}...")
+        data_sources["mw_data"] = pd.read_csv(config.MW_DATA_CACHED_PATH)
     else:
-        data_sources["mw_data"] = load_mccance_widdowson_data(args.mccance_widdowson)
-    
+        logger.info("Loading McCance and Widdowson data using ExcelLoader...")
+        # ExcelLoader uses config.MCCANCE_WIDDOWSON_PATH and config.MW_SHEET_NAME_FOR_MAIN_PY by default
+        # if we pass sheet_name_primary=config.MW_SHEET_NAME_FOR_MAIN_PY explicitly.
+        # Default in ExcelLoader is MW_FACTORS_SHEET_NAME, main.py used MW_SHEET_NAME_FOR_MAIN_PY (formerly config.MW_SHEET_NAME)
+        data_sources["mw_data"] = excel_loader.load_mccance_widdowson(
+            file_path=args.mccance_widdowson, # Use path from args, which defaults to config
+            sheet_name_primary=config.MW_SHEET_NAME_FOR_MAIN_PY # Specify sheet for main.py context
+        )
+        if data_sources["mw_data"] is not None and not data_sources["mw_data"].empty:
+            logger.info(f"Saving McCance and Widdowson data to cache: {config.MW_DATA_CACHED_PATH}")
+            data_sources["mw_data"].to_csv(config.MW_DATA_CACHED_PATH, index=False)
+        elif data_sources["mw_data"] is None: # Ensure it's an empty DataFrame if loading failed
+             data_sources["mw_data"] = pd.DataFrame()
+
     # 2. Load McCance and Widdowson's Super Group reduced dataset
-    # This contains better structured and cleaned food group data
+    # This logic remains largely the same as it loads processed CSVs.
     super_group_data = {}
     if args.use_super_group:
         print("Loading McCance and Widdowson Super Group reduced data...")
-        super_group_dir = "Data/Processed/MW_DataReduction/Reduced Super Group"
-        super_group_dir = get_path(super_group_dir)
-        if not os.path.isdir(super_group_dir):
-            logger.warning(f"Super-group directory '{super_group_dir}' not found – skipping.")
+        # Using config.MW_PROCESSED_SUPER_GROUP_PATH
+        super_group_dir_path = config.MW_PROCESSED_SUPER_GROUP_PATH 
+        # get_path might be redundant if config paths are absolute or correctly relative
+        # super_group_dir_path = get_path(super_group_dir_path) 
+        if not os.path.isdir(super_group_dir_path):
+            logger.warning(f"Super-group directory '{super_group_dir_path}' not found – skipping.")
             super_group_files = []
         else:
             super_group_files = [
-                f for f in os.listdir(super_group_dir)
+                f for f in os.listdir(super_group_dir_path)
                 if f.endswith(".csv") and not f.startswith(".")
             ]
         
-        # Create output directory if it doesn't exist
-        os.makedirs("output", exist_ok=True)
+        # Output directory created by config.py
+        # os.makedirs(config.OUTPUT_DIR, exist_ok=True) 
         
         for file in super_group_files:
-            file_path = os.path.join(super_group_dir, file)
+            file_path = os.path.join(super_group_dir_path, file)
             try:
                 df = pd.read_csv(file_path)
                 group_name = os.path.splitext(file)[0]
@@ -417,32 +282,33 @@ def main():
             print(f"  Total super group items: {len(data_sources['super_group'])}")
     
         # 3. Load Food Portion Sizes data (portion-specific)
-    if not args.skip_pdfs:
-        try:
-            food_portion_path = get_path(args.food_portion_pdf)
-            pdf_extractor = PDFExtractor(cache_dir="output")
-            data_sources["portion_data"] = pdf_extractor.extract_food_portion_sizes(food_portion_path)
-        except FileNotFoundError as e:
-            logger.error(f"Could not find food portion PDF: {e}")
+    # 3. Load Food Portion Sizes data (portion-specific)
+    # PDFExtractor handles its own caching. The --load-cache flag is implicitly handled by PDFExtractor.
+    logger.info("Loading Food Portion Sizes data using PDFExtractor...")
+    try:
+        data_sources["portion_data"] = pdf_extractor.extract_food_portion_sizes(
+            pdf_path=args.food_portion_pdf
+            # pages argument is handled by PDFExtractor using config.PDF_FOOD_PORTION_PAGES by default
+        )
+        if data_sources["portion_data"] is None: # Ensure it's an empty DF if loading failed
             data_sources["portion_data"] = pd.DataFrame()
-    elif args.load_cache and os.path.exists("output/food_portion_sizes.csv"):
-        print("Loading cached Food Portion Sizes data...")
-        data_sources["portion_data"] = pd.read_csv("output/food_portion_sizes.csv")
-        print(f"  Loaded {len(data_sources['portion_data'])} items")
-    
+    except FileNotFoundError as e: # Should be handled by PDFExtractor, but as a fallback
+        logger.error(f"Could not find food portion PDF (main.py fallback): {e}")
+        data_sources["portion_data"] = pd.DataFrame()
+
     # 4. Load Fruit and Vegetable Survey data
-    if not args.skip_pdfs:
-        try:
-            fruit_veg_path = get_path(args.fruit_veg_pdf)
-            pdf_extractor = PDFExtractor(cache_dir="output") 
-            data_sources["fruit_veg_data"] = pdf_extractor.extract_fruit_veg_survey(fruit_veg_path)
-        except FileNotFoundError as e:
-            logger.error(f"Could not find fruit and veg PDF: {e}")
+    # PDFExtractor handles its own caching.
+    logger.info("Loading Fruit and Vegetable Survey data using PDFExtractor...")
+    try:
+        data_sources["fruit_veg_data"] = pdf_extractor.extract_fruit_veg_survey(
+            pdf_path=args.fruit_veg_pdf
+            # pages argument is handled by PDFExtractor using config.FRUIT_VEG_SURVEY_PAGES by default
+        )
+        if data_sources["fruit_veg_data"] is None: # Ensure it's an empty DF if loading failed
             data_sources["fruit_veg_data"] = pd.DataFrame()
-    elif args.load_cache and os.path.exists("output/fruit_veg_survey.csv"):
-        print("Loading cached Fruit and Vegetable Survey data...")
-        data_sources["fruit_veg_data"] = pd.read_csv("output/fruit_veg_survey.csv")
-        print(f"  Loaded {len(data_sources['fruit_veg_data'])} items")
+    except FileNotFoundError as e: # Should be handled by PDFExtractor, but as a fallback
+        logger.error(f"Could not find fruit and veg PDF (main.py fallback): {e}")
+        data_sources["fruit_veg_data"] = pd.DataFrame()
     
     # Create an integrated dataset by matching items across sources
     print("\nCreating integrated dataset from all sources...")
@@ -451,31 +317,20 @@ def main():
     base_dataset = data_sources.get("mw_data", pd.DataFrame()).copy()
     print(f"Base dataset from McCance and Widdowson: {len(base_dataset)} items")
     
-    # Standardize column names for easier matching
-    def standardize_columns(df):
-        rename_map = {}
-        for col in df.columns:
-            col_lower = col.lower()
-            if 'food' in col_lower and 'name' in col_lower:
-                rename_map[col] = 'Food_Name'
-            elif col_lower in ['name', 'foodname']:
-                rename_map[col] = 'Food_Name'
-            elif 'weight' in col_lower:
-                rename_map[col] = 'Weight_g'
-            elif 'portion' in col_lower and 'size' in col_lower:
-                rename_map[col] = 'Portion_Size'
-            elif 'food' in col_lower and 'group' in col_lower:
-                rename_map[col] = 'Food_Group'
-        
-        if rename_map:
-            return df.rename(columns=rename_map)
-        return df
+    # Column name standardization will now be primarily handled by DataCleaner.
+    # The local standardize_columns function is removed.
+    # Loaders (ExcelLoader, PDFExtractor) are expected to provide data conforming to their schemas
+    # which use consistent names like 'Food_Name', 'Weight_g'.
+    # DataCleaner will then apply its own standardization (e.g., to snake_case or other rules).
+    # Subsequent code in main.py needs to be aware of the column naming convention output by DataCleaner.
+
+    # Example: If DataCleaner standardizes to snake_case, then 'Food_Name' becomes 'food_name'.
+    # This will be handled when DataCleaner.clean() is called on base_dataset later.
     
-    # Apply standardization to base dataset and other sources
-    base_dataset = standardize_columns(base_dataset)
-    
-    # Make sure Food Name is standardized in base dataset
-    if "Food Name" in base_dataset.columns and "Food_Name" not in base_dataset.columns:
+    # Make sure Food Name is standardized in base dataset (initial check before DataCleaner)
+    # This specific check might be redundant if ExcelLoader is correctly using MW_EXPECTED_COLUMNS
+    # which should already specify 'Food_Name'.
+    if "Food Name" in base_dataset.columns and "Food_Name" not in base_dataset.columns: # From M&W legacy loading
         base_dataset = base_dataset.rename(columns={"Food Name": "Food_Name"})
     
     # Check required columns
@@ -500,18 +355,38 @@ def main():
     matcher = FoodMatcher(similarity_threshold=args.matching_threshold / 100)
     
     # Match with Food Portion Sizes data
-    portion_data = standardize_columns(data_sources.get("portion_data", pd.DataFrame()).copy())
+    # portion_data = standardize_columns(data_sources.get("portion_data", pd.DataFrame()).copy()) # standardize_columns removed
+    portion_data = data_sources.get("portion_data", pd.DataFrame()).copy()
+    # PDFExtractor for portion_data should provide columns as per FPS_EXPECTED_SCHEMA (e.g., 'Food_Name', 'Weight_g')
+    # If DataCleaner later standardizes portion_data (if it's part of base_dataset or cleaned separately),
+    # then matching should occur on those DataCleaner-standardized names.
+    # For now, assuming portion_data columns are as per its schema directly from PDFExtractor.
+    
     print(f"Matching with Food Portion data: {len(portion_data)} items")
     
-    if len(portion_data) > 0:
-        portion_matches = matcher.match_datasets(
-            base_dataset,
-            portion_data,
-            food_name_col,  # Source column
-            "Food_Name" if "Food_Name" in portion_data.columns else "Food Name",  # Target column
-            additional_match_cols=None
-        )
+    if len(portion_data) > 0 and not portion_data.empty and food_name_col in base_dataset.columns:
+        # Determine target column for matching in portion_data
+        # PDFExtractor should ensure 'Food_Name' from FPS_EXPECTED_SCHEMA
+        target_portion_food_col = 'Food_Name' 
+        if target_portion_food_col not in portion_data.columns:
+            # Fallback if schema-defined name isn't present (should not happen if PDFExtractor is correct)
+            logger.warning(f"'{target_portion_food_col}' not in portion_data. Attempting to find alternative name for matching.")
+            alt_cols = [col for col in portion_data.columns if 'food' in col.lower() and 'name' in col.lower()]
+            if alt_cols: target_portion_food_col = alt_cols[0]
+            else: target_portion_food_col = None # No suitable column
         
+        if target_portion_food_col:
+            portion_matches = matcher.match_datasets(
+                base_dataset,
+                portion_data,
+                food_name_col,  # Source column from base_dataset
+                target_portion_food_col,  # Target column from portion_data
+                additional_match_cols=None
+            )
+        else:
+            logger.warning("Could not find a suitable food name column in portion_data for matching. Skipping portion data matching.")
+            portion_matches = pd.DataFrame() # Empty DataFrame if no column
+            
         # Merge matches into base dataset
         merged_portion = matcher.merge_matched_datasets(
             base_dataset,
@@ -529,26 +404,34 @@ def main():
             print("No portion data matches found.")
     
     # Match with Fruit and Vegetable Survey data
-    fruit_veg_data = standardize_columns(data_sources.get("fruit_veg_data", pd.DataFrame()).copy())
+    # fruit_veg_data = standardize_columns(data_sources.get("fruit_veg_data", pd.DataFrame()).copy()) # standardize_columns removed
+    fruit_veg_data = data_sources.get("fruit_veg_data", pd.DataFrame()).copy()
+    # PDFExtractor for fruit_veg_data should provide columns as per FVS_EXPECTED_SCHEMA (e.g., 'Sample_Name')
+
     print(f"Matching with Fruit and Veg data: {len(fruit_veg_data)} items")
     
-    if len(fruit_veg_data) > 0:
-        # Make sure the Sample_Name column is used for matching
-        sample_name_col = "Sample_Name"
-        if sample_name_col not in fruit_veg_data.columns:
-            for col in fruit_veg_data.columns:
-                if 'sample' in col.lower() and 'name' in col.lower():
-                    sample_name_col = col
-                    break
-        
-        fruit_veg_matches = matcher.match_datasets(
-            base_dataset,
-            fruit_veg_data,
-            food_name_col,  # Source column
-            sample_name_col,  # Target column
-            additional_match_cols=None
-        )
-        
+    if len(fruit_veg_data) > 0 and not fruit_veg_data.empty and food_name_col in base_dataset.columns:
+        # Determine target column for matching in fruit_veg_data
+        # PDFExtractor should ensure 'Sample_Name' from FVS_EXPECTED_SCHEMA
+        target_fvs_food_col = 'Sample_Name' 
+        if target_fvs_food_col not in fruit_veg_data.columns:
+            logger.warning(f"'{target_fvs_food_col}' not in fruit_veg_data. Attempting to find alternative name for matching.")
+            alt_cols = [col for col in fruit_veg_data.columns if ('sample' in col.lower() or 'food' in col.lower()) and 'name' in col.lower()]
+            if alt_cols: target_fvs_food_col = alt_cols[0]
+            else: target_fvs_food_col = None # No suitable column
+
+        if target_fvs_food_col:
+            fruit_veg_matches = matcher.match_datasets(
+                base_dataset,
+                fruit_veg_data,
+                food_name_col,  # Source column from base_dataset
+                target_fvs_food_col,  # Target column from fruit_veg_data
+                additional_match_cols=None
+            )
+        else:
+            logger.warning("Could not find a suitable food name column in fruit_veg_data for matching. Skipping FVS data matching.")
+            fruit_veg_matches = pd.DataFrame() # Empty DataFrame if no column
+
         # Merge matches into base dataset
         merged_fruit_veg = matcher.merge_matched_datasets(
             base_dataset,
@@ -587,43 +470,52 @@ def main():
     if food_name_col not in cleaned_dataset.columns:
         food_name_col = None
         # Try to find a suitable column for categorization
+    for col_candidate in ['Food_Name', 'Food Name', 'name', 'description', 'Name', 'Description']: # Prioritize common names
+        if col_candidate in cleaned_dataset.columns:
+            food_name_col = col_candidate
+                break
+    else: # If no exact match, then search more broadly
         for col in cleaned_dataset.columns:
             if 'food' in col.lower() and 'name' in col.lower():
                 food_name_col = col
                 break
-            elif 'name' in col.lower():
+            elif 'name' in col.lower(): # Broader 'name' check
                 food_name_col = col
                 break
-            elif 'description' in col.lower():
+            elif 'description' in col.lower(): # Broader 'description' check
                 food_name_col = col
                 break
-        
-        if not food_name_col:
-            logger.warning("Could not find a food name column for categorization.")
+        else: # If still not found
+            logger.warning("Could not find a suitable food name column for categorization.")
             logger.info(f"Available columns:\n{cleaned_dataset.columns.tolist()}")
-            
-            # Create a dummy column to avoid errors
-            if len(cleaned_dataset) > 0:
-                cleaned_dataset['Food_Name'] = "Unknown Food"
-                food_name_col = 'Food_Name'
-    
-    print(f"Categorizing foods using column: {food_name_col}")
-    
-    # Check column existence to avoid errors
-    if food_name_col and food_name_col in cleaned_dataset.columns:
-        categorized_dataset = categorizer.clean_food_categories(
-            cleaned_dataset, 
-            food_name_col, 
-            'Food_Category', 
-            'Super_Category'
-        )
+            if len(cleaned_dataset) > 0: # Create a dummy column only if df is not empty
+                cleaned_dataset['Food_Name_Fallback_For_Categorization'] = "Unknown Food"
+                food_name_col = 'Food_Name_Fallback_For_Categorization'
+            else:
+                food_name_col = None # No column to use if df is empty
+
+    if food_name_col:
+        print(f"Categorizing foods using column: {food_name_col}")
+        if food_name_col in cleaned_dataset.columns:
+            categorized_dataset = categorizer.clean_food_categories(
+                cleaned_dataset, 
+                food_name_col, 
+                'Food_Category', 
+                'Super_Category'
+            )
+        else: # Should not happen if logic above is correct
+            logger.warning(f"Food name column '{food_name_col}' selected but not found. Skipping categorization.")
+            categorized_dataset = cleaned_dataset
+            categorized_dataset['Food_Category'] = "Unknown"
+            categorized_dataset['Super_Category'] = "Unknown"
     else:
-        logger.warning(f"Food name column '{food_name_col}' not found. Skipping categorization.")
+        logger.warning("No food name column available for categorization. Skipping categorization.")
         categorized_dataset = cleaned_dataset
-        # Add empty category columns
-        categorized_dataset['Food_Category'] = "Unknown"
-        categorized_dataset['Super_Category'] = "Unknown"
-    
+        if 'Food_Category' not in categorized_dataset.columns:
+             categorized_dataset['Food_Category'] = "Unknown"
+        if 'Super_Category' not in categorized_dataset.columns:
+             categorized_dataset['Super_Category'] = "Unknown"
+
     # Process and normalize weight information
     weight_cols = []
     for col in categorized_dataset.columns:
@@ -649,8 +541,9 @@ def main():
         try:
             # Only import the dashboard when needed
             from shelfscale.visualization.dashboard import ShelfScaleDashboard
-            dashboard = ShelfScaleDashboard(normalized_dataset)
-            dashboard.run_server(debug=False, port=8050)
+            # Pass model_dir and output_dir to dashboard if it needs to load/save anything
+            dashboard = ShelfScaleDashboard(normalized_dataset, model_dir=config.MODEL_DIR, output_dir=config.OUTPUT_DIR)
+            dashboard.run_server(debug=False, port=8050) # Port could also be a config parameter
         except ImportError as e:
             logger.error(f"Could not load dashboard. Dashboard dependencies may not be installed: {e}")
             print("Error: Dashboard dependencies not installed. Install with 'pip install dash plotly'.")

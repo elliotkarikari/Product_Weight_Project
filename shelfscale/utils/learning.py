@@ -10,32 +10,25 @@ import json
 from datetime import datetime
 from typing import Dict, List, Optional, Tuple, Any
 
+import shelfscale.config as config
 from shelfscale.matching.algorithm import FoodMatcher
-from shelfscale.utils.helpers import load_data, save_data
+from shelfscale.utils.helpers import load_data, save_data # Assuming load_data and save_data don't need config paths directly
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Create a history file path for tracking model performance
-HISTORY_FILE = "models/model_performance_history.json"
-
-# Define paths to data sources
-DATA_PATHS = {
-    "mccance_widdowson": "Data/Raw Data/Labelling2021_watercress.csv",
-    "food_portion_sizes": "Data/Processed/FoodPortionSized",
-    "fruit_veg_survey": "Data/Processed/Fruit and Veg Sample reports",
-    "mw_data_reduction": "Data/Processed/MW_DataReduction",
-    "reduced_with_weights": "Data/Processed/ReducedwithWeights"
-}
+# HISTORY_FILE is now config.MODEL_PERFORMANCE_HISTORY_PATH
+# DATA_PATHS dictionary is removed, functions will use specific config paths.
 
 def load_performance_history() -> List[Dict]:
     """Load the performance history from the history file"""
-    if not os.path.exists(HISTORY_FILE):
+    history_file_path = config.MODEL_PERFORMANCE_HISTORY_PATH
+    if not os.path.exists(history_file_path):
         return []
     
     try:
-        with open(HISTORY_FILE, 'r') as f:
+        with open(history_file_path, 'r') as f:
             return json.load(f)
     except Exception as e:
         logger.warning(f"Failed to load performance history: {e}")
@@ -43,11 +36,12 @@ def load_performance_history() -> List[Dict]:
 
 def save_performance_history(history: List[Dict]) -> None:
     """Save the performance history to the history file"""
+    history_file_path = config.MODEL_PERFORMANCE_HISTORY_PATH
     try:
-        # Create directory if it doesn't exist
-        os.makedirs(os.path.dirname(HISTORY_FILE), exist_ok=True)
+        # Model directory (dirname of history_file_path) is created by config.py
+        # os.makedirs(os.path.dirname(history_file_path), exist_ok=True)
         
-        with open(HISTORY_FILE, 'w') as f:
+        with open(history_file_path, 'w') as f:
             json.dump(history, f, indent=2)
     except Exception as e:
         logger.warning(f"Failed to save performance history: {e}")
@@ -122,26 +116,17 @@ def load_existing_matches() -> Dict[str, pd.DataFrame]:
         Dictionary with match dataframes
     """
     matches = {}
-    output_dir = "output"
+    # Use paths from config.EXISTING_MATCH_FILES_TO_LOAD
     
-    # Define match files to look for
-    match_files = {
-        "mw_fps_matches": "mw_fps_matches.csv",
-        "mw_fvs_matches": "mw_fvs_matches.csv",
-        # Add new match files
-        "supergroup_matches": "supergroup_matches.csv",
-        "api_matches": "api_matches.csv"
-    }
-    
-    # Try to load each match file
-    for match_type, filename in match_files.items():
-        file_path = os.path.join(output_dir, filename)
+    for match_type, file_path in config.EXISTING_MATCH_FILES_TO_LOAD.items():
         if os.path.exists(file_path):
             try:
                 matches[match_type] = pd.read_csv(file_path)
-                logger.info(f"Loaded {len(matches[match_type])} matches from {filename}")
+                logger.info(f"Loaded {len(matches[match_type])} matches from {os.path.basename(file_path)}")
             except Exception as e:
-                logger.warning(f"Failed to load matches from {filename}: {e}")
+                logger.warning(f"Failed to load matches from {os.path.basename(file_path)} at {file_path}: {e}")
+        else:
+            logger.info(f"Match file not found for {match_type}: {file_path}")
     
     return matches
 
@@ -154,11 +139,16 @@ def load_mccance_widdowson_data() -> pd.DataFrame:
     Returns:
         DataFrame with food composition data
     """
-    file_path = DATA_PATHS["mccance_widdowson"]
+    # Assuming this should load the main McCance & Widdowson Excel file
+    file_path = config.MCCANCE_WIDDOWSON_PATH 
     
     try:
-        df = load_data(file_path)
-        logger.info(f"Loaded {len(df)} items from McCance & Widdowson dataset")
+        # load_data can handle .xlsx, but McCance Widdowson is usually Excel.
+        # For consistency with how raw_processor loads it, or if specific sheets are needed,
+        # direct pandas.read_excel might be better.
+        # However, current load_data in helpers.py supports .xlsx.
+        df = load_data(file_path) 
+        logger.info(f"Loaded {len(df)} items from McCance & Widdowson dataset at {file_path}")
         return df
     except Exception as e:
         logger.error(f"Failed to load McCance & Widdowson data: {e}")
@@ -171,25 +161,30 @@ def load_food_portion_data() -> pd.DataFrame:
     Returns:
         DataFrame with food portion data
     """
-    folder_path = DATA_PATHS["food_portion_sizes"]
+    # This function expects processed food portion data.
+    # config.PROCESSED_FPS_PATH points to the specific processed CSV file.
+    # config.FPS_SUBDIR points to the directory.
+    # The original code iterated through CSVs in DATA_PATHS["food_portion_sizes"] (which was "Data/Processed/FoodPortionSized")
+    # We'll adapt to load the specific processed file, or all CSVs in that dir if multiple are expected.
+    
+    processed_fps_dir = os.path.join(config.PROCESSED_DATA_DIR, config.FPS_SUBDIR)
     
     try:
-        # Look for CSV files in the folder
-        csv_files = [f for f in os.listdir(folder_path) if f.endswith('.csv')]
-        
-        if not csv_files:
-            logger.warning(f"No CSV files found in {folder_path}")
+        if os.path.exists(config.PROCESSED_FPS_PATH): # Prefer the specific configured processed file
+             df_list = [load_data(config.PROCESSED_FPS_PATH)]
+        elif os.path.isdir(processed_fps_dir): # Fallback to loading all CSVs in the directory
+            logger.info(f"Specific processed FPS file not found at {config.PROCESSED_FPS_PATH}. Trying all CSVs in {processed_fps_dir}")
+            csv_files = [f for f in os.listdir(processed_fps_dir) if f.endswith('.csv')]
+            if not csv_files:
+                logger.warning(f"No CSV files found in {processed_fps_dir}")
+                return pd.DataFrame()
+            df_list = [load_data(os.path.join(processed_fps_dir, f)) for f in csv_files]
+        else:
+            logger.warning(f"Processed food portion data path not found: {config.PROCESSED_FPS_PATH} or directory {processed_fps_dir}")
             return pd.DataFrame()
-        
-        # Load and combine all CSV files
-        dfs = []
-        for file in csv_files:
-            file_path = os.path.join(folder_path, file)
-            df = load_data(file_path)
-            dfs.append(df)
-        
-        combined_df = pd.concat(dfs, ignore_index=True)
-        logger.info(f"Loaded {len(combined_df)} items from Food Portion Sizes data")
+
+        combined_df = pd.concat(df_list, ignore_index=True)
+        logger.info(f"Loaded {len(combined_df)} items from Food Portion Sizes data from {processed_fps_dir}")
         return combined_df
     except Exception as e:
         logger.error(f"Failed to load Food Portion Sizes data: {e}")
@@ -200,37 +195,47 @@ def load_fruit_veg_survey_data() -> Dict[str, pd.DataFrame]:
     Load Fruit & Vegetable Survey data from tables
     
     Returns:
-        Dictionary with DataFrames for each year
+        Dictionary with DataFrames for each year (if year subfolders exist) or a single DataFrame.
     """
-    base_path = DATA_PATHS["fruit_veg_survey"]
-    tables_path = os.path.join(base_path, "tables")
+    # This function expects processed FVS data.
+    # config.PROCESSED_FVS_TABLES_PATH points to the combined CSV in the "tables" subdir.
+    # config.FVS_TABLES_SUBDIR points to "Fruit and Veg Sample reports/tables"
     
+    fvs_tables_dir = os.path.join(config.PROCESSED_DATA_DIR, config.FVS_TABLES_SUBDIR)
     result = {}
-    
+
     try:
-        # Check for year folders
-        year_folders = [d for d in os.listdir(tables_path) if os.path.isdir(os.path.join(tables_path, d))]
-        
-        for year in year_folders:
-            year_path = os.path.join(tables_path, year)
-            csv_files = [f for f in os.listdir(year_path) if f.endswith('.csv')]
+        # Attempt to load the primary combined file first
+        if os.path.exists(config.PROCESSED_FVS_TABLES_PATH):
+            df_combined = load_data(config.PROCESSED_FVS_TABLES_PATH)
+            # If the combined file itself implies multiple years or sources, it should be handled here.
+            # For now, assume it's the main dataset.
+            result["combined"] = df_combined
+            logger.info(f"Loaded {len(df_combined)} items from combined Fruit & Veg Survey at {config.PROCESSED_FVS_TABLES_PATH}")
+            return result # Return early if combined file is loaded
+
+        # Fallback: Original logic to check for year folders if the main combined file isn't there
+        # This part might be deprecated if raw_processor always creates the combined file.
+        if os.path.isdir(fvs_tables_dir):
+            logger.info(f"Combined FVS file not found. Checking for year folders in {fvs_tables_dir}")
+            year_folders = [d for d in os.listdir(fvs_tables_dir) if os.path.isdir(os.path.join(fvs_tables_dir, d))]
             
-            if not csv_files:
-                continue
+            for year in year_folders:
+                year_path = os.path.join(fvs_tables_dir, year)
+                csv_files = [f for f in os.listdir(year_path) if f.endswith('.csv')]
                 
-            # Load and combine all CSV files for this year
-            year_dfs = []
-            for file in csv_files:
-                file_path = os.path.join(year_path, file)
-                df = load_data(file_path)
-                year_dfs.append(df)
+                if not csv_files: continue
+                    
+                year_dfs = [load_data(os.path.join(year_path, f)) for f in csv_files]
+                if year_dfs:
+                    combined_df_year = pd.concat(year_dfs, ignore_index=True)
+                    result[year] = combined_df_year
+                    logger.info(f"Loaded {len(combined_df_year)} items from Fruit & Veg Survey {year}")
+            if result: return result # Return if year-specific data was found
+
+        logger.warning(f"No Fruit & Veg survey data found at {config.PROCESSED_FVS_TABLES_PATH} or in year subfolders of {fvs_tables_dir}")
+        return {} # Return empty if no data found
             
-            if year_dfs:
-                combined_df = pd.concat(year_dfs, ignore_index=True)
-                result[year] = combined_df
-                logger.info(f"Loaded {len(combined_df)} items from Fruit & Veg Survey {year}")
-        
-        return result
     except Exception as e:
         logger.error(f"Failed to load Fruit & Veg Survey data: {e}")
         return {}
@@ -242,7 +247,8 @@ def load_mw_data_reduction() -> Dict[str, pd.DataFrame]:
     Returns:
         Dictionary with DataFrames for different reduction types
     """
-    base_path = DATA_PATHS["mw_data_reduction"]
+    # Base path for MW Data Reduction in PROCESSED_DATA_DIR
+    mw_reduction_base_dir = os.path.join(config.PROCESSED_DATA_DIR, config.MW_DATA_REDUCTION_SUBDIR)
     
     result = {
         "individual_tables": pd.DataFrame(),
@@ -253,92 +259,69 @@ def load_mw_data_reduction() -> Dict[str, pd.DataFrame]:
     
     try:
         # Load Individual Tables
-        indiv_path = os.path.join(base_path, "Reduced Individual Tables")
-        if os.path.exists(indiv_path):
+        indiv_path = os.path.join(config.PROCESSED_DATA_DIR, config.MW_REDUCED_INDIVIDUAL_TABLES_SUBDIR)
+        if os.path.exists(indiv_path) and os.path.isdir(indiv_path):
             indiv_files = [f for f in os.listdir(indiv_path) if f.endswith('.csv')]
-            indiv_dfs = []
-            
-            for file in indiv_files:
-                file_path = os.path.join(indiv_path, file)
-                df = load_data(file_path)
-                indiv_dfs.append(df)
-            
+            indiv_dfs = [load_data(os.path.join(indiv_path, f)) for f in indiv_files]
             if indiv_dfs:
                 result["individual_tables"] = pd.concat(indiv_dfs, ignore_index=True)
-                logger.info(f"Loaded {len(result['individual_tables'])} items from Individual Tables")
+                logger.info(f"Loaded {len(result['individual_tables'])} items from MW Individual Tables")
         
-        # Load Super Group
-        sg_path = os.path.join(base_path, "Reduced Super Group")
-        if os.path.exists(sg_path):
+        # Load Super Group (this is config.MW_PROCESSED_SUPER_GROUP_PATH)
+        sg_path = config.MW_PROCESSED_SUPER_GROUP_PATH
+        if os.path.exists(sg_path) and os.path.isdir(sg_path):
             sg_files = [f for f in os.listdir(sg_path) if f.endswith('.csv') and os.path.isfile(os.path.join(sg_path, f))]
             sg_dfs = []
-            
             for file in sg_files:
-                file_path = os.path.join(sg_path, file)
-                df = load_data(file_path)
-                # Add the super group name from the filename
+                df = load_data(os.path.join(sg_path, file))
                 group_name = os.path.splitext(file)[0]
                 df['Super_Group'] = group_name
                 sg_dfs.append(df)
-            
             if sg_dfs:
                 result["super_group"] = pd.concat(sg_dfs, ignore_index=True)
-                logger.info(f"Loaded {len(result['super_group'])} items from Super Group")
+                logger.info(f"Loaded {len(result['super_group'])} items from MW Super Group")
         
         # Load Super Group Cleaned
-        sg_cleaned_path = os.path.join(sg_path, "Cleaned")
-        if os.path.exists(sg_cleaned_path):
+        sg_cleaned_path = os.path.join(config.PROCESSED_DATA_DIR, config.MW_REDUCED_SUPER_GROUP_CLEANED_SUBDIR)
+        if os.path.exists(sg_cleaned_path) and os.path.isdir(sg_cleaned_path):
             sg_cleaned_files = [f for f in os.listdir(sg_cleaned_path) if f.endswith('.csv')]
-            sg_cleaned_dfs = []
-            
-            for file in sg_cleaned_files:
-                file_path = os.path.join(sg_cleaned_path, file)
-                df = load_data(file_path)
-                sg_cleaned_dfs.append(df)
-            
+            sg_cleaned_dfs = [load_data(os.path.join(sg_cleaned_path, f)) for f in sg_cleaned_files]
             if sg_cleaned_dfs:
                 result["super_group_cleaned"] = pd.concat(sg_cleaned_dfs, ignore_index=True)
-                logger.info(f"Loaded {len(result['super_group_cleaned'])} items from Super Group Cleaned")
+                logger.info(f"Loaded {len(result['super_group_cleaned'])} items from MW Super Group Cleaned")
         
-        # Load Total
-        total_path = os.path.join(base_path, "Reduced Total")
-        if os.path.exists(total_path):
-            total_files = [f for f in os.listdir(total_path) if f.endswith('.csv')]
-            if total_files:
-                # Just take the first file as it should be the total
-                file_path = os.path.join(total_path, total_files[0])
-                result["total"] = load_data(file_path)
-                logger.info(f"Loaded {len(result['total'])} items from Reduced Total")
+        # Load Total (this is config.MW_PROCESSED_FULL_FILE)
+        total_file_path = config.MW_PROCESSED_FULL_FILE
+        if os.path.exists(total_file_path):
+            result["total"] = load_data(total_file_path)
+            logger.info(f"Loaded {len(result['total'])} items from MW Reduced Total ({total_file_path})")
         
         return result
     except Exception as e:
         logger.error(f"Failed to load MW Data Reduction: {e}")
-        return result
+        return result # Return partially loaded data if error occurs mid-way
 
 def load_reduced_with_weights() -> pd.DataFrame:
     """
-    Load the ReducedwithWeights dataset which combines multiple sources
+    Load the ReducedwithWeights dataset which combines multiple sources.
+    This corresponds to the processed labelling data.
     
     Returns:
         DataFrame with combined weight data
     """
-    folder_path = DATA_PATHS["reduced_with_weights"]
+    # This should point to config.PROCESSED_LABELLING_PATH
+    file_path = config.PROCESSED_LABELLING_PATH
     
     try:
-        # Look for CSV files in the folder
-        csv_files = [f for f in os.listdir(folder_path) if f.endswith('.csv')]
-        
-        if not csv_files:
-            logger.warning(f"No CSV files found in {folder_path}")
+        if os.path.exists(file_path):
+            df = load_data(file_path)
+            logger.info(f"Loaded {len(df)} items from ReducedwithWeights (Processed Labelling) from {file_path}")
+            return df
+        else:
+            logger.warning(f"Processed Labelling Data (ReducedwithWeights) file not found at {file_path}")
             return pd.DataFrame()
-        
-        # Load the most recent file (assuming it's the most complete)
-        # Sort by modification time
-        csv_files.sort(key=lambda x: os.path.getmtime(os.path.join(folder_path, x)), reverse=True)
-        
-        file_path = os.path.join(folder_path, csv_files[0])
-        df = load_data(file_path)
-        logger.info(f"Loaded {len(df)} items from ReducedwithWeights")
+    except Exception as e:
+        logger.error(f"Failed to load ReducedwithWeights data from {file_path}: {e}")
         return df
     except Exception as e:
         logger.error(f"Failed to load ReducedwithWeights data: {e}")
@@ -705,25 +688,25 @@ def extract_gold_standard_matches_from_notebooks() -> pd.DataFrame:
     Returns:
         DataFrame with high-quality manually verified matches
     """
-    # Path to notebooks directory
-    notebooks_dir = "Jupter_notebooks"
+    # Path to notebooks directory from config
+    base_notebooks_dir = config.NOTEBOOKS_DIR
+    data_product_subdir_name = config.DATA_PRODUCT_NOTEBOOKS_SUBDIR # "Data_Product"
     
-    # Look for notebooks with matching results
     gold_matches = []
     
     try:
         # Check Data_Product directory for notebooks with matching results
-        data_product_dir = os.path.join(notebooks_dir, "Data_Product")
-        if os.path.exists(data_product_dir):
-            notebook_files = [f for f in os.listdir(data_product_dir) if f.endswith('.ipynb')]
+        data_product_dir_path = os.path.join(base_notebooks_dir, data_product_subdir_name)
+        if os.path.exists(data_product_dir_path) and os.path.isdir(data_product_dir_path):
+            notebook_files = [f for f in os.listdir(data_product_dir_path) if f.endswith('.ipynb')]
             
-            for notebook in notebook_files:
+            for notebook_file_name in notebook_files:
                 try:
                     # Load notebook as JSON
-                    import json
-                    notebook_path = os.path.join(data_product_dir, notebook)
+                    # import json # Already imported at top
+                    notebook_full_path = os.path.join(data_product_dir_path, notebook_file_name)
                     
-                    with open(notebook_path, 'r', encoding='utf-8') as f:
+                    with open(notebook_full_path, 'r', encoding='utf-8') as f:
                         nb_content = json.load(f)
                     
                     # Look for cells with matching results
@@ -736,10 +719,12 @@ def extract_gold_standard_matches_from_notebooks() -> pd.DataFrame:
                                 # This cell might contain matching results
                                 # We'll extract this information in a real implementation
                                 # For now, just log it
-                                logger.info(f"Found potential match data in notebook: {notebook}")
+                                logger.info(f"Found potential match data in notebook: {notebook_file_name}")
                 except Exception as e:
-                    logger.warning(f"Error processing notebook {notebook}: {e}")
-        
+                    logger.warning(f"Error processing notebook {notebook_file_name}: {e}")
+        else:
+            logger.warning(f"Notebooks subdirectory for Data Product not found: {data_product_dir_path}")
+
         # If we found any matches, convert to DataFrame
         if gold_matches:
             gold_df = pd.DataFrame(gold_matches)
@@ -848,13 +833,14 @@ def generate_training_data_from_matches(matcher: FoodMatcher, threshold: float =
     # Filter high-quality matches
     high_quality = features_df[features_df['Similarity_Score'] >= threshold]
     
-    # Create training data CSV
-    output_dir = "output"
-    training_file = os.path.join(output_dir, "training_data.csv")
+    # Create training data CSV using configured path
+    training_file_path = config.TRAINING_DATA_PATH
     
     # Save training data
-    high_quality.to_csv(training_file, index=False)
-    logger.info(f"Generated training data with {len(high_quality)} high-quality matches")
+    # Ensure output directory exists (though config.py should handle OUTPUT_DIR creation)
+    os.makedirs(os.path.dirname(training_file_path), exist_ok=True) 
+    high_quality.to_csv(training_file_path, index=False)
+    logger.info(f"Generated training data with {len(high_quality)} high-quality matches to {training_file_path}")
 
 def evaluate_matcher_performance() -> Dict[str, float]:
     """
@@ -1013,11 +999,14 @@ def create_interactive_feedback_session(matcher, source_df: pd.DataFrame, target
         source_col: Column name in source for matching
         target_col: Column name in target for matching
         num_samples: Number of samples to generate for feedback
-        output_file: Path to save feedback
+        output_file: Path to save feedback. Defaults to config.FEEDBACK_SESSION_PATH.
         
     Returns:
         Dictionary with feedback session results
     """
+    if output_file is None:
+        output_file = config.FEEDBACK_SESSION_PATH
+
     # 1. Create a matching to generate feedback samples
     matches = matcher.match_datasets(
         source_df,
@@ -1111,12 +1100,17 @@ def visualize_feedback_impact(feedback_file: str, output_file: str = "output/fee
     
     Args:
         feedback_file: Path to feedback file
-        output_file: Path to save visualization
+        output_file: Path to save visualization. Defaults to config.FEEDBACK_IMPACT_VISUALIZATION_PATH.
     """
-    from shelfscale.visualization.performance import PerformanceTracker
-    tracker = PerformanceTracker()
+    if output_file is None:
+        output_file = config.FEEDBACK_IMPACT_VISUALIZATION_PATH
+
+    from shelfscale.visualization.performance import PerformanceTracker # Keep local import for now
+    tracker = PerformanceTracker(history_file=config.MODEL_PERFORMANCE_HISTORY_PATH) # Pass history file
     
     # Generate interactive dashboard with performance history
+    # Ensure output directory exists (though config.py should handle OUTPUT_DIR creation)
+    os.makedirs(os.path.dirname(output_file), exist_ok=True)
     tracker.create_interactive_dashboard(output_file)
     
     # Print summary of improvements

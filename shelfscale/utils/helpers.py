@@ -9,6 +9,14 @@ import re
 import json
 from typing import Dict, List, Optional, Union, Any, Tuple
 
+from shelfscale.data_processing.weight_extraction import WeightExtractor # Import WeightExtractor
+
+# Default WeightExtractor instances for helper functions
+# target_unit 'g' is the most common default for weight-related helpers
+DEFAULT_WEIGHT_EXTRACTOR = WeightExtractor(target_unit='g')
+# For volume conversions, if needed separately, though convert_weight will handle specific target_unit
+# DEFAULT_VOL_EXTRACTOR = WeightExtractor(target_unit='ml')
+
 
 class NumPyJSONEncoder(json.JSONEncoder):
     """JSON encoder that can handle NumPy data types"""
@@ -93,25 +101,21 @@ def extract_numeric_value(text: str) -> Optional[float]:
     Returns:
         Extracted numeric value or None if not found
     """
-    if pd.isna(text) or not isinstance(text, str):
+    if pd.isna(text) or not isinstance(text, str) or not text.strip(): # Added strip check
         return None
     
-    # Find numeric patterns in string
-    matches = re.findall(r'[-+]?\d*\.\d+|\d+', text)
+    # Use WeightExtractor to extract the numeric value.
+    # Note: This is now context-dependent on weight extraction logic.
+    # If a general number is needed, this might be too specific.
+    # However, in this project, numeric extraction is usually for weights.
+    numeric_value, _ = DEFAULT_WEIGHT_EXTRACTOR.extract(text) # extract returns (value, unit)
     
-    if matches:
-        try:
-            # Return the first match as float
-            return float(matches[0])
-        except (ValueError, TypeError):
-            return None
-    
-    return None
+    return numeric_value
 
 
 def extract_unit(text: str) -> Optional[str]:
     """
-    Extract unit from a string
+    Extract unit from a string using WeightExtractor.
     
     Args:
         text: Input string
@@ -119,23 +123,22 @@ def extract_unit(text: str) -> Optional[str]:
     Returns:
         Extracted unit or None if not found
     """
-    if pd.isna(text) or not isinstance(text, str):
+    if pd.isna(text) or not isinstance(text, str) or not text.strip():
         return None
+        
+    # Use WeightExtractor to extract the unit.
+    _, unit = DEFAULT_WEIGHT_EXTRACTOR.extract(text) # extract returns (value, unit)
     
-    # Common units
-    units = ['g', 'kg', 'mg', 'l', 'ml', 'oz', 'lb']
-    
-    # Find unit in string
-    for unit in units:
-        # Look for unit with space or no space before it
-        pattern = r'(\d+[\s]*)' + re.escape(unit) + r'\b'
-        if re.search(pattern, text.lower()):
-            return unit
-    
-    return None
+    # The unit returned by WeightExtractor.extract is already standardized to the extractor's target_unit
+    # if a conversion happened, or it's the original unit if no conversion rule applied or it matched target.
+    # The original extract_unit helper just returned the found unit string.
+    # If the goal is to identify the *original* unit in the string, this behavior changes.
+    # However, WeightExtractor.extract's unit part is the *result* of its processing, which is usually what's desired.
+    # For now, we return the unit found by WeightExtractor.
+    return unit
 
 
-def convert_weight(value: float, from_unit: str, to_unit: str) -> float:
+def convert_weight(value: float, from_unit: str, to_unit: str) -> Optional[float]:
     """
     Convert weight from one unit to another
     
@@ -147,39 +150,57 @@ def convert_weight(value: float, from_unit: str, to_unit: str) -> float:
     Returns:
         Converted weight value
     """
-    # Conversion factors to grams
-    to_gram = {
-        'g': 1,
-        'kg': 1000,
-        'mg': 0.001,
-        'oz': 28.35,
-        'lb': 453.592
-    }
-    
-    # Conversion factors to milliliters
-    to_ml = {
-        'ml': 1,
-        'l': 1000
-    }
-    
-    # Check if units are valid
-    if from_unit not in to_gram and from_unit not in to_ml:
-        raise ValueError(f"Unsupported source unit: {from_unit}")
-    
-    if to_unit not in to_gram and to_unit not in to_ml:
-        raise ValueError(f"Unsupported target unit: {to_unit}")
-    
-    # Check if conversion is within same system (mass or volume)
-    if (from_unit in to_gram and to_unit in to_ml) or (from_unit in to_ml and to_unit in to_gram):
-        raise ValueError(f"Cannot convert between mass ({from_unit}) and volume ({to_unit})")
-    
-    # Convert to standard unit (g or ml) then to target unit
-    if from_unit in to_gram:
-        standard_value = value * to_gram[from_unit]
-        return standard_value / to_gram[to_unit]
-    else:  # from_unit in to_ml
-        standard_value = value * to_ml[from_unit]
-        return standard_value / to_ml[to_unit]
+    if value is None or from_unit is None or to_unit is None:
+        return None # Or raise error, original raised ValueError for unsupported units
+
+    # Instantiate WeightExtractor with the desired target_unit
+    # Ensure to_unit is lowercase as WeightExtractor's internal keys are lowercase.
+    try:
+        # WeightExtractor's constructor doesn't validate target_unit against its known units,
+        # but its standardize_value_and_unit method will handle it.
+        extractor = WeightExtractor(target_unit=to_unit.lower())
+    except Exception as e: # Catch potential issues if target_unit itself is problematic for WE init
+        # This is unlikely as WE init is simple, but good for robustness
+        # print(f"Error initializing WeightExtractor for target unit '{to_unit.lower()}': {e}")
+        # This function should ideally raise ValueError for unsupported target units like original
+        # For now, let standardize_value_and_unit handle it.
+        # Fallback or raise: For now, let's see what standardize_value_and_unit does.
+        # It will log a warning and return original value/unit if conversion not possible.
+        pass
+
+
+    converted_value, standardized_unit = extractor.standardize_value_and_unit(value, from_unit)
+
+    if standardized_unit == extractor.target_unit: # Check if conversion was to the intended target
+        return converted_value
+    else:
+        # This means conversion was not possible (e.g., incompatible units, unknown from_unit)
+        # Original function raised ValueError for unsupported units or incompatible systems.
+        # WeightExtractor.standardize_value_and_unit logs a warning and returns original value/unit.
+        # To match original behavior more closely for unsupported/incompatible, we might raise error here.
+        # For now, returning None to indicate conversion failure to the *specific to_unit*.
+        # print(f"Conversion from '{from_unit}' to '{to_unit}' failed or was not applicable. "
+        # f"Standardized to: {standardized_unit} with value {converted_value}")
+        # Raise error if from_unit or to_unit is not in extractor's known systems or if systems incompatible
+        from_unit_lower = from_unit.lower()
+        to_unit_lower = to_unit.lower()
+
+        from_is_weight = any(fu_key for fu_key in extractor.weight_units if from_unit_lower.startswith(fu_key))
+        from_is_volume = any(fu_key for fu_key in extractor.volume_units if from_unit_lower.startswith(fu_key))
+        to_is_weight = any(tu_key for tu_key in extractor.weight_units if to_unit_lower.startswith(tu_key))
+        to_is_volume = any(tu_key for tu_key in extractor.volume_units if to_unit_lower.startswith(tu_key))
+
+        if not (from_is_weight or from_is_volume):
+            raise ValueError(f"Unsupported source unit: {from_unit}")
+        if not (to_is_weight or to_is_volume):
+            raise ValueError(f"Unsupported target unit: {to_unit}")
+        if (from_is_weight and to_is_volume) or (from_is_volume and to_is_weight):
+            raise ValueError(f"Cannot convert between mass ({from_unit}) and volume ({to_unit})")
+        
+        # If units were compatible but standardize_value_and_unit didn't convert to target_unit,
+        # it implies from_unit was not recognized by the specific target_unit based WE instance.
+        # This case should ideally be covered by the checks above or means from_unit is truly unknown.
+        return None # Fallback for "conversion failed"
 
 
 def get_unique_values(df: pd.DataFrame, column: str) -> List[Any]:
