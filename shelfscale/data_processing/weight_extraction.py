@@ -6,11 +6,112 @@ Improves accuracy and robustness of extracting weight information from food desc
 import re
 import pandas as pd
 import numpy as np
+import os
 from typing import Dict, List, Optional, Union, Tuple, Any
 import logging
 
 # Configure logging
 logger = logging.getLogger(__name__)
+
+
+def load_density_map(density_file_path: Optional[str] = None) -> pd.DataFrame:
+    """
+    Load density map for volume to weight conversion
+    
+    Args:
+        density_file_path: Path to density CSV file
+        
+    Returns:
+        DataFrame with density mapping
+    """
+    if density_file_path is None:
+        # Import here to avoid circular imports
+        try:
+            from .. import config
+            density_file_path = config.DENSITY_FILE
+        except ImportError:
+            # Fallback to relative path
+            current_dir = os.path.dirname(__file__)
+            density_file_path = os.path.join(current_dir, "densities.csv")
+    
+    if os.path.exists(density_file_path):
+        # Skip comment lines starting with #
+        return pd.read_csv(density_file_path, comment='#')
+    else:
+        logger.warning(f"Density file not found: {density_file_path}. Using default densities.")
+        # Return default density map
+        return pd.DataFrame([
+            {"Super_Category": "Generic", "Food_Category": "Generic", "density_g_per_ml": 1.0}
+        ])
+
+
+def get_density_for_row(row: pd.Series, density_df: Optional[pd.DataFrame] = None) -> float:
+    """
+    Get density for a product based on its category
+    
+    Args:
+        row: Product data row
+        density_df: Density mapping DataFrame
+        
+    Returns:
+        Density in g/ml
+    """
+    if density_df is None:
+        density_df = load_density_map()
+    
+    # Try to find specific match first
+    super_category = row.get("Super_Category", "")
+    food_category = row.get("Food_Category", "")
+    
+    if super_category and food_category:
+        specific_match = density_df[
+            (density_df["Super_Category"] == super_category) & 
+            (density_df["Food_Category"] == food_category)
+        ]
+        if not specific_match.empty:
+            return specific_match.iloc[0]["density_g_per_ml"]
+    
+    # Try super category match
+    if super_category:
+        category_match = density_df[density_df["Super_Category"] == super_category]
+        if not category_match.empty:
+            return category_match.iloc[0]["density_g_per_ml"]
+    
+    # Default fallback
+    return 1.0
+
+
+def log_extraction_error(text: str, source_col: str, error_type: str = "unknown_pattern"):
+    """
+    Log weight extraction errors for analysis
+    
+    Args:
+        text: Text that failed extraction
+        source_col: Source column name
+        error_type: Type of error
+    """
+    try:
+        from .. import config
+        error_file = config.WEIGHT_EXTRACTION_ERRORS_PATH
+    except ImportError:
+        error_file = "weight_extraction_errors.csv"
+    
+    # Create error record
+    error_record = {
+        "text": text,
+        "source_column": source_col,
+        "error_type": error_type,
+        "timestamp": pd.Timestamp.now()
+    }
+    
+    # Append to error log
+    if os.path.exists(error_file):
+        error_df = pd.read_csv(error_file)
+        error_df = pd.concat([error_df, pd.DataFrame([error_record])], ignore_index=True)
+    else:
+        error_df = pd.DataFrame([error_record])
+    
+    error_df.to_csv(error_file, index=False)
 
 
 class WeightExtractor:
@@ -19,14 +120,16 @@ class WeightExtractor:
     and unit standardization for food products
     """
     
-    def __init__(self, target_unit: str = 'g'):
+    def __init__(self, target_unit: str = 'g', density_df: Optional[pd.DataFrame] = None):
         """
         Initialize the weight extractor
         
         Args:
             target_unit: Target unit for standardization ('g' or 'ml')
+            density_df: DataFrame with density mappings for volume->weight conversion
         """
         self.target_unit = target_unit
+        self.density_df = density_df if density_df is not None else load_density_map()
         
         # Unit conversion factors (to standard units)
         self.conversion_factors = {
@@ -56,6 +159,16 @@ class WeightExtractor:
             'milliliters': 1.0,
             'millilitre': 1.0,
             'millilitres': 1.0,
+            'cl': 10.0,  # centiliter
+            'centiliter': 10.0,
+            'centiliters': 10.0,
+            'centilitre': 10.0,
+            'centilitres': 10.0,
+            'dl': 100.0,  # deciliter
+            'deciliter': 100.0,
+            'deciliters': 100.0,
+            'decilitre': 100.0,
+            'decilitres': 100.0,
             'l': 1000.0,
             'liter': 1000.0,
             'liters': 1000.0,
@@ -71,7 +184,17 @@ class WeightExtractor:
             'teaspoons': 4.93,
             'fl oz': 29.57, # US fluid ounce
             'fluid ounce': 29.57,
-            'fluid ounces': 29.57
+            'fluid ounces': 29.57,
+            
+            # Count/portion units (no conversion)
+            'ea': None,
+            'each': None,
+            'portion': None,
+            'serving': None,
+            'ct': None,
+            'count': None,
+            'piece': None,
+            'pieces': None
         }
         
         # Unit systems
@@ -79,10 +202,14 @@ class WeightExtractor:
                             'mg', 'milligram', 'milligrams', 'oz', 'ounce', 'ounces', 'lb', 'lbs', 
                             'pound', 'pounds'}
         
-        self.volume_units = {'ml', 'milliliter', 'milliliters', 'millilitre', 'millilitres', 
+        self.volume_units = {'ml', 'milliliter', 'milliliters', 'millilitre', 'millilitres',
+                            'cl', 'centiliter', 'centiliters', 'centilitre', 'centilitres',
+                            'dl', 'deciliter', 'deciliters', 'decilitre', 'decilitres',
                             'l', 'liter', 'liters', 'litre', 'litres', 'cup', 'cups', 
                             'tbsp', 'tablespoon', 'tablespoons', 'tsp', 'teaspoon', 'teaspoons',
                             'fl oz', 'fluid ounce', 'fluid ounces'}
+        
+        self.count_units = {'ea', 'each', 'portion', 'serving', 'ct', 'count', 'piece', 'pieces'}
         
         # Compile regex patterns for various weight/volume formats
         self.patterns = [
@@ -124,12 +251,13 @@ class WeightExtractor:
         # This is the method name used in tests, providing a consistent interface
         return self.extract_from_text(text)
     
-    def extract_from_text(self, text: str) -> Tuple[Optional[float], Optional[str]]:
+    def extract_from_text(self, text: str, row: Optional[pd.Series] = None) -> Tuple[Optional[float], Optional[str]]:
         """
         Extract weight and unit from text with enhanced pattern recognition
         
         Args:
             text: Text containing weight information
+            row: Optional product data row for density lookup
             
         Returns:
             Tuple of (weight value, unit)
@@ -144,7 +272,7 @@ class WeightExtractor:
         for pattern in self.patterns:
             match = pattern.search(clean_text)
             if match:
-                result = self._process_match(match, pattern.pattern)
+                result = self._process_match(match, pattern.pattern, row)
                 if result[0] is not None:
                     return result
                 
@@ -152,7 +280,7 @@ class WeightExtractor:
         logger.debug(f"No weight pattern found in: '{text}'")
         return None, None
     
-    def _process_match(self, match, pattern_str) -> Tuple[Optional[float], Optional[str]]:
+    def _process_match(self, match, pattern_str, row: Optional[pd.Series] = None) -> Tuple[Optional[float], Optional[str]]:
         """
         Process a regex match based on the pattern type
         
@@ -253,19 +381,21 @@ class WeightExtractor:
                 return None, None
                 
             # Standardize unit and convert value
-        return self.standardize_value_and_unit(value, unit) # Use the now public method
+            return self.standardize_value_and_unit(value, unit, row)
             
         except (ValueError, TypeError) as e:
             logger.warning(f"Error processing weight pattern '{pattern_text}': {e}")
             return None, None
     
-    def standardize_value_and_unit(self, value: Optional[float], original_unit: Optional[str]) -> Tuple[Optional[float], Optional[str]]:
+    def standardize_value_and_unit(self, value: Optional[float], original_unit: Optional[str], row: Optional[pd.Series] = None) -> Tuple[Optional[float], Optional[str]]:
         """
         Standardize a given unit and convert the value to the extractor's target_unit.
+        Supports volume→weight conversion using density mapping when applicable.
 
         Args:
             value: Numeric weight/volume value.
             original_unit: Original unit of the value.
+            row: Optional product data row for density lookup (for volume→weight conversion).
 
         Returns:
             Tuple of (converted_value, target_unit) if successful, 
@@ -309,9 +439,52 @@ class WeightExtractor:
         target_is_weight = self.target_unit.lower() in self.weight_units
         target_is_volume = self.target_unit.lower() in self.volume_units
 
+        # Handle volume→weight conversion using density
+        if original_is_volume and target_is_weight and row is not None:
+            # Convert volume to ml first
+            value_in_ml = value * conversion_factor_to_base
+            
+            # Get density for this product
+            density = get_density_for_row(row, self.density_df)
+            
+            # Convert to grams using density
+            value_in_grams = value_in_ml * density
+            
+            # Convert from grams to target weight unit
+            target_conversion_factor = self.conversion_factors.get(self.target_unit.lower())
+            if target_conversion_factor is None:
+                logger.error(f"Target unit '{self.target_unit}' has no defined conversion factor.")
+                return value, original_unit
+                
+            converted_value = value_in_grams / target_conversion_factor
+            logger.info(f"Volume→weight conversion: {value} {original_unit} → {converted_value} {self.target_unit} (density: {density} g/ml)")
+            return converted_value, self.target_unit
+        
+        # Handle weight→volume conversion using density
+        elif original_is_weight and target_is_volume and row is not None:
+            # Convert weight to grams first
+            value_in_grams = value * conversion_factor_to_base
+            
+            # Get density for this product
+            density = get_density_for_row(row, self.density_df)
+            
+            # Convert to ml using density
+            value_in_ml = value_in_grams / density
+            
+            # Convert from ml to target volume unit
+            target_conversion_factor = self.conversion_factors.get(self.target_unit.lower())
+            if target_conversion_factor is None:
+                logger.error(f"Target unit '{self.target_unit}' has no defined conversion factor.")
+                return value, original_unit
+                
+            converted_value = value_in_ml / target_conversion_factor
+            logger.info(f"Weight→volume conversion: {value} {original_unit} → {converted_value} {self.target_unit} (density: {density} g/ml)")
+            return converted_value, self.target_unit
+
+        # Standard same-system conversion (weight→weight or volume→volume)
         if (original_is_weight and target_is_volume) or \
            (original_is_volume and target_is_weight):
-            logger.warning(f"Unit mismatch: Cannot convert from '{original_unit}' (system: {'weight' if original_is_weight else 'volume'}) to '{self.target_unit}' (system: {'weight' if target_is_weight else 'volume'}). Returning original value and unit.")
+            logger.warning(f"Unit system mismatch: Cannot convert from '{original_unit}' (system: {'weight' if original_is_weight else 'volume'}) to '{self.target_unit}' (system: {'weight' if target_is_weight else 'volume'}) without density information. Returning original value and unit.")
             return value, original_unit
         
         # Convert original value to its base standard (grams or mL)
@@ -386,8 +559,8 @@ class WeightExtractor:
                 if pd.isna(row[col]):
                     continue
                     
-                # Extract weight and unit
-                weight, unit = self.extract(str(row[col]))
+                # Extract weight and unit, passing the row for density lookup
+                weight, unit = self.extract_from_text(str(row[col]), row)
                 
                 if weight is not None:
                     result_df.loc[idx, new_weight_col] = weight

@@ -11,7 +11,7 @@ import logging
 # Import from other modules
 from .weight_extraction import WeightExtractor
 from .categorization import FoodCategorizer
-from .validation import validate_data
+from .validation import validate_schema
 
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -243,4 +243,4 @@ class DataCleaner:
         Returns:
             Dictionary with validation results
         """
-        return validate_data(df)
+        return validate_schema(df)

@@ -4,12 +4,19 @@ import os
 # Resolves to the 'shelfscale' directory.
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
-# Data Directories
-RAW_DATA_DIR = os.path.join(PROJECT_ROOT, "Data", "Raw Data")
-PROCESSED_DATA_DIR = os.path.join(PROJECT_ROOT, "Data", "Processed")
-OUTPUT_DIR = os.path.join(PROJECT_ROOT, "output")
-MODEL_DIR = os.path.join(PROJECT_ROOT, "models")
-CACHE_DIR = os.path.join(PROJECT_ROOT, "cache")
+# Repository Root (parent of shelfscale)
+REPO_ROOT = os.path.abspath(os.path.join(PROJECT_ROOT, os.pardir))
+
+# Default data root (can be overridden by DATA_ROOT env var)
+DEFAULT_DATA_ROOT = os.path.join(REPO_ROOT, "Data")
+DATA_ROOT = os.environ.get("DATA_ROOT", DEFAULT_DATA_ROOT)
+
+# Data Directories - now configurable via DATA_ROOT
+RAW_DATA_DIR = os.path.join(DATA_ROOT, "Raw Data")
+PROCESSED_DATA_DIR = os.path.join(DATA_ROOT, "Processed")
+OUTPUT_DIR = os.path.join(REPO_ROOT, "output")
+MODEL_DIR = os.path.join(REPO_ROOT, "models")
+CACHE_DIR = os.path.join(REPO_ROOT, "cache")
 
 # Ensure directories exist
 os.makedirs(RAW_DATA_DIR, exist_ok=True)
@@ -164,3 +171,12 @@ EXISTING_MATCH_FILES_TO_LOAD = {
     "supergroup_matches": SUPERGROUP_MATCHES_PATH,
     "api_matches": API_MATCHES_PATH
 }
+
+# --- Density and Scoring Configuration ---
+DENSITY_FILE = os.path.join(PROJECT_ROOT, "data_processing", "densities.csv")
+
+# Scoring output files
+NUTRITION_SCORES_FILE = "nutrition_scores.csv"
+WEIGHT_EXTRACTION_ERRORS_FILE = "weight_extraction_errors.csv"
+NUTRITION_SCORES_PATH = os.path.join(OUTPUT_DIR, NUTRITION_SCORES_FILE)
+WEIGHT_EXTRACTION_ERRORS_PATH = os.path.join(OUTPUT_DIR, WEIGHT_EXTRACTION_ERRORS_FILE)

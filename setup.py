@@ -13,7 +13,13 @@ setup(
         "scikit-learn",
         "fuzzywuzzy",
         "python-Levenshtein",
-        "openpyxl"
+        "openpyxl",
+        "fastapi",
+        "uvicorn",
+        "pydantic",
+        "pandera",
+        "rapidfuzz",
+        "python-multipart"
     ],
     author="ShelfScale Team",
     author_email="info@shelfscale.org",
@@ -35,6 +41,12 @@ setup(
     entry_points={
         "console_scripts": [
             "shelfscale=shelfscale.main:main",
+            "shelfscale-score=shelfscale.main:main",
+            "shelfscale-api=shelfscale.api:run_api",
         ],
+    },
+    include_package_data=True,
+    package_data={
+        'shelfscale': ['data_processing/densities.csv'],
     },
 ) 

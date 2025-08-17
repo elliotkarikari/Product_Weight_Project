@@ -1,13 +1,22 @@
 """
 Dashboard components for interactive visualization of food data
+Enhanced with upload functionality and nutrition scoring
 """
 
 import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
 import plotly.express as px
-from dash import Dash, dcc, html, Input, Output
+from dash import Dash, dcc, html, Input, Output, State, dash_table
+from dash.exceptions import PreventUpdate
+import dash_bootstrap_components as dbc
+import base64
+import io
 from typing import Dict, List, Optional, Union, Any
+import logging
+
+# Lazy import heavy dependencies to avoid import errors
+logger = logging.getLogger(__name__)
 
 
 def create_food_group_treemap(df: pd.DataFrame, 
@@ -119,22 +128,94 @@ def create_weight_distribution_chart(df: pd.DataFrame,
     return fig
 
 
-class ShelfScaleDashboard:
-    """Dashboard for interactive visualization of ShelfScale data"""
+def create_nutrition_score_charts(df: pd.DataFrame) -> List[go.Figure]:
+    """
+    Create charts for nutrition score distributions
     
-    def __init__(self, df: pd.DataFrame, summary: pd.DataFrame = None, title: str = "ShelfScale Dashboard"):
+    Args:
+        df: DataFrame with scoring results
+        
+    Returns:
+        List of plotly figures
+    """
+    charts = []
+    
+    # Nutri-Score distribution
+    if 'Nutri_Grade' in df.columns:
+        nutri_counts = df['Nutri_Grade'].value_counts().sort_index()
+        nutri_fig = px.bar(
+            x=nutri_counts.index,
+            y=nutri_counts.values,
+            title='Nutri-Score Distribution',
+            labels={'x': 'Nutri-Score Grade', 'y': 'Count'},
+            color=nutri_counts.index,
+            color_discrete_map={'A': 'green', 'B': 'lightgreen', 'C': 'orange', 'D': 'red', 'E': 'darkred'}
+        )
+        charts.append(nutri_fig)
+    
+    # Traffic Light summary distribution
+    if 'Traffic_Lights_Summary' in df.columns:
+        traffic_counts = df['Traffic_Lights_Summary'].value_counts()
+        traffic_fig = px.pie(
+            values=traffic_counts.values,
+            names=traffic_counts.index,
+            title='Traffic Light Summary Distribution',
+            color=traffic_counts.index,
+            color_discrete_map={'green': 'green', 'amber': 'orange', 'red': 'red'}
+        )
+        charts.append(traffic_fig)
+    
+    return charts
+
+
+def create_confidence_badges(row: pd.Series) -> html.Div:
+    """Create confidence badges for a product row"""
+    badges = []
+    
+    # Weight confidence
+    weight_conf = row.get('Weight_Prediction_Confidence', 0)
+    weight_color = 'success' if weight_conf > 0.8 else 'warning' if weight_conf > 0.5 else 'danger'
+    badges.append(
+        dbc.Badge(f"Weight: {weight_conf:.1%}", color=weight_color, className="me-1")
+    )
+    
+    # Score confidence  
+    score_conf = row.get('Score_Confidence', 0)
+    score_color = 'success' if score_conf > 0.8 else 'warning' if score_conf > 0.5 else 'danger'
+    badges.append(
+        dbc.Badge(f"Score: {score_conf:.1%}", color=score_color, className="me-1")
+    )
+    
+    return html.Div(badges)
+
+
+class ShelfScaleDashboard:
+    """Enhanced dashboard for interactive visualization of ShelfScale data with upload and scoring"""
+    
+    def __init__(self, df: pd.DataFrame = None, summary: pd.DataFrame = None, 
+                 title: str = "ShelfScale Dashboard", model_dir: str = None, output_dir: str = None):
         """
         Initialize the dashboard
         
         Args:
-            df: Input DataFrame
+            df: Input DataFrame (optional for upload mode)
             summary: Summary DataFrame (optional)
             title: Dashboard title
+            model_dir: Model directory for ML components
+            output_dir: Output directory for exports
         """
-        self.df = df
+        self.df = df if df is not None else pd.DataFrame()
         self.summary = summary if summary is not None else pd.DataFrame()
         self.title = title
-        self.app = Dash(__name__)
+        self.model_dir = model_dir
+        self.output_dir = output_dir
+        
+        # Try to use Bootstrap theme
+        try:
+            self.app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+        except:
+            self.app = Dash(__name__)
+            logger.warning("Bootstrap theme not available, using default styling")
         
         # Set up the dashboard layout
         self._setup_layout()
@@ -143,49 +224,287 @@ class ShelfScaleDashboard:
         self._setup_callbacks()
     
     def _setup_layout(self):
-        """Set up the dashboard layout"""
+        """Set up the enhanced dashboard layout with upload and scoring"""
         # Try to get food groups, handling cases where the column might not exist
         food_groups = []
-        if 'Food Group' in self.df.columns:
-            food_groups = sorted(self.df['Food Group'].unique())
-        elif 'Food_Group' in self.df.columns:
-            food_groups = sorted(self.df['Food_Group'].unique())
-        elif 'Food_Category' in self.df.columns:
-            food_groups = sorted(self.df['Food_Category'].unique())
+        if not self.df.empty:
+            if 'Food Group' in self.df.columns:
+                food_groups = sorted(self.df['Food Group'].unique())
+            elif 'Food_Group' in self.df.columns:
+                food_groups = sorted(self.df['Food_Group'].unique())
+            elif 'Food_Category' in self.df.columns:
+                food_groups = sorted(self.df['Food_Category'].unique())
         
-        self.app.layout = html.Div([
-            # Title
-            html.H1(self.title, style={'textAlign': 'center'}),
+        # Main layout with upload and data tabs
+        self.app.layout = dbc.Container([
+            # Title and navigation
+            dbc.Row([
+                dbc.Col([
+                    html.H1(self.title, className="text-center mb-4"),
+                    html.Hr()
+                ])
+            ]),
             
-            # Dropdown for selecting food group
-            html.Div([
-                html.Label('Select Food Group:'),
-                dcc.Dropdown(
-                    id='food-group-dropdown',
-                    options=[
-                        {'label': group, 'value': group} for group in food_groups
-                    ],
-                    value=food_groups[0] if food_groups else None,
-                    multi=True
-                ),
-            ], style={'padding': '10px', 'width': '50%', 'margin': 'auto'}),
+            # Main content tabs
+            dbc.Tabs([
+                # Upload tab
+                dbc.Tab(label="Upload & Score", tab_id="upload", children=[
+                    self._create_upload_layout()
+                ]),
+                
+                # Visualizations tab
+                dbc.Tab(label="Visualizations", tab_id="viz", children=[
+                    self._create_visualization_layout(food_groups)
+                ], disabled=self.df.empty),
+                
+                # Data table tab
+                dbc.Tab(label="Data Table", tab_id="table", children=[
+                    self._create_table_layout()
+                ], disabled=self.df.empty),
+                
+                # Nutrition scores tab
+                dbc.Tab(label="Nutrition Scores", tab_id="scores", children=[
+                    self._create_scores_layout()
+                ], disabled=self.df.empty or not self._has_scores())
+            ], id="main-tabs", active_tab="upload" if self.df.empty else "viz"),
             
-            # Tabs for different visualizations
-            dcc.Tabs([
-                dcc.Tab(label='Treemap', children=[
+            # Hidden div to store uploaded data
+            html.Div(id='uploaded-data', style={'display': 'none'}),
+            html.Div(id='scored-data', style={'display': 'none'}),
+            
+        ], fluid=True)
+    
+    def _create_upload_layout(self):
+        """Create the upload and scoring layout"""
+        return dbc.Row([
+            dbc.Col([
+                dbc.Card([
+                    dbc.CardHeader("Upload CSV/Excel File"),
+                    dbc.CardBody([
+                        dcc.Upload(
+                            id='upload-data',
+                            children=html.Div([
+                                'Drag and Drop or ',
+                                html.A('Select Files')
+                            ]),
+                            style={
+                                'width': '100%',
+                                'height': '60px',
+                                'lineHeight': '60px',
+                                'borderWidth': '1px',
+                                'borderStyle': 'dashed',
+                                'borderRadius': '5px',
+                                'textAlign': 'center',
+                                'margin': '10px'
+                            },
+                            multiple=False
+                        ),
+                        html.Div(id='upload-status'),
+                        html.Hr(),
+                        html.H5("Scoring Options"),
+                        dbc.Row([
+                            dbc.Col([
+                                dbc.Checklist(
+                                    options=[
+                                        {"label": "Traffic Light Scores", "value": "traffic"},
+                                        {"label": "Nutri-Score", "value": "nutri"},
+                                    ],
+                                    value=["traffic", "nutri"],
+                                    id="scoring-options",
+                                )
+                            ], width=6),
+                            dbc.Col([
+                                dbc.Button("Apply Scoring", id="score-button", color="primary", 
+                                          disabled=True, className="mb-2"),
+                                html.Br(),
+                                dbc.Button("Download Results", id="download-button", color="success", 
+                                          disabled=True)
+                            ], width=6)
+                        ]),
+                        html.Div(id='scoring-status'),
+                        dcc.Download(id="download-dataframe-csv"),
+                    ])
+                ])
+            ], width=12)
+        ])
+    
+    def _create_visualization_layout(self, food_groups):
+        """Create the visualization layout"""
+        return html.Div([
+            dbc.Row([
+                dbc.Col([
+                    html.Label('Filter by Food Group:'),
+                    dcc.Dropdown(
+                        id='food-group-dropdown',
+                        options=[
+                            {'label': group, 'value': group} for group in food_groups
+                        ],
+                        value=food_groups[:3] if len(food_groups) > 3 else food_groups,
+                        multi=True
+                    ),
+                ], width=12)
+            ], className="mb-3"),
+            
+            dbc.Row([
+                dbc.Col([
                     dcc.Graph(id='treemap-chart')
-                ]),
-                dcc.Tab(label='Distribution', children=[
+                ], width=6),
+                dbc.Col([
                     dcc.Graph(id='distribution-chart')
-                ]),
-                dcc.Tab(label='Data Table', children=[
-                    html.Div(id='data-table')
+                ], width=6)
+            ])
+        ])
+    
+    def _create_table_layout(self):
+        """Create the data table layout"""
+        return html.Div([
+            dbc.Row([
+                dbc.Col([
+                    html.H4("Product Data Table"),
+                    html.P("Showing processed data with weights and scores"),
+                    dash_table.DataTable(
+                        id='data-table-enhanced',
+                        columns=[],
+                        data=[],
+                        sort_action="native",
+                        filter_action="native",
+                        page_action="native",
+                        page_current=0,
+                        page_size=20,
+                        style_cell={'textAlign': 'left'},
+                        style_data_conditional=[
+                            {
+                                'if': {'filter_query': '{Nutri_Grade} = A'},
+                                'backgroundColor': '#d4edda',
+                                'color': 'black',
+                            },
+                            {
+                                'if': {'filter_query': '{Nutri_Grade} = E'},
+                                'backgroundColor': '#f8d7da',
+                                'color': 'black',
+                            }
+                        ]
+                    )
                 ])
             ])
         ])
     
+    def _create_scores_layout(self):
+        """Create the nutrition scores layout"""
+        return html.Div([
+            dbc.Row([
+                dbc.Col([
+                    dcc.Graph(id='nutri-score-chart')
+                ], width=6),
+                dbc.Col([
+                    dcc.Graph(id='traffic-light-chart')
+                ], width=6)
+            ]),
+            dbc.Row([
+                dbc.Col([
+                    html.H5("Score Summary Statistics"),
+                    html.Div(id='score-summary')
+                ])
+            ], className="mt-3")
+        ])
+    
+    def _has_scores(self):
+        """Check if the DataFrame has nutrition scores"""
+        score_cols = ['Nutri_Grade', 'Traffic_Lights_Summary']
+        return any(col in self.df.columns for col in score_cols)
+    
     def _setup_callbacks(self):
-        """Set up dashboard callbacks"""
+        """Set up enhanced dashboard callbacks with upload and scoring"""
+        
+        # Upload file callback
+        @self.app.callback(
+            [Output('uploaded-data', 'children'),
+             Output('upload-status', 'children'),
+             Output('score-button', 'disabled')],
+            Input('upload-data', 'contents'),
+            State('upload-data', 'filename')
+        )
+        def parse_uploaded_file(contents, filename):
+            if contents is None:
+                return None, "", True
+            
+            try:
+                # Parse the uploaded file
+                content_type, content_string = contents.split(',')
+                decoded = base64.b64decode(content_string)
+                
+                if filename.endswith('.csv'):
+                    df = pd.read_csv(io.StringIO(decoded.decode('utf-8')))
+                elif filename.endswith(('.xlsx', '.xls')):
+                    df = pd.read_excel(io.BytesIO(decoded))
+                else:
+                    return None, dbc.Alert("Error: Please upload a CSV or Excel file", color="danger"), True
+                
+                # Store the data and return success message
+                success_msg = dbc.Alert(
+                    f"Successfully uploaded {filename} with {len(df)} rows and {len(df.columns)} columns", 
+                    color="success"
+                )
+                
+                return df.to_json(date_format='iso', orient='split'), success_msg, False
+                
+            except Exception as e:
+                error_msg = dbc.Alert(f"Error processing file: {str(e)}", color="danger")
+                return None, error_msg, True
+        
+        # Apply scoring callback
+        @self.app.callback(
+            [Output('scored-data', 'children'),
+             Output('scoring-status', 'children'),
+             Output('download-button', 'disabled')],
+            Input('score-button', 'n_clicks'),
+            [State('uploaded-data', 'children'),
+             State('scoring-options', 'value')]
+        )
+        def apply_scoring(n_clicks, uploaded_data, scoring_options):
+            if n_clicks is None or uploaded_data is None:
+                raise PreventUpdate
+            
+            try:
+                # Load the uploaded data
+                df = pd.read_json(uploaded_data, orient='split')
+                
+                # Apply scoring
+                if scoring_options:
+                    score_type = 'all' if len(scoring_options) > 1 else scoring_options[0]
+                    
+                    # Import scoring functions here to avoid circular imports
+                    from shelfscale.main import apply_nutrition_scoring
+                    scored_df = apply_nutrition_scoring(df, score_type)
+                    
+                    success_msg = dbc.Alert(
+                        f"Successfully applied {score_type} scoring to {len(scored_df)} products", 
+                        color="success"
+                    )
+                    
+                    return scored_df.to_json(date_format='iso', orient='split'), success_msg, False
+                else:
+                    return None, dbc.Alert("Please select scoring options", color="warning"), True
+                    
+            except Exception as e:
+                error_msg = dbc.Alert(f"Error during scoring: {str(e)}", color="danger")
+                return None, error_msg, True
+        
+        # Download callback
+        @self.app.callback(
+            Output("download-dataframe-csv", "data"),
+            Input("download-button", "n_clicks"),
+            State("scored-data", "children"),
+            prevent_initial_call=True,
+        )
+        def download_scored_data(n_clicks, scored_data):
+            if scored_data is None:
+                raise PreventUpdate
+            
+            df = pd.read_json(scored_data, orient='split')
+            return dcc.send_data_frame(df.to_csv, "shelfscale_scored_results.csv", index=False)
+        
+        # Original visualization callbacks (updated to work with stored data)
         @self.app.callback(
             Output('treemap-chart', 'figure'),
             Input('food-group-dropdown', 'value')

@@ -43,6 +43,7 @@ from shelfscale.data_sourcing.pdf_extraction import PDFExtractor
 from shelfscale.data_sourcing.excel_loader import ExcelLoader # Added
 from shelfscale.data_sourcing.csv_loader import CsvLoader # Added
 from shelfscale.data_processing.raw_processor import RawDataProcessor, process_raw_data
+from shelfscale.scoring import score_traffic_lights, score_nutri
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -183,6 +184,158 @@ def process_weight_info(df, weight_cols):
     return result_df
 
 
+def score_input_file(input_file: str, score_type: str, output_file: str) -> pd.DataFrame:
+    """
+    Score an input CSV file directly
+    
+    Args:
+        input_file: Path to input CSV file
+        score_type: Type of scoring ('nutri', 'traffic', 'all')
+        output_file: Path to output scores file
+        
+    Returns:
+        Scored DataFrame
+    """
+    print(f"Loading input file: {input_file}")
+    
+    # Load the input data
+    try:
+        df = pd.read_csv(input_file)
+        print(f"Loaded {len(df)} rows from {input_file}")
+    except Exception as e:
+        logger.error(f"Error loading input file: {e}")
+        return pd.DataFrame()
+    
+    # Apply scoring
+    scored_df = apply_nutrition_scoring(df, score_type)
+    
+    # Save results
+    scored_df.to_csv(output_file, index=False)
+    print(f"Saved scored results to {output_file}")
+    
+    return scored_df
+
+
+def build_nutrient_view(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Build a nutrition view with standardized nutrient columns
+    
+    Args:
+        df: Input DataFrame with product data
+        
+    Returns:
+        DataFrame with nutrition columns ready for scoring
+    """
+    nutrient_df = df.copy()
+    
+    # Standardize nutrient column names - look for common variations
+    nutrient_mappings = {
+        # Energy
+        'Energy_kJ': ['Energy (kJ)', 'Energy_kJ', 'Energy kJ', 'Energy_kilojoules'],
+        'Energy_kcal': ['Energy (kcal)', 'Energy_kcal', 'Energy kcal', 'Energy_calories', 'Calories'],
+        
+        # Macronutrients
+        'Fat_g': ['Fat (g)', 'Fat_g', 'Total Fat', 'Fat g', 'Fat'],
+        'SatFat_g': ['SatFat (g)', 'SatFat_g', 'Saturated Fat', 'Saturated fat', 'SaturatedFat_g'],
+        'Sugars_g': ['Sugars (g)', 'Sugars_g', 'Total Sugars', 'Sugars g', 'Sugars'],
+        'Salt_g': ['Salt (g)', 'Salt_g', 'Salt g', 'Salt'],
+        'Sodium_mg': ['Sodium (mg)', 'Sodium_mg', 'Sodium mg', 'Sodium'],
+        'Fiber_g': ['Fiber (g)', 'Fiber_g', 'Fibre (g)', 'Fibre_g', 'Dietary Fiber', 'Fiber'],
+        'Protein_g': ['Protein (g)', 'Protein_g', 'Protein g', 'Protein'],
+        
+        # Other nutrients
+        'Carbs_g': ['Carbohydrate (g)', 'Carbs_g', 'Carbohydrates', 'Carbs'],
+    }
+    
+    # Map columns to standardized names
+    for standard_name, variations in nutrient_mappings.items():
+        if standard_name not in nutrient_df.columns:
+            for variation in variations:
+                if variation in nutrient_df.columns:
+                    nutrient_df[standard_name] = nutrient_df[variation]
+                    logger.info(f"Mapped {variation} to {standard_name}")
+                    break
+    
+    # Add nutrient source tracking
+    nutrient_df['Nutrient_Source'] = 'MW'  # Default to McCance & Widdowson
+    
+    # For items without nutrition data, estimate from category medians if available
+    missing_nutrition = nutrient_df[['Energy_kcal', 'Fat_g', 'SatFat_g', 'Sugars_g', 'Salt_g']].isna().all(axis=1)
+    
+    if missing_nutrition.any() and 'Food_Category' in nutrient_df.columns:
+        logger.info(f"Estimating nutrition for {missing_nutrition.sum()} items using category medians")
+        
+        # Calculate category medians for available data
+        category_nutrition = nutrient_df[~missing_nutrition].groupby('Food_Category')[
+            ['Energy_kcal', 'Fat_g', 'SatFat_g', 'Sugars_g', 'Salt_g', 'Fiber_g', 'Protein_g']
+        ].median()
+        
+        # Fill missing values with category medians
+        for idx in nutrient_df[missing_nutrition].index:
+            category = nutrient_df.loc[idx, 'Food_Category']
+            if category in category_nutrition.index:
+                for col in category_nutrition.columns:
+                    if pd.isna(nutrient_df.loc[idx, col]):
+                        nutrient_df.loc[idx, col] = category_nutrition.loc[category, col]
+                        nutrient_df.loc[idx, 'Nutrient_Source'] = 'Category_Median'
+    
+    return nutrient_df
+
+
+def apply_nutrition_scoring(df: pd.DataFrame, score_type: str) -> pd.DataFrame:
+    """
+    Apply nutrition scoring to a DataFrame
+    
+    Args:
+        df: DataFrame with nutrition data
+        score_type: Type of scoring ('nutri', 'traffic', 'all')
+        
+    Returns:
+        DataFrame with scoring results
+    """
+    print(f"Applying {score_type} scoring to {len(df)} products...")
+    
+    # Build nutrition view
+    nutrition_df = build_nutrient_view(df)
+    
+    # Add weight and provenance columns if not present
+    weight_cols = ['Normalized_Weight', 'Weight_Unit', 'Weight_Source', 
+                   'Weight_Prediction_Source', 'Weight_Prediction_Confidence']
+    
+    for col in weight_cols:
+        if col not in nutrition_df.columns:
+            if 'Confidence' in col:
+                nutrition_df[col] = np.nan
+            else:
+                nutrition_df[col] = None
+    
+    # Apply scoring based on type
+    if score_type in ['traffic', 'all']:
+        print("Calculating Traffic Light scores...")
+        nutrition_df = score_traffic_lights(nutrition_df)
+    
+    if score_type in ['nutri', 'all']:
+        print("Calculating Nutri-Scores...")
+        nutrition_df = score_nutri(nutrition_df)
+    
+    # Calculate overall score confidence
+    if 'Score_Confidence' not in nutrition_df.columns:
+        nutrition_df['Score_Confidence'] = 0.8  # Default confidence
+    
+    # Report coverage
+    total_products = len(nutrition_df)
+    
+    if score_type in ['traffic', 'all']:
+        traffic_coverage = (nutrition_df['Traffic_Lights_Summary'] != 'unknown').sum()
+        print(f"Traffic Light coverage: {traffic_coverage}/{total_products} ({traffic_coverage/total_products*100:.1f}%)")
+    
+    if score_type in ['nutri', 'all']:
+        nutri_coverage = nutrition_df['Nutri_Grade'].notna().sum()
+        print(f"Nutri-Score coverage: {nutri_coverage}/{total_products} ({nutri_coverage/total_products*100:.1f}%)")
+    
+    return nutrition_df
+
+
 def main():
     """Main function demonstrating ShelfScale workflow with multiple data sources"""
     print("ShelfScale - Comprehensive Food Product Weight Analysis")
@@ -206,6 +359,11 @@ def main():
     parser.add_argument("--use-super-group", action="store_false", default=True, help="Use Super Group reduced data")
     parser.add_argument("--process-raw", action="store_true", help="Process all raw data and save to Processed directory")
     
+    # Scoring arguments
+    parser.add_argument("--score", choices=['nutri', 'traffic', 'all'], help="Calculate nutrition scores")
+    parser.add_argument("--input-file", help="Input CSV file for scoring (optional)")
+    parser.add_argument("--output-scores", default=config.NUTRITION_SCORES_PATH, help="Output file for nutrition scores")
+    
     args = parser.parse_args()
     
     # If processing raw data was requested, do it and exit
@@ -214,6 +372,10 @@ def main():
         processed_data = process_raw_data()
         print("Raw data processing complete. Results saved to Processed directory.")
         return processed_data
+    
+    # If scoring was requested and input file provided, score that file directly
+    if args.score and args.input_file:
+        return score_input_file(args.input_file, args.score, args.output_scores)
     
     # Output directory is created by config.py
     
@@ -530,6 +692,18 @@ def main():
         logger.warning("No weight columns found in the dataset")
         normalized_dataset = categorized_dataset
         normalized_dataset['Normalized_Weight'] = np.nan
+    
+    # Apply nutrition scoring if requested
+    if args.score:
+        print(f"\nApplying {args.score} nutrition scoring...")
+        scored_dataset = apply_nutrition_scoring(normalized_dataset, args.score)
+        
+        # Save scored dataset
+        save_data(scored_dataset, args.output_scores)
+        print(f"Saved nutrition scores to {args.output_scores}")
+        
+        # Update normalized_dataset for dashboard
+        normalized_dataset = scored_dataset
     
     # Save the comprehensive dataset
     save_data(normalized_dataset, args.output)

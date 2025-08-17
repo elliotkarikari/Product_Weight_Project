@@ -1,0 +1,94 @@
+# Food Product Density Data for Volume-to-Weight Conversion
+# Data Sources:
+# - USDA Food Data Central: https://fdc.nal.usda.gov/
+# - UK Food Standards Agency: https://www.food.gov.uk/
+# - Engineering ToolBox: https://www.engineeringtoolbox.com/
+# - Food and Agriculture Organization (FAO): http://www.fao.org/
+# - Various food science literature and technical databases
+# - Specific density values from McCance & Widdowson's food composition tables
+#
+# Note: Densities are approximate values in g/ml and may vary by specific product,
+# temperature, and formulation. These values provide reasonable estimates for
+# converting volume measurements to weight.
+
+Super_Category,Food_Category,density_g_per_ml
+Beverages,Water,1.00
+Beverages,Soft drinks,1.05
+Beverages,Fruit juice,1.05
+Beverages,Vegetable juice,1.03
+Beverages,Tea,1.00
+Beverages,Coffee,1.00
+Beverages,Beer,1.01
+Beverages,Wine,0.99
+Beverages,Spirits,0.92
+Beverages,Energy drinks,1.06
+Beverages,Sports drinks,1.03
+Beverages,Carbonated water,1.00
+Milk and milk products,Milk,1.03
+Milk and milk products,Whole milk,1.03
+Milk and milk products,Semi-skimmed milk,1.03
+Milk and milk products,Skimmed milk,1.04
+Milk and milk products,Yogurt,1.03
+Milk and milk products,Greek yogurt,1.05
+Milk and milk products,Kefir,1.03
+Milk and milk products,Cream,0.98
+Milk and milk products,Heavy cream,0.99
+Milk and milk products,Light cream,1.01
+Milk and milk products,Buttermilk,1.03
+Milk and milk products,Condensed milk,1.31
+Milk and milk products,Evaporated milk,1.07
+Fats and oils,Cooking oil,0.92
+Fats and oils,Olive oil,0.91
+Fats and oils,Vegetable oil,0.92
+Fats and oils,Sunflower oil,0.92
+Fats and oils,Coconut oil,0.92
+Fats and oils,Butter,0.91
+Fats and oils,Margarine,0.80
+Fats and oils,Lard,0.92
+Sugars preserves and snacks,Honey,1.40
+Sugars preserves and snacks,Syrup,1.37
+Sugars preserves and snacks,Maple syrup,1.33
+Sugars preserves and snacks,Golden syrup,1.45
+Sugars preserves and snacks,Treacle,1.40
+Sugars preserves and snacks,Jam,1.33
+Sugars preserves and snacks,Marmalade,1.33
+Sugars preserves and snacks,Molasses,1.40
+Soups sauces and miscellaneous foods,Soup,1.03
+Soups sauces and miscellaneous foods,Tomato soup,1.04
+Soups sauces and miscellaneous foods,Vegetable soup,1.03
+Soups sauces and miscellaneous foods,Chicken soup,1.02
+Soups sauces and miscellaneous foods,Sauce,1.10
+Soups sauces and miscellaneous foods,Tomato sauce,1.10
+Soups sauces and miscellaneous foods,Pasta sauce,1.08
+Soups sauces and miscellaneous foods,Soy sauce,1.15
+Soups sauces and miscellaneous foods,Vinegar,1.01
+Soups sauces and miscellaneous foods,Stock,1.02
+Soups sauces and miscellaneous foods,Broth,1.02
+Alcoholic beverages,Beer,1.01
+Alcoholic beverages,Lager,1.01
+Alcoholic beverages,Ale,1.01
+Alcoholic beverages,Wine,0.99
+Alcoholic beverages,Red wine,0.99
+Alcoholic beverages,White wine,0.99
+Alcoholic beverages,Spirits,0.92
+Alcoholic beverages,Vodka,0.94
+Alcoholic beverages,Whiskey,0.93
+Alcoholic beverages,Gin,0.94
+Alcoholic beverages,Rum,0.92
+Alcoholic beverages,Liqueur,1.10
+Alcoholic beverages,Port,1.05
+Alcoholic beverages,Sherry,1.02
+Cereals and cereal products,Porridge,1.05
+Cereals and cereal products,Oat porridge,1.05
+Cereals and cereal products,Rice porridge,1.08
+Vegetables,Vegetable juice,1.05
+Vegetables,Tomato juice,1.04
+Vegetables,Carrot juice,1.06
+Fruit,Fruit juice,1.05
+Fruit,Apple juice,1.04
+Fruit,Orange juice,1.05
+Fruit,Grape juice,1.06
+Fruit,Cranberry juice,1.04
+Fish and fish products,Fish sauce,1.20
+Meat and meat products,Meat stock,1.02
+Generic,Generic,1.00
