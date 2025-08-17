@@ -6,13 +6,13 @@ with machine learning capabilities for continuous improvement
 import os
 import pandas as pd
 import numpy as np
-import tabula
-import PyPDF2
+# import tabula  # Moved to conditional import in functions that need it
+# import PyPDF2  # Moved to conditional import in functions that need it
 import re
 import argparse
-from fuzzywuzzy import process, fuzz
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
+# from fuzzywuzzy import process, fuzz  # Moved to conditional import
+# from sklearn.feature_extraction.text import TfidfVectorizer  # Moved to conditional import
+# from sklearn.metrics.pairwise import cosine_similarity  # Moved to conditional import
 import random
 import logging
 from typing import List, Dict, Tuple, Optional, Any, Union
@@ -39,10 +39,10 @@ from shelfscale.utils.learning import (
     apply_feedback_to_matches,
     load_existing_matches
 )
-from shelfscale.data_sourcing.pdf_extraction import PDFExtractor
+# from shelfscale.data_sourcing.pdf_extraction import PDFExtractor  # Heavy dependency, import conditionally
 from shelfscale.data_sourcing.excel_loader import ExcelLoader # Added
 from shelfscale.data_sourcing.csv_loader import CsvLoader # Added
-from shelfscale.data_processing.raw_processor import RawDataProcessor, process_raw_data
+# from shelfscale.data_processing.raw_processor import RawDataProcessor, process_raw_data  # Heavy dependency
 from shelfscale.scoring import score_traffic_lights, score_nutri
 
 # Configure logging
@@ -381,7 +381,16 @@ def main():
     
     # Instantiate loaders
     excel_loader = ExcelLoader()
-    pdf_extractor = PDFExtractor(cache_dir=config.CACHE_DIR) # PDFExtractor handles its own caching
+    
+    # Try to import and instantiate PDFExtractor conditionally
+    try:
+        from shelfscale.data_sourcing.pdf_extraction import PDFExtractor
+        pdf_extractor = PDFExtractor(cache_dir=config.CACHE_DIR)
+        pdf_available = True
+    except ImportError as e:
+        logger.warning(f"PDFExtractor not available: {e}. PDF processing will be skipped.")
+        pdf_extractor = None
+        pdf_available = False
     # csv_loader = CsvLoader() # Not directly used for initial data load in main, but available
 
     # Setup data sources
@@ -446,30 +455,38 @@ def main():
         # 3. Load Food Portion Sizes data (portion-specific)
     # 3. Load Food Portion Sizes data (portion-specific)
     # PDFExtractor handles its own caching. The --load-cache flag is implicitly handled by PDFExtractor.
-    logger.info("Loading Food Portion Sizes data using PDFExtractor...")
-    try:
-        data_sources["portion_data"] = pdf_extractor.extract_food_portion_sizes(
-            pdf_path=args.food_portion_pdf
-            # pages argument is handled by PDFExtractor using config.PDF_FOOD_PORTION_PAGES by default
-        )
-        if data_sources["portion_data"] is None: # Ensure it's an empty DF if loading failed
+    if pdf_available:
+        logger.info("Loading Food Portion Sizes data using PDFExtractor...")
+        try:
+            data_sources["portion_data"] = pdf_extractor.extract_food_portion_sizes(
+                pdf_path=args.food_portion_pdf
+                # pages argument is handled by PDFExtractor using config.PDF_FOOD_PORTION_PAGES by default
+            )
+            if data_sources["portion_data"] is None: # Ensure it's an empty DF if loading failed
+                data_sources["portion_data"] = pd.DataFrame()
+        except FileNotFoundError as e: # Should be handled by PDFExtractor, but as a fallback
+            logger.error(f"Could not find food portion PDF (main.py fallback): {e}")
             data_sources["portion_data"] = pd.DataFrame()
-    except FileNotFoundError as e: # Should be handled by PDFExtractor, but as a fallback
-        logger.error(f"Could not find food portion PDF (main.py fallback): {e}")
+    else:
+        logger.info("PDFExtractor not available - skipping Food Portion Sizes data")
         data_sources["portion_data"] = pd.DataFrame()
 
     # 4. Load Fruit and Vegetable Survey data
     # PDFExtractor handles its own caching.
-    logger.info("Loading Fruit and Vegetable Survey data using PDFExtractor...")
-    try:
-        data_sources["fruit_veg_data"] = pdf_extractor.extract_fruit_veg_survey(
-            pdf_path=args.fruit_veg_pdf
-            # pages argument is handled by PDFExtractor using config.FRUIT_VEG_SURVEY_PAGES by default
-        )
-        if data_sources["fruit_veg_data"] is None: # Ensure it's an empty DF if loading failed
+    if pdf_available:
+        logger.info("Loading Fruit and Vegetable Survey data using PDFExtractor...")
+        try:
+            data_sources["fruit_veg_data"] = pdf_extractor.extract_fruit_veg_survey(
+                pdf_path=args.fruit_veg_pdf
+                # pages argument is handled by PDFExtractor using config.FRUIT_VEG_SURVEY_PAGES by default
+            )
+            if data_sources["fruit_veg_data"] is None: # Ensure it's an empty DF if loading failed
+                data_sources["fruit_veg_data"] = pd.DataFrame()
+        except FileNotFoundError as e: # Should be handled by PDFExtractor, but as a fallback
+            logger.error(f"Could not find fruit and veg PDF (main.py fallback): {e}")
             data_sources["fruit_veg_data"] = pd.DataFrame()
-    except FileNotFoundError as e: # Should be handled by PDFExtractor, but as a fallback
-        logger.error(f"Could not find fruit and veg PDF (main.py fallback): {e}")
+    else:
+        logger.info("PDFExtractor not available - skipping Fruit and Vegetable Survey data")
         data_sources["fruit_veg_data"] = pd.DataFrame()
     
     # Create an integrated dataset by matching items across sources
@@ -635,7 +652,7 @@ def main():
     for col_candidate in ['Food_Name', 'Food Name', 'name', 'description', 'Name', 'Description']: # Prioritize common names
         if col_candidate in cleaned_dataset.columns:
             food_name_col = col_candidate
-                break
+            break
     else: # If no exact match, then search more broadly
         for col in cleaned_dataset.columns:
             if 'food' in col.lower() and 'name' in col.lower():
@@ -713,11 +730,10 @@ def main():
     if args.run_dashboard:
         print("\nLaunching interactive dashboard...")
         try:
-            # Only import the dashboard when needed
-            from shelfscale.visualization.dashboard import ShelfScaleDashboard
-            # Pass model_dir and output_dir to dashboard if it needs to load/save anything
-            dashboard = ShelfScaleDashboard(normalized_dataset, model_dir=config.MODEL_DIR, output_dir=config.OUTPUT_DIR)
-            dashboard.run_server(debug=False, port=8050) # Port could also be a config parameter
+            # Use the enhanced dashboard with pre-built data
+            from shelfscale.visualization.enhanced_dashboard import create_enhanced_dashboard
+            dashboard = create_enhanced_dashboard()
+            dashboard.run_server(debug=False, port=8050)
         except ImportError as e:
             logger.error(f"Could not load dashboard. Dashboard dependencies may not be installed: {e}")
             print("Error: Dashboard dependencies not installed. Install with 'pip install dash plotly'.")

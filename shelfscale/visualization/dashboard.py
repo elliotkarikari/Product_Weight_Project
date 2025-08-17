@@ -645,4 +645,4 @@ class ShelfScaleDashboard:
             debug: Enable debug mode
             port: Server port
         """
-        self.app.run_server(debug=debug, port=port) 
+        self.app.run(debug=debug, port=port) 

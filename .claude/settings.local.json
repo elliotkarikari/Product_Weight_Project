@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "Bash(python -m unittest:*)",
+      "Bash(python3 -m unittest:*)",
+      "Bash(python3:*)",
+      "Bash(rm:*)",
+      "Bash(touch:*)",
+      "Bash(python:*)",
+      "Bash(git commit:*)",
+      "Bash(git config:*)",
+      "Bash(git rm:*)",
+      "Bash(true)",
+      "Bash(git add:*)",
+      "Bash(git push:*)",
+      "Bash(pip install:*)",
+      "Bash(source:*)"
+    ],
+    "deny": []
+  }
+}

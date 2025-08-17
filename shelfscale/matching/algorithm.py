@@ -10,15 +10,16 @@ import pandas as pd
 import numpy as np
 import pickle
 from typing import Dict, List, Optional, Union, Tuple, Any
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
-from fuzzywuzzy import fuzz
-from sklearn.model_selection import StratifiedKFold
-from Levenshtein import distance as lev_distance
-import joblib
+# Heavy ML imports moved to conditional imports inside methods to avoid dependency issues
+# from sklearn.feature_extraction.text import TfidfVectorizer
+# from sklearn.metrics.pairwise import cosine_similarity
+# from sklearn.ensemble import RandomForestClassifier
+# from sklearn.model_selection import train_test_split
+# from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+# from fuzzywuzzy import fuzz
+# from sklearn.model_selection import StratifiedKFold
+# from Levenshtein import distance as lev_distance
+# import joblib
 
 import shelfscale.config as config
 
@@ -128,6 +129,23 @@ class FoodMatcher:
         Returns:
             DataFrame with match results
         """
+        # Conditional imports to avoid dependency issues
+        try:
+            from sklearn.feature_extraction.text import TfidfVectorizer
+            from sklearn.metrics.pairwise import cosine_similarity
+        except ImportError:
+            logger.warning("sklearn not available, returning simple string similarity")
+            # Return simple similarity matrix based on exact matches
+            simple_similarity = []
+            for _, source_row in source_df.iterrows():
+                row_similarities = []
+                source_text = str(source_row[source_col]).lower() if source_col in source_row else ""
+                for _, target_row in target_df.iterrows():
+                    target_text = str(target_row[target_col]).lower() if target_col in target_row else ""
+                    similarity = 1.0 if source_text == target_text else 0.0
+                    row_similarities.append(similarity)
+                simple_similarity.append(row_similarities)
+            return np.array(simple_similarity)
         # Validate columns exist
         if source_col not in source_df.columns:
             logger.error(f"Source column '{source_col}' not found. Available columns: {source_df.columns.tolist()}")
@@ -192,6 +210,16 @@ class FoodMatcher:
         Returns:
             Dictionary of features
         """
+        # Conditional imports to avoid dependency issues
+        try:
+            from fuzzywuzzy import fuzz
+            from Levenshtein import distance as lev_distance
+        except ImportError:
+            # Fallback to simple string matching if dependencies not available
+            logger.warning("fuzzywuzzy or Levenshtein not available, using basic string matching")
+            fuzz = None
+            lev_distance = None
+            
         features = {}
         
         # Source and target text - safely handle missing columns
@@ -207,29 +235,33 @@ class FoodMatcher:
         
         # 1. Calculate fuzz similarity ratios
         # Use Python-Levenshtein library for faster, more accurate calculations
-        features['ratio'] = fuzz.ratio(source_text.lower(), target_text.lower()) / 100.0
-        features['partial_ratio'] = fuzz.partial_ratio(source_text.lower(), target_text.lower()) / 100.0
-        features['token_sort_ratio'] = fuzz.token_sort_ratio(source_text.lower(), target_text.lower()) / 100.0
-        features['token_set_ratio'] = fuzz.token_set_ratio(source_text.lower(), target_text.lower()) / 100.0
+        if fuzz is not None:
+            features['ratio'] = fuzz.ratio(source_text.lower(), target_text.lower()) / 100.0
+            features['partial_ratio'] = fuzz.partial_ratio(source_text.lower(), target_text.lower()) / 100.0
+            features['token_sort_ratio'] = fuzz.token_sort_ratio(source_text.lower(), target_text.lower()) / 100.0
+            features['token_set_ratio'] = fuzz.token_set_ratio(source_text.lower(), target_text.lower()) / 100.0
+        else:
+            # Fallback to basic string similarity if fuzzywuzzy not available
+            features['ratio'] = 1.0 if source_text.lower() == target_text.lower() else 0.0
+            features['partial_ratio'] = 1.0 if source_text.lower() in target_text.lower() or target_text.lower() in source_text.lower() else 0.0
+            features['token_sort_ratio'] = features['ratio']
+            features['token_set_ratio'] = features['ratio']
         
         # 2. Levenshtein edit distance - normalized to a similarity score
         max_len = max(len(source_text), len(target_text))
         if max_len > 0:
-            try:
-                # Handle import differences
+            if lev_distance is not None:
                 try:
-                    # New way using imported lev_distance
                     edit_distance = lev_distance(source_text.lower(), target_text.lower())
-                except NameError:
-                    # Fallback to fuzzywuzzy's implementation
-                    from Levenshtein import distance as levenshtein_distance
-                    edit_distance = levenshtein_distance(source_text.lower(), target_text.lower())
-                features['levenshtein_similarity'] = 1 - (edit_distance / max_len)
-            except Exception as e:
-                logger.warning(f"Error calculating Levenshtein distance: {e}")
-                features['levenshtein_similarity'] = 0
+                    features['levenshtein_similarity'] = 1 - (edit_distance / max_len)
+                except Exception as e:
+                    logger.warning(f"Error calculating Levenshtein distance: {e}")
+                    features['levenshtein_similarity'] = features['ratio']  # Fallback to ratio
+            else:
+                # Simple fallback similarity
+                features['levenshtein_similarity'] = features['ratio']
         else:
-            features['levenshtein_similarity'] = 0
+            features['levenshtein_similarity'] = 1.0  # Both strings empty
         
         # Food domain-specific features
         
@@ -249,7 +281,10 @@ class FoodMatcher:
                 food_group_match = 0.7
             # Word-level similarity
             else:
-                food_group_match = fuzz.token_sort_ratio(source_group, target_group) / 100.0
+                if fuzz is not None:
+                    food_group_match = fuzz.token_sort_ratio(source_group, target_group) / 100.0
+                else:
+                    food_group_match = 1.0 if source_group.lower() == target_group.lower() else 0.0
         
         features["food_group_match"] = food_group_match
         
@@ -317,7 +352,10 @@ class FoodMatcher:
                     
                     if source_val and target_val:
                         # Calculate similarity for this column pair
-                        col_similarity = fuzz.token_sort_ratio(source_val.lower(), target_val.lower()) / 100.0
+                        if fuzz is not None:
+                            col_similarity = fuzz.token_sort_ratio(source_val.lower(), target_val.lower()) / 100.0
+                        else:
+                            col_similarity = 1.0 if source_val.lower() == target_val.lower() else 0.0
                         features[f"{source_col_name}_{target_col_name}_match"] = col_similarity
         
         return features

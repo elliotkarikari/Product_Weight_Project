@@ -15,7 +15,7 @@ import logging
 # Import ShelfScale components
 from shelfscale.data_processing.weight_extraction import WeightExtractor, predict_missing_weights, load_density_map
 from shelfscale.scoring import score_traffic_lights, score_nutri
-from shelfscale.main import build_nutrient_view, apply_nutrition_scoring
+# from shelfscale.main import build_nutrient_view, apply_nutrition_scoring  # Avoid heavy imports
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -251,7 +251,9 @@ async def score_products(request: ScoreRequest):
     
     # Apply scoring
     try:
-        scored_df = apply_nutrition_scoring(df, 'all')
+        # Apply both scoring systems directly
+        scored_df = score_traffic_lights(df)
+        scored_df = score_nutri(scored_df)
         
         # Convert results back to response format
         for idx, row in scored_df.iterrows():
@@ -308,7 +310,9 @@ async def batch_score_file(file: UploadFile = File(...)):
         df = pd.read_csv(io.StringIO(contents.decode('utf-8')))
         
         # Apply scoring
-        scored_df = apply_nutrition_scoring(df, 'all')
+        # Apply both scoring systems directly
+        scored_df = score_traffic_lights(df)
+        scored_df = score_nutri(scored_df)
         
         # Convert back to CSV
         output = io.StringIO()
