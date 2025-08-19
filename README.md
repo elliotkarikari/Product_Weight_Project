@@ -1,6 +1,6 @@
 # ShelfScale: Enhanced Food Retail Analysis Platform
 
-**The most advanced LLM-powered food product matching and curation system for retail applications.**
+**LLM-powered food product matching and curation system for retail applications.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)

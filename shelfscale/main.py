@@ -373,7 +373,58 @@ def main():
     parser.add_argument("--input-file", help="Input CSV file for scoring (optional)")
     parser.add_argument("--output-scores", default=config.NUTRITION_SCORES_PATH, help="Output file for nutrition scores")
     
+    # Retail workflow arguments
+    try:
+        from shelfscale.workflows import add_retail_workflow_args
+        add_retail_workflow_args(parser)
+        
+        # Iterative learning workflow arguments
+        from shelfscale.workflows_iterative import add_iterative_workflow_args
+        add_iterative_workflow_args(parser)
+        
+        # Two-step retail workflow arguments
+        from shelfscale.workflows_retail_focused import add_two_step_workflow_args
+        add_two_step_workflow_args(parser)
+    except ImportError:
+        logger.warning("Retail workflow not available - enhanced tools not installed")
+    
     args = parser.parse_args()
+    
+    # If two-step retail workflow was requested, run it and exit
+    if hasattr(args, 'two_step_workflow') and args.two_step_workflow:
+        try:
+            from shelfscale.workflows_retail_focused import run_two_step_workflow_with_args
+            import asyncio
+            print("🏪 Starting Two-Step Retail Workflow...")
+            results = asyncio.run(run_two_step_workflow_with_args(args))
+            return results
+        except ImportError:
+            logger.error("❌ Two-step workflow not available - enhanced tools not installed")
+            return None
+    
+    # If iterative learning workflow was requested, run it and exit
+    if hasattr(args, 'iterative_workflow') and args.iterative_workflow:
+        try:
+            from shelfscale.workflows_iterative import run_iterative_workflow_with_args
+            import asyncio
+            print("🧠 Starting Iterative Learning Retail Workflow...")
+            results = asyncio.run(run_iterative_workflow_with_args(args))
+            return results
+        except ImportError:
+            logger.error("❌ Iterative workflow not available - enhanced tools not installed")
+            return None
+    
+    # If retail workflow was requested, run it and exit
+    if hasattr(args, 'retail_workflow') and args.retail_workflow:
+        try:
+            from shelfscale.workflows import run_retail_workflow
+            import asyncio
+            print("🏪 Starting LLM-Enhanced Retail Workflow...")
+            results = asyncio.run(run_retail_workflow(args))
+            return results
+        except ImportError:
+            logger.error("❌ Retail workflow not available - enhanced tools not installed")
+            return None
     
     # If processing raw data was requested, do it and exit
     if args.process_raw:
