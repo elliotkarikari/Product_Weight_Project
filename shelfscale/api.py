@@ -1,5 +1,18 @@
 """
-FastAPI REST API for ShelfScale weight extraction and nutrition scoring
+ShelfScale REST API - LLM-Enhanced Food Product Analysis
+
+FastAPI-based REST API providing access to ShelfScale's LLM-enhanced capabilities:
+- Advanced weight extraction and prediction
+- LLM-powered product matching with semantic understanding  
+- Comprehensive nutrition scoring (Traffic Light, Nutri-Score)
+- Brand-aware analysis with detailed reasoning
+
+Features:
+- 🤖 LLM-Enhanced matching endpoints
+- 📊 Advanced weight extraction
+- 🍽️ Nutrition scoring systems
+- 📁 Batch file processing
+- 💭 Human-readable analysis reasoning
 """
 
 import os
@@ -15,6 +28,7 @@ import logging
 # Import ShelfScale components
 from shelfscale.data_processing.weight_extraction import WeightExtractor, predict_missing_weights, load_density_map
 from shelfscale.scoring import score_traffic_lights, score_nutri
+from shelfscale.matching import FoodMatcher  # LLM-enhanced matching
 # from shelfscale.main import build_nutrient_view, apply_nutrition_scoring  # Avoid heavy imports
 
 # Configure logging
@@ -23,9 +37,9 @@ logger = logging.getLogger(__name__)
 
 # Create FastAPI app
 app = FastAPI(
-    title="ShelfScale API",
-    description="REST API for food product weight extraction and nutrition scoring",
-    version="1.0.0",
+    title="ShelfScale LLM-Enhanced API",
+    description="🤖 LLM-Enhanced REST API for intelligent food product analysis, weight extraction, and nutrition scoring",
+    version="3.0.0",
     docs_url="/docs",
     redoc_url="/redoc"
 )
@@ -34,11 +48,18 @@ app = FastAPI(
 try:
     weight_extractor = WeightExtractor(target_unit='g')
     density_map = load_density_map()
-    logger.info("Initialized weight extractor and density map")
+    food_matcher = FoodMatcher(use_llm=True, confidence_threshold=0.7)
+    
+    # Log system status
+    status = food_matcher.get_system_status()
+    logger.info(f"🚀 Initialized ShelfScale API v3.0 with {status.get('primary_system', 'unknown')} matching")
+    logger.info("✅ Weight extractor and density map loaded")
+    
 except Exception as e:
     logger.error(f"Error initializing components: {e}")
     weight_extractor = None
     density_map = None
+    food_matcher = None
 
 # Request/Response Models
 
@@ -331,6 +352,157 @@ async def batch_score_file(file: UploadFile = File(...)):
     except Exception as e:
         logger.error(f"Error processing batch file: {e}")
         raise HTTPException(status_code=500, detail=f"Processing error: {str(e)}")
+
+
+# ===== LLM-Enhanced Matching Endpoints =====
+
+class ProductMatchRequest(BaseModel):
+    """Request model for product matching"""
+    product1: str = Field(..., description="First product description")
+    product2: str = Field(..., description="Second product description")
+    context: Optional[Dict[str, Any]] = Field(None, description="Optional context information")
+
+class ProductMatchResponse(BaseModel):
+    """Response model for product matching"""
+    match: bool = Field(..., description="Whether products match")
+    confidence: float = Field(..., description="Confidence score (0.0-1.0)")
+    reasoning: str = Field(..., description="LLM reasoning for the match decision")
+    brand_analysis: Optional[str] = Field(None, description="Separate brand analysis")
+    matched_food_categories: Optional[List[str]] = Field(None, description="Detected food categories")
+    system_used: str = Field(..., description="Matching system used (llm_enhanced, enhanced_ai, etc.)")
+
+class BatchMatchRequest(BaseModel):
+    """Request model for batch matching"""
+    source_products: List[str] = Field(..., description="Source product descriptions")
+    target_products: List[str] = Field(..., description="Target product descriptions") 
+    max_matches_per_item: int = Field(3, description="Maximum matches to return per source item")
+    confidence_threshold: float = Field(0.7, description="Minimum confidence for matches")
+
+class BatchMatchResponse(BaseModel):
+    """Response model for batch matching"""
+    matches: List[Dict[str, Any]] = Field(..., description="List of matched products")
+    total_matches: int = Field(..., description="Total number of matches found")
+    system_stats: Dict[str, Any] = Field(..., description="System performance statistics")
+
+@app.post("/llm/match", response_model=ProductMatchResponse)
+async def match_products(request: ProductMatchRequest):
+    """
+    🤖 Match two products using LLM-enhanced semantic understanding
+    
+    This endpoint uses advanced LLM technology to determine if two product descriptions
+    refer to the same or equivalent food products, providing detailed reasoning.
+    """
+    if not food_matcher:
+        raise HTTPException(status_code=503, detail="Food matcher not available")
+    
+    try:
+        # Use async matching for better performance
+        result = await food_matcher.matcher.match_single_product(
+            request.product1, 
+            request.product2, 
+            request.context
+        )
+        
+        # Get system information
+        status = food_matcher.get_system_status()
+        
+        return ProductMatchResponse(
+            match=result.get('match', False),
+            confidence=result.get('confidence', 0.0),
+            reasoning=result.get('reasoning', 'No reasoning available'),
+            brand_analysis=result.get('brand_analysis'),
+            matched_food_categories=result.get('matched_food_categories', []),
+            system_used=status.get('primary_system', 'unknown')
+        )
+        
+    except Exception as e:
+        logger.error(f"Error in LLM matching: {e}")
+        raise HTTPException(status_code=500, detail=f"Matching error: {str(e)}")
+
+@app.post("/llm/batch-match", response_model=BatchMatchResponse) 
+async def batch_match_products(request: BatchMatchRequest):
+    """
+    🚀 Batch match products using LLM-enhanced system
+    
+    Efficiently matches multiple source products against target products using
+    advanced LLM capabilities with intelligent pre-filtering and caching.
+    """
+    if not food_matcher:
+        raise HTTPException(status_code=503, detail="Food matcher not available")
+    
+    try:
+        # Create temporary DataFrames
+        source_df = pd.DataFrame({'product': request.source_products})
+        target_df = pd.DataFrame({'product': request.target_products})
+        
+        # Update matcher confidence threshold
+        food_matcher.similarity_threshold = request.confidence_threshold
+        
+        # Perform matching
+        matches_df = await food_matcher.match_foods(
+            source_df, target_df, 
+            'product', 'product',
+            max_matches=request.max_matches_per_item
+        )
+        
+        # Convert to response format
+        matches_list = []
+        if not matches_df.empty:
+            for _, match in matches_df.iterrows():
+                match_dict = {
+                    'source_product': match.get('source_text', ''),
+                    'target_product': match.get('target_text', ''),
+                    'confidence': match.get('llm_confidence', 0.0),
+                    'reasoning': match.get('llm_reasoning', ''),
+                    'brand_analysis': match.get('brand_analysis', ''),
+                    'food_categories': match.get('matched_food_categories', []),
+                    'hybrid_score': match.get('hybrid_score', 0.0),
+                    'matching_method': match.get('matching_method', 'unknown')
+                }
+                matches_list.append(match_dict)
+        
+        # Get system statistics
+        system_stats = food_matcher.get_system_status()
+        
+        return BatchMatchResponse(
+            matches=matches_list,
+            total_matches=len(matches_list),
+            system_stats=system_stats
+        )
+        
+    except Exception as e:
+        logger.error(f"Error in batch matching: {e}")
+        raise HTTPException(status_code=500, detail=f"Batch matching error: {str(e)}")
+
+@app.get("/llm/status")
+async def get_matching_system_status():
+    """
+    📊 Get detailed status of the LLM-enhanced matching system
+    
+    Returns information about available matching systems, capabilities,
+    performance statistics, and system recommendations.
+    """
+    if not food_matcher:
+        return {"status": "unavailable", "message": "Food matcher not initialized"}
+    
+    try:
+        status = food_matcher.get_system_status()
+        return {
+            "status": "available",
+            "system_info": status,
+            "api_version": "3.0.0",
+            "llm_features": [
+                "semantic_food_understanding",
+                "brand_aware_analysis", 
+                "contextual_reasoning",
+                "human_readable_explanations"
+            ]
+        }
+        
+    except Exception as e:
+        logger.error(f"Error getting system status: {e}")
+        raise HTTPException(status_code=500, detail=f"Status error: {str(e)}")
+
 
 # Utility function for running the API
 def run_api(host: str = "0.0.0.0", port: int = 8000, debug: bool = False):

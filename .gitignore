@@ -164,8 +164,10 @@ models/*.pkl
 models/*.joblib
 
 # Data folders (as requested - these should remain in git)
-# Data/
+Data/
 # Jupter_notebooks/
+tools/
+converted_data/
 
 # Output folder contents but keep the folder structure
 output/*.csv

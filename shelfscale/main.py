@@ -1,18 +1,22 @@
 """
-Main script demonstrating ShelfScale package usage with comprehensive data sources
-with machine learning capabilities for continuous improvement
+ShelfScale Main Application - LLM-Enhanced Food Product Analysis
+
+This script demonstrates the full capabilities of ShelfScale's LLM-Enhanced
+matching system for food product analysis, weight prediction, and nutritional scoring.
+
+Features:
+- LLM-Enhanced product matching with semantic understanding
+- Advanced weight extraction and prediction
+- Multi-source data integration
+- Nutritional scoring (Traffic Light, Nutri-Score)
+- Interactive analysis with detailed reasoning
 """
 
 import os
 import pandas as pd
 import numpy as np
-# import tabula  # Moved to conditional import in functions that need it
-# import PyPDF2  # Moved to conditional import in functions that need it
 import re
 import argparse
-# from fuzzywuzzy import process, fuzz  # Moved to conditional import
-# from sklearn.feature_extraction.text import TfidfVectorizer  # Moved to conditional import
-# from sklearn.metrics.pairwise import cosine_similarity  # Moved to conditional import
 import random
 import logging
 from typing import List, Dict, Tuple, Optional, Any, Union
@@ -28,7 +32,6 @@ from shelfscale.utils.helpers import (
     load_data, 
     save_data, 
     split_data_by_group,
-    # get_path, # No longer needed here as config paths are absolute
     extract_numeric_value
 )
 from shelfscale.utils.learning import (
@@ -39,10 +42,8 @@ from shelfscale.utils.learning import (
     apply_feedback_to_matches,
     load_existing_matches
 )
-# from shelfscale.data_sourcing.pdf_extraction import PDFExtractor  # Heavy dependency, import conditionally
-from shelfscale.data_sourcing.excel_loader import ExcelLoader # Added
-from shelfscale.data_sourcing.csv_loader import CsvLoader # Added
-# from shelfscale.data_processing.raw_processor import RawDataProcessor, process_raw_data  # Heavy dependency
+from shelfscale.data_sourcing.excel_loader import ExcelLoader
+from shelfscale.data_sourcing.csv_loader import CsvLoader
 from shelfscale.scoring import score_traffic_lights, score_nutri
 
 # Configure logging
@@ -58,13 +59,21 @@ def match_datasets(main_df, secondary_df, main_col, secondary_col, threshold=70,
     print(f"Matching datasets based on {main_col} and {secondary_col}...")
     
     # Try to load a trained matcher first for better results
-    # Note: train_matcher_from_existing_data might need path updates if it loads files
+    # Initialize LLM-Enhanced Food Matcher (v3.0)
+    logger.info("🤖 Initializing LLM-Enhanced Food Matching System")
     try:
-        matcher = train_matcher_from_existing_data(model_dir=config.MODEL_DIR) # Assuming it might save/load models
-        logger.info("Using trained matcher for dataset matching")
+        matcher = train_matcher_from_existing_data(model_dir=config.MODEL_DIR)
+        logger.info("✅ Using trained LLM-enhanced matcher for dataset matching")
     except Exception as e:
-        logger.warning(f"Could not load trained matcher: {e}. Using default matcher.")
-        matcher = FoodMatcher(similarity_threshold=threshold/100)
+        logger.warning(f"Could not load trained matcher: {e}. Using default LLM-enhanced matcher.")
+        matcher = FoodMatcher(similarity_threshold=threshold/100, use_llm=True)
+    
+    # Log system status
+    if hasattr(matcher, 'get_system_status'):
+        status = matcher.get_system_status()
+        logger.info(f"🚀 Primary matching system: {status.get('primary_system', 'unknown')}")
+        if 'llm_enhanced' in status.get('primary_system', ''):
+            logger.info("🧠 Using LLM for semantic food understanding")
     
     # Set up additional matching columns
     additional_match_cols = None
