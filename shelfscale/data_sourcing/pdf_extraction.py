@@ -21,10 +21,10 @@ class PDFExtractor:
     
     def __init__(self, cache_dir: Optional[str] = None):
         """
-        Initialize the PDF extractor
+        Initializes a PDFExtractor instance with a cache directory and supported encodings.
         
         Args:
-            cache_dir: Directory to store cached data. Defaults to config.CACHE_DIR
+            cache_dir: Optional directory path for storing cached extraction results. If not provided, uses the default from configuration.
         """
         self.cache_dir = cache_dir if cache_dir is not None else config.CACHE_DIR
         # Directory creation is handled by config.py
@@ -44,14 +44,9 @@ class PDFExtractor:
     
     def extract_food_portion_sizes(self, pdf_path: str) -> pd.DataFrame:
         """
-        Extract food portion sizes from PDF
+        Extracts food portion size data from a PDF file and returns it as a DataFrame.
         
-        Args:
-            pdf_path: Path to Food Portion Sizes PDF
-            pages: Optional page range string (e.g., "1-5, 10")
-            
-        Returns:
-            DataFrame with food portion data
+        Attempts multiple extraction strategies in sequence, cleans and validates the data, and caches the result for future use. If a cached CSV is available, it is loaded directly. Returns an empty DataFrame with expected columns if extraction fails or the PDF file is missing.
         """
         cache_path = config.FOOD_PORTION_SIZES_CACHED_PATH # Use path from config
         
@@ -138,7 +133,20 @@ class PDFExtractor:
         raise ValueError("Lattice extraction failed with all encodings")
     
     def _extract_food_portion_stream(self, pdf_path: str) -> pd.DataFrame:
-        """Extract food portion sizes using stream mode"""
+        """
+        Attempts to extract food portion size tables from a PDF using Tabula's stream mode with multiple encodings.
+        
+        Tries each encoding in sequence, concatenates all found tables, and standardizes column names. Raises a ValueError if extraction fails for all encodings.
+        
+        Args:
+            pdf_path: Path to the PDF file to extract from.
+        
+        Returns:
+            DataFrame containing standardized food portion size data.
+        
+        Raises:
+            ValueError: If extraction fails for all attempted encodings.
+        """
         for encoding in self.encodings:
             try:
                 logger.info(f"Trying stream mode with encoding: {encoding}")
@@ -163,7 +171,18 @@ class PDFExtractor:
         raise ValueError("Stream extraction failed with all encodings")
     
     def _extract_food_portion_simple(self, pdf_path: str, pages: Optional[str] = None) -> pd.DataFrame:
-        """Simple extraction for when other methods fail"""
+        """
+        Attempts a basic extraction of food portion size data from a PDF using fixed settings.
+        
+        If other extraction methods fail, this method treats the specified pages as a single large table, assigns standard column names based on column position, and adds any missing expected columns. Raises a ValueError if extraction is unsuccessful.
+        
+        Args:
+            pdf_path: Path to the PDF file containing food portion size data.
+            pages: Optional string specifying the page range to extract; uses a default if not provided.
+        
+        Returns:
+            A DataFrame with columns for food name, portion size, weight in grams, and notes.
+        """
         try:
             logger.info("Trying simple extraction with fixed settings")
             page_range = pages if pages is not None else config.PDF_FOOD_PORTION_PAGES
@@ -229,14 +248,15 @@ class PDFExtractor:
     
     def extract_fruit_veg_survey(self, pdf_path: str) -> pd.DataFrame:
         """
-        Extract fruit and vegetable survey data from PDF
+        Extracts fruit and vegetable survey data from a PDF file.
+        
+        Attempts multiple extraction strategies in sequence to retrieve structured survey data, cleans and standardizes the results, validates the schema, and caches the output for future use. Returns an empty DataFrame with expected columns if extraction fails or the PDF is missing.
         
         Args:
-            pdf_path: Path to Fruit & Vegetable Survey PDF
-            pages: Optional page range string (e.g., "1-5, 10")
-
+            pdf_path: Path to the Fruit & Vegetable Survey PDF.
+        
         Returns:
-            DataFrame with fruit and vegetable data
+            A DataFrame containing fruit and vegetable survey data with standardized columns.
         """
         cache_path = config.FRUIT_VEG_SURVEY_CACHED_PATH # Use path from config
         
@@ -295,7 +315,21 @@ class PDFExtractor:
         return pd.DataFrame(columns=["Page", "Sample_Number", "Sample_Name", "Pack_Size"])
     
     def _extract_fruit_veg_tables(self, pdf_path: str, pages: Optional[str] = None) -> pd.DataFrame:
-        """Extract fruit and vegetable data using table extraction"""
+        """
+        Extracts fruit and vegetable survey data tables from a PDF using table-based extraction.
+        
+        If a page range is not provided, attempts to determine an appropriate range dynamically by searching for appendix sections or defaulting to the latter part of the document. Tries multiple encodings to extract tables with Tabula, filters for tables likely containing sample data, and standardizes the resulting DataFrame columns. Raises a ValueError if no suitable tables are found.
+        
+        Args:
+            pdf_path: Path to the PDF file.
+            pages: Optional page range string (e.g., "10-50"). If not provided, uses configuration or dynamic detection.
+        
+        Returns:
+            A DataFrame containing standardized fruit and vegetable survey data.
+        
+        Raises:
+            ValueError: If no suitable tables are found in the PDF.
+        """
         # Try table-based approach first
         sample_tables = []
         
@@ -387,7 +421,21 @@ class PDFExtractor:
         raise ValueError("Table extraction failed for fruit and veg survey")
     
     def _extract_fruit_veg_simple(self, pdf_path: str, pages: Optional[str] = None) -> pd.DataFrame:
-        """Simple extraction method for fruit and vegetable data"""
+        """
+        Attempts a simple extraction of fruit and vegetable survey data tables from a PDF.
+        
+        Extracts tables from the specified pages using tabula in stream mode with latin1 encoding. Filters for tables with at least two columns, assigns standard column names based on position, adds any missing expected columns, and fills missing page numbers sequentially. Raises a ValueError if extraction fails.
+        
+        Args:
+            pdf_path: Path to the PDF file.
+            pages: Optional string specifying page range(s) to extract from; uses configuration default if not provided.
+        
+        Returns:
+            A DataFrame containing the extracted and standardized fruit and vegetable survey data.
+        
+        Raises:
+            ValueError: If no suitable tables are found or extraction fails.
+        """
         try:
             page_range_to_use = pages if pages is not None else config.FRUIT_VEG_SURVEY_PAGES
             logger.info(f"Trying simple fruit/veg extraction on pages: {page_range_to_use}")
@@ -432,7 +480,11 @@ class PDFExtractor:
         raise ValueError("Simple extraction failed for fruit and veg survey")
     
     def _standardize_fruit_veg_columns(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Standardize column names for fruit and vegetable data"""
+        """
+        Renames and adds columns to ensure a standard schema for fruit and vegetable survey data.
+        
+        Column names are mapped to standard names ("Page", "Sample_Number", "Sample_Name", "Pack_Size") based on keyword matching, and any missing columns are added with None values.
+        """
         # Standardize column names
         renamed_cols = {}
         for col in df.columns:
@@ -461,14 +513,21 @@ class PDFExtractor:
     
     def _extract_fruit_veg_text_based(self, pdf_path: str, pages: Optional[str] = None) -> pd.DataFrame:
         """
-        Extract fruit and vegetable data using text-based approach
+        Extracts fruit and vegetable survey data from a PDF using text parsing.
+        
+        Attempts to extract relevant sample information by reading text from specified pages,
+        searching for keywords and patterns related to sample number, name, and pack size.
+        Returns a DataFrame with structured data for each detected sample.
         
         Args:
-            pdf_path: Path to PDF file
-            pages: Optional page range string (e.g., "1-5, 10")
-            
+            pdf_path: Path to the PDF file.
+            pages: Optional page range string (e.g., "1-5, 10"). If not provided, uses a configured default.
+        
         Returns:
-            DataFrame with extracted data
+            DataFrame containing columns: "Page", "Sample_Number", "Sample_Name", and "Pack_Size".
+        
+        Raises:
+            ValueError: If extraction fails or no relevant data is found.
         """
         logger.info("Using text-based extraction for fruit and veg survey")
         

@@ -22,7 +22,12 @@ logger = logging.getLogger(__name__)
 # DATA_PATHS dictionary is removed, functions will use specific config paths.
 
 def load_performance_history() -> List[Dict]:
-    """Load the performance history from the history file"""
+    """
+    Loads the model performance history from the configured JSON file.
+    
+    Returns:
+        A list of performance history records, or an empty list if the file does not exist or cannot be read.
+    """
     history_file_path = config.MODEL_PERFORMANCE_HISTORY_PATH
     if not os.path.exists(history_file_path):
         return []
@@ -35,7 +40,12 @@ def load_performance_history() -> List[Dict]:
         return []
 
 def save_performance_history(history: List[Dict]) -> None:
-    """Save the performance history to the history file"""
+    """
+    Saves the performance history to the configured file as JSON.
+    
+    Args:
+    	history: A list of dictionaries representing performance records.
+    """
     history_file_path = config.MODEL_PERFORMANCE_HISTORY_PATH
     try:
         # Model directory (dirname of history_file_path) is created by config.py
@@ -110,10 +120,10 @@ def get_performance_trend() -> Dict[str, List[float]]:
 
 def load_existing_matches() -> Dict[str, pd.DataFrame]:
     """
-    Load existing matches from CSV files in the output directory
+    Loads existing match data from configured CSV files.
     
     Returns:
-        Dictionary with match dataframes
+        A dictionary mapping match types to their corresponding DataFrames. If a file is missing or cannot be loaded, its entry is omitted from the result.
     """
     matches = {}
     # Use paths from config.EXISTING_MATCH_FILES_TO_LOAD
@@ -134,10 +144,10 @@ def load_existing_matches() -> Dict[str, pd.DataFrame]:
 
 def load_mccance_widdowson_data() -> pd.DataFrame:
     """
-    Load McCance & Widdowson's Food Composition Dataset
+    Loads the McCance & Widdowson food composition dataset from the configured Excel file.
     
     Returns:
-        DataFrame with food composition data
+        A DataFrame containing food composition data, or an empty DataFrame if loading fails.
     """
     # Assuming this should load the main McCance & Widdowson Excel file
     file_path = config.MCCANCE_WIDDOWSON_PATH 
@@ -156,10 +166,12 @@ def load_mccance_widdowson_data() -> pd.DataFrame:
 
 def load_food_portion_data() -> pd.DataFrame:
     """
-    Load processed Food Portion Sizes data
+    Loads processed Food Portion Sizes data from a configured CSV file or directory.
+    
+    Attempts to load the specific processed file if available; otherwise, loads and combines all CSV files in the designated directory. Returns an empty DataFrame if no data is found or an error occurs.
     
     Returns:
-        DataFrame with food portion data
+        pd.DataFrame: Combined food portion size data, or empty DataFrame on failure.
     """
     # This function expects processed food portion data.
     # config.PROCESSED_FPS_PATH points to the specific processed CSV file.
@@ -192,10 +204,12 @@ def load_food_portion_data() -> pd.DataFrame:
 
 def load_fruit_veg_survey_data() -> Dict[str, pd.DataFrame]:
     """
-    Load Fruit & Vegetable Survey data from tables
+    Loads the Fruit & Vegetable Survey data as a dictionary of DataFrames.
+    
+    Attempts to load a combined processed CSV file; if unavailable, loads year-specific data from subfolders. Returns an empty dictionary if no data is found.
     
     Returns:
-        Dictionary with DataFrames for each year (if year subfolders exist) or a single DataFrame.
+        A dictionary mapping "combined" or year strings to their corresponding DataFrames.
     """
     # This function expects processed FVS data.
     # config.PROCESSED_FVS_TABLES_PATH points to the combined CSV in the "tables" subdir.
@@ -242,10 +256,10 @@ def load_fruit_veg_survey_data() -> Dict[str, pd.DataFrame]:
 
 def load_mw_data_reduction() -> Dict[str, pd.DataFrame]:
     """
-    Load McCance & Widdowson data reduction files
+    Loads McCance & Widdowson data reduction files from configured directories.
     
     Returns:
-        Dictionary with DataFrames for different reduction types
+        A dictionary containing DataFrames for individual tables, super group, super group cleaned, and total reduction types. If loading fails for any type, the corresponding DataFrame will be empty.
     """
     # Base path for MW Data Reduction in PROCESSED_DATA_DIR
     mw_reduction_base_dir = os.path.join(config.PROCESSED_DATA_DIR, config.MW_DATA_REDUCTION_SUBDIR)
@@ -303,11 +317,10 @@ def load_mw_data_reduction() -> Dict[str, pd.DataFrame]:
 
 def load_reduced_with_weights() -> pd.DataFrame:
     """
-    Load the ReducedwithWeights dataset which combines multiple sources.
-    This corresponds to the processed labelling data.
+    Loads the processed labelling dataset ("ReducedwithWeights") containing combined weight data.
     
     Returns:
-        DataFrame with combined weight data
+        pd.DataFrame: The loaded dataset, or an empty DataFrame if the file is missing or cannot be loaded.
     """
     # This should point to config.PROCESSED_LABELLING_PATH
     file_path = config.PROCESSED_LABELLING_PATH
@@ -683,10 +696,9 @@ def load_all_data_sources() -> Dict[str, Any]:
 
 def extract_gold_standard_matches_from_notebooks() -> pd.DataFrame:
     """
-    Extract gold standard matches from Jupyter notebooks
+    Attempts to extract manually verified gold standard matches from Jupyter notebooks.
     
-    Returns:
-        DataFrame with high-quality manually verified matches
+    Scans the configured Data Product notebooks directory for code cells that may contain match results. Currently, this function only logs the presence of potential match data and returns an empty DataFrame as a placeholder.
     """
     # Path to notebooks directory from config
     base_notebooks_dir = config.NOTEBOOKS_DIR
@@ -812,11 +824,9 @@ def train_matcher_from_existing_data(include_gold_standard: bool = True) -> Food
 
 def generate_training_data_from_matches(matcher: FoodMatcher, threshold: float = 0.8) -> None:
     """
-    Generate training data from existing matches for improving the algorithm
+    Generates and saves training data from existing matches that meet a similarity threshold.
     
-    Args:
-        matcher: FoodMatcher instance
-        threshold: Similarity threshold for considering a match as training data
+    Combines all existing match datasets, extracts features, filters for high-quality matches based on the specified similarity threshold, and saves the resulting training data to a configured file path for use in improving the matching algorithm.
     """
     # Load existing matches
     matches_dict = load_existing_matches()
@@ -844,10 +854,12 @@ def generate_training_data_from_matches(matcher: FoodMatcher, threshold: float =
 
 def evaluate_matcher_performance() -> Dict[str, float]:
     """
-    Evaluate the performance of the matching algorithm on existing data
+    Evaluates the performance of the food matching algorithm on existing match datasets.
+    
+    Loads all available match data, computes aggregate metrics such as total matches, high-quality matches, average similarity, and precision estimate, and incorporates model cross-validation metrics if available. Records the evaluation results in the performance history.
     
     Returns:
-        Dictionary with performance metrics
+        A dictionary containing performance metrics including total matches, high-quality matches, average similarity, precision estimate, and standard classification metrics if available.
     """
     # Load existing matches
     matches_dict = load_existing_matches()
@@ -990,20 +1002,21 @@ def create_interactive_feedback_session(matcher, source_df: pd.DataFrame, target
                                       source_col: str, target_col: str, num_samples: int = 10,
                                       output_file: str = "output/feedback_session.json"):
     """
-    Create an interactive feedback session for improving the matcher
-    
-    Args:
-        matcher: FoodMatcher instance
-        source_df: Source DataFrame
-        target_df: Target DataFrame
-        source_col: Column name in source for matching
-        target_col: Column name in target for matching
-        num_samples: Number of samples to generate for feedback
-        output_file: Path to save feedback. Defaults to config.FEEDBACK_SESSION_PATH.
-        
-    Returns:
-        Dictionary with feedback session results
-    """
+                                      Generates and saves a set of sample matches for interactive user feedback to improve the matcher.
+                                      
+                                      Selects a balanced set of high and low confidence matches between the source and target datasets, formats them for user labeling, and saves the session to a JSON file for later review or retraining.
+                                      
+                                      Args:
+                                          source_df: DataFrame containing source items to match.
+                                          target_df: DataFrame containing target items to match against.
+                                          source_col: Name of the column in the source DataFrame to use for matching.
+                                          target_col: Name of the column in the target DataFrame to use for matching.
+                                          num_samples: Total number of feedback samples to generate.
+                                          output_file: Path to save the feedback session JSON file.
+                                      
+                                      Returns:
+                                          A dictionary containing the feedback file path, the list of feedback samples, and the sample count.
+                                      """
     if output_file is None:
         output_file = config.FEEDBACK_SESSION_PATH
 
@@ -1096,11 +1109,9 @@ def process_feedback_file(feedback_file: str, matcher, apply_immediately: bool =
 
 def visualize_feedback_impact(feedback_file: str, output_file: str = "output/feedback_impact.html"):
     """
-    Visualize the impact of feedback on model performance
+    Generates an interactive dashboard visualizing the impact of user feedback on model performance.
     
-    Args:
-        feedback_file: Path to feedback file
-        output_file: Path to save visualization. Defaults to config.FEEDBACK_IMPACT_VISUALIZATION_PATH.
+    Creates and saves a performance history dashboard to the specified output file, and logs a summary of recent improvements based on feedback data.
     """
     if output_file is None:
         output_file = config.FEEDBACK_IMPACT_VISUALIZATION_PATH

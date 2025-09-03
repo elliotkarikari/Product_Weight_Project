@@ -93,13 +93,9 @@ def save_data(df: pd.DataFrame, file_path: str, index: bool = False) -> None:
 
 def extract_numeric_value(text: str) -> Optional[float]:
     """
-    Extract numeric value from a string
+    Extracts a numeric value from a string using weight extraction logic.
     
-    Args:
-        text: Input string
-        
-    Returns:
-        Extracted numeric value or None if not found
+    Returns the numeric value if present; otherwise, returns None. Returns None if the input is not a non-empty string.
     """
     if pd.isna(text) or not isinstance(text, str) or not text.strip(): # Added strip check
         return None
@@ -115,13 +111,10 @@ def extract_numeric_value(text: str) -> Optional[float]:
 
 def extract_unit(text: str) -> Optional[str]:
     """
-    Extract unit from a string using WeightExtractor.
+    Extracts the standardized unit from a string using the default WeightExtractor.
     
-    Args:
-        text: Input string
-        
     Returns:
-        Extracted unit or None if not found
+        The extracted unit as a string, standardized to the extractor's target unit if conversion occurred, or None if no unit is found or input is invalid.
     """
     if pd.isna(text) or not isinstance(text, str) or not text.strip():
         return None
@@ -140,15 +133,20 @@ def extract_unit(text: str) -> Optional[str]:
 
 def convert_weight(value: float, from_unit: str, to_unit: str) -> Optional[float]:
     """
-    Convert weight from one unit to another
+    Converts a weight value from one unit to another using WeightExtractor.
+    
+    Attempts to convert the given value from the source unit to the target unit. Returns the converted value if successful. Raises ValueError if the units are unsupported or if conversion between mass and volume is attempted. Returns None if conversion is not possible but the units are otherwise compatible.
     
     Args:
-        value: Weight value to convert
-        from_unit: Source unit
-        to_unit: Target unit
-        
+        value: The numeric value to convert.
+        from_unit: The unit of the input value.
+        to_unit: The desired target unit.
+    
     Returns:
-        Converted weight value
+        The converted value in the target unit, or None if conversion is not possible.
+    
+    Raises:
+        ValueError: If the source or target unit is unsupported, or if conversion between mass and volume is attempted.
     """
     if value is None or from_unit is None or to_unit is None:
         return None # Or raise error, original raised ValueError for unsupported units
@@ -205,14 +203,13 @@ def convert_weight(value: float, from_unit: str, to_unit: str) -> Optional[float
 
 def get_unique_values(df: pd.DataFrame, column: str) -> List[Any]:
     """
-    Get sorted unique values from a DataFrame column
+    Returns a sorted list of unique values from a specified DataFrame column.
     
-    Args:
-        df: Input DataFrame
-        column: Column name
-        
+    Raises:
+        ValueError: If the specified column does not exist in the DataFrame.
+    
     Returns:
-        List of unique values
+        A sorted list containing the unique values from the given column.
     """
     if column not in df.columns:
         raise ValueError(f"Column '{column}' not found in DataFrame")

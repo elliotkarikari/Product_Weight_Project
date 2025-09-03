@@ -109,13 +109,16 @@ class DataCleaner:
     
     def _standardize_column_names(self, df: pd.DataFrame) -> pd.DataFrame:
         """
-        Standardize column names for consistency
+        Standardizes column names in the DataFrame for consistency.
+        
+        Renames columns related to food names, weights, categories, groups, and portion sizes
+        to a fixed set of standard names to facilitate downstream processing.
         
         Args:
-            df: Input DataFrame
-            
+            df: The input DataFrame to standardize.
+        
         Returns:
-            DataFrame with standardized column names
+            A DataFrame with standardized column names.
         """
         # Create a copy
         standardized_df = df.copy()

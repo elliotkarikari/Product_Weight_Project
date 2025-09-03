@@ -11,16 +11,19 @@ def create_food_group_summary(df: pd.DataFrame,
                              group_col: str = 'Food Group',
                              weight_col: str = 'Weight_Value') -> pd.DataFrame:
     """
-    Create a summary DataFrame with statistics by food group
-    
-    Args:
-        df: Input DataFrame
-        group_col: Name of the food group column
-        weight_col: Name of the weight column
-        
-    Returns:
-        DataFrame with food group statistics
-    """
+                             Generates a summary DataFrame with statistical measures of weights grouped by a specified food group.
+                             
+                             Args:
+                                 df: Input DataFrame containing food group and weight data.
+                                 group_col: Column name representing the food group.
+                                 weight_col: Column name representing the weight values.
+                             
+                             Returns:
+                                 A DataFrame with count, mean, median, standard deviation, minimum, and maximum of weights for each food group.
+                             
+                             Raises:
+                                 ValueError: If the specified group or weight column is not present in the DataFrame.
+                             """
     logger = logging.getLogger(__name__) # Ensure logger is available
 
     if group_col not in df.columns:
@@ -60,17 +63,10 @@ def normalize_weights(df: pd.DataFrame,
                      unit_col: str = 'Weight_Unit',
                      target_unit: str = 'g') -> pd.DataFrame:
     """
-    Normalize weights to a standard unit
-    
-    Args:
-        df: Input DataFrame
-        weight_col: Name of the weight column
-        unit_col: Name of the unit column
-        target_unit: Target unit for normalization ('g' or 'ml')
-        
-    Returns:
-        DataFrame with normalized weights
-    """
+                     Normalizes weight values in a DataFrame to a specified target unit.
+                     
+                     Each row's weight and unit are converted to the target unit (default 'g'). If conversion is successful, the normalized value and unit are stored in 'Normalized_Weight' and 'Normalized_Unit' columns; otherwise, NaN and the original unit are recorded. Returns a DataFrame with the added or updated normalized columns.
+                     """
     if weight_col not in df.columns:
         raise ValueError(f"Weight column '{weight_col}' not found in DataFrame.")
     if unit_col not in df.columns:
@@ -120,16 +116,16 @@ def pivot_food_groups(df: pd.DataFrame,
                      group_col: str = 'Food Group',
                      weight_col: str = 'Normalized_Weight') -> pd.DataFrame:
     """
-    Create a pivot table with food groups and their total weights
-    
-    Args:
-        df: Input DataFrame
-        group_col: Name of the food group column
-        weight_col: Name of the weight column
-        
-    Returns:
-        Pivot table with food group weights
-    """
+                     Creates a pivot table summarizing total weights for each food group.
+                     
+                     Args:
+                         df: DataFrame containing food group and weight data.
+                         group_col: Column name representing food groups.
+                         weight_col: Column name representing weights to aggregate.
+                     
+                     Returns:
+                         A DataFrame where each column corresponds to a food group and the values are the sum of weights for that group. Returns an empty DataFrame if no valid data is available.
+                     """
     logger = logging.getLogger(__name__) # Ensure logger is available
 
     if group_col not in df.columns:

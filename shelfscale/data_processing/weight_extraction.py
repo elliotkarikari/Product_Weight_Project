@@ -154,14 +154,19 @@ class WeightExtractor:
     
     def _process_match(self, match, pattern_str) -> Tuple[Optional[float], Optional[str]]:
         """
-        Process a regex match based on the pattern type
+        Processes a regex match to extract and standardize weight or volume information.
+        
+        Attempts to interpret the matched text according to the detected pattern, handling
+        mixed fractions, simple fractions, numeric values with units, ranges, multipacks,
+        packs, decimals without units, and approximations. Converts the extracted value
+        and unit to the extractor's target unit using standardization logic.
         
         Args:
-            match: Regex match object
-            pattern_str: The pattern string that matched
-            
+            match: The regex match object containing extracted groups.
+            pattern_str: The regex pattern string that matched the text.
+        
         Returns:
-            Tuple of (weight value, unit)
+            A tuple of (standardized value, standardized unit), or (None, None) if extraction fails.
         """
         groups = match.groups()
         pattern_text = match.group(0)
@@ -261,16 +266,16 @@ class WeightExtractor:
     
     def standardize_value_and_unit(self, value: Optional[float], original_unit: Optional[str]) -> Tuple[Optional[float], Optional[str]]:
         """
-        Standardize a given unit and convert the value to the extractor's target_unit.
-
+        Converts a numeric value from its original unit to the extractor's target unit.
+        
+        If the original and target units are compatible (both weight or both volume), returns the value converted to the target unit. If units are incompatible or unrecognized, returns the original value and unit. Returns (None, None) if input value or unit is None.
+        
         Args:
-            value: Numeric weight/volume value.
-            original_unit: Original unit of the value.
-
+            value: The numeric value to convert.
+            original_unit: The unit associated with the value.
+        
         Returns:
-            Tuple of (converted_value, target_unit) if successful, 
-            or (original_value, original_unit) if conversion is not possible or applicable.
-            Returns (None, None) if input value or unit is None.
+            A tuple of (converted_value, target_unit) if conversion is successful, or (original_value, original_unit) if conversion is not possible. Returns (None, None) if input value or unit is None.
         """
         if value is None or original_unit is None:
             logger.debug(f"Input value or unit is None. Value: {value}, Unit: {original_unit}. Cannot standardize.")
